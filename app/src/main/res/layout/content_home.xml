@@ -8,18 +8,18 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="scoutapp.com.br.scoutapp.HomeActivity"
-    tools:showIn="@layout/activity_home">
+    tools:context=".scout.com.br.scout.HomeActivity"
+    tools:showIn="@layout/activity_home"
+    android:background="@color/colorBackground">
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/background">
+        android:background="@color/colorBackground">
 
         <TextView
-            android:id="@+id/novo_scout"
+            android:id="@+id/new_scout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal|top"
@@ -29,22 +29,22 @@
             android:drawableTop="@drawable/ic_scout"
             android:onClick="selecionarOpcao"
             android:text="Novo Scout"
-            android:textColor="#0D47A1"
+            android:textColor="#000000"
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/historico"
+            android:id="@+id/history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal|top"
             android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/novo_scout"
+            android:layout_alignTop="@+id/new_scout"
             android:layout_marginRight="40dp"
             android:clickable="true"
             android:drawableTop="@drawable/ic_history"
             android:onClick="selecionarOpcao"
             android:text="Histórico"
-            android:textColor="#0D47A1"
+            android:textColor="#000000"
             android:textStyle="bold"/>
 
         <TextView
@@ -52,29 +52,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal|top"
-            android:layout_alignLeft="@+id/novo_scout"
+            android:layout_alignLeft="@+id/new_scout"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="110dp"
+            android:layout_marginBottom="120dp"
             android:clickable="true"
             android:drawableTop="@drawable/ic_perfil"
             android:onClick="selecionarOpcao"
             android:text="Perfil"
-            android:textColor="#0D47A1"
+            android:textColor="#000000"
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/configuracoes"
+            android:id="@+id/settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal|top"
             android:layout_alignBottom="@+id/perfil"
-            android:layout_alignRight="@+id/historico"
+            android:layout_alignRight="@+id/history"
             android:clickable="true"
             android:drawableTop="@drawable/ic_settings"
             android:onClick="selecionarOpcao"
             android:text="Configurações"
-            android:textColor="#0D47A1"
+            android:textColor="#000000"
             android:textStyle="bold"/>
-
     </RelativeLayout>
 </LinearLayout>
