@@ -8,9 +8,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import scoutapp.com.br.scoutapp.DAO.AtletaDAO;
+import scoutapp.com.br.scoutapp.modelo.Atleta;
 
 
 public class CadastroActivity extends AppCompatActivity {
+
+    private CadastroHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +22,7 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        helper = new CadastroHelper(this);
     }
 
     @Override
@@ -31,12 +36,17 @@ public class CadastroActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_formulario_ok:
-                Toast.makeText(CadastroActivity.this, "Aluno salvo!", Toast.LENGTH_SHORT).show();
+                Atleta atleta = helper.getAtleta();
+                AtletaDAO dao = new AtletaDAO(this);
+                dao.insere(atleta);
+                dao.close();
+
+                Toast.makeText(CadastroActivity.this, "Atleta " + atleta.getNome() + " salvo!", Toast.LENGTH_SHORT).show();
+
                 finish();
-                
-            default:
-                return super.onOptionsItemSelected(item);
+                break;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 }
