@@ -4,14 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="scoutapp.com.br.scoutapp.CadastroActivity">
 
-
-    <item android:id="@+id/action_settings"
-        android:title="Settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
-
     <item android:id="@+id/menu_formulario_ok"
         android:title="Ok"
-        android:icon="@drawable/ic_done" />
+        android:icon="@drawable/ic_done"
+        app:showAsAction="always"/>
 
 </menu>
