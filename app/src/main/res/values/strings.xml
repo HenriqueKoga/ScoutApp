@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name">ScoutApp</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_scout">ScoutActivity</string>
-    <string name="title_activity_history">HistoryActivity</string>
-    <string name="title_activity_report">ReportActivity</string>
     <string name="title_activity_cadastro">Cadastro</string>
+    <string name="estilo">Estilo:</string>
+    <string-array name="array_estilos">
+        <item>Caneta</item>
+        <item>Clássico</item>
+        <item>Classineta</item>
+    </string-array>
+    <string-array name="array_mao">
+        <item>Destro</item>
+        <item>Canhoto</item>
+    </string-array>
 </resources>
