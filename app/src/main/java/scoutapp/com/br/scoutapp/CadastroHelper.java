@@ -16,41 +16,40 @@ public class CadastroHelper {
     private final Spinner  campoMao;
     private final Spinner campoEstilo;
     private final EditText campoObs;
+    private Atleta atleta;
 
 
     public CadastroHelper(CadastroActivity activity) {
         campoNome = (EditText) activity.findViewById(R.id.nome);
-        String nome = campoNome.getText().toString();
-
         campoIdade = (EditText) activity.findViewById(R.id.idade);
-        String idade = campoIdade.getText().toString();
-
         campoCategoria = (EditText) activity.findViewById(R.id.categoria);
-        String categoria = campoCategoria.getText().toString();
-
         campoClube = (EditText) activity.findViewById(R.id.clube);
-        String clube = campoClube.getText().toString();
-
         campoMao = (Spinner) activity.findViewById(R.id.spinner_dest_canh);
-        String mao = campoMao.getSelectedItem().toString();
-
         campoEstilo = (Spinner) activity.findViewById(R.id.spinner_estilo);
-        String estilo = campoEstilo.getSelectedItem().toString();
-
         campoObs = (EditText) activity.findViewById(R.id.obs);
-        String obs = campoObs.getText().toString();
+        atleta = new Atleta();
     }
 
     public Atleta getAtleta(){
-        Atleta atleta = new Atleta();
         atleta.setNome(campoNome.getText().toString());
         atleta.setIdade(campoIdade.getText().toString());
         atleta.setCategoria(campoCategoria.getText().toString());
         atleta.setClube(campoClube.getText().toString());
-        atleta.setMao(campoMao.getSelectedItem().toString());
-        atleta.setEstilo(campoEstilo.getSelectedItem().toString());
+        atleta.setMao(campoMao.getSelectedItemPosition());
+        atleta.setEstilo(campoEstilo.getSelectedItemPosition());
         atleta.setObs(campoObs.getText().toString());
 
         return atleta;
+    }
+
+    public void preencheCadastro(Atleta atleta)  {
+        campoNome.setText(atleta.getNome());
+        campoIdade.setText(atleta.getIdade());
+        campoCategoria.setText(atleta.getCategoria());
+        campoClube.setText(atleta.getClube());
+        campoMao.setSelection(atleta.getMao());
+        campoEstilo.setSelection(atleta.getEstilo());
+        campoObs.setText(atleta.getObs());
+        this.atleta = atleta;
     }
 }

@@ -1,17 +1,19 @@
 package scoutapp.com.br.scoutapp.modelo;
 
+import java.io.Serializable;
+
 /**
  * Created by HenriqueKoga on 22/04/16.
  */
-public class Atleta {
+public class Atleta implements Serializable{
 
     private Long id;
     private String nome;
     private String idade;
     private String categoria;
     private String clube;
-    private String mao;
-    private String estilo;
+    private int mao;
+    private int estilo;
     private String obs;
 
     public Long getId() {
@@ -54,19 +56,19 @@ public class Atleta {
         this.clube = clube;
     }
 
-    public String getMao() {
+    public int getMao() {
         return mao;
     }
 
-    public void setMao(String mao) {
+    public void setMao(int mao) {
         this.mao = mao;
     }
 
-    public String getEstilo() {
+    public int getEstilo() {
         return estilo;
     }
 
-    public void setEstilo(String estilo) {
+    public void setEstilo(int estilo) {
         this.estilo = estilo;
     }
 
