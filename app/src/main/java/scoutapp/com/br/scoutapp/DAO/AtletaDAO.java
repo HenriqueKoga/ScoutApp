@@ -38,14 +38,7 @@ public class AtletaDAO extends SQLiteOpenHelper {
     public void insere(Atleta atleta) {
         SQLiteDatabase db = getWritableDatabase();
 
-        ContentValues dados = new ContentValues();
-        dados.put("nome", atleta.getNome());
-        dados.put("idade", atleta.getIdade());
-        dados.put("categoria", atleta.getCategoria());
-        dados.put("clube", atleta.getClube());
-        dados.put("mao", atleta.getMao());
-        dados.put("estilo", atleta.getEstilo());
-        dados.put("obs", atleta.getObs());
+        ContentValues dados = getContentValues(atleta);
 
         db.insert("Atletas", null, dados);
     }
@@ -63,8 +56,8 @@ public class AtletaDAO extends SQLiteOpenHelper {
             atleta.setIdade(c.getString(c.getColumnIndex("idade")));
             atleta.setCategoria(c.getString(c.getColumnIndex("categoria")));
             atleta.setClube(c.getString(c.getColumnIndex("clube")));
-            atleta.setMao(c.getString(c.getColumnIndex("mao")));
-            atleta.setEstilo(c.getString(c.getColumnIndex("estilo")));
+            atleta.setMao(c.getInt(c.getColumnIndex("mao")));
+            atleta.setEstilo(c.getInt(c.getColumnIndex("estilo")));
             atleta.setObs(c.getString(c.getColumnIndex("obs")));
 
             atletas.add(atleta);
@@ -79,5 +72,26 @@ public class AtletaDAO extends SQLiteOpenHelper {
 
         String [] params = {atleta.getId().toString()};
         db.delete("Atletas", "id = ?", params);
+    }
+
+    public void altera(Atleta atleta) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues dados = getContentValues(atleta);
+        String[] params = {atleta.getId().toString()};
+        db.update("Atletas", dados, "id = ?", params);
+    }
+
+    @NonNull
+    private ContentValues getContentValues(Atleta atleta) {
+        ContentValues dados = new ContentValues();
+        dados.put("nome", atleta.getNome());
+        dados.put("idade", atleta.getIdade());
+        dados.put("categoria", atleta.getCategoria());
+        dados.put("clube", atleta.getClube());
+        dados.put("mao", atleta.getMao());
+        dados.put("estilo", atleta.getEstilo());
+        dados.put("obs", atleta.getObs());
+        return dados;
     }
 }

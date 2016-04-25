@@ -36,6 +36,17 @@ public class HomeActivity extends AppCompatActivity {
 
         listaAtletas = (ListView)findViewById(R.id.scout_list);
 
+        listaAtletas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Atleta atleta = (Atleta) listaAtletas.getItemAtPosition(position);
+                Toast.makeText(HomeActivity.this, "Atleta " + atleta.getNome() + " clicado", Toast.LENGTH_SHORT).show();
+                Intent intentCadastro = new Intent(HomeActivity.this, CadastroActivity.class);
+                intentCadastro.putExtra("atleta", atleta);
+                startActivity(intentCadastro);
+            }
+        });
+
         FloatingActionButton addScout = (FloatingActionButton) findViewById(R.id.novo_atleta);
         addScout.setOnClickListener(new View.OnClickListener() {
             @Override
