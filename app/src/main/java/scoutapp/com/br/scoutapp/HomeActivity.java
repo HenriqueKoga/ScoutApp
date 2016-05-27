@@ -3,13 +3,13 @@ package scoutapp.com.br.scoutapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,12 +20,12 @@ import android.widget.Toast;
 import java.util.List;
 
 import scoutapp.com.br.scoutapp.DAO.AtletaDAO;
-import scoutapp.com.br.scoutapp.R;
 import scoutapp.com.br.scoutapp.modelo.Atleta;
 
 public class HomeActivity extends AppCompatActivity {
 
     private ListView listaAtletas;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,33 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                menuItem.setChecked(true);
+                mDrawerLayout.closeDrawers();
+                int id = menuItem.getItemId();
+                switch (id) {
+                    case R.id.nav_perfil:
+                        return true;
+                    case R.id.nav_logout:
+                        Toast.makeText(HomeActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
+                        Intent intentLogin = new Intent(HomeActivity.this, LoginActivity.class);
+                        startActivity(intentLogin);
+                        return true;
+                    default:
+                        return true;
+                }
+            }
+        });
+
 
         listaAtletas = (ListView)findViewById(R.id.scout_list);
 
@@ -95,4 +122,18 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }
