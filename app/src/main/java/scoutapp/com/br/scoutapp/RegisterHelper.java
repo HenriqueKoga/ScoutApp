@@ -8,7 +8,7 @@ import scoutapp.com.br.scoutapp.modelo.Atleta;
 /**
  * Created by HenriqueKoga on 22/04/16.
  */
-public class CadastroHelper {
+public class RegisterHelper {
     private final EditText campoNome;
     private final EditText campoIdade;
     private final EditText campoCategoria;
@@ -19,7 +19,7 @@ public class CadastroHelper {
     private Atleta atleta;
 
 
-    public CadastroHelper(CadastroActivity activity) {
+    public RegisterHelper(RegisterActivity activity) {
         campoNome = (EditText) activity.findViewById(R.id.nome);
         campoIdade = (EditText) activity.findViewById(R.id.idade);
         campoCategoria = (EditText) activity.findViewById(R.id.categoria);
