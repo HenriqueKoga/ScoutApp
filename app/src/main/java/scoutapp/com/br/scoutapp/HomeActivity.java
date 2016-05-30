@@ -49,6 +49,11 @@ public class HomeActivity extends AppCompatActivity {
                 switch (id) {
                     case R.id.nav_perfil:
                         return true;
+                    case R.id.nav_settings:
+                        Toast.makeText(HomeActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
+                        Intent intentSettings = new Intent(HomeActivity.this, SettingsActivity.class);
+                        startActivity(intentSettings);
+                        return true;
                     case R.id.nav_logout:
                         Toast.makeText(HomeActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
                         Intent intentLogin = new Intent(HomeActivity.this, LoginActivity.class);
@@ -68,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Atleta atleta = (Atleta) listaAtletas.getItemAtPosition(position);
                 Toast.makeText(HomeActivity.this, "Atleta " + atleta.getNome() + " clicado", Toast.LENGTH_SHORT).show();
-                Intent intentCadastro = new Intent(HomeActivity.this, CadastroActivity.class);
+                Intent intentCadastro = new Intent(HomeActivity.this, RegisterActivity.class);
                 intentCadastro.putExtra("atleta", atleta);
                 startActivity(intentCadastro);
             }
@@ -78,8 +83,8 @@ public class HomeActivity extends AppCompatActivity {
         addScout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentCadastro = new Intent(HomeActivity.this, CadastroActivity.class);
-                startActivity(intentCadastro);
+                Intent intentRegister = new Intent(HomeActivity.this, RegisterActivity.class);
+                startActivity(intentRegister);
             }
         });
 
@@ -117,7 +122,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 carregaLista();
 
-                Toast.makeText(HomeActivity.this, "Deletar o atleta " + atleta.getNome(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "Deletado o atleta " + atleta.getNome(), Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
