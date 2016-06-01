@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
@@ -19,8 +20,10 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import scoutapp.com.br.scoutapp.DAO.AtletaDAO;
+import scoutapp.com.br.scoutapp.DAO.ScoutDAO;
+import scoutapp.com.br.scoutapp.adapter.ScoutAdapter;
 import scoutapp.com.br.scoutapp.modelo.Atleta;
+import scoutapp.com.br.scoutapp.modelo.Campeonato;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -35,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -65,6 +68,8 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        Intent intent = getIntent();
+        Campeonato campeonato = (Campeonato)intent.getSerializableExtra("campeonato");
 
         listaAtletas = (ListView)findViewById(R.id.scout_list);
 
@@ -72,10 +77,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Atleta atleta = (Atleta) listaAtletas.getItemAtPosition(position);
-                Toast.makeText(HomeActivity.this, "Atleta " + atleta.getNome() + " clicado", Toast.LENGTH_SHORT).show();
-                Intent intentCadastro = new Intent(HomeActivity.this, RegisterActivity.class);
-                intentCadastro.putExtra("atleta", atleta);
-                startActivity(intentCadastro);
+                Intent intentRegister = new Intent(HomeActivity.this, RegisterActivity.class);
+                intentRegister.putExtra("atleta", atleta);
+                startActivity(intentRegister);
             }
         });
 
@@ -87,16 +91,16 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intentRegister);
             }
         });
-
         registerForContextMenu(listaAtletas);
     }
 
     private void carregaLista(){
-        AtletaDAO dao = new AtletaDAO(this);
-        List<Atleta> atletas = dao.buscaAtletas();
+        ScoutDAO dao = new ScoutDAO(this);
+        List<Atleta> atletas = dao.searchAthlete();
         dao.close();
 
-        ArrayAdapter <Atleta> adapter = new ArrayAdapter<Atleta>(this, android.R.layout.simple_list_item_activated_1, atletas);
+//        ArrayAdapter<Atleta> adapter = new ArrayAdapter<Atleta>(this, android.R.layout.simple_list_item_1, atletas);
+        ScoutAdapter adapter = new ScoutAdapter(this, atletas);
         listaAtletas.setAdapter(adapter);
     }
 
@@ -116,8 +120,8 @@ public class HomeActivity extends AppCompatActivity {
                 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
                 Atleta atleta = (Atleta) listaAtletas.getItemAtPosition(info.position);
 
-                AtletaDAO dao = new AtletaDAO(HomeActivity.this);
-                dao.deleta(atleta);
+                ScoutDAO dao = new ScoutDAO(HomeActivity.this);
+                dao.deleteAthlete(atleta);
                 dao.close();
 
                 carregaLista();
