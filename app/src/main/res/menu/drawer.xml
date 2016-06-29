@@ -10,7 +10,7 @@
             android:title="Perfil" />
         <item
             android:id="@+id/nav_scout"
-            android:icon="@drawable/ic_scout"
+            android:icon="@drawable/ic_scout_black"
             android:title="Scout" />
         <item
             android:id="@+id/nav_history"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".RegisterActivity">
 
-    <item android:id="@+id/menu_formulario_ok"
+    <item android:id="@+id/save"
         android:title="Ok"
         android:icon="@drawable/ic_done"
         app:showAsAction="always"/>
