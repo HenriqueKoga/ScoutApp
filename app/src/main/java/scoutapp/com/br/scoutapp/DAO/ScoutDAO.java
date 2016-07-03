@@ -10,7 +10,6 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import scoutapp.com.br.scoutapp.modelo.Atleta;
 import scoutapp.com.br.scoutapp.modelo.Campeonato;
 
 /**
@@ -44,69 +43,6 @@ public class ScoutDAO extends SQLiteOpenHelper {
         db.execSQL(sqlChamp);
         onCreate(db);
     }
-
-
-    /**
-     * Athlete table mehtods
-     */
-
-    public void insertAthlete(Atleta atleta) {
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues dados = getContentValues(atleta);
-        db.insert("atleta", null, dados);
-    }
-
-    public List<Atleta> searchAthlete() {
-        String sql = "SELECT * FROM atleta;";
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.rawQuery(sql, null);
-        List<Atleta> atletas = new ArrayList<Atleta>();
-        while (c.moveToNext()) {
-            Atleta atleta = new Atleta();
-            atleta.setId(c.getLong(c.getColumnIndex("_id_atleta")));
-            atleta.setNome(c.getString(c.getColumnIndex("nome")));
-            atleta.setIdade(c.getString(c.getColumnIndex("idade")));
-            atleta.setCategoria(c.getString(c.getColumnIndex("categoria")));
-            atleta.setClube(c.getString(c.getColumnIndex("clube")));
-            atleta.setMao(c.getInt(c.getColumnIndex("mao")));
-            atleta.setEstilo(c.getInt(c.getColumnIndex("estilo")));
-            atleta.setObs(c.getString(c.getColumnIndex("obs")));
-
-            atletas.add(atleta);
-        }
-        c.close();
-
-        return atletas;
-    }
-
-    public void deleteAthlete(Atleta atleta) {
-        SQLiteDatabase db = getWritableDatabase();
-
-        String [] params = {atleta.getId().toString()};
-        db.delete("atleta", "_id_atleta = ?", params);
-    }
-
-    public void updateAthlete(Atleta atleta) {
-        SQLiteDatabase db = getWritableDatabase();
-
-        ContentValues dados = getContentValues(atleta);
-        String[] params = {atleta.getId().toString()};
-        db.update("atleta", dados, "_id_atleta = ?", params);
-    }
-
-    @NonNull
-    private ContentValues getContentValues(Atleta atleta) {
-        ContentValues dados = new ContentValues();
-        dados.put("nome", atleta.getNome());
-        dados.put("idade", atleta.getIdade());
-        dados.put("categoria", atleta.getCategoria());
-        dados.put("clube", atleta.getClube());
-        dados.put("mao", atleta.getMao());
-        dados.put("estilo", atleta.getEstilo());
-        dados.put("obs", atleta.getObs());
-        return dados;
-    }
-
 
     /**
      * Championship table mehtods

@@ -9,19 +9,18 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import scoutapp.com.br.scoutapp.HomeActivity;
 import scoutapp.com.br.scoutapp.R;
-import scoutapp.com.br.scoutapp.modelo.Atleta;
+import scoutapp.com.br.scoutapp.model.Athlete;
 
 /**
  * Created by HenriqueKoga on 31/05/16.
  */
 public class ScoutAdapter extends BaseAdapter {
 
-    private final List<Atleta> atletas;
+    private final List<Athlete> atletas;
     private final Context context;
 
-    public ScoutAdapter(Context context, List<Atleta> atletas) {
+    public ScoutAdapter(Context context, List<Athlete> atletas) {
         this.context = context;
         this.atletas = atletas;
     }
@@ -43,13 +42,13 @@ public class ScoutAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Atleta atleta = atletas.get(position);
+        Athlete atleta = atletas.get(position);
 
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.list_item, null);
 
         TextView fieldName = (TextView) view.findViewById(R.id.item_name);
-        fieldName.setText(atleta.getNome());
+        fieldName.setText(atleta.getName());
         
         return view;
     }

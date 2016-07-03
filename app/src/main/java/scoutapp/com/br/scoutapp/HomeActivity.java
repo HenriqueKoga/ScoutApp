@@ -3,7 +3,6 @@ package scoutapp.com.br.scoutapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,15 +13,14 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.List;
 
-import scoutapp.com.br.scoutapp.DAO.ScoutDAO;
 import scoutapp.com.br.scoutapp.adapter.ScoutAdapter;
-import scoutapp.com.br.scoutapp.modelo.Atleta;
+import scoutapp.com.br.scoutapp.controller.AthleteController;
+import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.modelo.Campeonato;
 
 public class HomeActivity extends AppCompatActivity {
@@ -76,7 +74,7 @@ public class HomeActivity extends AppCompatActivity {
         listaAtletas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Atleta atleta = (Atleta) listaAtletas.getItemAtPosition(position);
+                Athlete atleta = (Athlete) listaAtletas.getItemAtPosition(position);
                 Intent intentRegister = new Intent(HomeActivity.this, RegisterActivity.class);
                 intentRegister.putExtra("atleta", atleta);
                 startActivity(intentRegister);
@@ -95,9 +93,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void carregaLista(){
-        ScoutDAO dao = new ScoutDAO(this);
-        List<Atleta> atletas = dao.searchAthlete();
-        dao.close();
+        AthleteController athleteController = new AthleteController(this);
+        List<Athlete> atletas = athleteController.getAllAthletes();
 
 //        ArrayAdapter<Atleta> adapter = new ArrayAdapter<Atleta>(this, android.R.layout.simple_list_item_1, atletas);
         ScoutAdapter adapter = new ScoutAdapter(this, atletas);
@@ -118,15 +115,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-                Atleta atleta = (Atleta) listaAtletas.getItemAtPosition(info.position);
+                Athlete atleta = (Athlete) listaAtletas.getItemAtPosition(info.position);
 
-                ScoutDAO dao = new ScoutDAO(HomeActivity.this);
-                dao.deleteAthlete(atleta);
-                dao.close();
-
+                AthleteController athleteController = new AthleteController(HomeActivity.this);
+                athleteController.removeAthlete(atleta);
                 carregaLista();
 
-                Toast.makeText(HomeActivity.this, "Deletado o atleta " + atleta.getNome(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "Deletado o atleta " + atleta.getName(), Toast.LENGTH_SHORT).show();
                 return false;
             }
         });

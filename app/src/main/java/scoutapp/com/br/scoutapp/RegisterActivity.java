@@ -11,8 +11,8 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import scoutapp.com.br.scoutapp.DAO.ScoutDAO;
-import scoutapp.com.br.scoutapp.modelo.Atleta;
+import scoutapp.com.br.scoutapp.controller.AthleteController;
+import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.modelo.Campeonato;
 
 
@@ -31,9 +31,9 @@ public class RegisterActivity extends AppCompatActivity {
         helper = new RegisterHelper(this);
 
         Intent intent = getIntent();
-        Atleta atleta = (Atleta) intent.getSerializableExtra("atleta");
-        if(atleta != null){
-            helper.preencheCadastro(atleta);
+        Athlete athlete = (Athlete) intent.getSerializableExtra("atleta");
+        if(athlete != null){
+            helper.preencheCadastro(athlete);
         }
     }
 
@@ -53,40 +53,33 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Atleta atleta = helper.getAtleta();
-        ScoutDAO dao = new ScoutDAO(this);
+        Athlete athlete = helper.getAthlete();
+        //ScoutDAO dao = new ScoutDAO(this);
         Intent intent = getIntent();
         Campeonato campeonato = (Campeonato)intent.getSerializableExtra("campeonato");
+        AthleteController athleteController = new AthleteController(this);
 
         switch (item.getItemId()) {
             case R.id.save:
-                insertOrUpdate(atleta,dao);
+                athleteController.insertOrReplaceAthlete(athlete);
+
                 Intent intentScout = new Intent(RegisterActivity.this, ChampRegisterActivity.class);
-                intentScout.putExtra("atleta", atleta);
+                intentScout.putExtra("atleta", athlete);
                 intentScout.putExtra("campeonato", campeonato);
                 startActivity(intentScout);
                 finish();
                 break;
 
             case android.R.id.home:
-                insertOrUpdate(atleta,dao);
+                athleteController.insertOrReplaceAthlete(athlete);
+
                 Intent intentHome = new Intent(RegisterActivity.this, HomeActivity.class);
                 startActivity(intentHome);
-                Toast.makeText(RegisterActivity.this, "Atleta " + atleta.getNome() + " salvo!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "Atleta " + athlete.getName() + " salvo!", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void insertOrUpdate(Atleta atleta, ScoutDAO dao){
-        if(atleta.getId() != null){
-            dao.updateAthlete(atleta);
-        } else{
-            dao.insertAthlete(atleta);
-        }
-        dao.close();
-
     }
 
 }
