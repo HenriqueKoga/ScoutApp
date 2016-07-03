@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import scoutapp.com.br.scoutapp.DAO.ScoutDAO;
-import scoutapp.com.br.scoutapp.modelo.Atleta;
+import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.modelo.Campeonato;
 
 public class ChampRegisterActivity extends AppCompatActivity {
@@ -30,12 +30,12 @@ public class ChampRegisterActivity extends AppCompatActivity {
         Campeonato campeonato = (Campeonato) intentChamp.getSerializableExtra("campeonato");
 
         Intent intentAtleta = getIntent();
-        Atleta atleta = (Atleta) intentAtleta.getSerializableExtra("atleta");
+        Athlete athlete = (Athlete) intentAtleta.getSerializableExtra("atleta");
 
-        helper = new ChampRegisterHelper(this, atleta);
+        helper = new ChampRegisterHelper(this, athlete);
 
         if (campeonato != null) {
-            campeonato.setIdAtleta(atleta.getId().toString());
+            campeonato.setIdAtleta(athlete.getId().toString());
             helper.preencheCadastro(campeonato);
         }
     }
@@ -59,7 +59,7 @@ public class ChampRegisterActivity extends AppCompatActivity {
         Campeonato campeonato = helper.getCampeonato();
         ScoutDAO dao = new ScoutDAO(this);
         Intent intent = getIntent();
-        Atleta atleta = (Atleta) intent.getSerializableExtra("atleta");
+        Athlete atleta = (Athlete) intent.getSerializableExtra("atleta");
 
         switch (item.getItemId()) {
             case R.id.menu_scout:

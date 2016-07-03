@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import scoutapp.com.br.scoutapp.modelo.Atleta;
+import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.modelo.Campeonato;
 
 public class ScoutActivity extends AppCompatActivity {
@@ -33,7 +33,7 @@ public class ScoutActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intent = getIntent();
-                Atleta atleta = (Atleta) intent.getSerializableExtra("atleta");
+                Athlete atleta = (Athlete) intent.getSerializableExtra("atleta");
                 Campeonato campeonato = (Campeonato) intent.getSerializableExtra("campeonato");
 
                 Intent intentRegister = new Intent(ScoutActivity.this, ChampRegisterActivity.class);

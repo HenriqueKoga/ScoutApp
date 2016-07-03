@@ -3,7 +3,7 @@ package scoutapp.com.br.scoutapp;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import scoutapp.com.br.scoutapp.modelo.Atleta;
+import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.modelo.Campeonato;
 
 /**
@@ -16,16 +16,16 @@ public class ChampRegisterHelper  {
     private final EditText fieldCity;
     private final TextView fieldIdAtleta;
     private Campeonato campeonato;
-    private Atleta atleta;
+    private Athlete mAthlete;
 
-    public ChampRegisterHelper(ChampRegisterActivity activity, Atleta atleta) {
+    public ChampRegisterHelper(ChampRegisterActivity activity, Athlete athlete) {
         fieldName = (EditText) activity.findViewById(R.id.champ);
 //        fieldDate = (DatePicker) activity.findViewById(R.id.dlgDate);
         fieldState = (EditText) activity.findViewById(R.id.state);
         fieldCity = (EditText) activity.findViewById(R.id.city);
         fieldIdAtleta = (TextView) activity.findViewById(R.id.id_atleta);
         campeonato = new Campeonato();
-        this.atleta = atleta;
+        mAthlete = athlete;
     }
 
     public Campeonato getCampeonato(){
