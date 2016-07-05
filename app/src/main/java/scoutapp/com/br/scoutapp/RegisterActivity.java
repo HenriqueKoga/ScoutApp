@@ -12,9 +12,9 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import scoutapp.com.br.scoutapp.controller.AthleteController;
+import scoutapp.com.br.scoutapp.helper.RegisterHelper;
 import scoutapp.com.br.scoutapp.model.Athlete;
-import scoutapp.com.br.scoutapp.modelo.Campeonato;
-
+import scoutapp.com.br.scoutapp.model.Championship;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -31,9 +31,9 @@ public class RegisterActivity extends AppCompatActivity {
         helper = new RegisterHelper(this);
 
         Intent intent = getIntent();
-        Athlete athlete = (Athlete) intent.getSerializableExtra("atleta");
+        Athlete athlete = (Athlete) intent.getSerializableExtra("athlete");
         if(athlete != null){
-            helper.preencheCadastro(athlete);
+            helper.fillRegister(athlete);
         }
     }
 
@@ -54,9 +54,8 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Athlete athlete = helper.getAthlete();
-        //ScoutDAO dao = new ScoutDAO(this);
         Intent intent = getIntent();
-        Campeonato campeonato = (Campeonato)intent.getSerializableExtra("campeonato");
+        Championship championship = (Championship) intent.getSerializableExtra("championship");
         AthleteController athleteController = new AthleteController(this);
 
         switch (item.getItemId()) {
@@ -64,8 +63,8 @@ public class RegisterActivity extends AppCompatActivity {
                 athleteController.insertOrReplaceAthlete(athlete);
 
                 Intent intentScout = new Intent(RegisterActivity.this, ChampRegisterActivity.class);
-                intentScout.putExtra("atleta", athlete);
-                intentScout.putExtra("campeonato", campeonato);
+                intentScout.putExtra("athlete", athlete);
+                intentScout.putExtra("championship", championship);
                 startActivity(intentScout);
                 finish();
                 break;

@@ -12,15 +12,80 @@
     tools:context="scoutapp.com.br.scoutapp.ScoutActivity"
     tools:showIn="@layout/activity_scout">
 
-    <TextView
-        android:id="@+id/opponent_name"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <ImageView
-        android:id="@+id/table"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/table" />
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/opponent_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/score" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/forehand" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/backhand" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/smash" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/slice" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/block" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/flick" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/table" />
+
+        <Button
+            android:id="@+id/left_long"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:onClick="onClick"
+            android:text=""
+            android:layout_marginTop="242dp"
+            android:layout_marginLeft="45dp"
+            android:background="#0D47A1"/>
+
+        <Button
+            android:id="@+id/left_short"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:onClick="onClick"
+            android:text=""
+            android:layout_marginTop="205dp"
+            android:layout_marginLeft="60dp"
+            android:background="#0D47A1"/>
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -2,6 +2,7 @@ package com.example;
 
 import de.greenrobot.daogenerator.DaoGenerator;
 import de.greenrobot.daogenerator.Entity;
+import de.greenrobot.daogenerator.Property;
 import de.greenrobot.daogenerator.Schema;
 
 public class ScoutDaoGenerator {
@@ -23,6 +24,10 @@ public class ScoutDaoGenerator {
 
     private static void addTables(final Schema schema) {
         Entity athlete = addAthlete(schema);
+        Entity championship = addChampionship(schema);
+
+//        Property athleteId = championship.addLongProperty("athleteId").notNull().getProperty();
+//        athlete.addToMany(championship, athleteId, "athleteChamps");
     }
 
     private static Entity addAthlete(final Schema schema) {
@@ -42,5 +47,18 @@ public class ScoutDaoGenerator {
         athlete.implementsSerializable();
 
         return athlete;
+    }
+
+    private static Entity addChampionship(final Schema schema){
+        Entity championship = schema.addEntity("Championship");
+        championship.addIdProperty().primaryKey().autoincrement();
+        championship.addStringProperty("champName");
+        championship.addDateProperty("date");
+        championship.addStringProperty("state");
+        championship.addStringProperty("city");
+
+        championship.implementsSerializable();
+
+        return championship;
     }
 }

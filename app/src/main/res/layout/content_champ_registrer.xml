@@ -16,23 +16,7 @@
     <LinearLayout android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="20dp"
-                android:text="ID:"/>
-
-            <TextView
-                android:id="@+id/id_atleta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="20dp"
-                android:paddingLeft="10dp"/>
-            </LinearLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/lChampLayout"
@@ -50,30 +34,25 @@
                 android:hint="Nome do Campeonato"/>
         </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/lDateLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fnameLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
 
-        <!--<android.support.design.widget.TextInputLayout-->
-            <!--android:id="@+id/lDateLayout"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@+id/fNameLayout"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_marginTop="10dp">-->
+            <com.github.pinball83.maskededittext.MaskedEditText
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                app:mask="**/**/****"
+                app:notMaskedSymbol="*"
+                android:hint="Data"
+                />
 
-            <!--<LinearLayout-->
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="300dp"-->
-                <!--android:weightSum="100"-->
-                <!--android:layout_gravity="center_horizontal">-->
-
-                <!--<DatePicker-->
-                    <!--android:id="@+id/dlgDate"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_weight="50"-->
-                    <!--android:layout_height="wrap_content" />-->
-
-            <!--</LinearLayout>-->
-        <!--</android.support.design.widget.TextInputLayout>-->
+        </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/lStateLayout"
@@ -86,7 +65,7 @@
             <EditText
                 android:id="@+id/state"
                 android:hint="Estado"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"/>
         </android.support.design.widget.TextInputLayout>
@@ -94,7 +73,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/lCityLayout"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fNameLayout"
             android:layout_centerHorizontal="true"
@@ -103,7 +82,7 @@
             <EditText
                 android:id="@+id/city"
                 android:hint="Cidade"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"/>
         </android.support.design.widget.TextInputLayout>
