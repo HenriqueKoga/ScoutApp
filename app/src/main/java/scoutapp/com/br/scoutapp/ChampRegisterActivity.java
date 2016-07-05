@@ -10,9 +10,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import scoutapp.com.br.scoutapp.DAO.ScoutDAO;
+import scoutapp.com.br.scoutapp.controller.ChampionshipController;
+import scoutapp.com.br.scoutapp.helper.ChampRegisterHelper;
 import scoutapp.com.br.scoutapp.model.Athlete;
-import scoutapp.com.br.scoutapp.modelo.Campeonato;
+import scoutapp.com.br.scoutapp.model.Championship;
 
 public class ChampRegisterActivity extends AppCompatActivity {
 
@@ -27,16 +28,16 @@ public class ChampRegisterActivity extends AppCompatActivity {
         setupActionBar();
 
         Intent intentChamp = getIntent();
-        Campeonato campeonato = (Campeonato) intentChamp.getSerializableExtra("campeonato");
+        Championship championship = (Championship) intentChamp.getSerializableExtra("championship");
 
-        Intent intentAtleta = getIntent();
-        Athlete athlete = (Athlete) intentAtleta.getSerializableExtra("atleta");
+        Intent intentAthlete = getIntent();
+        Athlete athlete = (Athlete) intentAthlete.getSerializableExtra("athlete");
 
         helper = new ChampRegisterHelper(this, athlete);
 
-        if (campeonato != null) {
-            campeonato.setIdAtleta(athlete.getId().toString());
-            helper.preencheCadastro(campeonato);
+        if (championship != null) {
+//            championship.setAthleteId(athlete.getId());
+            helper.fillChampionshipRegister(championship);
         }
     }
 
@@ -56,46 +57,37 @@ public class ChampRegisterActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Campeonato campeonato = helper.getCampeonato();
-        ScoutDAO dao = new ScoutDAO(this);
+        Championship championship = helper.getChampionship();
         Intent intent = getIntent();
-        Athlete atleta = (Athlete) intent.getSerializableExtra("atleta");
+        Athlete athlete = (Athlete) intent.getSerializableExtra("athlete");
+        ChampionshipController championshipController = new ChampionshipController(this);
 
         switch (item.getItemId()) {
             case R.id.menu_scout:
-                campeonato.setIdAtleta(atleta.getId().toString());
-                insertOrUpdate(campeonato,dao);
+//                championship.setAthleteId(athlete.getId());
+//                championshipController.insertOrReplaceChamp(championship);
+
                 Intent intentScout = new Intent(ChampRegisterActivity.this, ScoutActivity.class);
-                intentScout.putExtra("campeonato", campeonato);
-                intentScout.putExtra("atleta", atleta);
+                intentScout.putExtra("championship", championship);
+                intentScout.putExtra("athlete", athlete);
+                Toast.makeText(ChampRegisterActivity.this, "campeonato " + championship.getChampName(), Toast.LENGTH_SHORT).show();
                 startActivity(intentScout);
-                Toast.makeText(ChampRegisterActivity.this, "campeonato " + campeonato.getName(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(ChampRegisterActivity.this, "ID " + campeonato.getIdAtleta(), Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(ChampRegisterActivity.this, "campeonato " + championship.getChampName(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ChampRegisterActivity.this, "ID " + championship.getAthleteId(), Toast.LENGTH_SHORT).show();
                 finish();
                 break;
 
             case android.R.id.home:
-                insertOrUpdate(campeonato,dao);
+//                championship.setAthleteId(athlete.getId());
+
                 Intent intentRegister = new Intent(ChampRegisterActivity.this, RegisterActivity.class);
-                intentRegister.putExtra("campeonato", campeonato);
-                intentRegister.putExtra("atleta", atleta);
+                intentRegister.putExtra("championship", championship);
+                intentRegister.putExtra("athlete", athlete);
                 startActivity(intentRegister);
                 finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
-
-    public void insertOrUpdate(Campeonato campeonato, ScoutDAO dao){
-        if(campeonato.getId() != null){
-            Toast.makeText(ChampRegisterActivity.this, "Update " + campeonato.getName(), Toast.LENGTH_SHORT).show();
-            dao.updateChamp(campeonato);
-        } else{
-            Toast.makeText(ChampRegisterActivity.this, "Insert " + campeonato.getName(), Toast.LENGTH_SHORT).show();
-            dao.insertChamp(campeonato);
-        }
-        dao.close();
-
-    }
-
 }

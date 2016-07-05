@@ -20,12 +20,13 @@ import java.util.List;
 
 import scoutapp.com.br.scoutapp.adapter.ScoutAdapter;
 import scoutapp.com.br.scoutapp.controller.AthleteController;
+import scoutapp.com.br.scoutapp.controller.ChampionshipController;
 import scoutapp.com.br.scoutapp.model.Athlete;
-import scoutapp.com.br.scoutapp.modelo.Campeonato;
+import scoutapp.com.br.scoutapp.model.Championship;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private ListView listaAtletas;
+    private ListView athletesList;
     private DrawerLayout mDrawerLayout;
 
     @Override
@@ -52,8 +53,6 @@ public class HomeActivity extends AppCompatActivity {
                         return true;
                     case R.id.nav_settings:
                         Toast.makeText(HomeActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
-                        Intent intentSettings = new Intent(HomeActivity.this, SettingsActivity.class);
-                        startActivity(intentSettings);
                         return true;
                     case R.id.nav_logout:
                         Toast.makeText(HomeActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
@@ -67,16 +66,16 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        Campeonato campeonato = (Campeonato)intent.getSerializableExtra("campeonato");
+        Championship championship = (Championship) intent.getSerializableExtra("championship");
 
-        listaAtletas = (ListView)findViewById(R.id.scout_list);
+        athletesList = (ListView)findViewById(R.id.scout_list);
 
-        listaAtletas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        athletesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Athlete atleta = (Athlete) listaAtletas.getItemAtPosition(position);
+                Athlete athlete = (Athlete) athletesList.getItemAtPosition(position);
                 Intent intentRegister = new Intent(HomeActivity.this, RegisterActivity.class);
-                intentRegister.putExtra("atleta", atleta);
+                intentRegister.putExtra("athlete", athlete);
                 startActivity(intentRegister);
             }
         });
@@ -89,22 +88,21 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intentRegister);
             }
         });
-        registerForContextMenu(listaAtletas);
+        registerForContextMenu(athletesList);
     }
 
-    private void carregaLista(){
+    private void showList(){
         AthleteController athleteController = new AthleteController(this);
-        List<Athlete> atletas = athleteController.getAllAthletes();
+        List<Athlete> athletes = athleteController.getAllAthletes();
 
-//        ArrayAdapter<Atleta> adapter = new ArrayAdapter<Atleta>(this, android.R.layout.simple_list_item_1, atletas);
-        ScoutAdapter adapter = new ScoutAdapter(this, atletas);
-        listaAtletas.setAdapter(adapter);
+        ScoutAdapter adapter = new ScoutAdapter(this, athletes);
+        athletesList.setAdapter(adapter);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        carregaLista();
+        showList();
     }
 
     @Override
@@ -115,11 +113,11 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-                Athlete atleta = (Athlete) listaAtletas.getItemAtPosition(info.position);
+                Athlete atleta = (Athlete) athletesList.getItemAtPosition(info.position);
 
                 AthleteController athleteController = new AthleteController(HomeActivity.this);
                 athleteController.removeAthlete(atleta);
-                carregaLista();
+                showList();
 
                 Toast.makeText(HomeActivity.this, "Deletado o atleta " + atleta.getName(), Toast.LENGTH_SHORT).show();
                 return false;

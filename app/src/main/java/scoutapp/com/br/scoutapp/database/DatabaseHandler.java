@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import scoutapp.com.br.scoutapp.model.AthleteDao;
+import scoutapp.com.br.scoutapp.model.ChampionshipDao;
 import scoutapp.com.br.scoutapp.model.DaoMaster;
 import scoutapp.com.br.scoutapp.model.DaoSession;
 
@@ -30,6 +31,10 @@ public class DatabaseHandler extends DaoMaster.DevOpenHelper {
 
     public AthleteDao getAthleteDao(){
         return daoSession.getAthleteDao();
+    }
+
+    public ChampionshipDao getChampionshipDao(){
+        return daoSession.getChampionshipDao();
     }
 
     @Override
