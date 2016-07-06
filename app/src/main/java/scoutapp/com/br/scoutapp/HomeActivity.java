@@ -51,9 +51,6 @@ public class HomeActivity extends AppCompatActivity {
                 switch (id) {
                     case R.id.nav_perfil:
                         return true;
-                    case R.id.nav_settings:
-                        Toast.makeText(HomeActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
-                        return true;
                     case R.id.nav_logout:
                         Toast.makeText(HomeActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
                         Intent intentLogin = new Intent(HomeActivity.this, LoginActivity.class);
