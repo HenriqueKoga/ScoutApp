@@ -19,7 +19,7 @@ import scoutapp.com.br.scoutapp.model.Championship;
  */
 public class ChampRegisterHelper  {
     private final EditText fieldChampName;
-    private final EditText fieldDate;
+//    private final EditText fieldDate;
     private final EditText fieldState;
     private final EditText fieldCity;
     private Championship championship;
@@ -27,7 +27,7 @@ public class ChampRegisterHelper  {
 
     public ChampRegisterHelper(ChampRegisterActivity activity, Athlete athlete) {
         fieldChampName = (EditText) activity.findViewById(R.id.champ);
-        fieldDate = (EditText) activity.findViewById(R.id.date);
+//        fieldDate = (EditText) activity.findViewById(R.id.date);
         fieldState = (EditText) activity.findViewById(R.id.state);
         fieldCity = (EditText) activity.findViewById(R.id.city);
         championship = new Championship();
@@ -36,20 +36,20 @@ public class ChampRegisterHelper  {
 
     public Championship getChampionship() {
         championship.setChampName(fieldChampName.getText().toString());
-        try {
-            if(fieldDate.getText().toString().isEmpty()) {
-                Calendar today = Calendar.getInstance();
-                DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-                Date date = format.parse(today.getTime().toString());
-                championship.setDate(date);
-            } else {
-                DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-                Date date = format.parse(fieldDate.getText().toString());
-                championship.setDate(date);
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            if(fieldDate.getText().toString().isEmpty()) {
+//                Calendar today = Calendar.getInstance();
+//                DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+//                Date date = format.parse(today.getTime().toString());
+//                championship.setDate(date);
+//            } else {
+//                DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+//                Date date = format.parse(fieldDate.getText().toString());
+//                championship.setDate(date);
+//            }
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         championship.setState(fieldState.getText().toString());
         championship.setCity(fieldCity.getText().toString());
 
@@ -58,7 +58,7 @@ public class ChampRegisterHelper  {
 
     public void fillChampionshipRegister(Championship championship)  {
         fieldChampName.setText(championship.getChampName());
-        fieldDate.setText(championship.getDate().toString());
+//        fieldDate.setText(championship.getDate().toString());
         fieldState.setText(championship.getState());
         fieldCity.setText(championship.getCity());
 

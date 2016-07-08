@@ -10,6 +10,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import scoutapp.com.br.scoutapp.controller.ChampionshipController;
 import scoutapp.com.br.scoutapp.helper.ChampRegisterHelper;
 import scoutapp.com.br.scoutapp.model.Athlete;
@@ -36,7 +38,7 @@ public class ChampRegisterActivity extends AppCompatActivity {
         helper = new ChampRegisterHelper(this, athlete);
 
         if (championship != null) {
-//            championship.setAthleteId(athlete.getId());
+            championship.setAthleteId(athlete.getId());
             helper.fillChampionshipRegister(championship);
         }
     }
@@ -63,23 +65,21 @@ public class ChampRegisterActivity extends AppCompatActivity {
         ChampionshipController championshipController = new ChampionshipController(this);
 
         switch (item.getItemId()) {
-            case R.id.menu_scout:
-//                championship.setAthleteId(athlete.getId());
-//                championshipController.insertOrReplaceChamp(championship);
+            case R.id.menu_save_champ:
+                championship.setAthleteId(athlete.getId());
+                championshipController.insertOrReplaceChamp(championship);
 
                 Intent intentScout = new Intent(ChampRegisterActivity.this, ScoutActivity.class);
-                intentScout.putExtra("championship", championship);
+//                intentScout.putExtra("championship", championship);
                 intentScout.putExtra("athlete", athlete);
                 Toast.makeText(ChampRegisterActivity.this, "campeonato " + championship.getChampName(), Toast.LENGTH_SHORT).show();
                 startActivity(intentScout);
-
-                Toast.makeText(ChampRegisterActivity.this, "campeonato " + championship.getChampName(), Toast.LENGTH_SHORT).show();
-//                Toast.makeText(ChampRegisterActivity.this, "ID " + championship.getAthleteId(), Toast.LENGTH_SHORT).show();
                 finish();
                 break;
 
             case android.R.id.home:
-//                championship.setAthleteId(athlete.getId());
+                championship.setAthleteId(athlete.getId());
+                championshipController.insertOrReplaceChamp(championship);
 
                 Intent intentRegister = new Intent(ChampRegisterActivity.this, RegisterActivity.class);
                 intentRegister.putExtra("championship", championship);

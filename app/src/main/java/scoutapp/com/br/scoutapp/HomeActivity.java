@@ -77,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton addScout = (FloatingActionButton) findViewById(R.id.novo_atleta);
+        FloatingActionButton addScout = (FloatingActionButton) findViewById(R.id.new_athlete);
         addScout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

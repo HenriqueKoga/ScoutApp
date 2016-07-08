@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
         AthleteController athleteController = new AthleteController(this);
 
         switch (item.getItemId()) {
-            case R.id.save:
+            case R.id.menu_save_athlete:
                 athleteController.insertOrReplaceAthlete(athlete);
 
                 Intent intentScout = new Intent(RegisterActivity.this, ChampRegisterActivity.class);

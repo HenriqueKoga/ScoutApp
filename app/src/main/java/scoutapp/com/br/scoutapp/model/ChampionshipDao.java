@@ -1,11 +1,14 @@
 package scoutapp.com.br.scoutapp.model;
 
+import java.util.List;
+import java.util.ArrayList;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
 import de.greenrobot.dao.AbstractDao;
 import de.greenrobot.dao.Property;
+import de.greenrobot.dao.internal.SqlUtils;
 import de.greenrobot.dao.internal.DaoConfig;
 
 import scoutapp.com.br.scoutapp.model.Championship;
@@ -25,10 +28,12 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property ChampName = new Property(1, String.class, "champName", false, "CHAMP_NAME");
-        public final static Property Date = new Property(2, java.util.Date.class, "date", false, "DATE");
-        public final static Property State = new Property(3, String.class, "state", false, "STATE");
-        public final static Property City = new Property(4, String.class, "city", false, "CITY");
+        public final static Property State = new Property(2, String.class, "state", false, "STATE");
+        public final static Property City = new Property(3, String.class, "city", false, "CITY");
+        public final static Property AthleteId = new Property(4, long.class, "athleteId", false, "ATHLETE_ID");
     };
+
+    private DaoSession daoSession;
 
 
     public ChampionshipDao(DaoConfig config) {
@@ -37,6 +42,7 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
     
     public ChampionshipDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
+        this.daoSession = daoSession;
     }
 
     /** Creates the underlying database table. */
@@ -45,9 +51,9 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"CHAMPIONSHIP\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"CHAMP_NAME\" TEXT," + // 1: champName
-                "\"DATE\" INTEGER," + // 2: date
-                "\"STATE\" TEXT," + // 3: state
-                "\"CITY\" TEXT);"); // 4: city
+                "\"STATE\" TEXT," + // 2: state
+                "\"CITY\" TEXT," + // 3: city
+                "\"ATHLETE_ID\" INTEGER NOT NULL );"); // 4: athleteId
     }
 
     /** Drops the underlying database table. */
@@ -71,20 +77,22 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
             stmt.bindString(2, champName);
         }
  
-        java.util.Date date = entity.getDate();
-        if (date != null) {
-            stmt.bindLong(3, date.getTime());
-        }
- 
         String state = entity.getState();
         if (state != null) {
-            stmt.bindString(4, state);
+            stmt.bindString(3, state);
         }
  
         String city = entity.getCity();
         if (city != null) {
-            stmt.bindString(5, city);
+            stmt.bindString(4, city);
         }
+        stmt.bindLong(5, entity.getAthleteId());
+    }
+
+    @Override
+    protected void attachEntity(Championship entity) {
+        super.attachEntity(entity);
+        entity.__setDaoSession(daoSession);
     }
 
     /** @inheritdoc */
@@ -99,9 +107,9 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
         Championship entity = new Championship( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // champName
-            cursor.isNull(offset + 2) ? null : new java.util.Date(cursor.getLong(offset + 2)), // date
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // state
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4) // city
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // state
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // city
+            cursor.getLong(offset + 4) // athleteId
         );
         return entity;
     }
@@ -111,9 +119,9 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
     public void readEntity(Cursor cursor, Championship entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setChampName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setDate(cursor.isNull(offset + 2) ? null : new java.util.Date(cursor.getLong(offset + 2)));
-        entity.setState(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setCity(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setState(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setCity(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setAthleteId(cursor.getLong(offset + 4));
      }
     
     /** @inheritdoc */
@@ -139,4 +147,97 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
         return true;
     }
     
+    private String selectDeep;
+
+    protected String getSelectDeep() {
+        if (selectDeep == null) {
+            StringBuilder builder = new StringBuilder("SELECT ");
+            SqlUtils.appendColumns(builder, "T", getAllColumns());
+            builder.append(',');
+            SqlUtils.appendColumns(builder, "T0", daoSession.getAthleteDao().getAllColumns());
+            builder.append(" FROM CHAMPIONSHIP T");
+            builder.append(" LEFT JOIN ATHLETE T0 ON T.\"ATHLETE_ID\"=T0.\"_id\"");
+            builder.append(' ');
+            selectDeep = builder.toString();
+        }
+        return selectDeep;
+    }
+    
+    protected Championship loadCurrentDeep(Cursor cursor, boolean lock) {
+        Championship entity = loadCurrent(cursor, 0, lock);
+        int offset = getAllColumns().length;
+
+        Athlete athlete = loadCurrentOther(daoSession.getAthleteDao(), cursor, offset);
+         if(athlete != null) {
+            entity.setAthlete(athlete);
+        }
+
+        return entity;    
+    }
+
+    public Championship loadDeep(Long key) {
+        assertSinglePk();
+        if (key == null) {
+            return null;
+        }
+
+        StringBuilder builder = new StringBuilder(getSelectDeep());
+        builder.append("WHERE ");
+        SqlUtils.appendColumnsEqValue(builder, "T", getPkColumns());
+        String sql = builder.toString();
+        
+        String[] keyArray = new String[] { key.toString() };
+        Cursor cursor = db.rawQuery(sql, keyArray);
+        
+        try {
+            boolean available = cursor.moveToFirst();
+            if (!available) {
+                return null;
+            } else if (!cursor.isLast()) {
+                throw new IllegalStateException("Expected unique result, but count was " + cursor.getCount());
+            }
+            return loadCurrentDeep(cursor, true);
+        } finally {
+            cursor.close();
+        }
+    }
+    
+    /** Reads all available rows from the given cursor and returns a list of new ImageTO objects. */
+    public List<Championship> loadAllDeepFromCursor(Cursor cursor) {
+        int count = cursor.getCount();
+        List<Championship> list = new ArrayList<Championship>(count);
+        
+        if (cursor.moveToFirst()) {
+            if (identityScope != null) {
+                identityScope.lock();
+                identityScope.reserveRoom(count);
+            }
+            try {
+                do {
+                    list.add(loadCurrentDeep(cursor, false));
+                } while (cursor.moveToNext());
+            } finally {
+                if (identityScope != null) {
+                    identityScope.unlock();
+                }
+            }
+        }
+        return list;
+    }
+    
+    protected List<Championship> loadDeepAllAndCloseCursor(Cursor cursor) {
+        try {
+            return loadAllDeepFromCursor(cursor);
+        } finally {
+            cursor.close();
+        }
+    }
+    
+
+    /** A raw-style query where you can pass any WHERE clause and arguments. */
+    public List<Championship> queryDeep(String where, String... selectionArg) {
+        Cursor cursor = db.rawQuery(getSelectDeep() + where, selectionArg);
+        return loadDeepAllAndCloseCursor(cursor);
+    }
+ 
 }
