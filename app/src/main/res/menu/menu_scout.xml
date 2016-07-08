@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ChampRegisterActivity">
+    tools:context=".ScoutActivity">
 
-    <item android:id="@+id/menu_save_champ"
+    <item android:id="@+id/menu_save_scout"
         android:title="Ok"
-        android:icon="@drawable/ic_scout"
+        android:icon="@drawable/ic_pie_chart"
         app:showAsAction="always"/>
+
 </menu>

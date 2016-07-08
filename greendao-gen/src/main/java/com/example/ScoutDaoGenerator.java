@@ -26,8 +26,8 @@ public class ScoutDaoGenerator {
         Entity athlete = addAthlete(schema);
         Entity championship = addChampionship(schema);
 
-//        Property athleteId = championship.addLongProperty("athleteId").notNull().getProperty();
-//        athlete.addToMany(championship, athleteId, "athleteChamps");
+        Property athleteId = championship.addLongProperty("athleteId").notNull().getProperty();
+        championship.addToOne(athlete, athleteId);
     }
 
     private static Entity addAthlete(final Schema schema) {
@@ -53,7 +53,7 @@ public class ScoutDaoGenerator {
         Entity championship = schema.addEntity("Championship");
         championship.addIdProperty().primaryKey().autoincrement();
         championship.addStringProperty("champName");
-        championship.addDateProperty("date");
+//        championship.addDateProperty("date");
         championship.addStringProperty("state");
         championship.addStringProperty("city");
 

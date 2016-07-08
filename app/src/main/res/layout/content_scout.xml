@@ -12,50 +12,100 @@
     tools:context="scoutapp.com.br.scoutapp.ScoutActivity"
     tools:showIn="@layout/activity_scout">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/opponent_name"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id = "@+id/RHE"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/opponent_name"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+        android:layout_weight="0"
+        android:layout_margin="50dp"
+        android:gravity="center_horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <TableRow
             android:layout_height="wrap_content"
-            android:id="@+id/score" />
+            android:layout_width="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/score"
+                android:layout_marginLeft="40dp"/>
+        </TableRow>
+        <TableRow
             android:layout_height="wrap_content"
-            android:id="@+id/forehand" />
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/service"
+                android:layout_marginRight="10dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/receiving" />
+        </TableRow>
+        <TableRow
             android:layout_height="wrap_content"
-            android:id="@+id/backhand" />
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/forehand"
+                android:layout_marginRight="10dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/backhand" />
+        </TableRow>
+        <TableRow
             android:layout_height="wrap_content"
-            android:id="@+id/smash" />
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/smash"
+                android:layout_marginRight="10dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/slice" />
+        </TableRow>
+        <TableRow
             android:layout_height="wrap_content"
-            android:id="@+id/slice" />
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/block"
+                android:layout_marginRight="10dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/flick" />
+        </TableRow>
+        <TableRow
             android:layout_height="wrap_content"
-            android:id="@+id/block" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/flick" />
-    </LinearLayout>
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lob"
+                android:layout_marginRight="10dp"/>
+        </TableRow>
+    </TableLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -65,15 +115,15 @@
             android:id="@+id/table"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/table" />
+            android:src="@drawable/table"
+            android:layout_marginTop="100dp"/>
 
         <Button
             android:id="@+id/left_long"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:onClick="onClick"
-            android:text=""
-            android:layout_marginTop="242dp"
+            android:layout_marginTop="295dp"
             android:layout_marginLeft="45dp"
             android:background="#0D47A1"/>
 
@@ -82,8 +132,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:onClick="onClick"
-            android:text=""
-            android:layout_marginTop="205dp"
+            android:layout_marginTop="250dp"
             android:layout_marginLeft="60dp"
             android:background="#0D47A1"/>
     </RelativeLayout>

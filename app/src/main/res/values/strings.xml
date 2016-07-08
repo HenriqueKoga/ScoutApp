@@ -2,7 +2,9 @@
     <!-- Strings related to ScoutApp -->
     <string name="app_name">ScoutApp</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_cadastro">Scout</string>
+
+    <!-- Strings related to Register-->
+    <string name="title_activity_cadastro">Register</string>
     <string name="estilo">Estilo:</string>
     <string-array name="array_estilos">
         <item>Caneta</item>
@@ -35,6 +37,7 @@
         completions."
     </string>
 
-    <string name="title_activity_scout">ScoutActivity</string>
-    <string name="title_activity_champ_registrer">ChampRegistrerActivity</string>
+    <string name="title_activity_scout">Scout</string>
+    <string name="title_activity_champ_registrer">Championship</string>
+    <string name="title_activity_chart">Chart</string>
 </resources>
