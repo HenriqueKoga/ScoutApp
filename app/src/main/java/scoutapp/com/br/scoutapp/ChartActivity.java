@@ -33,6 +33,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
+import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Game;
 
 
@@ -108,9 +109,16 @@ public class ChartActivity extends DemoBase implements OnSeekBarChangeListener,
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = getIntent();
+        Game gameAthlete = (Game) intent.getSerializableExtra("game_athlete");
+        Game gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
+        Athlete athlete = (Athlete) intent.getSerializableExtra("athlete");
         switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intentRegister = new Intent(ChartActivity.this, ScoutActivity.class);
+                intentRegister.putExtra("game_athlete", gameAthlete);
+                intentRegister.putExtra("game_opponent", gameOpponent);
+                intentRegister.putExtra("athlete", athlete);
                 startActivity(intentRegister);
                 break;
 
@@ -188,7 +196,7 @@ public class ChartActivity extends DemoBase implements OnSeekBarChangeListener,
         ArrayList<PieEntry> entries = new ArrayList<>();
 
         Intent intent = getIntent();
-        Game game = (Game) intent.getSerializableExtra("game");
+        Game game = (Game) intent.getSerializableExtra("game_athlete");
 
         ArrayList<Integer>listTechniques = new ArrayList<>();
         listTechniques.add(game.getService());
