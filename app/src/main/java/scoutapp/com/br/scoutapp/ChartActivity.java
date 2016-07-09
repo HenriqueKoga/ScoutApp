@@ -1,5 +1,6 @@
 package scoutapp.com.br.scoutapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.graphics.Color;
@@ -12,17 +13,13 @@ import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.Legend.LegendPosition;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -36,13 +33,13 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
+import scoutapp.com.br.scoutapp.model.Game;
+
 
 public class ChartActivity extends DemoBase implements OnSeekBarChangeListener,
         OnChartValueSelectedListener {
 
-    private PieChart mChart;
-//    private SeekBar mSeekBarX, mSeekBarY;
-    private TextView tvX, tvY;
+    private PieChart mChartAthlete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,65 +51,46 @@ public class ChartActivity extends DemoBase implements OnSeekBarChangeListener,
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-//        tvX = (TextView) findViewById(R.id.tvXMax);
-//        tvY = (TextView) findViewById(R.id.tvYMax);
+        // -----Athlete Chart-----
+        mChartAthlete = (PieChart) findViewById(R.id.chartAthlete);
+        mChartAthlete.setUsePercentValues(true);
+        mChartAthlete.setDescription("");
+        mChartAthlete.setExtraOffsets(5, 10, 5, 5);
 
-//        mSeekBarX = (SeekBar) findViewById(R.id.seekBar1);
-//        mSeekBarY = (SeekBar) findViewById(R.id.seekBar2);
-//        mSeekBarX.setProgress(4);
-//        mSeekBarY.setProgress(10);
+        mChartAthlete.setDragDecelerationFrictionCoef(0.95f);
 
-        mChart = (PieChart) findViewById(R.id.chart1);
-        mChart.setUsePercentValues(true);
-        mChart.setDescription("");
-        mChart.setExtraOffsets(5, 10, 5, 5);
+        mChartAthlete.setCenterTextTypeface(mTfLight);
+        mChartAthlete.setCenterText(generateCenterSpannableText());
 
-        mChart.setDragDecelerationFrictionCoef(0.95f);
+        mChartAthlete.setDrawHoleEnabled(true);
+        mChartAthlete.setHoleColor(Color.WHITE);
 
-        mChart.setCenterTextTypeface(mTfLight);
-        mChart.setCenterText(generateCenterSpannableText());
+        mChartAthlete.setTransparentCircleColor(Color.WHITE);
+        mChartAthlete.setTransparentCircleAlpha(110);
 
-        mChart.setDrawHoleEnabled(true);
-        mChart.setHoleColor(Color.WHITE);
+        mChartAthlete.setHoleRadius(58f);
+        mChartAthlete.setTransparentCircleRadius(61f);
 
-        mChart.setTransparentCircleColor(Color.WHITE);
-        mChart.setTransparentCircleAlpha(110);
+        mChartAthlete.setDrawCenterText(true);
 
-        mChart.setHoleRadius(58f);
-        mChart.setTransparentCircleRadius(61f);
-
-        mChart.setDrawCenterText(true);
-
-        mChart.setRotationAngle(0);
+        mChartAthlete.setRotationAngle(0);
         // enable rotation of the chart by touch
-        mChart.setRotationEnabled(true);
-        mChart.setHighlightPerTapEnabled(true);
+        mChartAthlete.setRotationEnabled(true);
+        mChartAthlete.setHighlightPerTapEnabled(true);
 
-        // mChart.setUnit(" €");
-        // mChart.setDrawUnitsInChart(true);
 
         // add a selection listener
-        mChart.setOnChartValueSelectedListener(this);
+        mChartAthlete.setOnChartValueSelectedListener(this);
 
         setData(9, 100);
 
-        mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
-        // mChart.spin(2000, 0, 360);
-
-//        mSeekBarX.setOnSeekBarChangeListener(this);
-//        mSeekBarY.setOnSeekBarChangeListener(this);
-
-        Legend l = mChart.getLegend();
-        l.setPosition(LegendPosition.RIGHT_OF_CHART);
-        l.setXEntrySpace(7f);
-        l.setYEntrySpace(0f);
-        l.setYOffset(0f);
-        l.setXOffset(-20f);
+        mChartAthlete.animateY(1400, Easing.EasingOption.EaseInOutQuad);
+        // mChartAthlete.spin(2000, 0, 360);
 
         // entry label styling
-        mChart.setEntryLabelColor(Color.BLACK);
-        mChart.setEntryLabelTypeface(mTfRegular);
-        mChart.setEntryLabelTextSize(12f);
+        mChartAthlete.setEntryLabelColor(Color.BLACK);
+        mChartAthlete.setEntryLabelTypeface(mTfRegular);
+        mChartAthlete.setEntryLabelTextSize(12f);
     }
 
     private void setupActionBar() {
@@ -124,71 +102,74 @@ public class ChartActivity extends DemoBase implements OnSeekBarChangeListener,
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.pie, menu);
+        getMenuInflater().inflate(R.menu.menu_chart, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intentRegister = new Intent(ChartActivity.this, ScoutActivity.class);
+                startActivity(intentRegister);
+                break;
+
             case R.id.actionToggleValues: {
-                for (IDataSet<?> set : mChart.getData().getDataSets())
+                for (IDataSet<?> set : mChartAthlete.getData().getDataSets())
                     set.setDrawValues(!set.isDrawValuesEnabled());
 
-                mChart.invalidate();
+                mChartAthlete.invalidate();
                 break;
             }
             case R.id.actionToggleHole: {
-                if (mChart.isDrawHoleEnabled())
-                    mChart.setDrawHoleEnabled(false);
+                if (mChartAthlete.isDrawHoleEnabled())
+                    mChartAthlete.setDrawHoleEnabled(false);
                 else
-                    mChart.setDrawHoleEnabled(true);
-                mChart.invalidate();
+                    mChartAthlete.setDrawHoleEnabled(true);
+                mChartAthlete.invalidate();
                 break;
             }
             case R.id.actionDrawCenter: {
-                if (mChart.isDrawCenterTextEnabled())
-                    mChart.setDrawCenterText(false);
+                if (mChartAthlete.isDrawCenterTextEnabled())
+                    mChartAthlete.setDrawCenterText(false);
                 else
-                    mChart.setDrawCenterText(true);
-                mChart.invalidate();
+                    mChartAthlete.setDrawCenterText(true);
+                mChartAthlete.invalidate();
                 break;
             }
             case R.id.actionToggleXVals: {
-
-                mChart.setDrawEntryLabels(!mChart.isDrawEntryLabelsEnabled());
-                mChart.invalidate();
+                mChartAthlete.setDrawEntryLabels(!mChartAthlete.isDrawEntryLabelsEnabled());
+                mChartAthlete.invalidate();
                 break;
             }
             case R.id.actionSave: {
-                // mChart.saveToGallery("title"+System.currentTimeMillis());
-                mChart.saveToPath("title" + System.currentTimeMillis(), "");
+                // mChartAthlete.saveToGallery("title"+System.currentTimeMillis());
+                mChartAthlete.saveToPath("title" + System.currentTimeMillis(), "");
                 break;
             }
             case R.id.actionTogglePercent:
-                mChart.setUsePercentValues(!mChart.isUsePercentValuesEnabled());
-                mChart.invalidate();
+                mChartAthlete.setUsePercentValues(!mChartAthlete.isUsePercentValuesEnabled());
+                mChartAthlete.invalidate();
                 break;
             case R.id.animateX: {
-                mChart.animateX(1400);
+                mChartAthlete.animateX(1400);
                 break;
             }
             case R.id.animateY: {
-                mChart.animateY(1400);
+                mChartAthlete.animateY(1400);
                 break;
             }
             case R.id.animateXY: {
-                mChart.animateXY(1400, 1400);
+                mChartAthlete.animateXY(1400, 1400);
                 break;
             }
             case R.id.actionToggleSpin: {
-                mChart.spin(1000, mChart.getRotationAngle(), mChart.getRotationAngle() + 360, Easing.EasingOption
+                mChartAthlete.spin(1000, mChartAthlete.getRotationAngle(), mChartAthlete.getRotationAngle() + 360, Easing.EasingOption
                         .EaseInCubic);
                 break;
             }
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -204,12 +185,26 @@ public class ChartActivity extends DemoBase implements OnSeekBarChangeListener,
 
         float mult = range;
 
-        ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
+        ArrayList<PieEntry> entries = new ArrayList<>();
 
-        // NOTE: The order of the entries when being added to the entries array determines their position around the center of
-        // the chart.
-        for (int i = 0; i < count ; i++) {
-            entries.add(new PieEntry((float) ((Math.random() * mult) + mult / 5), mTechnics[i % mTechnics.length]));
+        Intent intent = getIntent();
+        Game game = (Game) intent.getSerializableExtra("game");
+
+        ArrayList<Integer>listTechniques = new ArrayList<>();
+        listTechniques.add(game.getService());
+        listTechniques.add(game.getReceiving());
+        listTechniques.add(game.getForehand());
+        listTechniques.add(game.getBackhand());
+        listTechniques.add(game.getSmash());
+        listTechniques.add(game.getSlice());
+        listTechniques.add(game.getBlock());
+        listTechniques.add(game.getFlick());
+        listTechniques.add(game.getLob());
+
+        for (int i = 0; i < listTechniques.size() ; i++) {
+            if(listTechniques.get(i) > 0){
+                entries.add(new PieEntry((float)  listTechniques.get(i)/game.getTotal() * 100, mTechniques[i]));
+            }
         }
 
         PieDataSet dataSet = new PieDataSet(entries, "");
@@ -218,7 +213,7 @@ public class ChartActivity extends DemoBase implements OnSeekBarChangeListener,
 
         // add a lot of colors
 
-        ArrayList<Integer> colors = new ArrayList<Integer>();
+        ArrayList<Integer> colors = new ArrayList<>();
 
         for (int c : ColorTemplate.VORDIPLOM_COLORS)
             colors.add(c);
@@ -245,16 +240,15 @@ public class ChartActivity extends DemoBase implements OnSeekBarChangeListener,
         data.setValueTextSize(11f);
         data.setValueTextColor(Color.BLACK);
         data.setValueTypeface(mTfLight);
-        mChart.setData(data);
+        mChartAthlete.setData(data);
 
         // undo all highlights
-        mChart.highlightValues(null);
+        mChartAthlete.highlightValues(null);
 
-        mChart.invalidate();
+        mChartAthlete.invalidate();
     }
 
     private SpannableString generateCenterSpannableText() {
-
         SpannableString s = new SpannableString("SCOUTChart\n Athlete performance");
         s.setSpan(new RelativeSizeSpan(1.7f), 0, 12, 0);
         s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0);
@@ -267,7 +261,6 @@ public class ChartActivity extends DemoBase implements OnSeekBarChangeListener,
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-
         if (e == null)
             return;
         Log.i("VAL SELECTED",

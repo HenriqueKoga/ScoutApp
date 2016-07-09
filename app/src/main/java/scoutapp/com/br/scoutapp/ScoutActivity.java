@@ -10,7 +10,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.baoyz.actionsheet.ActionSheet;
 
@@ -32,10 +34,16 @@ public class ScoutActivity extends AppCompatActivity implements
     private TextView fieldService;
     private TextView fieldReceiving;
     private TextView fieldLob;
+    private TextView fieldNameHit;
+    private ToggleButton tgbutton;
+    private boolean athletePoint = false;
+    private boolean opponentPoint = false;
 
     private boolean buttonLeftLong = false;
     private boolean buttonLeftShort = false;
-    private Game game;
+    private Athlete athlete;
+    private Game gameAthlete;
+    private Game gameOponent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +53,7 @@ public class ScoutActivity extends AppCompatActivity implements
         setSupportActionBar(toolbar);
         setupActionBar();
 
-        game = new Game();
+        gameAthlete = new Game();
 
         fieldName = (TextView) this.findViewById(R.id.opponent_name);
         fieldScore = (TextView) this.findViewById(R.id.score);
@@ -58,24 +66,45 @@ public class ScoutActivity extends AppCompatActivity implements
         fieldBlock = (TextView) this.findViewById(R.id.block);
         fieldFlick = (TextView) this.findViewById(R.id.flick);
         fieldLob = (TextView) this.findViewById(R.id.lob);
+        fieldNameHit = (TextView) this.findViewById(R.id.name_hit);
 
-        fieldScore.setText("Hits: " + game.getTotal());
-        fieldService.setText("Service: " + game.getService());
-        fieldReceiving.setText("Receiving: " + game.getReceiving());
-        fieldForehand.setText("Forehand: " + game.getForehand());
-        fieldBackhand.setText("Backhand: " + game.getBackhand());
-        fieldSmash.setText("Smash: " + game.getSmash());
-        fieldSlice.setText("Slice: " + game.getSlice());
-        fieldBlock.setText("Block: " + game.getBlock());
-        fieldFlick.setText("Flick: " + game.getFlick());
-        fieldLob.setText("Lob: " + game.getLob());
+        fieldScore.setText("Total Points: " + gameAthlete.getTotal());
+        fieldService.setText("Service: " + gameAthlete.getService());
+        fieldReceiving.setText("Receiving: " + gameAthlete.getReceiving());
+        fieldForehand.setText("Forehand: " + gameAthlete.getForehand());
+        fieldBackhand.setText("Backhand: " + gameAthlete.getBackhand());
+        fieldSmash.setText("Smash: " + gameAthlete.getSmash());
+        fieldSlice.setText("Slice: " + gameAthlete.getSlice());
+        fieldBlock.setText("Block: " + gameAthlete.getBlock());
+        fieldFlick.setText("Flick: " + gameAthlete.getFlick());
+        fieldLob.setText("Lob: " + gameAthlete.getLob());
 
         Intent intent = getIntent();
-        Athlete athlete = (Athlete) intent.getSerializableExtra("athlete");
+        athlete = (Athlete) intent.getSerializableExtra("athlete");
 
         if(athlete != null){
             fieldName.setText("ATHLETE_NAME X " + athlete.getName().toUpperCase());
         }
+
+        tgbutton = (ToggleButton) findViewById(R.id.toggleButton);
+        tgbutton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Intent intent = getIntent();
+                athlete = (Athlete) intent.getSerializableExtra("athlete");
+                if (isChecked) {
+                    opponentPoint = false;
+                    athletePoint = true;
+                    fieldNameHit.setText("ATHLETE NAME");
+                    Log.i("info", "Athlete Point!");
+
+                } else {
+                    athletePoint = false;
+                    opponentPoint = true;
+                    fieldNameHit.setText(athlete.getName().toUpperCase());
+                    Log.i("info", "Opponent Point!");
+                }
+            }
+        });
     }
 
     public void onClick(View v) {
@@ -134,65 +163,87 @@ public class ScoutActivity extends AppCompatActivity implements
     }
 
     private void servicePoint() {
-        game.setService(game.getService() + 1);
-        fieldService.setText("Service: " + game.getService());
+        if (athletePoint) {
+            gameAthlete.setService(gameAthlete.getService() + 1);
+            fieldService.setText("Service: " + gameAthlete.getService());
+        }
     }
 
     private void receivingPoint() {
-        game.setReceiving(game.getReceiving() + 1);
-        fieldReceiving.setText("Receiving: " + game.getReceiving());
+        if (athletePoint) {
+            gameAthlete.setReceiving(gameAthlete.getReceiving() + 1);
+            fieldReceiving.setText("Receiving: " + gameAthlete.getReceiving());
+        }
     }
 
     private void forehandPoint() {
-        if (buttonLeftLong) {
-            game.setForehandLeftLong(game.getForehandLeftLong() + 1);
-            buttonLeftLong = false;
+        if (athletePoint) {
+            if (buttonLeftLong) {
+                gameAthlete.setForehandLeftLong(gameAthlete.getForehandLeftLong() + 1);
+                buttonLeftLong = false;
+            }
+            if (buttonLeftShort) {
+                gameAthlete.setForehandLeftShort(gameAthlete.getForehandLeftShort() + 1);
+                buttonLeftShort = false;
+            }
+            gameAthlete.setForehand(gameAthlete.getForehand() + 1);
+            fieldForehand.setText("Forehand: " + gameAthlete.getForehand());
+            Log.d("Forehand Long", "forehand left long: " + gameAthlete.getForehandLeftLong());
+            Log.d("Forehand Short", "forehand left short: " + gameAthlete.getForehandLeftShort());
+            Log.d("Forehand Total", "forehand total: " + gameAthlete.getForehand());
         }
-        if (buttonLeftShort) {
-            game.setForehandLeftShort(game.getForehandLeftShort() + 1);
-            buttonLeftShort = false;
-        }
-        game.setForehand(game.getForehand() + 1);
-        fieldForehand.setText("Forehand: " + game.getForehand());
-        Log.d("Forehand Long", "forehand left long: " + game.getForehandLeftLong());
-        Log.d("Forehand Short", "forehand left short: " + game.getForehandLeftShort());
-        Log.d("Forehand Total", "forehand total: " + game.getForehand());
     }
 
     private void backhandPoint() {
-        game.setBackhand(game.getBackhand() + 1);
-        fieldBackhand.setText("Backhand: " + game.getBackhand());
+        if (athletePoint) {
+            gameAthlete.setBackhand(gameAthlete.getBackhand() + 1);
+            fieldBackhand.setText("Backhand: " + gameAthlete.getBackhand());
+        }
     }
 
     private void smashPoint() {
-        game.setSmash(game.getSmash() + 1);
-        fieldSmash.setText("Smash: " + game.getSmash());
+        if (athletePoint) {
+            gameAthlete.setSmash(gameAthlete.getSmash() + 1);
+            fieldSmash.setText("Smash: " + gameAthlete.getSmash());
+        }
     }
 
     private void slicePoint() {
-        game.setSlice(game.getSlice() + 1);
-        fieldSlice.setText("Slice: " + game.getSlice());
+        if (athletePoint) {
+            gameAthlete.setSlice(gameAthlete.getSlice() + 1);
+            fieldSlice.setText("Slice: " + gameAthlete.getSlice());
+        }
     }
 
     private void blockPoint() {
-        game.setBlock(game.getBlock() + 1);
-        fieldBlock.setText("Block: " + game.getBlock());
+        if (athletePoint) {
+            gameAthlete.setBlock(gameAthlete.getBlock() + 1);
+            fieldBlock.setText("Block: " + gameAthlete.getBlock());
+        }
     }
 
     private void flickPoint() {
-        game.setFlick(game.getFlick() + 1);
-        fieldFlick.setText("Flick: " + game.getFlick());
+        if (athletePoint) {
+            gameAthlete.setFlick(gameAthlete.getFlick() + 1);
+            fieldFlick.setText("Flick: " + gameAthlete.getFlick());
+        }
     }
 
     private void lobPoint() {
-        game.setLob(game.getLob() + 1);
-        fieldLob.setText("Lob: " + game.getLob());
+        if (athletePoint) {
+            gameAthlete.setLob(gameAthlete.getLob() + 1);
+            fieldLob.setText("Lob: " + gameAthlete.getLob());
+        }
     }
 
     @Override
-    public void onDismiss(ActionSheet actionSheet, boolean isCancle) {
-        game.setTotal(game.getTotal() + 1);
-        fieldScore.setText("Acertos: " + game.getTotal());
+    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
+        if (!isCancel) {
+            if (athletePoint) {
+                gameAthlete.setTotal(gameAthlete.getTotal() + 1);
+                fieldScore.setText("Total Points: " + gameAthlete.getTotal());
+            }
+        }
     }
 
 
@@ -225,8 +276,9 @@ public class ScoutActivity extends AppCompatActivity implements
                 break;
 
             case R.id.menu_save_scout:
-                Intent intentHome = new Intent(ScoutActivity.this, ChartActivity.class);
-                startActivity(intentHome);
+                Intent intentChart = new Intent(ScoutActivity.this, ChartActivity.class);
+                intentChart.putExtra("game", gameAthlete);
+                startActivity(intentChart);
                 break;
         }
         return super.onOptionsItemSelected(item);

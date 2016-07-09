@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Nome do Campeonato"/>
+                android:hint="Championship name"/>
         </android.support.design.widget.TextInputLayout>
 
         <!--<android.support.design.widget.TextInputLayout-->
@@ -49,7 +49,7 @@
                 <!--android:inputType="number"-->
                 <!--app:mask="**/**/****"-->
                 <!--app:notMaskedSymbol="*"-->
-                <!--android:hint="Data"-->
+                <!--android:hint="Date"-->
                 <!--/>-->
 
         <!--</android.support.design.widget.TextInputLayout>-->
@@ -64,7 +64,7 @@
 
             <EditText
                 android:id="@+id/state"
-                android:hint="Estado"
+                android:hint="State"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"/>
@@ -81,7 +81,7 @@
 
             <EditText
                 android:id="@+id/city"
-                android:hint="Cidade"
+                android:hint="City"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"/>

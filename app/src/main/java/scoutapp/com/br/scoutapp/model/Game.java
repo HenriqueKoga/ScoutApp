@@ -19,6 +19,10 @@ public class Game implements Serializable{
 
     int forehandLeftLong = 0;
     int forehandLeftShort = 0;
+    int forehandMiddleLong = 0;
+    int forehandMiddleShort = 0;
+    int forehandRightLong = 0;
+    int forehandRightShort = 0;
 
     int total = 0;
 
