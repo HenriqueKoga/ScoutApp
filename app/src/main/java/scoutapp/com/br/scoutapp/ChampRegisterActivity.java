@@ -67,7 +67,7 @@ public class ChampRegisterActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_save_champ:
                 championship.setAthleteId(athlete.getId());
-                championshipController.insertOrReplaceChamp(championship);
+//                championshipController.insertOrReplaceChamp(championship);
 
                 Intent intentScout = new Intent(ChampRegisterActivity.this, ScoutActivity.class);
 //                intentScout.putExtra("championship", championship);
@@ -79,7 +79,7 @@ public class ChampRegisterActivity extends AppCompatActivity {
 
             case android.R.id.home:
                 championship.setAthleteId(athlete.getId());
-                championshipController.insertOrReplaceChamp(championship);
+//                championshipController.insertOrReplaceChamp(championship);
 
                 Intent intentRegister = new Intent(ChampRegisterActivity.this, RegisterActivity.class);
                 intentRegister.putExtra("championship", championship);

@@ -21,7 +21,7 @@ import android.view.MenuItem;
  */
 public abstract class DemoBase extends AppCompatActivity {
 
-    protected String[] mTechnics = new String[] {
+    protected String[] mTechniques = new String[] {
             "Service", "Receiving", "Forehand", "Backhand", "Smash", "Slice", "Block", "Flick", "Lob"
     };
 

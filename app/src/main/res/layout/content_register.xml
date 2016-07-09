@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="scoutapp.com.br.scoutapp.RegisterActivity"
+    tools:context=".RegisterActivity"
     tools:showIn="@layout/activity_register"
     android:orientation="vertical"
     android:background="@color/colorBackground">
@@ -26,7 +26,7 @@
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/nome"
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -43,9 +43,9 @@
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/idade"
+                android:id="@+id/age"
                 android:inputType="number"
-                android:hint="Idade"
+                android:hint="Age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"/>
@@ -60,8 +60,8 @@
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/categoria"
-                android:hint="Categoria"
+                android:id="@+id/category"
+                android:hint="Category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"/>
@@ -77,8 +77,8 @@
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/clube"
-                android:hint="Clube"
+                android:id="@+id/club"
+                android:hint="Club"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"/>
@@ -91,16 +91,16 @@
             android:layout_marginTop="3dp">
 
             <TextView
-                android:text="Jogador: "
+                android:text="Player's hand: "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:textSize="18dp"/>
             <Spinner
-                android:id="@+id/spinner_dest_canh"
+                android:id="@+id/spinner_right_left_hand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/array_mao"
+                android:entries="@array/array_hand"
                 android:paddingBottom="10dp"
                 android:textSize="18dp"/>
         </LinearLayout>
@@ -112,17 +112,17 @@
             android:layout_marginTop="3dp">
 
             <TextView
-                android:text="Estilo: "
+                android:text="Style: "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:textSize="18dp"/>
             <Spinner
-                android:id="@+id/spinner_estilo"
+                android:id="@+id/spinner_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/array_estilos"
-                android:prompt="@string/estilo"
+                android:entries="@array/array_styles"
+                android:prompt="@string/style"
                 android:paddingBottom="10dp"
                 android:textSize="18dp"/>
         </LinearLayout>
@@ -142,7 +142,7 @@
 
                     <EditText
                         android:id="@+id/obs"
-                        android:hint="Observações"
+                        android:hint="Comments"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:ems="10"/>

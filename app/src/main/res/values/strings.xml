@@ -4,25 +4,23 @@
     <string name="action_settings">Settings</string>
 
     <!-- Strings related to Register-->
-    <string name="title_activity_cadastro">Register</string>
-    <string name="estilo">Estilo:</string>
-    <string-array name="array_estilos">
-        <item>Caneta</item>
-        <item>Clássico</item>
-        <item>Classineta</item>
+    <string name="title_activity_register">Opponent Register</string>
+    <string name="style">Styles:</string>
+    <string-array name="array_styles">
+        <item>Japanese Penholder</item>
+        <item>Chinese Penholder</item>
+        <item>Offensive Shakehand</item>
+        <item>Defensive Shakehand</item>
     </string-array>
-    <string-array name="array_mao">
-        <item>Destro</item>
-        <item>Canhoto</item>
+    <string-array name="array_hand">
+        <item>Right-handed</item>
+        <item>Left-handed</item>
     </string-array>
     <string name="title_activity_main">MainActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_login">Sign in</string>
-
-    <!-- Strings related to Facebook login -->
-    <string name="app_id">915746811867747</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

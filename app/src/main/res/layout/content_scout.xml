@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="scoutapp.com.br.scoutapp.ScoutActivity"
+    tools:context=".ScoutActivity"
     tools:showIn="@layout/activity_scout">
 
     <TextView
@@ -18,7 +18,7 @@
         android:textSize="15dp"
         android:layout_margin="10dp"
         android:gravity="center_horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <TableLayout
@@ -27,7 +27,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:layout_margin="50dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="35dp"
         android:gravity="center_horizontal">
 
         <TableRow
@@ -38,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/score"
-                android:layout_marginLeft="40dp"/>
+                />
         </TableRow>
         <TableRow
             android:layout_height="wrap_content"
@@ -47,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/service"
-                android:layout_marginRight="10dp"/>
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -61,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/forehand"
-                android:layout_marginRight="10dp"/>
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -75,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/smash"
-                android:layout_marginRight="10dp"/>
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -89,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/block"
-                android:layout_marginRight="10dp"/>
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -103,20 +104,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/lob"
-                android:layout_marginRight="10dp"/>
+                />
         </TableRow>
     </TableLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <ImageView
             android:id="@+id/table"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/table"
-            android:layout_marginTop="100dp"/>
+            android:layout_marginTop="100dp"
+            android:clickable="true"/>
 
         <Button
             android:id="@+id/left_long"
@@ -135,6 +136,26 @@
             android:layout_marginTop="250dp"
             android:layout_marginLeft="60dp"
             android:background="#0D47A1"/>
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="Athlete Point"
+            android:textOff="Opponent Point"
+            android:text="ToggleButton"
+            android:layout_marginTop="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/name_hit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="400dp"
+            android:gravity="center_horizontal"/>
     </RelativeLayout>
+
 
 </RelativeLayout>

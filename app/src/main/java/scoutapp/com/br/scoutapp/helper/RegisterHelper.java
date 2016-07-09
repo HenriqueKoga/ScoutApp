@@ -22,12 +22,12 @@ public class RegisterHelper {
 
 
     public RegisterHelper(RegisterActivity activity) {
-        fieldName = (EditText) activity.findViewById(R.id.nome);
-        fieldAge = (EditText) activity.findViewById(R.id.idade);
-        fieldCategory = (EditText) activity.findViewById(R.id.categoria);
-        fieldClub = (EditText) activity.findViewById(R.id.clube);
-        fieldHand = (Spinner) activity.findViewById(R.id.spinner_dest_canh);
-        fieldStyle = (Spinner) activity.findViewById(R.id.spinner_estilo);
+        fieldName = (EditText) activity.findViewById(R.id.name);
+        fieldAge = (EditText) activity.findViewById(R.id.age);
+        fieldCategory = (EditText) activity.findViewById(R.id.category);
+        fieldClub = (EditText) activity.findViewById(R.id.club);
+        fieldHand = (Spinner) activity.findViewById(R.id.spinner_right_left_hand);
+        fieldStyle = (Spinner) activity.findViewById(R.id.spinner_style);
         fieldObs = (EditText) activity.findViewById(R.id.obs);
         mAthlete = new Athlete();
     }
