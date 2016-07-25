@@ -19,10 +19,14 @@ import android.view.MenuItem;
  *
  * @author Philipp Jahoda
  */
-public abstract class DemoBase extends AppCompatActivity {
+public abstract class ChartBase extends AppCompatActivity {
 
     protected String[] mTechniques = new String[] {
             "Service", "Receiving", "Forehand", "Backhand", "Smash", "Slice", "Block", "Flick", "Lob"
+    };
+
+    protected  String[] mForehands = new String[]{
+            "Forehand Left Long", "Forehand Left Short"
     };
 
     protected Typeface mTfRegular;
