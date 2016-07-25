@@ -38,4 +38,5 @@
     <string name="title_activity_scout">Scout</string>
     <string name="title_activity_champ_registrer">Championship</string>
     <string name="title_activity_chart">Chart</string>
+    <string name="title_activity_forehand_chart">ForehandChartActivity</string>
 </resources>

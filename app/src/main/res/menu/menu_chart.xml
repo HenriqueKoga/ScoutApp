@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/actionToggleValues"
-        android:title="Toggle Y-Values">
+        android:id="@+id/menu_forehand_chart"
+        android:title="Forehand">
     </item>
     <item
         android:id="@+id/actionToggleXVals"
