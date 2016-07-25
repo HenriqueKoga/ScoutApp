@@ -63,7 +63,7 @@ public class ChartActivity extends DemoBase implements OnSeekBarChangeListener,
         mChartAthlete.setCenterTextTypeface(mTfLight);
         mChartAthlete.setCenterText(generateCenterSpannableText());
 
-        mChartAthlete.setDrawHoleEnabled(true);
+        mChartAthlete.setDrawHoleEnabled(false);
         mChartAthlete.setHoleColor(Color.WHITE);
 
         mChartAthlete.setTransparentCircleColor(Color.WHITE);

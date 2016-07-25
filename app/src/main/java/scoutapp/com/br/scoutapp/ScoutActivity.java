@@ -43,7 +43,7 @@ public class ScoutActivity extends AppCompatActivity implements
     private boolean buttonLeftShort = false;
     private Athlete athlete;
     private Game gameAthlete;
-    private Game gameOponent;
+    private Game gameOpponent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +69,13 @@ public class ScoutActivity extends AppCompatActivity implements
         Intent intent = getIntent();
         athlete = (Athlete) intent.getSerializableExtra("athlete");
         gameAthlete = (Game) intent.getSerializableExtra("game_athlete");
-        gameOponent = (Game) intent.getSerializableExtra("game_opponent");
+        gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
 
         if(gameAthlete != null){
             fillTable();
         } else{
             gameAthlete = new Game();
-            gameOponent = new Game();
+            gameOpponent = new Game();
             fillTable();
         }
 
@@ -178,8 +178,8 @@ public class ScoutActivity extends AppCompatActivity implements
             gameAthlete.setService(gameAthlete.getService() + 1);
             fieldService.setText("Service: " + gameAthlete.getService());
         } else {
-            gameOponent.setService(gameOponent.getService() + 1);
-            Log.i("Service Opponent", ""+ gameOponent.getService());
+            gameOpponent.setService(gameOpponent.getService() + 1);
+            Log.i("Service Opponent", ""+ gameOpponent.getService());
         }
     }
 
@@ -188,8 +188,8 @@ public class ScoutActivity extends AppCompatActivity implements
             gameAthlete.setReceiving(gameAthlete.getReceiving() + 1);
             fieldReceiving.setText("Receiving: " + gameAthlete.getReceiving());
         } else{
-            gameOponent.setReceiving(gameOponent.getReceiving() + 1);
-            Log.i("Receiving Opponent", ""+ gameOponent.getReceiving());
+            gameOpponent.setReceiving(gameOpponent.getReceiving() + 1);
+            Log.i("Receiving Opponent", ""+ gameOpponent.getReceiving());
         }
     }
 
@@ -210,14 +210,14 @@ public class ScoutActivity extends AppCompatActivity implements
             Log.i("Forehand Total", "forehand total: " + gameAthlete.getForehand());
         } else {
             if (buttonLeftLong) {
-                gameOponent.setForehandLeftLong(gameOponent.getForehandLeftLong() + 1);
+                gameOpponent.setForehandLeftLong(gameOpponent.getForehandLeftLong() + 1);
                 buttonLeftLong = false;
             }
             if (buttonLeftShort) {
-                gameOponent.setForehandLeftShort(gameOponent.getForehandLeftShort() + 1);
+                gameOpponent.setForehandLeftShort(gameOpponent.getForehandLeftShort() + 1);
                 buttonLeftShort = false;
             }
-            gameOponent.setForehand(gameOponent.getForehand() + 1);
+            gameOpponent.setForehand(gameOpponent.getForehand() + 1);
         }
     }
 
@@ -226,7 +226,7 @@ public class ScoutActivity extends AppCompatActivity implements
             gameAthlete.setBackhand(gameAthlete.getBackhand() + 1);
             fieldBackhand.setText("Backhand: " + gameAthlete.getBackhand());
         } else {
-            gameOponent.setBackhand(gameOponent.getBackhand() + 1);
+            gameOpponent.setBackhand(gameOpponent.getBackhand() + 1);
         }
     }
 
@@ -235,7 +235,7 @@ public class ScoutActivity extends AppCompatActivity implements
             gameAthlete.setSmash(gameAthlete.getSmash() + 1);
             fieldSmash.setText("Smash: " + gameAthlete.getSmash());
         } else {
-            gameOponent.setSmash(gameOponent.getSmash() + 1);
+            gameOpponent.setSmash(gameOpponent.getSmash() + 1);
         }
     }
 
@@ -244,7 +244,7 @@ public class ScoutActivity extends AppCompatActivity implements
             gameAthlete.setSlice(gameAthlete.getSlice() + 1);
             fieldSlice.setText("Slice: " + gameAthlete.getSlice());
         } else {
-            gameOponent.setSlice(gameOponent.getSlice() + 1);
+            gameOpponent.setSlice(gameOpponent.getSlice() + 1);
         }
     }
 
@@ -253,7 +253,7 @@ public class ScoutActivity extends AppCompatActivity implements
             gameAthlete.setBlock(gameAthlete.getBlock() + 1);
             fieldBlock.setText("Block: " + gameAthlete.getBlock());
         } else {
-            gameOponent.setBlock(gameOponent.getBlock() + 1);
+            gameOpponent.setBlock(gameOpponent.getBlock() + 1);
         }
     }
 
@@ -262,7 +262,7 @@ public class ScoutActivity extends AppCompatActivity implements
             gameAthlete.setFlick(gameAthlete.getFlick() + 1);
             fieldFlick.setText("Flick: " + gameAthlete.getFlick());
         } else {
-            gameOponent.setFlick(gameOponent.getFlick() + 1);
+            gameOpponent.setFlick(gameOpponent.getFlick() + 1);
         }
     }
 
@@ -271,7 +271,7 @@ public class ScoutActivity extends AppCompatActivity implements
             gameAthlete.setLob(gameAthlete.getLob() + 1);
             fieldLob.setText("Lob: " + gameAthlete.getLob());
         } else {
-            gameOponent.setLob(gameOponent.getLob() + 1);
+            gameOpponent.setLob(gameOpponent.getLob() + 1);
         }
     }
 
@@ -317,7 +317,7 @@ public class ScoutActivity extends AppCompatActivity implements
             case R.id.menu_save_scout:
                 Intent intentChart = new Intent(ScoutActivity.this, ChartActivity.class);
                 intentChart.putExtra("game_athlete", gameAthlete);
-                intentChart.putExtra("game_opponent", gameOponent);
+                intentChart.putExtra("game_opponent", gameOpponent);
                 intentChart.putExtra("athlete", athlete);
                 startActivity(intentChart);
                 break;

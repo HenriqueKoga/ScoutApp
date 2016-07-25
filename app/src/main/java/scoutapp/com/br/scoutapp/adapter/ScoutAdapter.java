@@ -45,11 +45,20 @@ public class ScoutAdapter extends BaseAdapter {
         Athlete athlete = athletes.get(position);
 
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.list_item, null);
+
+        View view = convertView;
+        if (view == null) {
+            view = inflater.inflate(R.layout.list_item, parent, false);
+        }
 
         TextView fieldName = (TextView) view.findViewById(R.id.item_name);
         fieldName.setText(athlete.getName());
 
+        TextView fieldChamp = (TextView) view.findViewById(R.id.item_champ);
+        fieldChamp.setText("Nome do Campeonato");
+
+        TextView fieldDate = (TextView) view.findViewById(R.id.item_date);
+        fieldDate.setText("10/12/2016");
 
         return view;
     }
