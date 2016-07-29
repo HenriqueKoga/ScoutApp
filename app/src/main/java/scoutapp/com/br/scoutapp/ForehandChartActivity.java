@@ -4,10 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -16,7 +13,6 @@ import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.SeekBar;
 
@@ -51,7 +47,7 @@ public class ForehandChartActivity extends ChartBase implements SeekBar.OnSeekBa
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // -----Athlete Chart-----
+        // -----Forehand Chart-----
         mChartForehand = (PieChart) findViewById(R.id.forehand_chart);
         mChartForehand.setUsePercentValues(true);
         mChartForehand.setDescription("");
@@ -102,7 +98,7 @@ public class ForehandChartActivity extends ChartBase implements SeekBar.OnSeekBa
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_chart, menu);
+        getMenuInflater().inflate(R.menu.menu_chart_techniques, menu);
         return true;
     }
 
@@ -112,12 +108,14 @@ public class ForehandChartActivity extends ChartBase implements SeekBar.OnSeekBa
         Game gameAthlete = (Game) intent.getSerializableExtra("game_athlete");
         Game gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
         Athlete athlete = (Athlete) intent.getSerializableExtra("athlete");
+        Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
         switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intentRegister = new Intent(ForehandChartActivity.this, ChartActivity.class);
                 intentRegister.putExtra("game_athlete", gameAthlete);
                 intentRegister.putExtra("game_opponent", gameOpponent);
                 intentRegister.putExtra("athlete", athlete);
+                intentRegister.putExtra("user", athleteUser);
                 startActivity(intentRegister);
                 break;
         }
@@ -141,12 +139,24 @@ public class ForehandChartActivity extends ChartBase implements SeekBar.OnSeekBa
         Game game = (Game) intent.getSerializableExtra("game_athlete");
 
         ArrayList<Integer>listTechniques = new ArrayList<>();
-        listTechniques.add(game.getForehandLeftLong());
-        listTechniques.add(game.getForehandLeftShort());
+        listTechniques.add(game.getForehandLeftLongCrossed());
+        listTechniques.add(game.getForehandLeftLongParallel());
+        listTechniques.add(game.getForehandLeftShortCrossed());
+        listTechniques.add(game.getForehandLeftShortParallel());
+
+        listTechniques.add(game.getForehandMiddleLongCrossed());
+        listTechniques.add(game.getForehandMiddleLongParallel());
+        listTechniques.add(game.getForehandMiddleShortCrossed());
+        listTechniques.add(game.getForehandMiddleShortParallel());
+
+        listTechniques.add(game.getForehandRightLongCrossed());
+        listTechniques.add(game.getForehandRightLongParallel());
+        listTechniques.add(game.getForehandRightShortCrossed());
+        listTechniques.add(game.getForehandRightShortParallel());
 
         for (int i = 0; i < listTechniques.size() ; i++) {
             if(listTechniques.get(i) > 0){
-                entries.add(new PieEntry((float)  listTechniques.get(i)/game.getTotal() * 100, mForehands[i]));
+                entries.add(new PieEntry((float)  listTechniques.get(i)/game.getTotal() * 100, mTechniquesSpec[i]));
             }
         }
 

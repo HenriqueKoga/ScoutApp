@@ -9,24 +9,25 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".RegisterActivity"
-    tools:showIn="@layout/activity_register"
+    tools:context=".AthleteRegisterActivity"
+    tools:showIn="@layout/activity_athlete_register"
     android:orientation="vertical"
     android:background="@color/colorBackground">
+
     <LinearLayout android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/lNameLayout"
+            android:id="@+id/lAthleteNameLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/fNameLayout"
+            android:layout_below="@+id/fAthleteNameLayout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/name"
+                android:id="@+id/athlete_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -35,15 +36,15 @@
 
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/lAgeLayout"
+            android:id="@+id/lAthleteAgeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/fNameLayout"
+            android:layout_below="@+id/fAthleteNameLayout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/age"
+                android:id="@+id/athlete_age"
                 android:inputType="number"
                 android:hint="Age"
                 android:layout_width="match_parent"
@@ -52,15 +53,15 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/lCategoryLayout"
+            android:id="@+id/lAthleteCategoryLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/fNameLayout"
+            android:layout_below="@+id/fAthleteNameLayout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/category"
+                android:id="@+id/athlete_category"
                 android:hint="Category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,18 +73,17 @@
             android:id="@+id/lClubLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/fNameLayout"
+            android:layout_below="@+id/fAthleteNameLayout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/club"
+                android:id="@+id/athlete_club"
                 android:hint="Club"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"/>
         </android.support.design.widget.TextInputLayout>
-
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
                 android:padding="10dp"
                 android:textSize="18dp"/>
             <Spinner
-                android:id="@+id/spinner_right_left_hand"
+                android:id="@+id/athlete_spinner_right_left_hand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:entries="@array/array_hand"
@@ -118,7 +118,7 @@
                 android:padding="10dp"
                 android:textSize="18dp"/>
             <Spinner
-                android:id="@+id/spinner_style"
+                android:id="@+id/athlete_spinner_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:entries="@array/array_styles"
@@ -126,30 +126,6 @@
                 android:paddingBottom="10dp"
                 android:textSize="18dp"/>
         </LinearLayout>
-
-        <ScrollView
-            android:id="@+id/ScrollViewObs"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="3dp">
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/lObsLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/fNameLayout"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp">
-
-                    <EditText
-                        android:id="@+id/obs"
-                        android:hint="Comments"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ems="10"/>
-
-            </android.support.design.widget.TextInputLayout>
-        </ScrollView>
-
     </LinearLayout>
 
 </ScrollView>

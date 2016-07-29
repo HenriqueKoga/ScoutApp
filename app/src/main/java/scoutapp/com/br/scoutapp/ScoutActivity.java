@@ -34,16 +34,19 @@ public class ScoutActivity extends AppCompatActivity implements
     private TextView fieldService;
     private TextView fieldReceiving;
     private TextView fieldLob;
-    private TextView fieldNameHit;
     private ToggleButton tgbutton;
-    private boolean athletePoint = false;
-    private boolean opponentPoint = false;
+    private boolean hit = false;
 
-    private boolean buttonLeftLong = false;
-    private boolean buttonLeftShort = false;
-    private Athlete athlete;
+    private String position;
+    private String direction;
+    private String action;
+
+    private Athlete athleteOpponent;
+    private Athlete athleteUser;
     private Game gameAthlete;
     private Game gameOpponent;
+    private ActionSheet directionS;
+    private ActionSheet actionS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +67,10 @@ public class ScoutActivity extends AppCompatActivity implements
         fieldBlock = (TextView) this.findViewById(R.id.block);
         fieldFlick = (TextView) this.findViewById(R.id.flick);
         fieldLob = (TextView) this.findViewById(R.id.lob);
-        fieldNameHit = (TextView) this.findViewById(R.id.name_hit);
 
         Intent intent = getIntent();
-        athlete = (Athlete) intent.getSerializableExtra("athlete");
+        athleteUser = (Athlete) intent.getSerializableExtra("user");
+        athleteOpponent = (Athlete) intent.getSerializableExtra("athlete");
         gameAthlete = (Game) intent.getSerializableExtra("game_athlete");
         gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
 
@@ -79,34 +82,29 @@ public class ScoutActivity extends AppCompatActivity implements
             fillTable();
         }
 
-        if(athlete != null){
-            fieldNameHit.setText(athlete.getName().toUpperCase());
-            fieldName.setText("ATHLETE_NAME X " + athlete.getName().toUpperCase());
-        }
-
         tgbutton = (ToggleButton) findViewById(R.id.toggleButton);
         tgbutton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Intent intent = getIntent();
-                athlete = (Athlete) intent.getSerializableExtra("athlete");
                 if (isChecked) {
-                    opponentPoint = false;
-                    athletePoint = true;
-                    fieldNameHit.setText("ATHLETE NAME");
-                    Log.i("info", "Athlete Point!");
-
+                    hit = true;
                 } else {
-                    athletePoint = false;
-                    opponentPoint = true;
-                    fieldNameHit.setText(athlete.getName().toUpperCase());
-                    Log.i("info", "Opponent Point!");
+                    hit = false;
                 }
             }
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = getIntent();
+        Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
+        Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete");
+        fieldName.setText(athleteUser.getName().toUpperCase() + " X " + athleteOpponent.getName().toUpperCase());
+    }
+
     private void fillTable() {
-        fieldScore.setText("Total Points: " + gameAthlete.getTotal());
+        fieldScore.setText(gameAthlete.getTotal() + " X " + gameOpponent.getTotal());
         fieldService.setText("Service: " + gameAthlete.getService());
         fieldReceiving.setText("Receiving: " + gameAthlete.getReceiving());
         fieldForehand.setText("Forehand: " + gameAthlete.getForehand());
@@ -122,169 +120,91 @@ public class ScoutActivity extends AppCompatActivity implements
         switch (v.getId()) {
             case R.id.left_long:
                 setTheme(R.style.ActionSheetStyleiOS7);
-                buttonLeftLong = true;
+                position = "left_long";
                 break;
             case R.id.left_short:
                 setTheme(R.style.ActionSheetStyleiOS7);
-                buttonLeftShort = true;
+                position = "left_short";
                 break;
         }
         showActionSheet();
     }
 
     public void showActionSheet() {
-        ActionSheet.createBuilder(this, getSupportFragmentManager())
+        actionS = ActionSheet.createBuilder(this, getSupportFragmentManager())
                 .setCancelButtonTitle("Cancel")
                 .setOtherButtonTitles("Service", "Receiving", "Forehand",
                                         "Backhand", "Smash", "Slice", "Block", "Flick", "Lob")
                 .setCancelableOnTouchOutside(true).setListener(this).show();
     }
 
+    public void showDirectionSheet() {
+        directionS = ActionSheet.createBuilder(this, getSupportFragmentManager())
+                .setCancelButtonTitle("Cancel")
+                .setOtherButtonTitles("crossed", "Parallel")
+                .setCancelableOnTouchOutside(true).setListener(this).show();
+    }
+
     @Override
     public void onOtherButtonClick(ActionSheet actionSheet, int index) {
-        switch (index) {
-            case 0:
-                servicePoint();
-                break;
-            case 1:
-                receivingPoint();
-                break;
-            case 2:
-                forehandPoint();
-                break;
-            case 3:
-                backhandPoint();
-                break;
-            case 4:
-                smashPoint();
-                break;
-            case 5:
-                slicePoint();
-                break;
-            case 6:
-                blockPoint();
-                break;
-            case 7:
-                flickPoint();
-                break;
-            case 8:
-                lobPoint();
-                break;
-        }
-    }
-
-    private void servicePoint() {
-        if (athletePoint) {
-            gameAthlete.setService(gameAthlete.getService() + 1);
-            fieldService.setText("Service: " + gameAthlete.getService());
-        } else {
-            gameOpponent.setService(gameOpponent.getService() + 1);
-            Log.i("Service Opponent", ""+ gameOpponent.getService());
-        }
-    }
-
-    private void receivingPoint() {
-        if (athletePoint) {
-            gameAthlete.setReceiving(gameAthlete.getReceiving() + 1);
-            fieldReceiving.setText("Receiving: " + gameAthlete.getReceiving());
-        } else{
-            gameOpponent.setReceiving(gameOpponent.getReceiving() + 1);
-            Log.i("Receiving Opponent", ""+ gameOpponent.getReceiving());
-        }
-    }
-
-    private void forehandPoint() {
-        if (athletePoint) {
-            if (buttonLeftLong) {
-                gameAthlete.setForehandLeftLong(gameAthlete.getForehandLeftLong() + 1);
-                buttonLeftLong = false;
+        if(actionSheet == actionS) {
+            switch (index) {
+                case 0:
+                    action = "service";
+                    break;
+                case 1:
+                    action = "receiving";
+                    break;
+                case 2:
+                    action = "forehand";
+                    break;
+                case 3:
+                    action = "backhand";
+                    break;
+                case 4:
+                    action = "smash";
+                    break;
+                case 5:
+                    action = "slice";
+                    break;
+                case 6:
+                    action = "block";
+                    break;
+                case 7:
+                    action = "flick";
+                    break;
+                case 8:
+                    action = "lob";
+                    break;
             }
-            if (buttonLeftShort) {
-                gameAthlete.setForehandLeftShort(gameAthlete.getForehandLeftShort() + 1);
-                buttonLeftShort = false;
+            showDirectionSheet();
+        } else {
+            if (actionSheet == directionS) {
+                switch (index) {
+                    case 0:
+                        direction = "crossed";
+                        break;
+                    case 1:
+                        break;
+                }
+                if(hit) {
+                    gameAthlete.hitPoint(position, action, direction);
+                } else {
+                    gameOpponent.hitPoint(position, action, direction);
+                }
+                fillTable();
             }
-            gameAthlete.setForehand(gameAthlete.getForehand() + 1);
-            fieldForehand.setText("Forehand: " + gameAthlete.getForehand());
-            Log.i("Forehand Long", "forehand left long: " + gameAthlete.getForehandLeftLong());
-            Log.i("Forehand Short", "forehand left short: " + gameAthlete.getForehandLeftShort());
-            Log.i("Forehand Total", "forehand total: " + gameAthlete.getForehand());
-        } else {
-            if (buttonLeftLong) {
-                gameOpponent.setForehandLeftLong(gameOpponent.getForehandLeftLong() + 1);
-                buttonLeftLong = false;
-            }
-            if (buttonLeftShort) {
-                gameOpponent.setForehandLeftShort(gameOpponent.getForehandLeftShort() + 1);
-                buttonLeftShort = false;
-            }
-            gameOpponent.setForehand(gameOpponent.getForehand() + 1);
-        }
-    }
-
-    private void backhandPoint() {
-        if (athletePoint) {
-            gameAthlete.setBackhand(gameAthlete.getBackhand() + 1);
-            fieldBackhand.setText("Backhand: " + gameAthlete.getBackhand());
-        } else {
-            gameOpponent.setBackhand(gameOpponent.getBackhand() + 1);
-        }
-    }
-
-    private void smashPoint() {
-        if (athletePoint) {
-            gameAthlete.setSmash(gameAthlete.getSmash() + 1);
-            fieldSmash.setText("Smash: " + gameAthlete.getSmash());
-        } else {
-            gameOpponent.setSmash(gameOpponent.getSmash() + 1);
-        }
-    }
-
-    private void slicePoint() {
-        if (athletePoint) {
-            gameAthlete.setSlice(gameAthlete.getSlice() + 1);
-            fieldSlice.setText("Slice: " + gameAthlete.getSlice());
-        } else {
-            gameOpponent.setSlice(gameOpponent.getSlice() + 1);
-        }
-    }
-
-    private void blockPoint() {
-        if (athletePoint) {
-            gameAthlete.setBlock(gameAthlete.getBlock() + 1);
-            fieldBlock.setText("Block: " + gameAthlete.getBlock());
-        } else {
-            gameOpponent.setBlock(gameOpponent.getBlock() + 1);
-        }
-    }
-
-    private void flickPoint() {
-        if (athletePoint) {
-            gameAthlete.setFlick(gameAthlete.getFlick() + 1);
-            fieldFlick.setText("Flick: " + gameAthlete.getFlick());
-        } else {
-            gameOpponent.setFlick(gameOpponent.getFlick() + 1);
-        }
-    }
-
-    private void lobPoint() {
-        if (athletePoint) {
-            gameAthlete.setLob(gameAthlete.getLob() + 1);
-            fieldLob.setText("Lob: " + gameAthlete.getLob());
-        } else {
-            gameOpponent.setLob(gameOpponent.getLob() + 1);
         }
     }
 
     @Override
     public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
         if (!isCancel) {
-            if (athletePoint) {
-                gameAthlete.setTotal(gameAthlete.getTotal() + 1);
-                fieldScore.setText("Total Points: " + gameAthlete.getTotal());
+            if (hit) {
+                fieldScore.setText(gameAthlete.getTotal() + " X " + gameOpponent.getTotal());
             }
         }
     }
-
 
     private void setupActionBar() {
         ActionBar actionBar = getSupportActionBar();
@@ -304,12 +224,14 @@ public class ScoutActivity extends AppCompatActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = getIntent();
         Athlete athlete = (Athlete) intent.getSerializableExtra("athlete");
+        Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
         Championship championship = (Championship) intent.getSerializableExtra("championship");
         switch (item.getItemId()) {
             case android.R.id.home:
 
                 Intent intentRegister = new Intent(ScoutActivity.this, ChampRegisterActivity.class);
                 intentRegister.putExtra("athlete", athlete);
+                intentRegister.putExtra("user", athleteUser);
                 intentRegister.putExtra("championship", championship);
                 startActivity(intentRegister);
                 break;
@@ -319,6 +241,8 @@ public class ScoutActivity extends AppCompatActivity implements
                 intentChart.putExtra("game_athlete", gameAthlete);
                 intentChart.putExtra("game_opponent", gameOpponent);
                 intentChart.putExtra("athlete", athlete);
+                intentChart.putExtra("user", athleteUser);
+                intentChart.putExtra("championship", championship);
                 startActivity(intentChart);
                 break;
         }

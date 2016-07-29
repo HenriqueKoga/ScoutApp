@@ -1,10 +1,9 @@
 package scoutapp.com.br.scoutapp;
 
 import android.content.Intent;
-import android.os.Bundle;
-
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
@@ -16,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -26,72 +24,69 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
-
 
 import java.util.ArrayList;
 
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Game;
 
-
-public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
+public class BackhandChartActivity extends ChartBase implements SeekBar.OnSeekBarChangeListener,
         OnChartValueSelectedListener {
 
-    private PieChart mChartAthlete;
+    private PieChart mChartBackhand;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chart);
+        setContentView(R.layout.activity_backhand_chart);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setupActionBar();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // -----Athlete Chart-----
-        mChartAthlete = (PieChart) findViewById(R.id.chartAthlete);
-        mChartAthlete.setUsePercentValues(true);
-        mChartAthlete.setDescription("");
-        mChartAthlete.setExtraOffsets(5, 10, 5, 5);
+        // -----Backhand Chart-----
+        mChartBackhand = (PieChart) findViewById(R.id.backhand_chart);
+        mChartBackhand.setUsePercentValues(true);
+        mChartBackhand.setDescription("");
+        mChartBackhand.setExtraOffsets(5, 10, 5, 5);
 
-        mChartAthlete.setDragDecelerationFrictionCoef(0.95f);
+        mChartBackhand.setDragDecelerationFrictionCoef(0.95f);
 
-        mChartAthlete.setCenterTextTypeface(mTfLight);
-        mChartAthlete.setCenterText(generateCenterSpannableText());
+        mChartBackhand.setCenterTextTypeface(mTfLight);
+        mChartBackhand.setCenterText(generateCenterSpannableText());
 
-        mChartAthlete.setDrawHoleEnabled(false);
-        mChartAthlete.setHoleColor(Color.WHITE);
+        mChartBackhand.setDrawHoleEnabled(false);
+        mChartBackhand.setHoleColor(Color.WHITE);
 
-        mChartAthlete.setTransparentCircleColor(Color.WHITE);
-        mChartAthlete.setTransparentCircleAlpha(110);
+        mChartBackhand.setTransparentCircleColor(Color.WHITE);
+        mChartBackhand.setTransparentCircleAlpha(110);
 
-        mChartAthlete.setHoleRadius(58f);
-        mChartAthlete.setTransparentCircleRadius(61f);
+        mChartBackhand.setHoleRadius(58f);
+        mChartBackhand.setTransparentCircleRadius(61f);
 
-        mChartAthlete.setDrawCenterText(false);
+        mChartBackhand.setDrawCenterText(false);
 
-        mChartAthlete.setRotationAngle(0);
+        mChartBackhand.setRotationAngle(0);
         // enable rotation of the chart by touch
-        mChartAthlete.setRotationEnabled(true);
-        mChartAthlete.setHighlightPerTapEnabled(true);
+        mChartBackhand.setRotationEnabled(true);
+        mChartBackhand.setHighlightPerTapEnabled(true);
 
 
         // add a selection listener
-        mChartAthlete.setOnChartValueSelectedListener(this);
+        mChartBackhand.setOnChartValueSelectedListener(this);
 
         setData();
 
-        mChartAthlete.animateY(1400, Easing.EasingOption.EaseInOutQuad);
+        mChartBackhand.animateY(1400, Easing.EasingOption.EaseInOutQuad);
         // mChartAthlete.spin(2000, 0, 360);
 
         // entry label styling
-        mChartAthlete.setEntryLabelColor(Color.BLACK);
-        mChartAthlete.setEntryLabelTypeface(mTfRegular);
-        mChartAthlete.setEntryLabelTextSize(12f);
+        mChartBackhand.setEntryLabelColor(Color.BLACK);
+        mChartBackhand.setEntryLabelTypeface(mTfRegular);
+        mChartBackhand.setEntryLabelTextSize(12f);
     }
 
     private void setupActionBar() {
@@ -103,7 +98,7 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_chart, menu);
+        getMenuInflater().inflate(R.menu.menu_chart_techniques, menu);
         return true;
     }
 
@@ -116,32 +111,12 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
         Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intentRegister = new Intent(ChartActivity.this, ScoutActivity.class);
-                intentRegister.putExtra("game_athlete", gameAthlete);
-                intentRegister.putExtra("game_opponent", gameOpponent);
-                intentRegister.putExtra("athlete", athlete);
-                intentRegister.putExtra("user", athleteUser);
-                startActivity(intentRegister);
-                break;
-
-            case R.id.menu_forehand_chart:
-                Intent intentForehandChart = new Intent(ChartActivity.this, ForehandChartActivity.class);
-                intentForehandChart.putExtra("game_athlete", gameAthlete);
-                intentForehandChart.putExtra("game_opponent", gameOpponent);
-                intentForehandChart.putExtra("athlete", athlete);
-                intentForehandChart.putExtra("user", athleteUser);
-
-                startActivity(intentForehandChart);
-                break;
-
-            case R.id.menu_backhand_chart:
-                Intent intentBackhandChart = new Intent(ChartActivity.this, BackhandChartActivity.class);
-                intentBackhandChart.putExtra("game_athlete", gameAthlete);
-                intentBackhandChart.putExtra("game_opponent", gameOpponent);
-                intentBackhandChart.putExtra("athlete", athlete);
-                intentBackhandChart.putExtra("user", athleteUser);
-
-                startActivity(intentBackhandChart);
+                Intent intentChart = new Intent(BackhandChartActivity.this, ChartActivity.class);
+                intentChart.putExtra("game_athlete", gameAthlete);
+                intentChart.putExtra("game_opponent", gameOpponent);
+                intentChart.putExtra("athlete", athlete);
+                intentChart.putExtra("user", athleteUser);
+                startActivity(intentChart);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -164,19 +139,24 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
         Game game = (Game) intent.getSerializableExtra("game_athlete");
 
         ArrayList<Integer>listTechniques = new ArrayList<>();
-        listTechniques.add(game.getService());
-        listTechniques.add(game.getReceiving());
-        listTechniques.add(game.getForehand());
-        listTechniques.add(game.getBackhand());
-        listTechniques.add(game.getSmash());
-        listTechniques.add(game.getSlice());
-        listTechniques.add(game.getBlock());
-        listTechniques.add(game.getFlick());
-        listTechniques.add(game.getLob());
+        listTechniques.add(game.getBackhandLeftLongCrossed());
+        listTechniques.add(game.getBackhandLeftLongParallel());
+        listTechniques.add(game.getBackhandLeftShortCrossed());
+        listTechniques.add(game.getBackhandLeftShortParallel());
+
+        listTechniques.add(game.getBackhandMiddleLongCrossed());
+        listTechniques.add(game.getBackhandMiddleLongParallel());
+        listTechniques.add(game.getBackhandMiddleShortCrossed());
+        listTechniques.add(game.getBackhandMiddleShortParallel());
+
+        listTechniques.add(game.getBackhandRightLongCrossed());
+        listTechniques.add(game.getBackhandRightLongParallel());
+        listTechniques.add(game.getBackhandRightShortCrossed());
+        listTechniques.add(game.getBackhandRightShortParallel());
 
         for (int i = 0; i < listTechniques.size() ; i++) {
             if(listTechniques.get(i) > 0){
-                entries.add(new PieEntry((float)  listTechniques.get(i)/game.getTotal() * 100, mTechniques[i]));
+                entries.add(new PieEntry((float)  listTechniques.get(i)/game.getTotal() * 100, mTechniquesSpec[i]));
             }
         }
 
@@ -213,12 +193,12 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
         data.setValueTextSize(11f);
         data.setValueTextColor(Color.BLACK);
         data.setValueTypeface(mTfLight);
-        mChartAthlete.setData(data);
+        mChartBackhand.setData(data);
 
         // undo all highlights
-        mChartAthlete.highlightValues(null);
+        mChartBackhand.highlightValues(null);
 
-        mChartAthlete.invalidate();
+        mChartBackhand.invalidate();
     }
 
     private SpannableString generateCenterSpannableText() {
@@ -255,6 +235,6 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
         // TODO Auto-generated method stub
-
     }
+
 }

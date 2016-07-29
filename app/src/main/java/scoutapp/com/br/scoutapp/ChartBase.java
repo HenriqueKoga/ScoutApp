@@ -25,8 +25,13 @@ public abstract class ChartBase extends AppCompatActivity {
             "Service", "Receiving", "Forehand", "Backhand", "Smash", "Slice", "Block", "Flick", "Lob"
     };
 
-    protected  String[] mForehands = new String[]{
-            "Forehand Left Long", "Forehand Left Short"
+    protected  String[] mTechniquesSpec = new String[]{
+            "Left Long Crossed", "Left Long Parallel",
+            "Left Short Crossed", "Left Short Parallel",
+            "Middle Long Crossed", "Middle Long Parallel",
+            "Middle Short Crossed", "Middle Short Parallel",
+            "Right Long Crossed", "Right Long Parallel",
+            "Right Short Crossed", "Right Short Parallel"
     };
 
     protected Typeface mTfRegular;
@@ -36,10 +41,6 @@ public abstract class ChartBase extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-    }
-
-    protected float getRandom(float range, float startsfrom) {
-        return (float) (Math.random() * range) + startsfrom;
     }
 
     @Override

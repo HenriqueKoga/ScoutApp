@@ -2,44 +2,39 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
+        android:id="@+id/menu_service_chart"
+        android:title="Service">
+    </item>
+    <item
+        android:id="@+id/menu_receive_chart"
+        android:title="Receive">
+    </item>
+    <item
         android:id="@+id/menu_forehand_chart"
         android:title="Forehand">
     </item>
     <item
-        android:id="@+id/actionToggleXVals"
-        android:title="Toggle X-Values">
+        android:id="@+id/menu_backhand_chart"
+        android:title="Backhand">
     </item>
     <item
-        android:id="@+id/actionTogglePercent"
-        android:title="Toggle Percent">
+        android:id="@+id/menu_smash_chart"
+        android:title="Smash">
     </item>
     <item
-        android:id="@+id/actionToggleHole"
-        android:title="Toggle Hole">
+        android:id="@+id/menu_slice_chart"
+        android:title="Slice">
     </item>
     <item
-        android:id="@+id/animateX"
-        android:title="Animate X">
+        android:id="@+id/menu_block_chart"
+        android:title="Block">
     </item>
     <item
-        android:id="@+id/animateY"
-        android:title="Animate Y">
+        android:id="@+id/menu_flick_chart"
+        android:title="Flick">
     </item>
     <item
-        android:id="@+id/animateXY"
-        android:title="Animate XY">
+        android:id="@+id/menu_lob_chart"
+        android:title="Lob">
     </item>
-    <item
-        android:id="@+id/actionDrawCenter"
-        android:title="Draw CenterText">
-    </item>
-    <item
-        android:id="@+id/actionSave"
-        android:title="Save to Gallery">
-    </item>
-    <item
-        android:id="@+id/actionToggleSpin"
-        android:title="Spin Animation">
-    </item>
-
 </menu>
