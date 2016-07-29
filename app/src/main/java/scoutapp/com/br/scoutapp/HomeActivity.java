@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private ListView athletesList;
     private DrawerLayout mDrawerLayout;
+    private Athlete athleteUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
+        athleteUser = (Athlete) intent.getSerializableExtra("user");
         Championship championship = (Championship) intent.getSerializableExtra("championship");
 
         athletesList = (ListView)findViewById(R.id.scout_list);
@@ -73,6 +75,7 @@ public class HomeActivity extends AppCompatActivity {
                 Athlete athlete = (Athlete) athletesList.getItemAtPosition(position);
                 Intent intentRegister = new Intent(HomeActivity.this, RegisterActivity.class);
                 intentRegister.putExtra("athlete", athlete);
+                intentRegister.putExtra("user", athleteUser);
                 startActivity(intentRegister);
             }
         });
@@ -90,7 +93,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void showList(){
         AthleteController athleteController = new AthleteController(this);
-        List<Athlete> athletes = athleteController.getAllAthletes();
+        List<Athlete> athletes = athleteController.getAllAthletes(athleteUser);
 
         ScoutAdapter adapter = new ScoutAdapter(this, athletes);
         athletesList.setAdapter(adapter);

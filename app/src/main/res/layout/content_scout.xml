@@ -141,20 +141,13 @@
             android:id="@+id/toggleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textOn="Athlete Point"
-            android:textOff="Opponent Point"
+            android:textOn="Hit"
+            android:textOff="Error"
             android:text="ToggleButton"
             android:layout_marginTop="50dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
-
-        <TextView
-            android:id="@+id/name_hit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="400dp"
-            android:gravity="center_horizontal"/>
     </RelativeLayout>
 
 

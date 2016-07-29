@@ -61,6 +61,7 @@ public class ChampRegisterActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Championship championship = helper.getChampionship();
         Intent intent = getIntent();
+        Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
         Athlete athlete = (Athlete) intent.getSerializableExtra("athlete");
         ChampionshipController championshipController = new ChampionshipController(this);
 
@@ -70,7 +71,8 @@ public class ChampRegisterActivity extends AppCompatActivity {
 //                championshipController.insertOrReplaceChamp(championship);
 
                 Intent intentScout = new Intent(ChampRegisterActivity.this, ScoutActivity.class);
-//                intentScout.putExtra("championship", championship);
+                intentScout.putExtra("championship", championship);
+                intentScout.putExtra("user", athleteUser);
                 intentScout.putExtra("athlete", athlete);
                 Toast.makeText(ChampRegisterActivity.this, "campeonato " + championship.getChampName(), Toast.LENGTH_SHORT).show();
                 startActivity(intentScout);
@@ -84,6 +86,7 @@ public class ChampRegisterActivity extends AppCompatActivity {
                 Intent intentRegister = new Intent(ChampRegisterActivity.this, RegisterActivity.class);
                 intentRegister.putExtra("championship", championship);
                 intentRegister.putExtra("athlete", athlete);
+                intentRegister.putExtra("user", athleteUser);
                 startActivity(intentRegister);
                 finish();
                 break;

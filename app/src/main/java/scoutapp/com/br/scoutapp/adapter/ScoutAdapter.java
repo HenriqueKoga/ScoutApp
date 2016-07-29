@@ -54,6 +54,9 @@ public class ScoutAdapter extends BaseAdapter {
         TextView fieldName = (TextView) view.findViewById(R.id.item_name);
         fieldName.setText(athlete.getName());
 
+        TextView fieldClub = (TextView) view.findViewById(R.id.item_club);
+        fieldClub.setText(athlete.getClub());
+
         TextView fieldChamp = (TextView) view.findViewById(R.id.item_champ);
         fieldChamp.setText("Nome do Campeonato");
 

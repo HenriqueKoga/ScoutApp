@@ -55,7 +55,9 @@ public class RegisterActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Athlete athlete = helper.getAthlete();
         Intent intent = getIntent();
+        Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
         Championship championship = (Championship) intent.getSerializableExtra("championship");
+
         AthleteController athleteController = new AthleteController(this);
 
         switch (item.getItemId()) {
@@ -65,6 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intentScout = new Intent(RegisterActivity.this, ChampRegisterActivity.class);
                 intentScout.putExtra("athlete", athlete);
                 intentScout.putExtra("championship", championship);
+                intentScout.putExtra("user", athleteUser);
                 startActivity(intentScout);
                 finish();
                 break;
@@ -73,6 +76,9 @@ public class RegisterActivity extends AppCompatActivity {
                 athleteController.insertOrReplaceAthlete(athlete);
 
                 Intent intentHome = new Intent(RegisterActivity.this, HomeActivity.class);
+                intentHome.putExtra("athlete", athlete);
+                intentHome.putExtra("championship", championship);
+                intentHome.putExtra("user", athleteUser);
                 startActivity(intentHome);
                 Toast.makeText(RegisterActivity.this, "Atleta " + athlete.getName() + " salvo!", Toast.LENGTH_SHORT).show();
                 finish();

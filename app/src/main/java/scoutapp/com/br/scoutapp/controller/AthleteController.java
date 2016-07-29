@@ -23,9 +23,9 @@ public class AthleteController {
         mDAO.insertOrReplace(athlete);
     }
 
-    public List<Athlete> getAllAthletes() {
+    public List<Athlete> getAllAthletes(Athlete user) {
         QueryBuilder<Athlete> query = mDAO.queryBuilder();
-        return query.list();
+        return query.where(AthleteDao.Properties.Id.notEq(user.getId())).list();
     }
 
     public void removeAthlete(Athlete athlete) {

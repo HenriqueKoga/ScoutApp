@@ -20,13 +20,7 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"
@@ -38,14 +32,28 @@
         <activity
             android:name=".ScoutActivity"
             android:label="@string/title_activity_scout"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ChartActivity"
             android:label="@string/title_activity_chart"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ForehandChartActivity"
             android:label="@string/title_activity_forehand_chart"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AthleteRegisterActivity"
+            android:label="@string/title_activity_athlete_register"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".BackhandChartActivity"
+            android:label="@string/title_activity_backhand_chart"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
