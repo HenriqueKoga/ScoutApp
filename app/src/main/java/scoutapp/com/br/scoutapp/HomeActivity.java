@@ -18,9 +18,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import scoutapp.com.br.scoutapp.adapter.ScoutAdapter;
+import scoutapp.com.br.scoutapp.adapter.HomeListAdapter;
 import scoutapp.com.br.scoutapp.controller.AthleteController;
-import scoutapp.com.br.scoutapp.controller.ChampionshipController;
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Championship;
 
@@ -95,7 +94,7 @@ public class HomeActivity extends AppCompatActivity {
         AthleteController athleteController = new AthleteController(this);
         List<Athlete> athletes = athleteController.getAllAthletes(athleteUser);
 
-        ScoutAdapter adapter = new ScoutAdapter(this, athletes);
+        HomeListAdapter adapter = new HomeListAdapter(this, athletes);
         athletesList.setAdapter(adapter);
     }
 

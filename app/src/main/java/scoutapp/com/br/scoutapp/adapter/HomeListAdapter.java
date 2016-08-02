@@ -15,12 +15,12 @@ import scoutapp.com.br.scoutapp.model.Athlete;
 /**
  * Created by HenriqueKoga on 31/05/16.
  */
-public class ScoutAdapter extends BaseAdapter {
+public class HomeListAdapter extends BaseAdapter {
 
     private final List<Athlete> athletes;
     private final Context context;
 
-    public ScoutAdapter(Context context, List<Athlete> athletes) {
+    public HomeListAdapter(Context context, List<Athlete> athletes) {
         this.context = context;
         this.athletes = athletes;
     }
