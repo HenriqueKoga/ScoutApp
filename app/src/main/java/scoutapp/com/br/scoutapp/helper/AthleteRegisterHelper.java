@@ -5,7 +5,6 @@ import android.widget.Spinner;
 
 import scoutapp.com.br.scoutapp.AthleteRegisterActivity;
 import scoutapp.com.br.scoutapp.R;
-import scoutapp.com.br.scoutapp.RegisterActivity;
 import scoutapp.com.br.scoutapp.model.Athlete;
 
 /**

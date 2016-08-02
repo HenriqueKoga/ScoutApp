@@ -1,6 +1,9 @@
 package scoutapp.com.br.scoutapp.model;
 
+import android.util.Log;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by HenriqueKoga on 08/07/16.
@@ -9,7 +12,7 @@ public class Game implements Serializable{
 
     //total
     int service = 0;
-    int receiving = 0;
+    int reception = 0;
     int forehand = 0;
     int backhand = 0;
     int smash = 0;
@@ -34,19 +37,19 @@ public class Game implements Serializable{
     int serviceRightShortCrossed = 0;
     int serviceRightShortParallel = 0;
 
-    //receiving spec
-    int receivingLeftLongCrossed = 0;
-    int receivingLeftLongParallel = 0;
-    int receivingLeftShortCrossed = 0;
-    int receivingLeftShortParallel = 0;
-    int receivingMiddleLongCrossed = 0;
-    int receivingMiddleLongParallel = 0;
-    int receivingMiddleShortCrossed = 0;
-    int receivingMiddleShortParallel = 0;
-    int receivingRightLongCrossed = 0;
-    int receivingRightLongParallel = 0;
-    int receivingRightShortCrossed = 0;
-    int receivingRightShortParallel = 0;
+    //reception spec
+    int receptionLeftLongCrossed = 0;
+    int receptionLeftLongParallel = 0;
+    int receptionLeftShortCrossed = 0;
+    int receptionLeftShortParallel = 0;
+    int receptionMiddleLongCrossed = 0;
+    int receptionMiddleLongParallel = 0;
+    int receptionMiddleShortCrossed = 0;
+    int receptionMiddleShortParallel = 0;
+    int receptionRightLongCrossed = 0;
+    int receptionRightLongParallel = 0;
+    int receptionRightShortCrossed = 0;
+    int receptionRightShortParallel = 0;
 
     //forehand spec
     int forehandLeftLongCrossed = 0;
@@ -158,12 +161,12 @@ public class Game implements Serializable{
         this.service = service;
     }
 
-    public int getReceiving() {
-        return receiving;
+    public int getReception() {
+        return reception;
     }
 
-    public void setReceiving(int receiving) {
-        this.receiving = receiving;
+    public void setReception(int reception) {
+        this.reception = reception;
     }
 
     public int getForehand() {
@@ -318,100 +321,100 @@ public class Game implements Serializable{
         this.serviceRightShortParallel = serviceRightShortParallel;
     }
 
-    public int getReceivingLeftLongCrossed() {
-        return receivingLeftLongCrossed;
+    public int getReceptionLeftLongCrossed() {
+        return receptionLeftLongCrossed;
     }
 
-    public void setReceivingLeftLongCrossed(int receivingLeftLongCrossed) {
-        this.receivingLeftLongCrossed = receivingLeftLongCrossed;
+    public void setReceptionLeftLongCrossed(int receptionLeftLongCrossed) {
+        this.receptionLeftLongCrossed = receptionLeftLongCrossed;
     }
 
-    public int getReceivingLeftLongParallel() {
-        return receivingLeftLongParallel;
+    public int getReceptionLeftLongParallel() {
+        return receptionLeftLongParallel;
     }
 
-    public void setReceivingLeftLongParallel(int receivingLeftLongParallel) {
-        this.receivingLeftLongParallel = receivingLeftLongParallel;
+    public void setReceptionLeftLongParallel(int receptionLeftLongParallel) {
+        this.receptionLeftLongParallel = receptionLeftLongParallel;
     }
 
-    public int getReceivingLeftShortCrossed() {
-        return receivingLeftShortCrossed;
+    public int getReceptionLeftShortCrossed() {
+        return receptionLeftShortCrossed;
     }
 
-    public void setReceivingLeftShortCrossed(int receivingLeftShortCrossed) {
-        this.receivingLeftShortCrossed = receivingLeftShortCrossed;
+    public void setReceptionLeftShortCrossed(int receptionLeftShortCrossed) {
+        this.receptionLeftShortCrossed = receptionLeftShortCrossed;
     }
 
-    public int getReceivingLeftShortParallel() {
-        return receivingLeftShortParallel;
+    public int getReceptionLeftShortParallel() {
+        return receptionLeftShortParallel;
     }
 
-    public void setReceivingLeftShortParallel(int receivingLeftShortParallel) {
-        this.receivingLeftShortParallel = receivingLeftShortParallel;
+    public void setReceptionLeftShortParallel(int receptionLeftShortParallel) {
+        this.receptionLeftShortParallel = receptionLeftShortParallel;
     }
 
-    public int getReceivingMiddleLongCrossed() {
-        return receivingMiddleLongCrossed;
+    public int getReceptionMiddleLongCrossed() {
+        return receptionMiddleLongCrossed;
     }
 
-    public void setReceivingMiddleLongCrossed(int receivingMiddleLongCrossed) {
-        this.receivingMiddleLongCrossed = receivingMiddleLongCrossed;
+    public void setReceptionMiddleLongCrossed(int receptionMiddleLongCrossed) {
+        this.receptionMiddleLongCrossed = receptionMiddleLongCrossed;
     }
 
-    public int getReceivingMiddleLongParallel() {
-        return receivingMiddleLongParallel;
+    public int getReceptionMiddleLongParallel() {
+        return receptionMiddleLongParallel;
     }
 
-    public void setReceivingMiddleLongParallel(int receivingMiddleLongParallel) {
-        this.receivingMiddleLongParallel = receivingMiddleLongParallel;
+    public void setReceptionMiddleLongParallel(int receptionMiddleLongParallel) {
+        this.receptionMiddleLongParallel = receptionMiddleLongParallel;
     }
 
-    public int getReceivingMiddleShortCrossed() {
-        return receivingMiddleShortCrossed;
+    public int getReceptionMiddleShortCrossed() {
+        return receptionMiddleShortCrossed;
     }
 
-    public void setReceivingMiddleShortCrossed(int receivingMiddleShortCrossed) {
-        this.receivingMiddleShortCrossed = receivingMiddleShortCrossed;
+    public void setReceptionMiddleShortCrossed(int receptionMiddleShortCrossed) {
+        this.receptionMiddleShortCrossed = receptionMiddleShortCrossed;
     }
 
-    public int getReceivingMiddleShortParallel() {
-        return receivingMiddleShortParallel;
+    public int getReceptionMiddleShortParallel() {
+        return receptionMiddleShortParallel;
     }
 
-    public void setReceivingMiddleShortParallel(int receivingMiddleShortParallel) {
-        this.receivingMiddleShortParallel = receivingMiddleShortParallel;
+    public void setReceptionMiddleShortParallel(int receptionMiddleShortParallel) {
+        this.receptionMiddleShortParallel = receptionMiddleShortParallel;
     }
 
-    public int getReceivingRightLongCrossed() {
-        return receivingRightLongCrossed;
+    public int getReceptionRightLongCrossed() {
+        return receptionRightLongCrossed;
     }
 
-    public void setReceivingRightLongCrossed(int receivingRightLongCrossed) {
-        this.receivingRightLongCrossed = receivingRightLongCrossed;
+    public void setReceptionRightLongCrossed(int receptionRightLongCrossed) {
+        this.receptionRightLongCrossed = receptionRightLongCrossed;
     }
 
-    public int getReceivingRightLongParallel() {
-        return receivingRightLongParallel;
+    public int getReceptionRightLongParallel() {
+        return receptionRightLongParallel;
     }
 
-    public void setReceivingRightLongParallel(int receivingRightLongParallel) {
-        this.receivingRightLongParallel = receivingRightLongParallel;
+    public void setReceptionRightLongParallel(int receptionRightLongParallel) {
+        this.receptionRightLongParallel = receptionRightLongParallel;
     }
 
-    public int getReceivingRightShortCrossed() {
-        return receivingRightShortCrossed;
+    public int getReceptionRightShortCrossed() {
+        return receptionRightShortCrossed;
     }
 
-    public void setReceivingRightShortCrossed(int receivingRightShortCrossed) {
-        this.receivingRightShortCrossed = receivingRightShortCrossed;
+    public void setReceptionRightShortCrossed(int receptionRightShortCrossed) {
+        this.receptionRightShortCrossed = receptionRightShortCrossed;
     }
 
-    public int getReceivingRightShortParallel() {
-        return receivingRightShortParallel;
+    public int getReceptionRightShortParallel() {
+        return receptionRightShortParallel;
     }
 
-    public void setReceivingRightShortParallel(int receivingRightShortParallel) {
-        this.receivingRightShortParallel = receivingRightShortParallel;
+    public void setReceptionRightShortParallel(int receptionRightShortParallel) {
+        this.receptionRightShortParallel = receptionRightShortParallel;
     }
 
     public int getForehandLeftLongCrossed() {
@@ -1142,48 +1145,48 @@ public class Game implements Serializable{
                 }
                 break;
 
-            case "receiving":
-                this.setReceiving(this.getReceiving()+1);
+            case "reception":
+                this.setReception(this.getReception()+1);
                 if (position == "left_long"){
                     if (direction == "crossed"){
-                        this.setReceivingLeftLongCrossed(this.getReceivingLeftLongCrossed()+1);
+                        this.setReceptionLeftLongCrossed(this.getReceptionLeftLongCrossed()+1);
                     } else{
-                        this.setReceivingLeftLongParallel(this.getReceivingLeftLongParallel()+1);
+                        this.setReceptionLeftLongParallel(this.getReceptionLeftLongParallel()+1);
                     }
                 }
                 if (position == "left_short"){
                     if (direction == "crossed"){
-                        this.setReceivingLeftShortCrossed(this.getReceivingLeftShortCrossed()+1);
+                        this.setReceptionLeftShortCrossed(this.getReceptionLeftShortCrossed()+1);
                     } else{
-                        this.setReceivingLeftShortParallel(this.getReceivingLeftShortParallel()+1);
+                        this.setReceptionLeftShortParallel(this.getReceptionLeftShortParallel()+1);
                     }
                 }
                 if (position == "middle_short"){
                     if (direction == "crossed"){
-                        this.setReceivingMiddleShortCrossed(this.getReceivingMiddleShortCrossed()+1);
+                        this.setReceptionMiddleShortCrossed(this.getReceptionMiddleShortCrossed()+1);
                     } else{
-                        this.setReceivingMiddleShortParallel(this.getReceivingMiddleShortParallel()+1);
+                        this.setReceptionMiddleShortParallel(this.getReceptionMiddleShortParallel()+1);
                     }
                 }
                 if (position == "middle_long"){
                     if (direction == "crossed"){
-                        this.setReceivingMiddleLongCrossed(this.getReceivingMiddleLongCrossed()+1);
+                        this.setReceptionMiddleLongCrossed(this.getReceptionMiddleLongCrossed()+1);
                     } else{
-                        this.setReceivingMiddleLongParallel(this.getReceivingMiddleLongParallel()+1);
+                        this.setReceptionMiddleLongParallel(this.getReceptionMiddleLongParallel()+1);
                     }
                 }
                 if (position == "right_short"){
                     if (direction == "crossed"){
-                        this.setReceivingRightShortCrossed(this.getReceivingRightShortCrossed()+1);
+                        this.setReceptionRightShortCrossed(this.getReceptionRightShortCrossed()+1);
                     } else{
-                        this.setReceivingRightShortParallel(this.getReceivingRightShortParallel()+1);
+                        this.setReceptionRightShortParallel(this.getReceptionRightShortParallel()+1);
                     }
                 }
                 if (position == "right_long"){
                     if (direction == "crossed"){
-                        this.setReceivingRightLongCrossed(this.getReceivingRightLongCrossed()+1);
+                        this.setReceptionRightLongCrossed(this.getReceptionRightLongCrossed()+1);
                     } else{
-                        this.setReceivingRightLongParallel(this.getReceivingRightLongParallel()+1);
+                        this.setReceptionRightLongParallel(this.getReceptionRightLongParallel()+1);
                     }
                 }
                 break;
@@ -1193,15 +1196,19 @@ public class Game implements Serializable{
                 if (position == "left_long"){
                     if (direction == "crossed"){
                         this.setForehandLeftLongCrossed(this.getForehandLeftLongCrossed()+1);
+                        Log.d("Left Long Crossed", ""+ this.getForehandLeftLongCrossed());
                     } else{
                         this.setForehandLeftLongParallel(this.getForehandLeftLongParallel()+1);
+                        Log.d("Left Long Parallel", ""+ this.getForehandLeftLongParallel());
                     }
                 }
                 if (position == "left_short"){
                     if (direction == "crossed"){
                         this.setForehandLeftShortCrossed(this.getForehandLeftShortCrossed()+1);
+                        Log.d("Left Short Crossed", ""+ this.getForehandLeftShortCrossed());
                     } else{
                         this.setForehandLeftShortParallel(this.getForehandLeftShortParallel()+1);
+                        Log.d("Left Short Parallel", ""+ this.getForehandLeftShortParallel());
                     }
                 }
                 if (position == "middle_short"){
@@ -1511,5 +1518,156 @@ public class Game implements Serializable{
                 break;
         }
         this.setTotal(this.getTotal()+1);
+    }
+
+    public ArrayList<Integer> getActionList(String action){
+        ArrayList<Integer>techniques = new ArrayList<>();
+        switch (action){
+            case "service":
+                techniques.add(this.getServiceLeftLongCrossed());
+                techniques.add(this.getServiceLeftLongParallel());
+                techniques.add(this.getServiceLeftShortCrossed());
+                techniques.add(this.getServiceLeftShortParallel());
+
+                techniques.add(this.getServiceMiddleLongCrossed());
+                techniques.add(this.getServiceMiddleLongParallel());
+                techniques.add(this.getServiceMiddleShortCrossed());
+                techniques.add(this.getServiceMiddleShortParallel());
+
+                techniques.add(this.getServiceRightLongCrossed());
+                techniques.add(this.getServiceRightLongParallel());
+                techniques.add(this.getServiceRightShortCrossed());
+                techniques.add(this.getServiceRightShortParallel());
+                break;
+            case "reception":
+                techniques.add(this.getReceptionLeftLongCrossed());
+                techniques.add(this.getReceptionLeftLongParallel());
+                techniques.add(this.getReceptionLeftShortCrossed());
+                techniques.add(this.getReceptionLeftShortParallel());
+
+                techniques.add(this.getReceptionMiddleLongCrossed());
+                techniques.add(this.getReceptionMiddleLongParallel());
+                techniques.add(this.getReceptionMiddleShortCrossed());
+                techniques.add(this.getReceptionMiddleShortParallel());
+
+                techniques.add(this.getReceptionRightLongCrossed());
+                techniques.add(this.getReceptionRightLongParallel());
+                techniques.add(this.getReceptionRightShortCrossed());
+                techniques.add(this.getReceptionRightShortParallel());
+                break;
+            case "forehand":
+                techniques.add(this.getForehandLeftLongCrossed());
+                techniques.add(this.getForehandLeftLongParallel());
+                techniques.add(this.getForehandLeftShortCrossed());
+                techniques.add(this.getForehandLeftShortParallel());
+
+                techniques.add(this.getForehandMiddleLongCrossed());
+                techniques.add(this.getForehandMiddleLongParallel());
+                techniques.add(this.getForehandMiddleShortCrossed());
+                techniques.add(this.getForehandMiddleShortParallel());
+
+                techniques.add(this.getForehandRightLongCrossed());
+                techniques.add(this.getForehandRightLongParallel());
+                techniques.add(this.getForehandRightShortCrossed());
+                techniques.add(this.getForehandRightShortParallel());
+                break;
+            case "backhand":
+                techniques.add(this.getBackhandLeftLongCrossed());
+                techniques.add(this.getBackhandLeftLongParallel());
+                techniques.add(this.getBackhandLeftShortCrossed());
+                techniques.add(this.getBackhandLeftShortParallel());
+
+                techniques.add(this.getBackhandMiddleLongCrossed());
+                techniques.add(this.getBackhandMiddleLongParallel());
+                techniques.add(this.getBackhandMiddleShortCrossed());
+                techniques.add(this.getBackhandMiddleShortParallel());
+
+                techniques.add(this.getBackhandRightLongCrossed());
+                techniques.add(this.getBackhandRightLongParallel());
+                techniques.add(this.getBackhandRightShortCrossed());
+                techniques.add(this.getBackhandRightShortParallel());
+                break;
+            case "smash":
+                techniques.add(this.getSmashLeftLongCrossed());
+                techniques.add(this.getSmashLeftLongParallel());
+                techniques.add(this.getSmashLeftShortCrossed());
+                techniques.add(this.getSmashLeftShortParallel());
+
+                techniques.add(this.getSmashMiddleLongCrossed());
+                techniques.add(this.getSmashMiddleLongParallel());
+                techniques.add(this.getSmashMiddleShortCrossed());
+                techniques.add(this.getSmashMiddleShortParallel());
+
+                techniques.add(this.getSmashRightLongCrossed());
+                techniques.add(this.getSmashRightLongParallel());
+                techniques.add(this.getSmashRightShortCrossed());
+                techniques.add(this.getSmashRightShortParallel());
+                break;
+            case "slice":
+                techniques.add(this.getSliceLeftLongCrossed());
+                techniques.add(this.getSliceLeftLongParallel());
+                techniques.add(this.getSliceLeftShortCrossed());
+                techniques.add(this.getSliceLeftShortParallel());
+
+                techniques.add(this.getSliceMiddleLongCrossed());
+                techniques.add(this.getSliceMiddleLongParallel());
+                techniques.add(this.getSliceMiddleShortCrossed());
+                techniques.add(this.getSliceMiddleShortParallel());
+
+                techniques.add(this.getSliceRightLongCrossed());
+                techniques.add(this.getSliceRightLongParallel());
+                techniques.add(this.getSliceRightShortCrossed());
+                techniques.add(this.getSliceRightShortParallel());
+                break;
+            case "block":
+                techniques.add(this.getBlockLeftLongCrossed());
+                techniques.add(this.getBlockLeftLongParallel());
+                techniques.add(this.getBlockLeftShortCrossed());
+                techniques.add(this.getBlockLeftShortParallel());
+
+                techniques.add(this.getBlockMiddleLongCrossed());
+                techniques.add(this.getBlockMiddleLongParallel());
+                techniques.add(this.getBlockMiddleShortCrossed());
+                techniques.add(this.getBlockMiddleShortParallel());
+
+                techniques.add(this.getBlockRightLongCrossed());
+                techniques.add(this.getBlockRightLongParallel());
+                techniques.add(this.getBlockRightShortCrossed());
+                techniques.add(this.getBlockRightShortParallel());
+                break;
+            case "flick":
+                techniques.add(this.getFlickLeftLongCrossed());
+                techniques.add(this.getFlickLeftLongParallel());
+                techniques.add(this.getFlickLeftShortCrossed());
+                techniques.add(this.getFlickLeftShortParallel());
+
+                techniques.add(this.getFlickMiddleLongCrossed());
+                techniques.add(this.getFlickMiddleLongParallel());
+                techniques.add(this.getFlickMiddleShortCrossed());
+                techniques.add(this.getFlickMiddleShortParallel());
+
+                techniques.add(this.getFlickRightLongCrossed());
+                techniques.add(this.getFlickRightLongParallel());
+                techniques.add(this.getFlickRightShortCrossed());
+                techniques.add(this.getFlickRightShortParallel());
+                break;
+            case "lob":
+                techniques.add(this.getLobLeftLongCrossed());
+                techniques.add(this.getLobLeftLongParallel());
+                techniques.add(this.getLobLeftShortCrossed());
+                techniques.add(this.getLobLeftShortParallel());
+
+                techniques.add(this.getLobMiddleLongCrossed());
+                techniques.add(this.getLobMiddleLongParallel());
+                techniques.add(this.getLobMiddleShortCrossed());
+                techniques.add(this.getLobMiddleShortParallel());
+
+                techniques.add(this.getLobRightLongCrossed());
+                techniques.add(this.getLobRightLongParallel());
+                techniques.add(this.getLobRightShortCrossed());
+                techniques.add(this.getLobRightShortParallel());
+                break;
+        }
+        return techniques;
     }
 }

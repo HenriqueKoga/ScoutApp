@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BackhandChartActivity"
-    tools:showIn="@layout/activity_backhand_chart"
+    tools:context=".SpecChartActivity"
+    tools:showIn="@layout/activity_spec_chart"
     android:background="@color/colorBackground">
 
     <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/backhand_chart"
+        android:id="@+id/spec_chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,7 +31,7 @@ public class ScoutActivity extends AppCompatActivity implements
     private TextView fieldBlock;
     private TextView fieldFlick;
     private TextView fieldService;
-    private TextView fieldReceiving;
+    private TextView fieldReception;
     private TextView fieldLob;
     private ToggleButton tgbutton;
     private boolean hit = false;
@@ -59,7 +58,7 @@ public class ScoutActivity extends AppCompatActivity implements
         fieldName = (TextView) this.findViewById(R.id.opponent_name);
         fieldScore = (TextView) this.findViewById(R.id.score);
         fieldService = (TextView) this.findViewById(R.id.service);
-        fieldReceiving = (TextView) this.findViewById(R.id.receiving);
+        fieldReception = (TextView) this.findViewById(R.id.reception);
         fieldForehand = (TextView) this.findViewById(R.id.forehand);
         fieldBackhand = (TextView) this.findViewById(R.id.backhand);
         fieldSmash = (TextView) this.findViewById(R.id.smash);
@@ -98,15 +97,15 @@ public class ScoutActivity extends AppCompatActivity implements
     protected void onResume() {
         super.onResume();
         Intent intent = getIntent();
-        Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
-        Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete");
+        athleteUser = (Athlete) intent.getSerializableExtra("user");
+        athleteOpponent = (Athlete) intent.getSerializableExtra("athlete");
         fieldName.setText(athleteUser.getName().toUpperCase() + " X " + athleteOpponent.getName().toUpperCase());
     }
 
     private void fillTable() {
         fieldScore.setText(gameAthlete.getTotal() + " X " + gameOpponent.getTotal());
         fieldService.setText("Service: " + gameAthlete.getService());
-        fieldReceiving.setText("Receiving: " + gameAthlete.getReceiving());
+        fieldReception.setText("Reception: " + gameAthlete.getReception());
         fieldForehand.setText("Forehand: " + gameAthlete.getForehand());
         fieldBackhand.setText("Backhand: " + gameAthlete.getBackhand());
         fieldSmash.setText("Smash: " + gameAthlete.getSmash());
@@ -126,6 +125,22 @@ public class ScoutActivity extends AppCompatActivity implements
                 setTheme(R.style.ActionSheetStyleiOS7);
                 position = "left_short";
                 break;
+            case R.id.middle_long:
+                setTheme(R.style.ActionSheetStyleiOS7);
+                position = "middle_long";
+                break;
+            case R.id.middle_short:
+                setTheme(R.style.ActionSheetStyleiOS7);
+                position = "middle_short";
+                break;
+            case R.id.right_long:
+                setTheme(R.style.ActionSheetStyleiOS7);
+                position = "right_long";
+                break;
+            case R.id.right_short:
+                setTheme(R.style.ActionSheetStyleiOS7);
+                position = "right_short";
+                break;
         }
         showActionSheet();
     }
@@ -133,7 +148,7 @@ public class ScoutActivity extends AppCompatActivity implements
     public void showActionSheet() {
         actionS = ActionSheet.createBuilder(this, getSupportFragmentManager())
                 .setCancelButtonTitle("Cancel")
-                .setOtherButtonTitles("Service", "Receiving", "Forehand",
+                .setOtherButtonTitles("Service", "Reception", "Forehand",
                                         "Backhand", "Smash", "Slice", "Block", "Flick", "Lob")
                 .setCancelableOnTouchOutside(true).setListener(this).show();
     }
@@ -153,7 +168,7 @@ public class ScoutActivity extends AppCompatActivity implements
                     action = "service";
                     break;
                 case 1:
-                    action = "receiving";
+                    action = "reception";
                     break;
                 case 2:
                     action = "forehand";
@@ -185,6 +200,7 @@ public class ScoutActivity extends AppCompatActivity implements
                         direction = "crossed";
                         break;
                     case 1:
+                        direction = "parallel";
                         break;
                 }
                 if(hit) {
@@ -200,9 +216,7 @@ public class ScoutActivity extends AppCompatActivity implements
     @Override
     public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
         if (!isCancel) {
-            if (hit) {
-                fieldScore.setText(gameAthlete.getTotal() + " X " + gameOpponent.getTotal());
-            }
+            fieldScore.setText(gameAthlete.getTotal() + " X " + gameOpponent.getTotal());
         }
     }
 
@@ -234,6 +248,7 @@ public class ScoutActivity extends AppCompatActivity implements
                 intentRegister.putExtra("user", athleteUser);
                 intentRegister.putExtra("championship", championship);
                 startActivity(intentRegister);
+                finish();
                 break;
 
             case R.id.menu_save_scout:
