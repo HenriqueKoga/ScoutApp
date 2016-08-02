@@ -6,8 +6,8 @@
         android:title="Service">
     </item>
     <item
-        android:id="@+id/menu_receive_chart"
-        android:title="Receive">
+        android:id="@+id/menu_reception_chart"
+        android:title="Reception">
     </item>
     <item
         android:id="@+id/menu_forehand_chart"

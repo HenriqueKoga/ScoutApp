@@ -38,7 +38,7 @@
             android:label="@string/title_activity_chart"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ForehandChartActivity"
+            android:name=".SpecChartActivity"
             android:label="@string/title_activity_forehand_chart"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -51,10 +51,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".BackhandChartActivity"
-            android:label="@string/title_activity_backhand_chart"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

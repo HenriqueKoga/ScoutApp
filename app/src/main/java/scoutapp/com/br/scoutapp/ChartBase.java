@@ -22,7 +22,7 @@ import android.view.MenuItem;
 public abstract class ChartBase extends AppCompatActivity {
 
     protected String[] mTechniques = new String[] {
-            "Service", "Receiving", "Forehand", "Backhand", "Smash", "Slice", "Block", "Flick", "Lob"
+            "Service", "Reception", "Forehand", "Backhand", "Smash", "Slice", "Block", "Flick", "Lob"
     };
 
     protected  String[] mTechniquesSpec = new String[]{

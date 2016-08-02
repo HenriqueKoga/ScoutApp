@@ -53,7 +53,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/receiving" />
+                android:id="@+id/reception" />
         </TableRow>
         <TableRow
             android:layout_height="wrap_content"
@@ -111,13 +111,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/table"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/table"
-            android:layout_marginTop="100dp"
-            android:clickable="true"/>
+        <!--<ImageView-->
+            <!--android:id="@+id/table"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:src="@drawable/table"-->
+            <!--android:layout_marginTop="140dp"-->
+            <!--android:clickable="true"/>-->
 
         <Button
             android:id="@+id/left_long"
@@ -126,7 +126,7 @@
             android:onClick="onClick"
             android:layout_marginTop="295dp"
             android:layout_marginLeft="45dp"
-            android:background="#0D47A1"/>
+            android:background="#0F42F0"/>
 
         <Button
             android:id="@+id/left_short"
@@ -134,8 +134,44 @@
             android:layout_height="35dp"
             android:onClick="onClick"
             android:layout_marginTop="250dp"
-            android:layout_marginLeft="60dp"
-            android:background="#0D47A1"/>
+            android:layout_marginLeft="45dp"
+            android:background="#0F42F0"/>
+
+        <Button
+            android:id="@+id/middle_long"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:onClick="onClick"
+            android:layout_marginTop="295dp"
+            android:layout_marginLeft="170dp"
+            android:background="#0F42F0"/>
+
+        <Button
+            android:id="@+id/middle_short"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:onClick="onClick"
+            android:layout_marginTop="250dp"
+            android:layout_marginLeft="170dp"
+            android:background="#0F42F0"/>
+
+        <Button
+            android:id="@+id/right_long"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:onClick="onClick"
+            android:layout_marginTop="295dp"
+            android:layout_marginLeft="295dp"
+            android:background="#0F42F0"/>
+
+        <Button
+            android:id="@+id/right_short"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:onClick="onClick"
+            android:layout_marginTop="250dp"
+            android:layout_marginLeft="295dp"
+            android:background="#0F42F0"/>
 
         <ToggleButton
             android:id="@+id/toggleButton"
