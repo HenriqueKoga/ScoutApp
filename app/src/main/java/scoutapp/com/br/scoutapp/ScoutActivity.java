@@ -1,10 +1,17 @@
 package scoutapp.com.br.scoutapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,15 +20,20 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.baoyz.actionsheet.ActionSheet;
+import java.util.ArrayList;
 
+import scoutapp.com.br.scoutapp.adapter.ItemAdapter;
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Championship;
 import scoutapp.com.br.scoutapp.model.Game;
+import scoutapp.com.br.scoutapp.model.Item;
 
-public class ScoutActivity extends AppCompatActivity implements
-        ActionSheet.ActionSheetListener{
+public class ScoutActivity extends AppCompatActivity implements ItemAdapter.ItemListener{
 
+    BottomSheetBehavior behavior;
+    private BottomSheetDialog mBottomSheetTechniques;
+    private BottomSheetDialog mBottomSheetDirection;
+    private ItemAdapter mAdapter;
     private TextView fieldName;
     private TextView fieldScore;
     private TextView fieldForehand;
@@ -44,8 +56,6 @@ public class ScoutActivity extends AppCompatActivity implements
     private Athlete athleteUser;
     private Game gameAthlete;
     private Game gameOpponent;
-    private ActionSheet directionS;
-    private ActionSheet actionS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +101,39 @@ public class ScoutActivity extends AppCompatActivity implements
                 }
             }
         });
+
+        View bottomSheet = findViewById(R.id.bottom_sheet);
+        behavior = BottomSheetBehavior.from(bottomSheet);
+        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                // React to state change
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+                // React to dragging events
+            }
+        });
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mAdapter = new ItemAdapter(techniquesList(), this);
+        recyclerView.setAdapter(mAdapter);
+    }
+
+    private void setupActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public void onItemClick(Item item) {
+        behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 
     @Override
@@ -102,129 +145,10 @@ public class ScoutActivity extends AppCompatActivity implements
         fieldName.setText(athleteUser.getName().toUpperCase() + " X " + athleteOpponent.getName().toUpperCase());
     }
 
-    private void fillTable() {
-        fieldScore.setText(gameAthlete.getTotal() + " X " + gameOpponent.getTotal());
-        fieldService.setText("Service: " + gameAthlete.getService());
-        fieldReception.setText("Reception: " + gameAthlete.getReception());
-        fieldForehand.setText("Forehand: " + gameAthlete.getForehand());
-        fieldBackhand.setText("Backhand: " + gameAthlete.getBackhand());
-        fieldSmash.setText("Smash: " + gameAthlete.getSmash());
-        fieldSlice.setText("Slice: " + gameAthlete.getSlice());
-        fieldBlock.setText("Block: " + gameAthlete.getBlock());
-        fieldFlick.setText("Flick: " + gameAthlete.getFlick());
-        fieldLob.setText("Lob: " + gameAthlete.getLob());
-    }
-
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.left_long:
-                setTheme(R.style.ActionSheetStyleiOS7);
-                position = "left_long";
-                break;
-            case R.id.left_short:
-                setTheme(R.style.ActionSheetStyleiOS7);
-                position = "left_short";
-                break;
-            case R.id.middle_long:
-                setTheme(R.style.ActionSheetStyleiOS7);
-                position = "middle_long";
-                break;
-            case R.id.middle_short:
-                setTheme(R.style.ActionSheetStyleiOS7);
-                position = "middle_short";
-                break;
-            case R.id.right_long:
-                setTheme(R.style.ActionSheetStyleiOS7);
-                position = "right_long";
-                break;
-            case R.id.right_short:
-                setTheme(R.style.ActionSheetStyleiOS7);
-                position = "right_short";
-                break;
-        }
-        showActionSheet();
-    }
-
-    public void showActionSheet() {
-        actionS = ActionSheet.createBuilder(this, getSupportFragmentManager())
-                .setCancelButtonTitle("Cancel")
-                .setOtherButtonTitles("Service", "Reception", "Forehand",
-                                        "Backhand", "Smash", "Slice", "Block", "Flick", "Lob")
-                .setCancelableOnTouchOutside(true).setListener(this).show();
-    }
-
-    public void showDirectionSheet() {
-        directionS = ActionSheet.createBuilder(this, getSupportFragmentManager())
-                .setCancelButtonTitle("Cancel")
-                .setOtherButtonTitles("crossed", "Parallel")
-                .setCancelableOnTouchOutside(true).setListener(this).show();
-    }
-
     @Override
-    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
-        if(actionSheet == actionS) {
-            switch (index) {
-                case 0:
-                    action = "service";
-                    break;
-                case 1:
-                    action = "reception";
-                    break;
-                case 2:
-                    action = "forehand";
-                    break;
-                case 3:
-                    action = "backhand";
-                    break;
-                case 4:
-                    action = "smash";
-                    break;
-                case 5:
-                    action = "slice";
-                    break;
-                case 6:
-                    action = "block";
-                    break;
-                case 7:
-                    action = "flick";
-                    break;
-                case 8:
-                    action = "lob";
-                    break;
-            }
-            showDirectionSheet();
-        } else {
-            if (actionSheet == directionS) {
-                switch (index) {
-                    case 0:
-                        direction = "crossed";
-                        break;
-                    case 1:
-                        direction = "parallel";
-                        break;
-                }
-                if(hit) {
-                    gameAthlete.hitPoint(position, action, direction);
-                } else {
-                    gameOpponent.hitPoint(position, action, direction);
-                }
-                fillTable();
-            }
-        }
-    }
-
-    @Override
-    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
-        if (!isCancel) {
-            fieldScore.setText(gameAthlete.getTotal() + " X " + gameOpponent.getTotal());
-        }
-    }
-
-    private void setupActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+    protected void onDestroy() {
+        super.onDestroy();
+        mAdapter.setListener(null);
     }
 
     @Override
@@ -262,5 +186,169 @@ public class ScoutActivity extends AppCompatActivity implements
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.left_long:
+                position = "left_long";
+                break;
+            case R.id.left_short:
+                position = "left_short";
+                break;
+            case R.id.middle_long:
+                position = "middle_long";
+                break;
+            case R.id.middle_short:
+                position = "middle_short";
+                break;
+            case R.id.right_long:
+                position = "right_long";
+                break;
+            case R.id.right_short:
+                position = "right_short";
+                break;
+        }
+        showBottomSheetTechniques();
+    }
+
+    private void showBottomSheetTechniques() {
+        if (behavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+
+        mBottomSheetTechniques = new BottomSheetDialog(this);
+        View view = getLayoutInflater().inflate(R.layout.sheet, null);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new ItemAdapter(techniquesList(), new ItemAdapter.ItemListener() {
+            @Override
+            public void onItemClick(Item item) {
+                if (mBottomSheetTechniques != null) {
+                    switch (item.getTitle()) {
+                        case "Service":
+                            action = "service";
+                            break;
+                        case "Reception":
+                            action = "reception";
+                            break;
+                        case "Forehand":
+                            action = "forehand";
+                            break;
+                        case "Backhand":
+                            action = "backhand";
+                            break;
+                        case "Smash":
+                            action = "smash";
+                            break;
+                        case "Slice":
+                            action = "slice";
+                            break;
+                        case "Block":
+                            action = "block";
+                            break;
+                        case "Flick":
+                            action = "flick";
+                            break;
+                        case "Lob":
+                            action = "lob";
+                            break;
+                    }
+                    mBottomSheetTechniques.dismiss();
+                    showBottomSheetDirections();
+                }
+            }
+        }));
+
+        mBottomSheetTechniques.setContentView(view);
+        mBottomSheetTechniques.show();
+        mBottomSheetTechniques.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                mBottomSheetTechniques = null;
+            }
+        });
+    }
+
+    private void showBottomSheetDirections() {
+        if (behavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+
+        mBottomSheetDirection = new BottomSheetDialog(this);
+        View view = getLayoutInflater().inflate(R.layout.sheet, null);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new ItemAdapter(directionsList(), new ItemAdapter.ItemListener() {
+            @Override
+            public void onItemClick(Item item) {
+                if (mBottomSheetDirection != null) {
+                    switch (item.getTitle()) {
+                        case "Crossed":
+                            direction = "crossed";
+                            Log.d("Direction", "crossed");
+                            break;
+                        case "Parallel":
+                            direction = "parallel";
+                            break;
+                    }
+                    mBottomSheetDirection.dismiss();
+                }
+            }
+        }));
+
+        mBottomSheetDirection.setContentView(view);
+        mBottomSheetDirection.show();
+        mBottomSheetDirection.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                if(hit) {
+                    gameAthlete.hitPoint(position, action, direction);
+                } else {
+                    gameOpponent.hitPoint(position, action, direction);
+                }
+                fillTable();
+                fieldScore.setText(gameAthlete.getTotal() + " X " + gameOpponent.getTotal());
+                mBottomSheetDirection = null;
+            }
+        });
+    }
+
+    public ArrayList<Item> techniquesList() {
+        ArrayList<Item> items = new ArrayList<>();
+        items.add(new Item("Service"));
+        items.add(new Item("Reception"));
+        items.add(new Item("Forehand"));
+        items.add(new Item("Backhand"));
+        items.add(new Item("Smash"));
+        items.add(new Item("Slice"));
+        items.add(new Item("Block"));
+        items.add(new Item("Flick"));
+        items.add(new Item("Lob"));
+
+        return items;
+    }
+
+    public ArrayList<Item> directionsList() {
+        ArrayList<Item> items = new ArrayList<>();
+        items.add(new Item("Crossed"));
+        items.add(new Item("Parallel"));
+
+        return items;
+    }
+
+    private void fillTable() {
+        fieldScore.setText(gameAthlete.getTotal() + " X " + gameOpponent.getTotal());
+        fieldService.setText("Service: " + gameAthlete.getService());
+        fieldReception.setText("Reception: " + gameAthlete.getReception());
+        fieldForehand.setText("Forehand: " + gameAthlete.getForehand());
+        fieldBackhand.setText("Backhand: " + gameAthlete.getBackhand());
+        fieldSmash.setText("Smash: " + gameAthlete.getSmash());
+        fieldSlice.setText("Slice: " + gameAthlete.getSlice());
+        fieldBlock.setText("Block: " + gameAthlete.getBlock());
+        fieldFlick.setText("Flick: " + gameAthlete.getFlick());
+        fieldLob.setText("Lob: " + gameAthlete.getLob());
     }
 }
