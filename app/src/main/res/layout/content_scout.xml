@@ -179,7 +179,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textOn="Hit"
-            android:textOff="Error"
+            android:textOff="Miss"
             android:text="ToggleButton"
             android:layout_marginTop="50dp"
             android:layout_alignParentTop="true"
