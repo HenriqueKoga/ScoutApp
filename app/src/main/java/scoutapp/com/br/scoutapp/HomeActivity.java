@@ -84,6 +84,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentRegister = new Intent(HomeActivity.this, RegisterActivity.class);
+                intentRegister.putExtra("user", athleteUser);
                 startActivity(intentRegister);
             }
         });
