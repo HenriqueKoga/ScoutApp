@@ -83,6 +83,8 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
         gameAthlete = (Game) intent.getSerializableExtra("game_athlete");
         gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
 
+        fieldName.setText(athleteUser.getName().toUpperCase() + " X " + athleteOpponent.getName().toUpperCase());
+
         if(gameAthlete != null){
             fillTable();
         } else{
@@ -90,7 +92,6 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
             gameOpponent = new Game();
             fillTable();
         }
-
         tgbutton = (ToggleButton) findViewById(R.id.toggleButton);
         tgbutton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -139,10 +140,10 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
     @Override
     protected void onResume() {
         super.onResume();
-        Intent intent = getIntent();
-        athleteUser = (Athlete) intent.getSerializableExtra("user");
-        athleteOpponent = (Athlete) intent.getSerializableExtra("athlete");
-        fieldName.setText(athleteUser.getName().toUpperCase() + " X " + athleteOpponent.getName().toUpperCase());
+//        Intent intent = getIntent();
+//        athleteUser = (Athlete) intent.getSerializableExtra("user");
+//        athleteOpponent = (Athlete) intent.getSerializableExtra("athlete");
+//        fieldName.setText(athleteUser.getName().toUpperCase() + " X " + athleteOpponent.getName().toUpperCase());
     }
 
     @Override
