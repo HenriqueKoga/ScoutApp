@@ -71,9 +71,9 @@ public class HomeActivity extends AppCompatActivity {
         athletesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Athlete athlete = (Athlete) athletesList.getItemAtPosition(position);
+                Athlete athleteOpponent = (Athlete) athletesList.getItemAtPosition(position);
                 Intent intentRegister = new Intent(HomeActivity.this, RegisterActivity.class);
-                intentRegister.putExtra("athlete", athlete);
+                intentRegister.putExtra("athlete_opponent", athleteOpponent);
                 intentRegister.putExtra("user", athleteUser);
                 startActivity(intentRegister);
             }
@@ -107,19 +107,19 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, final ContextMenu.ContextMenuInfo menuInfo) {
-        MenuItem deletar = menu.add("Deletar");
+        MenuItem delete = menu.add("Delete");
 
-        deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        delete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-                Athlete atleta = (Athlete) athletesList.getItemAtPosition(info.position);
+                Athlete athleteOpponent = (Athlete) athletesList.getItemAtPosition(info.position);
 
                 AthleteController athleteController = new AthleteController(HomeActivity.this);
-                athleteController.removeAthlete(atleta);
+                athleteController.removeAthlete(athleteOpponent);
                 showList();
 
-                Toast.makeText(HomeActivity.this, "Deletado o atleta " + atleta.getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "Athlete deleted" + athleteOpponent.getName(), Toast.LENGTH_SHORT).show();
                 return false;
             }
         });

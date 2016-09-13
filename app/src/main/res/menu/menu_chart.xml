@@ -37,4 +37,8 @@
         android:id="@+id/menu_lob_chart"
         android:title="Lob">
     </item>
+    <item
+        android:id="@+id/menu_misses_chart"
+        android:title="Misses">
+    </item>
 </menu>

@@ -1196,19 +1196,15 @@ public class Game implements Serializable{
                 if (position == "left_long"){
                     if (direction == "crossed"){
                         this.setForehandLeftLongCrossed(this.getForehandLeftLongCrossed()+1);
-                        Log.d("Left Long Crossed", ""+ this.getForehandLeftLongCrossed());
                     } else{
                         this.setForehandLeftLongParallel(this.getForehandLeftLongParallel()+1);
-                        Log.d("Left Long Parallel", ""+ this.getForehandLeftLongParallel());
                     }
                 }
                 if (position == "left_short"){
                     if (direction == "crossed"){
                         this.setForehandLeftShortCrossed(this.getForehandLeftShortCrossed()+1);
-                        Log.d("Left Short Crossed", ""+ this.getForehandLeftShortCrossed());
                     } else{
                         this.setForehandLeftShortParallel(this.getForehandLeftShortParallel()+1);
-                        Log.d("Left Short Parallel", ""+ this.getForehandLeftShortParallel());
                     }
                 }
                 if (position == "middle_short"){
@@ -1518,6 +1514,425 @@ public class Game implements Serializable{
                 break;
         }
         this.setTotal(this.getTotal()+1);
+    }
+
+    public void undoPoint(String position, String action, String direction){
+        switch (action){
+            case "service":
+                this.setService(this.getService()-1);
+                if (position == "left_long"){
+                    if (direction == "crossed"){
+                        this.setServiceLeftLongCrossed(this.getServiceLeftLongCrossed()-1);
+                    } else{
+                        this.setServiceLeftLongParallel(this.getServiceLeftLongParallel()-1);
+                    }
+                }
+                if (position == "left_short"){
+                    if (direction == "crossed"){
+                        this.setServiceLeftShortCrossed(this.getServiceLeftShortCrossed()-1);
+                    } else{
+                        this.setServiceLeftShortParallel(this.getServiceLeftShortParallel()-1);
+                    }
+                }
+                if (position == "middle_short"){
+                    if (direction == "crossed"){
+                        this.setServiceMiddleShortCrossed(this.getServiceMiddleShortCrossed()-1);
+                    } else{
+                        this.setServiceMiddleShortParallel(this.getServiceMiddleShortParallel()-1);
+                    }
+                }
+                if (position == "middle_long"){
+                    if (direction == "crossed"){
+                        this.setServiceMiddleLongCrossed(this.getServiceMiddleLongCrossed()-1);
+                    } else{
+                        this.setServiceMiddleLongParallel(this.getServiceMiddleLongParallel()-1);
+                    }
+                }
+                if (position == "right_short"){
+                    if (direction == "crossed"){
+                        this.setServiceRightShortCrossed(this.getServiceRightShortCrossed()-1);
+                    } else{
+                        this.setServiceRightShortParallel(this.getServiceRightShortParallel()-1);
+                    }
+                }
+                if (position == "right_long"){
+                    if (direction == "crossed"){
+                        this.setServiceRightLongCrossed(this.getServiceRightLongCrossed()-1);
+                    } else{
+                        this.setServiceRightLongParallel(this.getServiceRightLongParallel()-1);
+                    }
+                }
+                break;
+
+            case "reception":
+                this.setReception(this.getReception()-1);
+                if (position == "left_long"){
+                    if (direction == "crossed"){
+                        this.setReceptionLeftLongCrossed(this.getReceptionLeftLongCrossed()-1);
+                    } else{
+                        this.setReceptionLeftLongParallel(this.getReceptionLeftLongParallel()-1);
+                    }
+                }
+                if (position == "left_short"){
+                    if (direction == "crossed"){
+                        this.setReceptionLeftShortCrossed(this.getReceptionLeftShortCrossed()-1);
+                    } else{
+                        this.setReceptionLeftShortParallel(this.getReceptionLeftShortParallel()-1);
+                    }
+                }
+                if (position == "middle_short"){
+                    if (direction == "crossed"){
+                        this.setReceptionMiddleShortCrossed(this.getReceptionMiddleShortCrossed()-1);
+                    } else{
+                        this.setReceptionMiddleShortParallel(this.getReceptionMiddleShortParallel()-1);
+                    }
+                }
+                if (position == "middle_long"){
+                    if (direction == "crossed"){
+                        this.setReceptionMiddleLongCrossed(this.getReceptionMiddleLongCrossed()-1);
+                    } else{
+                        this.setReceptionMiddleLongParallel(this.getReceptionMiddleLongParallel()-1);
+                    }
+                }
+                if (position == "right_short"){
+                    if (direction == "crossed"){
+                        this.setReceptionRightShortCrossed(this.getReceptionRightShortCrossed()-1);
+                    } else{
+                        this.setReceptionRightShortParallel(this.getReceptionRightShortParallel()-1);
+                    }
+                }
+                if (position == "right_long"){
+                    if (direction == "crossed"){
+                        this.setReceptionRightLongCrossed(this.getReceptionRightLongCrossed()-1);
+                    } else{
+                        this.setReceptionRightLongParallel(this.getReceptionRightLongParallel()-1);
+                    }
+                }
+                break;
+
+            case "forehand":
+                this.setForehand(this.getForehand()-1);
+                if (position == "left_long"){
+                    if (direction == "crossed"){
+                        this.setForehandLeftLongCrossed(this.getForehandLeftLongCrossed()-1);
+                    } else{
+                        this.setForehandLeftLongParallel(this.getForehandLeftLongParallel()-1);
+                    }
+                }
+                if (position == "left_short"){
+                    if (direction == "crossed"){
+                        this.setForehandLeftShortCrossed(this.getForehandLeftShortCrossed()-1);
+                    } else{
+                        this.setForehandLeftShortParallel(this.getForehandLeftShortParallel()-1);
+                    }
+                }
+                if (position == "middle_short"){
+                    if (direction == "crossed"){
+                        this.setForehandMiddleShortCrossed(this.getForehandMiddleShortCrossed()-1);
+                    } else{
+                        this.setForehandMiddleShortParallel(this.getForehandMiddleShortParallel()-1);
+                    }
+                }
+                if (position == "middle_long"){
+                    if (direction == "crossed"){
+                        this.setForehandMiddleLongCrossed(this.getForehandMiddleLongCrossed()-1);
+                    } else{
+                        this.setForehandMiddleLongParallel(this.getForehandMiddleLongParallel()-1);
+                    }
+                }
+                if (position == "right_short"){
+                    if (direction == "crossed"){
+                        this.setForehandRightShortCrossed(this.getForehandRightShortCrossed()-1);
+                    } else{
+                        this.setForehandRightShortParallel(this.getForehandRightShortParallel()-1);
+                    }
+                }
+                if (position == "right_long"){
+                    if (direction == "crossed"){
+                        this.setForehandRightLongCrossed(this.getForehandRightLongCrossed()-1);
+                    } else{
+                        this.setForehandRightLongParallel(this.getForehandRightLongParallel()-1);
+                    }
+                }
+                break;
+
+            case "backhand":
+                this.setBackhand(this.getBackhand()-1);
+                if (position == "left_long"){
+                    if (direction == "crossed"){
+                        this.setBackhandLeftLongCrossed(this.getBackhandLeftLongCrossed()-1);
+                    } else{
+                        this.setBackhandLeftLongParallel(this.getBackhandLeftLongParallel()-1);
+                    }
+                }
+                if (position == "left_short"){
+                    if (direction == "crossed"){
+                        this.setBackhandLeftShortCrossed(this.getBackhandLeftShortCrossed()-1);
+                    } else{
+                        this.setBackhandLeftShortParallel(this.getBackhandLeftShortParallel()-1);
+                    }
+                }
+                if (position == "middle_short"){
+                    if (direction == "crossed"){
+                        this.setBackhandMiddleShortCrossed(this.getBackhandMiddleShortCrossed()-1);
+                    } else{
+                        this.setBackhandMiddleShortParallel(this.getBackhandMiddleShortParallel()-1);
+                    }
+                }
+                if (position == "middle_long"){
+                    if (direction == "crossed"){
+                        this.setBackhandMiddleLongCrossed(this.getBackhandMiddleLongCrossed()-1);
+                    } else{
+                        this.setBackhandMiddleLongParallel(this.getBackhandMiddleLongParallel()-1);
+                    }
+                }
+                if (position == "right_short"){
+                    if (direction == "crossed"){
+                        this.setBackhandRightShortCrossed(this.getBackhandRightShortCrossed()-1);
+                    } else{
+                        this.setBackhandRightShortParallel(this.getBackhandRightShortParallel()-1);
+                    }
+                }
+                if (position == "right_long"){
+                    if (direction == "crossed"){
+                        this.setBackhandRightLongCrossed(this.getBackhandRightLongCrossed()-1);
+                    } else{
+                        this.setBackhandRightLongParallel(this.getBackhandRightLongParallel()-1);
+                    }
+                }
+                break;
+
+            case "smash":
+                this.setSmash(this.getSmash()-1);
+                if (position == "left_long"){
+                    if (direction == "crossed"){
+                        this.setSmashLeftLongCrossed(this.getSmashLeftLongCrossed()-1);
+                    } else{
+                        this.setSmashLeftLongParallel(this.getSmashLeftLongParallel()-1);
+                    }
+                }
+                if (position == "left_short"){
+                    if (direction == "crossed"){
+                        this.setSmashLeftShortCrossed(this.getSmashLeftShortCrossed()-1);
+                    } else{
+                        this.setSmashLeftShortParallel(this.getSmashLeftShortParallel()-1);
+                    }
+                }
+                if (position == "middle_short"){
+                    if (direction == "crossed"){
+                        this.setSmashMiddleShortCrossed(this.getSmashMiddleShortCrossed()-1);
+                    } else{
+                        this.setSmashMiddleShortParallel(this.getSmashMiddleShortParallel()-1);
+                    }
+                }
+                if (position == "middle_long"){
+                    if (direction == "crossed"){
+                        this.setSmashMiddleLongCrossed(this.getSmashMiddleLongCrossed()-1);
+                    } else{
+                        this.setSmashMiddleLongParallel(this.getSmashMiddleLongParallel()-1);
+                    }
+                }
+                if (position == "right_short"){
+                    if (direction == "crossed"){
+                        this.setSmashRightShortCrossed(this.getSmashRightShortCrossed()-1);
+                    } else{
+                        this.setSmashRightShortParallel(this.getSmashRightShortParallel()-1);
+                    }
+                }
+                if (position == "right_long"){
+                    if (direction == "crossed"){
+                        this.setSmashRightLongCrossed(this.getSmashRightLongCrossed()-1);
+                    } else{
+                        this.setSmashRightLongParallel(this.getSmashRightLongParallel()-1);
+                    }
+                }
+                break;
+
+            case "slice":
+                this.setSlice(this.getSlice()-1);
+                if (position == "left_long"){
+                    if (direction == "crossed"){
+                        this.setSliceLeftLongCrossed(this.getSliceLeftLongCrossed()-1);
+                    } else{
+                        this.setSliceLeftLongParallel(this.getSliceLeftLongParallel()-1);
+                    }
+                }
+                if (position == "left_short"){
+                    if (direction == "crossed"){
+                        this.setSliceLeftShortCrossed(this.getSliceLeftShortCrossed()-1);
+                    } else{
+                        this.setSliceLeftShortParallel(this.getSliceLeftShortParallel()-1);
+                    }
+                }
+                if (position == "middle_short"){
+                    if (direction == "crossed"){
+                        this.setSliceMiddleShortCrossed(this.getSliceMiddleShortCrossed()-1);
+                    } else{
+                        this.setSliceMiddleShortParallel(this.getSliceMiddleShortParallel()-1);
+                    }
+                }
+                if (position == "middle_long"){
+                    if (direction == "crossed"){
+                        this.setSliceMiddleLongCrossed(this.getSliceMiddleLongCrossed()-1);
+                    } else{
+                        this.setSliceMiddleLongParallel(this.getSliceMiddleLongParallel()-1);
+                    }
+                }
+                if (position == "right_short"){
+                    if (direction == "crossed"){
+                        this.setSliceRightShortCrossed(this.getSliceRightShortCrossed()-1);
+                    } else{
+                        this.setSliceRightShortParallel(this.getSliceRightShortParallel()-1);
+                    }
+                }
+                if (position == "right_long"){
+                    if (direction == "crossed"){
+                        this.setSliceRightLongCrossed(this.getSliceRightLongCrossed()-1);
+                    } else{
+                        this.setSliceRightLongParallel(this.getSliceRightLongParallel()-1);
+                    }
+                }
+                break;
+
+            case "block":
+                this.setBlock(this.getBlock()-1);
+                if (position == "left_long"){
+                    if (direction == "crossed"){
+                        this.setBlockLeftLongCrossed(this.getBlockLeftLongCrossed()-1);
+                    } else{
+                        this.setBlockLeftLongParallel(this.getBlockLeftLongParallel()-1);
+                    }
+                }
+                if (position == "left_short"){
+                    if (direction == "crossed"){
+                        this.setBlockLeftShortCrossed(this.getBlockLeftShortCrossed()-1);
+                    } else{
+                        this.setBlockLeftShortParallel(this.getBlockLeftShortParallel()-1);
+                    }
+                }
+                if (position == "middle_short"){
+                    if (direction == "crossed"){
+                        this.setBlockMiddleShortCrossed(this.getBlockMiddleShortCrossed()-1);
+                    } else{
+                        this.setBlockMiddleShortParallel(this.getBlockMiddleShortParallel()-1);
+                    }
+                }
+                if (position == "middle_long"){
+                    if (direction == "crossed"){
+                        this.setBlockMiddleLongCrossed(this.getBlockMiddleLongCrossed()-1);
+                    } else{
+                        this.setBlockMiddleLongParallel(this.getBlockMiddleLongParallel()-1);
+                    }
+                }
+                if (position == "right_short"){
+                    if (direction == "crossed"){
+                        this.setBlockRightShortCrossed(this.getBlockRightShortCrossed()-1);
+                    } else{
+                        this.setBlockRightShortParallel(this.getBlockRightShortParallel()-1);
+                    }
+                }
+                if (position == "right_long"){
+                    if (direction == "crossed"){
+                        this.setBlockRightLongCrossed(this.getBlockRightLongCrossed()-1);
+                    } else{
+                        this.setBlockRightLongParallel(this.getBlockRightLongParallel()-1);
+                    }
+                }
+                break;
+
+            case "flick":
+                this.setFlick(this.getFlick()-1);
+                if (position == "left_long"){
+                    if (direction == "crossed"){
+                        this.setFlickLeftLongCrossed(this.getFlickLeftLongCrossed()-1);
+                    } else{
+                        this.setFlickLeftLongParallel(this.getFlickLeftLongParallel()-1);
+                    }
+                }
+                if (position == "left_short"){
+                    if (direction == "crossed"){
+                        this.setFlickLeftShortCrossed(this.getFlickLeftShortCrossed()-1);
+                    } else{
+                        this.setFlickLeftShortParallel(this.getFlickLeftShortParallel()-1);
+                    }
+                }
+                if (position == "middle_short"){
+                    if (direction == "crossed"){
+                        this.setFlickMiddleShortCrossed(this.getFlickMiddleShortCrossed()-1);
+                    } else{
+                        this.setFlickMiddleShortParallel(this.getFlickMiddleShortParallel()-1);
+                    }
+                }
+                if (position == "middle_long"){
+                    if (direction == "crossed"){
+                        this.setFlickMiddleLongCrossed(this.getFlickMiddleLongCrossed()-1);
+                    } else{
+                        this.setFlickMiddleLongParallel(this.getFlickMiddleLongParallel()-1);
+                    }
+                }
+                if (position == "right_short"){
+                    if (direction == "crossed"){
+                        this.setFlickRightShortCrossed(this.getFlickRightShortCrossed()-1);
+                    } else{
+                        this.setFlickRightShortParallel(this.getFlickRightShortParallel()-1);
+                    }
+                }
+                if (position == "right_long"){
+                    if (direction == "crossed"){
+                        this.setFlickRightLongCrossed(this.getFlickRightLongCrossed()-1);
+                    } else{
+                        this.setFlickRightLongParallel(this.getFlickRightLongParallel()-1);
+                    }
+                }
+                break;
+
+            case "lob":
+                this.setLob(this.getLob()-1);
+                if (position == "left_long"){
+                    if (direction == "crossed"){
+                        this.setLobLeftLongCrossed(this.getLobLeftLongCrossed()-1);
+                    } else{
+                        this.setLobLeftLongParallel(this.getLobLeftLongParallel()-1);
+                    }
+                }
+                if (position == "left_short"){
+                    if (direction == "crossed"){
+                        this.setLobLeftShortCrossed(this.getLobLeftShortCrossed()-1);
+                    } else{
+                        this.setLobLeftShortParallel(this.getLobLeftShortParallel()-1);
+                    }
+                }
+                if (position == "middle_short"){
+                    if (direction == "crossed"){
+                        this.setLobMiddleShortCrossed(this.getLobMiddleShortCrossed()-1);
+                    } else{
+                        this.setLobMiddleShortParallel(this.getLobMiddleShortParallel()-1);
+                    }
+                }
+                if (position == "middle_long"){
+                    if (direction == "crossed"){
+                        this.setLobMiddleLongCrossed(this.getLobMiddleLongCrossed()-1);
+                    } else{
+                        this.setLobMiddleLongParallel(this.getLobMiddleLongParallel()-1);
+                    }
+                }
+                if (position == "right_short"){
+                    if (direction == "crossed"){
+                        this.setLobRightShortCrossed(this.getLobRightShortCrossed()-1);
+                    } else{
+                        this.setLobRightShortParallel(this.getLobRightShortParallel()-1);
+                    }
+                }
+                if (position == "right_long"){
+                    if (direction == "crossed"){
+                        this.setLobRightLongCrossed(this.getLobRightLongCrossed()-1);
+                    } else{
+                        this.setLobRightLongParallel(this.getLobRightLongParallel()-1);
+                    }
+                }
+                break;
+        }
+        this.setTotal(this.getTotal()-1);
     }
 
     public ArrayList<Integer> getActionList(String action){
