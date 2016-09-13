@@ -31,9 +31,9 @@ public class RegisterActivity extends AppCompatActivity {
         helper = new RegisterHelper(this);
 
         Intent intent = getIntent();
-        Athlete athlete = (Athlete) intent.getSerializableExtra("athlete");
-        if(athlete != null){
-            helper.fillRegister(athlete);
+        Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
+        if(athleteOpponent != null){
+            helper.fillRegister(athleteOpponent);
         }
     }
 
@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                 athleteController.insertOrReplaceAthlete(athlete);
 
                 Intent intentScout = new Intent(RegisterActivity.this, ChampRegisterActivity.class);
-                intentScout.putExtra("athlete", athlete);
+                intentScout.putExtra("athlete_opponent", athlete);
                 intentScout.putExtra("championship", championship);
                 intentScout.putExtra("user", athleteUser);
                 startActivity(intentScout);
@@ -76,11 +76,11 @@ public class RegisterActivity extends AppCompatActivity {
                 athleteController.insertOrReplaceAthlete(athlete);
 
                 Intent intentHome = new Intent(RegisterActivity.this, HomeActivity.class);
-                intentHome.putExtra("athlete", athlete);
+                intentHome.putExtra("athlete_opponent", athlete);
                 intentHome.putExtra("championship", championship);
                 intentHome.putExtra("user", athleteUser);
                 startActivity(intentHome);
-                Toast.makeText(RegisterActivity.this, "Atleta " + athlete.getName() + " salvo!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "Athlete " + athlete.getName() + " saved!", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
         }

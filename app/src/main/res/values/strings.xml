@@ -40,4 +40,5 @@
     <string name="title_activity_chart">Chart</string>
     <string name="title_activity_forehand_chart"> Details</string>
     <string name="title_activity_athlete_register">User Register</string>
+    <string name="title_activity_miss_chart">MissChartActivity</string>
 </resources>

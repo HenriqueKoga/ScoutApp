@@ -18,9 +18,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import scoutapp.com.br.scoutapp.adapter.ItemAdapter;
 import scoutapp.com.br.scoutapp.model.Athlete;
@@ -54,8 +58,11 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
 
     private Athlete athleteOpponent;
     private Athlete athleteUser;
-    private Game gameAthlete;
+    private Game gameUser;
     private Game gameOpponent;
+    private ArrayList<String> points;
+    private Map<Integer, ArrayList> detailsPoint;
+    private ArrayList<String> detailsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,18 +84,21 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
         fieldFlick = (TextView) this.findViewById(R.id.flick);
         fieldLob = (TextView) this.findViewById(R.id.lob);
 
+        points = new ArrayList<>();
+        detailsPoint = new HashMap();
+
         Intent intent = getIntent();
         athleteUser = (Athlete) intent.getSerializableExtra("user");
-        athleteOpponent = (Athlete) intent.getSerializableExtra("athlete");
-        gameAthlete = (Game) intent.getSerializableExtra("game_athlete");
+        athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
+        gameUser = (Game) intent.getSerializableExtra("game_user");
         gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
 
         fieldName.setText(athleteUser.getName().toUpperCase() + " X " + athleteOpponent.getName().toUpperCase());
 
-        if(gameAthlete != null){
+        if(gameUser != null){
             fillTable();
         } else{
-            gameAthlete = new Game();
+            gameUser = new Game();
             gameOpponent = new Game();
             fillTable();
         }
@@ -162,14 +172,13 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = getIntent();
-        Athlete athlete = (Athlete) intent.getSerializableExtra("athlete");
+        Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
         Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
         Championship championship = (Championship) intent.getSerializableExtra("championship");
         switch (item.getItemId()) {
             case android.R.id.home:
-
                 Intent intentRegister = new Intent(ScoutActivity.this, ChampRegisterActivity.class);
-                intentRegister.putExtra("athlete", athlete);
+                intentRegister.putExtra("athlete_opponent", athleteOpponent);
                 intentRegister.putExtra("user", athleteUser);
                 intentRegister.putExtra("championship", championship);
                 startActivity(intentRegister);
@@ -178,9 +187,9 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
 
             case R.id.menu_save_scout:
                 Intent intentChart = new Intent(ScoutActivity.this, ChartActivity.class);
-                intentChart.putExtra("game_athlete", gameAthlete);
+                intentChart.putExtra("game_user", gameUser);
                 intentChart.putExtra("game_opponent", gameOpponent);
-                intentChart.putExtra("athlete", athlete);
+                intentChart.putExtra("athlete_opponent", athleteOpponent);
                 intentChart.putExtra("user", athleteUser);
                 intentChart.putExtra("championship", championship);
                 startActivity(intentChart);
@@ -193,24 +202,32 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
         switch (v.getId()) {
             case R.id.left_long:
                 position = "left_long";
+                showBottomSheetTechniques();
                 break;
             case R.id.left_short:
                 position = "left_short";
+                showBottomSheetTechniques();
                 break;
             case R.id.middle_long:
                 position = "middle_long";
+                showBottomSheetTechniques();
                 break;
             case R.id.middle_short:
                 position = "middle_short";
+                showBottomSheetTechniques();
                 break;
             case R.id.right_long:
                 position = "right_long";
+                showBottomSheetTechniques();
                 break;
             case R.id.right_short:
                 position = "right_short";
+                showBottomSheetTechniques();
+                break;
+            case R.id.undo:
+                undo();
                 break;
         }
-        showBottomSheetTechniques();
     }
 
     private void showBottomSheetTechniques() {
@@ -306,15 +323,39 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
             @Override
             public void onDismiss(DialogInterface dialog) {
                 if(hit) {
-                    gameAthlete.hitPoint(position, action, direction);
+                    gameUser.hitPoint(position, action, direction);
+                    points.add("hit");
                 } else {
                     gameOpponent.hitPoint(position, action, direction);
+                    points.add("miss");
                 }
+                detailsList = new ArrayList<>();
+                detailsList.add(position);
+                detailsList.add(action);
+                detailsList.add(direction);
+                detailsPoint.put(points.size()-1, detailsList);
+
                 fillTable();
-                fieldScore.setText(gameAthlete.getTotal() + " X " + gameOpponent.getTotal());
+                fieldScore.setText(gameUser.getTotal() + " X " + gameOpponent.getTotal());
                 mBottomSheetDirection = null;
             }
         });
+    }
+
+    public void undo(){
+        ArrayList list = detailsPoint.get(points.size()-1);
+        if (!points.isEmpty()) {
+            if (points.get(points.size() - 1) == "hit") {
+                gameUser.undoPoint(list.get(0).toString(), list.get(1).toString(), list.get(2).toString());
+            } else {
+                gameOpponent.undoPoint(list.get(0).toString(), list.get(1).toString(), list.get(2).toString());
+            }
+            detailsPoint.remove(detailsPoint.get(points.size() - 1));
+            points.remove(points.size() - 1);
+            fillTable();
+        } else {
+            Toast.makeText(ScoutActivity.this, "It is not possible to undo the point", Toast.LENGTH_LONG).show();
+        }
     }
 
     public ArrayList<Item> techniquesList() {
@@ -341,15 +382,15 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
     }
 
     private void fillTable() {
-        fieldScore.setText(gameAthlete.getTotal() + " X " + gameOpponent.getTotal());
-        fieldService.setText("Service: " + gameAthlete.getService());
-        fieldReception.setText("Reception: " + gameAthlete.getReception());
-        fieldForehand.setText("Forehand: " + gameAthlete.getForehand());
-        fieldBackhand.setText("Backhand: " + gameAthlete.getBackhand());
-        fieldSmash.setText("Smash: " + gameAthlete.getSmash());
-        fieldSlice.setText("Slice: " + gameAthlete.getSlice());
-        fieldBlock.setText("Block: " + gameAthlete.getBlock());
-        fieldFlick.setText("Flick: " + gameAthlete.getFlick());
-        fieldLob.setText("Lob: " + gameAthlete.getLob());
+        fieldScore.setText(gameUser.getTotal() + " X " + gameOpponent.getTotal());
+        fieldService.setText("Service: " + gameUser.getService());
+        fieldReception.setText("Reception: " + gameUser.getReception());
+        fieldForehand.setText("Forehand: " + gameUser.getForehand());
+        fieldBackhand.setText("Backhand: " + gameUser.getBackhand());
+        fieldSmash.setText("Smash: " + gameUser.getSmash());
+        fieldSlice.setText("Slice: " + gameUser.getSlice());
+        fieldBlock.setText("Block: " + gameUser.getBlock());
+        fieldFlick.setText("Flick: " + gameUser.getFlick());
+        fieldLob.setText("Lob: " + gameUser.getLob());
     }
 }

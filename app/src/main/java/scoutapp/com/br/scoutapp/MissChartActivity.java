@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -13,6 +16,7 @@ import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.SeekBar;
 
@@ -32,7 +36,7 @@ import java.util.ArrayList;
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Game;
 
-public class SpecChartActivity extends ChartBase implements SeekBar.OnSeekBarChangeListener,
+public class MissChartActivity extends ChartBase implements SeekBar.OnSeekBarChangeListener,
         OnChartValueSelectedListener {
 
     private PieChart mChartAction;
@@ -40,15 +44,15 @@ public class SpecChartActivity extends ChartBase implements SeekBar.OnSeekBarCha
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spec_chart);
+        setContentView(R.layout.activity_miss_chart);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setupActionBar();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // -----Spec Chart-----
-        mChartAction = (PieChart) findViewById(R.id.spec_chart);
+        // -----Miss Chart-----
+        mChartAction = (PieChart) findViewById(R.id.miss_chart);
         mChartAction.setUsePercentValues(true);
         mChartAction.setDescription("");
         mChartAction.setExtraOffsets(5, 10, 5, 5);
@@ -91,19 +95,17 @@ public class SpecChartActivity extends ChartBase implements SeekBar.OnSeekBarCha
 
     private void setupActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        Intent intent = getIntent();
-        String action = (String) intent.getSerializableExtra("action");
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            action = action.toLowerCase();
-            action = Character.toString(action.charAt(0)).toUpperCase()+action.substring(1);
-            setTitle(action.toString()+" Details");
+//            action = action.toLowerCase();
+//            action = Character.toString(action.charAt(0)).toUpperCase()+action.substring(1);
+            setTitle("Misses Chart");
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_chart_techniques, menu);
+        getMenuInflater().inflate(R.menu.menu_chart_misses, menu);
         return true;
     }
 
@@ -116,12 +118,12 @@ public class SpecChartActivity extends ChartBase implements SeekBar.OnSeekBarCha
         Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intentRegister = new Intent(SpecChartActivity.this, ChartActivity.class);
-                intentRegister.putExtra("game_user", gameUser);
-                intentRegister.putExtra("game_opponent", gameOpponent);
-                intentRegister.putExtra("athlete_opponent", athleteOpponent);
-                intentRegister.putExtra("user", athleteUser);
-                startActivity(intentRegister);
+                Intent intentChart = new Intent(MissChartActivity.this, ChartActivity.class);
+                intentChart.putExtra("game_user", gameUser);
+                intentChart.putExtra("game_opponent", gameOpponent);
+                intentChart.putExtra("athlete_opponent", athleteOpponent);
+                intentChart.putExtra("user", athleteUser);
+                startActivity(intentChart);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -141,14 +143,22 @@ public class SpecChartActivity extends ChartBase implements SeekBar.OnSeekBarCha
         ArrayList<PieEntry> entries = new ArrayList<>();
 
         Intent intent = getIntent();
-        Game gameUser = (Game) intent.getSerializableExtra("game_user");
-        String action = (String) intent.getSerializableExtra("action");
+        Game gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
 
-        ArrayList<Integer>techniquesList = gameUser.getActionList(action);
+        ArrayList<Integer>listTechniques = new ArrayList<>();
+        listTechniques.add(gameOpponent.getService());
+        listTechniques.add(gameOpponent.getReception());
+        listTechniques.add(gameOpponent.getForehand());
+        listTechniques.add(gameOpponent.getBackhand());
+        listTechniques.add(gameOpponent.getSmash());
+        listTechniques.add(gameOpponent.getSlice());
+        listTechniques.add(gameOpponent.getBlock());
+        listTechniques.add(gameOpponent.getFlick());
+        listTechniques.add(gameOpponent.getLob());
 
-        for (int i = 0; i < techniquesList.size() ; i++) {
-            if(techniquesList.get(i) > 0){
-                entries.add(new PieEntry((float)  techniquesList.get(i)/gameUser.getTotal() * 100, mTechniquesSpec[i]));
+        for (int i = 0; i < listTechniques.size() ; i++) {
+            if(listTechniques.get(i) > 0){
+                entries.add(new PieEntry((float)  listTechniques.get(i)/gameOpponent.getTotal() * 100, mTechniques[i]));
             }
         }
 
@@ -228,5 +238,4 @@ public class SpecChartActivity extends ChartBase implements SeekBar.OnSeekBarCha
     public void onStopTrackingTouch(SeekBar seekBar) {
         // TODO Auto-generated method stub
     }
-
 }

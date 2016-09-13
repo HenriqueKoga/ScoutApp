@@ -33,12 +33,12 @@ public class ChampRegisterActivity extends AppCompatActivity {
         Championship championship = (Championship) intentChamp.getSerializableExtra("championship");
 
         Intent intentAthlete = getIntent();
-        Athlete athlete = (Athlete) intentAthlete.getSerializableExtra("athlete");
+        Athlete athleteOpponent = (Athlete) intentAthlete.getSerializableExtra("athlete_opponent");
 
-        helper = new ChampRegisterHelper(this, athlete);
+        helper = new ChampRegisterHelper(this, athleteOpponent);
 
         if (championship != null) {
-            championship.setAthleteId(athlete.getId());
+            championship.setAthleteId(athleteOpponent.getId());
             helper.fillChampionshipRegister(championship);
         }
     }
@@ -62,30 +62,30 @@ public class ChampRegisterActivity extends AppCompatActivity {
         Championship championship = helper.getChampionship();
         Intent intent = getIntent();
         Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
-        Athlete athlete = (Athlete) intent.getSerializableExtra("athlete");
+        Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
         ChampionshipController championshipController = new ChampionshipController(this);
 
         switch (item.getItemId()) {
             case R.id.menu_save_champ:
-                championship.setAthleteId(athlete.getId());
+                championship.setAthleteId(athleteOpponent.getId());
 //                championshipController.insertOrReplaceChamp(championship);
 
                 Intent intentScout = new Intent(ChampRegisterActivity.this, ScoutActivity.class);
                 intentScout.putExtra("championship", championship);
                 intentScout.putExtra("user", athleteUser);
-                intentScout.putExtra("athlete", athlete);
-                Toast.makeText(ChampRegisterActivity.this, "campeonato " + championship.getChampName(), Toast.LENGTH_SHORT).show();
+                intentScout.putExtra("athlete_opponent", athleteOpponent);
+                Toast.makeText(ChampRegisterActivity.this, "Championship " + championship.getChampName(), Toast.LENGTH_SHORT).show();
                 startActivity(intentScout);
                 finish();
                 break;
 
             case android.R.id.home:
-                championship.setAthleteId(athlete.getId());
+                championship.setAthleteId(athleteOpponent.getId());
 //                championshipController.insertOrReplaceChamp(championship);
 
                 Intent intentRegister = new Intent(ChampRegisterActivity.this, RegisterActivity.class);
                 intentRegister.putExtra("championship", championship);
-                intentRegister.putExtra("athlete", athlete);
+                intentRegister.putExtra("athlete_opponent", athleteOpponent);
                 intentRegister.putExtra("user", athleteUser);
                 startActivity(intentRegister);
                 finish();
