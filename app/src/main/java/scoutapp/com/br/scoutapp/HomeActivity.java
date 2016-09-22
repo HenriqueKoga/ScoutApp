@@ -119,7 +119,7 @@ public class HomeActivity extends AppCompatActivity {
                 athleteController.removeAthlete(athleteOpponent);
                 showList();
 
-                Toast.makeText(HomeActivity.this, "Athlete deleted" + athleteOpponent.getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "Deleted " + athleteOpponent.getName(), Toast.LENGTH_SHORT).show();
                 return false;
             }
         });

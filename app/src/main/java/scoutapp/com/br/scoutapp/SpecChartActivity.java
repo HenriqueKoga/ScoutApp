@@ -122,6 +122,7 @@ public class SpecChartActivity extends ChartBase implements SeekBar.OnSeekBarCha
                 intentRegister.putExtra("athlete_opponent", athleteOpponent);
                 intentRegister.putExtra("user", athleteUser);
                 startActivity(intentRegister);
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);

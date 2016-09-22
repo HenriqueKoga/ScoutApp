@@ -80,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
                 intentHome.putExtra("championship", championship);
                 intentHome.putExtra("user", athleteUser);
                 startActivity(intentHome);
-                Toast.makeText(RegisterActivity.this, "Athlete " + athlete.getName() + " saved!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, athlete.getName() + " saved!", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
         }

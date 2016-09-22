@@ -32,7 +32,10 @@
         <activity
             android:name=".ScoutActivity"
             android:label="@string/title_activity_scout"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
+
         <activity
             android:name=".ChartActivity"
             android:label="@string/title_activity_chart"
@@ -50,11 +53,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".MissChartActivity"
             android:label="@string/title_activity_miss_chart"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>
