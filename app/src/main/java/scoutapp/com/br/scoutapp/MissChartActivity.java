@@ -124,6 +124,7 @@ public class MissChartActivity extends ChartBase implements SeekBar.OnSeekBarCha
                 intentChart.putExtra("athlete_opponent", athleteOpponent);
                 intentChart.putExtra("user", athleteUser);
                 startActivity(intentChart);
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);

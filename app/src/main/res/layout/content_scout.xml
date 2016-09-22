@@ -10,115 +10,144 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ScoutActivity"
+    android:background="@color/colorBackground"
     tools:showIn="@layout/activity_scout">
-
-    <TextView
-        android:id="@+id/opponent_name"
-        android:textStyle="bold"
-        android:textSize="15dp"
-        android:layout_margin="10dp"
-        android:gravity="center_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TableLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id = "@+id/RHE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="35dp"
-        android:gravity="center_horizontal">
-
-        <TableRow
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/score"
-                />
-        </TableRow>
-        <TableRow
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/service"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/reception" />
-        </TableRow>
-        <TableRow
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/forehand"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/backhand" />
-        </TableRow>
-        <TableRow
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/smash"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/slice" />
-        </TableRow>
-        <TableRow
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/block"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/flick" />
-        </TableRow>
-        <TableRow
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/lob"
-                />
-        </TableRow>
-    </TableLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/opponent_name"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/score"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="30dp"/>
+
+        <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id = "@+id/RHE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_marginTop="50dp"
+            android:gravity="center_horizontal"
+            android:background="@drawable/border">
+
+            <TableRow
+                android:id="@+id/table_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="125dp"
+                    android:id="@+id/title"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/service" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/reception" />
+            </TableRow>
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/forehand" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/backhand" />
+            </TableRow>
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/smash" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/slice" />
+            </TableRow>
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/block" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/flick" />
+            </TableRow>
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/lob" />
+            </TableRow>
+        </TableLayout>
+
         <ImageView
             android:id="@+id/table"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/table"
-            android:layout_marginTop="140dp"
             android:clickable="true"
-            android:padding="0dp"/>
+            android:layout_marginTop="200dp"
+            android:foregroundGravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:scaleType="fitXY"
+            android:scaleY="1.3"
+            android:scaleX="1.3"/>
 
         <Button
             android:id="@+id/left_long"
@@ -126,9 +155,10 @@
             android:layout_height="35dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
-            android:layout_marginTop="290dp"
+            android:layout_marginTop="289dp"
             android:layout_marginLeft="60dp"
             android:background="#0F42F0"/>
+        <!--#4FC3F7-->
 
         <Button
             android:id="@+id/left_short"
@@ -137,7 +167,7 @@
             android:onClick="onClick"
             android:stateListAnimator="@null"
             android:layout_marginTop="250dp"
-            android:layout_marginLeft="60dp"
+            android:layout_marginLeft="64dp"
             android:background="#0F42F0"/>
 
         <Button
@@ -146,8 +176,8 @@
             android:layout_height="35dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
-            android:layout_marginTop="290dp"
-            android:layout_marginLeft="140dp"
+            android:layout_marginTop="289dp"
+            android:layout_marginLeft="146dp"
             android:background="#0F42F0"/>
 
         <Button
@@ -157,7 +187,7 @@
             android:onClick="onClick"
             android:stateListAnimator="@null"
             android:layout_marginTop="250dp"
-            android:layout_marginLeft="140dp"
+            android:layout_marginLeft="146dp"
             android:background="#0F42F0"/>
 
         <Button
@@ -166,8 +196,8 @@
             android:layout_height="35dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
-            android:layout_marginTop="290dp"
-            android:layout_marginLeft="225dp"
+            android:layout_marginTop="289dp"
+            android:layout_marginLeft="231dp"
             android:background="#0F42F0"/>
 
         <Button
@@ -177,7 +207,7 @@
             android:onClick="onClick"
             android:stateListAnimator="@null"
             android:layout_marginTop="250dp"
-            android:layout_marginLeft="225dp"
+            android:layout_marginLeft="227dp"
             android:background="#0F42F0"/>
 
         <ToggleButton
@@ -187,19 +217,29 @@
             android:textOn="Hit"
             android:textOff="Miss"
             android:text="ToggleButton"
-            android:layout_marginTop="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_marginTop="420dp"
+            android:layout_marginLeft="118dp"
+            android:gravity="center_horizontal"/>
 
         <Button
             android:id="@+id/undo"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="onClick"
-            android:layout_marginTop="120dp"
+            android:layout_marginLeft="58dp"
+            android:layout_marginTop="420dp"
             android:layout_alignParentLeft="true"
             android:drawableLeft="@drawable/ic_undo_black"
+            android:gravity="left|center_vertical" />
+
+        <Button
+            android:id="@+id/redo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="onClick"
+            android:layout_marginTop="420dp"
+            android:layout_marginLeft="218dp"
+            android:drawableLeft="@drawable/ic_redo_black"
             android:gravity="left|center_vertical" />
     </RelativeLayout>
 

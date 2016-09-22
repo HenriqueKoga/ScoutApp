@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -25,6 +26,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 import scoutapp.com.br.scoutapp.adapter.ItemAdapter;
 import scoutapp.com.br.scoutapp.model.Athlete;
@@ -40,6 +42,7 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
     private ItemAdapter mAdapter;
     private TextView fieldName;
     private TextView fieldScore;
+    private TextView fieldTitleTable;
     private TextView fieldForehand;
     private TextView fieldBackhand;
     private TextView fieldSmash;
@@ -74,6 +77,7 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
 
         fieldName = (TextView) this.findViewById(R.id.opponent_name);
         fieldScore = (TextView) this.findViewById(R.id.score);
+        fieldTitleTable = (TextView) this.findViewById(R.id.title);
         fieldService = (TextView) this.findViewById(R.id.service);
         fieldReception = (TextView) this.findViewById(R.id.reception);
         fieldForehand = (TextView) this.findViewById(R.id.forehand);
@@ -193,6 +197,7 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
                 intentChart.putExtra("user", athleteUser);
                 intentChart.putExtra("championship", championship);
                 startActivity(intentChart);
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -226,6 +231,9 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
                 break;
             case R.id.undo:
                 undo();
+                break;
+            case R.id.redo:
+                redo();
                 break;
         }
     }
@@ -342,6 +350,10 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
         });
     }
 
+    public void redo(){
+        Toast.makeText(ScoutActivity.this, "It is not possible to redo the point", Toast.LENGTH_LONG).show();
+    }
+
     public void undo(){
         ArrayList list = detailsPoint.get(points.size()-1);
         if (!points.isEmpty()) {
@@ -383,6 +395,7 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
 
     private void fillTable() {
         fieldScore.setText(gameUser.getTotal() + " X " + gameOpponent.getTotal());
+        fieldTitleTable.setText("HITS");
         fieldService.setText("Service: " + gameUser.getService());
         fieldReception.setText("Reception: " + gameUser.getReception());
         fieldForehand.setText("Forehand: " + gameUser.getForehand());
