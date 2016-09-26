@@ -98,7 +98,7 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
         gameUser = (Game) intent.getSerializableExtra("game_user");
         gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
 
-        fieldName.setText(athleteUser.getName().toUpperCase() + " X " + athleteOpponent.getName().toUpperCase());
+//        fieldName.setText(athleteUser.getName().toUpperCase() + " X " + athleteOpponent.getName().toUpperCase());
 
         if(gameUser != null){
             fillTable();

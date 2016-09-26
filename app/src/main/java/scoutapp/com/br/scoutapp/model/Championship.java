@@ -14,6 +14,7 @@ public class Championship implements java.io.Serializable {
 
     private Long id;
     private String champName;
+    private java.util.Date date;
     private String state;
     private String city;
     private long athleteId;
@@ -46,9 +47,10 @@ public class Championship implements java.io.Serializable {
         this.id = id;
     }
 
-    public Championship(Long id, String champName, String state, String city, long athleteId, long gameUserId, long gameOpponentId) {
+    public Championship(Long id, String champName, java.util.Date date, String state, String city, long athleteId, long gameUserId, long gameOpponentId) {
         this.id = id;
         this.champName = champName;
+        this.date = date;
         this.state = state;
         this.city = city;
         this.athleteId = athleteId;
@@ -76,6 +78,14 @@ public class Championship implements java.io.Serializable {
 
     public void setChampName(String champName) {
         this.champName = champName;
+    }
+
+    public java.util.Date getDate() {
+        return date;
+    }
+
+    public void setDate(java.util.Date date) {
+        this.date = date;
     }
 
     public String getState() {
