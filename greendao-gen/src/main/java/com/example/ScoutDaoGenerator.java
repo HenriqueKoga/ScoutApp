@@ -10,7 +10,7 @@ public class ScoutDaoGenerator {
     private static final String PACKAGE = "scoutapp.com.br.scoutapp.model";
 
     public static void main(String[] args) {
-        Schema schema = new Schema(3, PACKAGE);
+        Schema schema = new Schema(4, PACKAGE);
         schema.enableKeepSectionsByDefault();
 
         addTables(schema);
@@ -75,7 +75,7 @@ public class ScoutDaoGenerator {
         Entity championship = schema.addEntity("Championship");
         championship.addIdProperty().primaryKey().autoincrement();
         championship.addStringProperty("champName");
-//        championship.addDateProperty("date");
+        championship.addDateProperty("date");
         championship.addStringProperty("state");
         championship.addStringProperty("city");
 

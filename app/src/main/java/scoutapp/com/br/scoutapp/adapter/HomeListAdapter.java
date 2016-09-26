@@ -47,8 +47,7 @@ public class HomeListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Athlete athlete = athletes.get(position);
-        Championship championship = championships.get(position);
-
+        Championship championship;
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View view = convertView;
@@ -61,12 +60,14 @@ public class HomeListAdapter extends BaseAdapter {
 
         TextView fieldClub = (TextView) view.findViewById(R.id.item_club);
         fieldClub.setText(athlete.getClub());
-
-        TextView fieldChamp = (TextView) view.findViewById(R.id.item_champ);
-        fieldChamp.setText(championship.getChampName()+ " Championship");
-
-        TextView fieldDate = (TextView) view.findViewById(R.id.item_date);
-        fieldDate.setText("10/12/2016");
+        if (championships != null){
+            championship = championships.get(position);
+            TextView fieldChamp = (TextView) view.findViewById(R.id.item_champ);
+            fieldChamp.setText(championship.getChampName() + " Championship");
+            TextView fieldDate = (TextView) view.findViewById(R.id.item_date);
+            android.text.format.DateFormat df = new android.text.format.DateFormat();
+            fieldDate.setText(df.format("dd/MM/yyyy", championship.getDate()));
+        }
 
         return view;
     }

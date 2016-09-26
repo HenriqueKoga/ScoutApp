@@ -9,6 +9,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import scoutapp.com.br.scoutapp.controller.AthleteController;
 import scoutapp.com.br.scoutapp.controller.ChampionshipController;
 import scoutapp.com.br.scoutapp.controller.UserController;
@@ -26,23 +29,17 @@ public class AthleteRegisterActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-//        AthleteController athleteController = new AthleteController(this);
-//        athleteController.cleanDB();
-//
-//        ChampionshipController championshipController = new ChampionshipController(this);
-//        championshipController.cleanDB();
-//
+        AthleteController athleteController = new AthleteController(this);
+        athleteController.cleanDB();
+
+        ChampionshipController championshipController = new ChampionshipController(this);
+        championshipController.cleanDB();
+
+        UserController userController = new UserController(this);
+        userController.cleanDB();
+
 //        UserController userController = new UserController(this);
-//        userController.cleanDB();
-
-        Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
-
-        if (isFirstRun) {
-            //show start activity
-            startActivity(new Intent(AthleteRegisterActivity.this, AthleteRegisterActivity.class));
-        }
-
-        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).commit();
+//        List<User> users =  userController.getAllUser();
 
         helper = new AthleteRegisterHelper(this);
 

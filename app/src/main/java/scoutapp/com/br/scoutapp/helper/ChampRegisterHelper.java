@@ -1,5 +1,6 @@
 package scoutapp.com.br.scoutapp.helper;
 
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -19,46 +20,39 @@ import scoutapp.com.br.scoutapp.model.Championship;
  */
 public class ChampRegisterHelper  {
     private final EditText fieldChampName;
-//    private final EditText fieldDate;
+    private final EditText fieldDate;
     private final EditText fieldState;
     private final EditText fieldCity;
     private Championship championship;
-    private Athlete mAthlete;
 
-    public ChampRegisterHelper(ChampRegisterActivity activity, Athlete athlete) {
+    public ChampRegisterHelper(ChampRegisterActivity activity) {
         fieldChampName = (EditText) activity.findViewById(R.id.champ);
-//        fieldDate = (EditText) activity.findViewById(R.id.date);
+        fieldDate = (EditText) activity.findViewById(R.id.date);
         fieldState = (EditText) activity.findViewById(R.id.state);
         fieldCity = (EditText) activity.findViewById(R.id.city);
         championship = new Championship();
-        mAthlete = athlete;
     }
 
-    public Championship getChampionship() {
+    public Championship getChampionship() throws ParseException {
         championship.setChampName(fieldChampName.getText().toString());
-//        try {
-//            if(fieldDate.getText().toString().isEmpty()) {
-//                Calendar today = Calendar.getInstance();
-//                DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-//                Date date = format.parse(today.getTime().toString());
-//                championship.setDate(date);
-//            } else {
-//                DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-//                Date date = format.parse(fieldDate.getText().toString());
-//                championship.setDate(date);
-//            }
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        if (!fieldDate.getText().toString().equals("  /  /    ")){
+            Date date = formatter.parse(fieldDate.getText().toString());
+            championship.setDate(date);
+        } else {
+            Date date = new java.util.Date();
+            championship.setDate(date);
+        }
         championship.setState(fieldState.getText().toString());
         championship.setCity(fieldCity.getText().toString());
 
         return championship;
     }
 
-    public void fillChampionshipRegister(Championship championship)  {
+    public void fillChampionshipRegister(Championship championship) throws ParseException {
         fieldChampName.setText(championship.getChampName());
-//        fieldDate.setText(championship.getDate().toString());
+        android.text.format.DateFormat df = new android.text.format.DateFormat();
+        fieldDate.setText(df.format("dd/MM/yyyy", championship.getDate()));
         fieldState.setText(championship.getState());
         fieldCity.setText(championship.getCity());
 

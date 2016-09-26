@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,10 +38,14 @@ public class ChampRegisterActivity extends AppCompatActivity {
         Athlete athleteOpponent = (Athlete) intentAthlete.getSerializableExtra("athlete_opponent");
         Championship championship = (Championship) intentAthlete.getSerializableExtra("championship");
 
-        helper = new ChampRegisterHelper(this, athleteOpponent);
+        helper = new ChampRegisterHelper(this);
 
         if (championship != null) {
-            helper.fillChampionshipRegister(championship);
+            try {
+                helper.fillChampionshipRegister(championship);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -60,7 +65,12 @@ public class ChampRegisterActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Championship championship = helper.getChampionship();
+        Championship championship = null;
+        try {
+            championship = helper.getChampionship();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         Intent intent = getIntent();
         User athleteUser = (User) intent.getSerializableExtra("user");
         Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");

@@ -28,11 +28,12 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property ChampName = new Property(1, String.class, "champName", false, "CHAMP_NAME");
-        public final static Property State = new Property(2, String.class, "state", false, "STATE");
-        public final static Property City = new Property(3, String.class, "city", false, "CITY");
-        public final static Property AthleteId = new Property(4, long.class, "athleteId", false, "ATHLETE_ID");
-        public final static Property GameUserId = new Property(5, long.class, "gameUserId", false, "GAME_USER_ID");
-        public final static Property GameOpponentId = new Property(6, long.class, "gameOpponentId", false, "GAME_OPPONENT_ID");
+        public final static Property Date = new Property(2, java.util.Date.class, "date", false, "DATE");
+        public final static Property State = new Property(3, String.class, "state", false, "STATE");
+        public final static Property City = new Property(4, String.class, "city", false, "CITY");
+        public final static Property AthleteId = new Property(5, long.class, "athleteId", false, "ATHLETE_ID");
+        public final static Property GameUserId = new Property(6, long.class, "gameUserId", false, "GAME_USER_ID");
+        public final static Property GameOpponentId = new Property(7, long.class, "gameOpponentId", false, "GAME_OPPONENT_ID");
     };
 
     private DaoSession daoSession;
@@ -53,11 +54,12 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"CHAMPIONSHIP\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"CHAMP_NAME\" TEXT," + // 1: champName
-                "\"STATE\" TEXT," + // 2: state
-                "\"CITY\" TEXT," + // 3: city
-                "\"ATHLETE_ID\" INTEGER NOT NULL ," + // 4: athleteId
-                "\"GAME_USER_ID\" INTEGER NOT NULL ," + // 5: gameUserId
-                "\"GAME_OPPONENT_ID\" INTEGER NOT NULL );"); // 6: gameOpponentId
+                "\"DATE\" INTEGER," + // 2: date
+                "\"STATE\" TEXT," + // 3: state
+                "\"CITY\" TEXT," + // 4: city
+                "\"ATHLETE_ID\" INTEGER NOT NULL ," + // 5: athleteId
+                "\"GAME_USER_ID\" INTEGER NOT NULL ," + // 6: gameUserId
+                "\"GAME_OPPONENT_ID\" INTEGER NOT NULL );"); // 7: gameOpponentId
     }
 
     /** Drops the underlying database table. */
@@ -81,18 +83,23 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
             stmt.bindString(2, champName);
         }
  
+        java.util.Date date = entity.getDate();
+        if (date != null) {
+            stmt.bindLong(3, date.getTime());
+        }
+ 
         String state = entity.getState();
         if (state != null) {
-            stmt.bindString(3, state);
+            stmt.bindString(4, state);
         }
  
         String city = entity.getCity();
         if (city != null) {
-            stmt.bindString(4, city);
+            stmt.bindString(5, city);
         }
-        stmt.bindLong(5, entity.getAthleteId());
-        stmt.bindLong(6, entity.getGameUserId());
-        stmt.bindLong(7, entity.getGameOpponentId());
+        stmt.bindLong(6, entity.getAthleteId());
+        stmt.bindLong(7, entity.getGameUserId());
+        stmt.bindLong(8, entity.getGameOpponentId());
     }
 
     @Override
@@ -113,11 +120,12 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
         Championship entity = new Championship( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // champName
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // state
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // city
-            cursor.getLong(offset + 4), // athleteId
-            cursor.getLong(offset + 5), // gameUserId
-            cursor.getLong(offset + 6) // gameOpponentId
+            cursor.isNull(offset + 2) ? null : new java.util.Date(cursor.getLong(offset + 2)), // date
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // state
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // city
+            cursor.getLong(offset + 5), // athleteId
+            cursor.getLong(offset + 6), // gameUserId
+            cursor.getLong(offset + 7) // gameOpponentId
         );
         return entity;
     }
@@ -127,11 +135,12 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
     public void readEntity(Cursor cursor, Championship entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setChampName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setState(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setCity(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setAthleteId(cursor.getLong(offset + 4));
-        entity.setGameUserId(cursor.getLong(offset + 5));
-        entity.setGameOpponentId(cursor.getLong(offset + 6));
+        entity.setDate(cursor.isNull(offset + 2) ? null : new java.util.Date(cursor.getLong(offset + 2)));
+        entity.setState(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setCity(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setAthleteId(cursor.getLong(offset + 5));
+        entity.setGameUserId(cursor.getLong(offset + 6));
+        entity.setGameOpponentId(cursor.getLong(offset + 7));
      }
     
     /** @inheritdoc */

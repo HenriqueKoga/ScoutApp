@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -104,7 +105,7 @@ public class HomeActivity extends AppCompatActivity {
         AthleteController athleteController = new AthleteController(this);
         ChampionshipController championshipController = new ChampionshipController(this);
         List<Athlete> athletes = athleteController.getAllAthletes();
-        List<Championship>championships = championshipController.getAllChamps();
+        List<Championship> championships = championshipController.getAllChamps();
 
         HomeListAdapter adapter = new HomeListAdapter(this, athletes, championships);
         athletesList.setAdapter(adapter);
@@ -128,6 +129,10 @@ public class HomeActivity extends AppCompatActivity {
 
                 AthleteController athleteController = new AthleteController(HomeActivity.this);
                 athleteController.removeAthlete(athleteOpponent);
+
+                ChampionshipController championshipController = new ChampionshipController(HomeActivity.this);
+                Championship championship = championshipController.getChampionshipByPosition(info.position);
+                championshipController.removeChamp(championship);
                 showList();
 
                 Toast.makeText(HomeActivity.this, "Deleted " + athleteOpponent.getName(), Toast.LENGTH_SHORT).show();

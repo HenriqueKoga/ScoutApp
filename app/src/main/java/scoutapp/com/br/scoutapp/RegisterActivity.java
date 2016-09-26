@@ -53,6 +53,14 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem item= menu.findItem(R.id.close);
+        item.setVisible(true);
+        super.onPrepareOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Athlete athlete = helper.getAthlete();
         Intent intent = getIntent();
@@ -80,8 +88,18 @@ public class RegisterActivity extends AppCompatActivity {
                 intentHome.putExtra("athlete_opponent", athlete);
                 intentHome.putExtra("championship", championship);
                 intentHome.putExtra("user", athleteUser);
-                startActivity(intentHome);
-                Toast.makeText(RegisterActivity.this, athlete.getName() + " saved!", Toast.LENGTH_SHORT).show();
+                if(championship != null) {
+                    startActivity(intentHome);
+                    Toast.makeText(RegisterActivity.this, athlete.getName() + " saved!", Toast.LENGTH_SHORT).show();
+                    finish();
+                }else{
+                    Toast.makeText(RegisterActivity.this, "Register the championship in the next page", Toast.LENGTH_LONG).show();
+                }
+                break;
+
+            case R.id.close:
+                Intent intentClose = new Intent(RegisterActivity.this, HomeActivity.class);
+                startActivity(intentClose);
                 finish();
                 break;
         }
