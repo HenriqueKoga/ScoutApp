@@ -30,6 +30,12 @@ public class ChampionshipController {
         return query.list();
     }
 
+    public Championship getChampionshipByPosition(int position) {
+        QueryBuilder<Championship> query = mDAO.queryBuilder();
+
+        return query.list().get(position);
+    }
+
     public void removeChamp(Championship championship) {
         mDAO.delete(championship);
     }
@@ -38,4 +44,8 @@ public class ChampionshipController {
 //        QueryBuilder<Championship> query = mDAO.queryBuilder();
 //        return  query.where(ChampionshipDao.Properties.AthleteId.in(athleteId)).list();
 //    }
+
+    public void cleanDB(){
+        mDAO.deleteAll();
+    }
 }

@@ -53,7 +53,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/lAthleteCategoryLayout"
+            android:id="@+id/lAthleteUserLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fAthleteNameLayout"
@@ -61,8 +61,8 @@
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/athlete_category"
-                android:hint="Category"
+                android:id="@+id/athlete_user"
+                android:hint="user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"/>
@@ -70,62 +70,20 @@
 
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/lClubLayout"
+            android:id="@+id/lPasswordLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/fAthleteNameLayout"
+            android:layout_below="@+id/fAthleteUserLayout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/athlete_club"
-                android:hint="Club"
+                android:id="@+id/athlete_password"
+                android:hint="password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:ems="10"/>
         </android.support.design.widget.TextInputLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp">
-
-            <TextView
-                android:text="Player's hand: "
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textSize="18dp"/>
-            <Spinner
-                android:id="@+id/athlete_spinner_right_left_hand"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/array_hand"
-                android:paddingBottom="10dp"
-                android:textSize="18dp"/>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp">
-
-            <TextView
-                android:text="Style: "
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textSize="18dp"/>
-            <Spinner
-                android:id="@+id/athlete_spinner_style"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/array_styles"
-                android:prompt="@string/style"
-                android:paddingBottom="10dp"
-                android:textSize="18dp"/>
-        </LinearLayout>
     </LinearLayout>
-
 </ScrollView>

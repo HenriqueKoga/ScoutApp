@@ -15,6 +15,7 @@ import scoutapp.com.br.scoutapp.controller.AthleteController;
 import scoutapp.com.br.scoutapp.helper.RegisterHelper;
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Championship;
+import scoutapp.com.br.scoutapp.model.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -55,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Athlete athlete = helper.getAthlete();
         Intent intent = getIntent();
-        Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
+        User athleteUser = (User) intent.getSerializableExtra("user");
         Championship championship = (Championship) intent.getSerializableExtra("championship");
 
         AthleteController athleteController = new AthleteController(this);

@@ -31,6 +31,8 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
         public final static Property State = new Property(2, String.class, "state", false, "STATE");
         public final static Property City = new Property(3, String.class, "city", false, "CITY");
         public final static Property AthleteId = new Property(4, long.class, "athleteId", false, "ATHLETE_ID");
+        public final static Property GameUserId = new Property(5, long.class, "gameUserId", false, "GAME_USER_ID");
+        public final static Property GameOpponentId = new Property(6, long.class, "gameOpponentId", false, "GAME_OPPONENT_ID");
     };
 
     private DaoSession daoSession;
@@ -53,7 +55,9 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
                 "\"CHAMP_NAME\" TEXT," + // 1: champName
                 "\"STATE\" TEXT," + // 2: state
                 "\"CITY\" TEXT," + // 3: city
-                "\"ATHLETE_ID\" INTEGER NOT NULL );"); // 4: athleteId
+                "\"ATHLETE_ID\" INTEGER NOT NULL ," + // 4: athleteId
+                "\"GAME_USER_ID\" INTEGER NOT NULL ," + // 5: gameUserId
+                "\"GAME_OPPONENT_ID\" INTEGER NOT NULL );"); // 6: gameOpponentId
     }
 
     /** Drops the underlying database table. */
@@ -87,6 +91,8 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
             stmt.bindString(4, city);
         }
         stmt.bindLong(5, entity.getAthleteId());
+        stmt.bindLong(6, entity.getGameUserId());
+        stmt.bindLong(7, entity.getGameOpponentId());
     }
 
     @Override
@@ -109,7 +115,9 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // champName
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // state
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // city
-            cursor.getLong(offset + 4) // athleteId
+            cursor.getLong(offset + 4), // athleteId
+            cursor.getLong(offset + 5), // gameUserId
+            cursor.getLong(offset + 6) // gameOpponentId
         );
         return entity;
     }
@@ -122,6 +130,8 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
         entity.setState(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setCity(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setAthleteId(cursor.getLong(offset + 4));
+        entity.setGameUserId(cursor.getLong(offset + 5));
+        entity.setGameOpponentId(cursor.getLong(offset + 6));
      }
     
     /** @inheritdoc */
@@ -155,8 +165,14 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
             SqlUtils.appendColumns(builder, "T", getAllColumns());
             builder.append(',');
             SqlUtils.appendColumns(builder, "T0", daoSession.getAthleteDao().getAllColumns());
+            builder.append(',');
+            SqlUtils.appendColumns(builder, "T1", daoSession.getGameUserDao().getAllColumns());
+            builder.append(',');
+            SqlUtils.appendColumns(builder, "T2", daoSession.getGameOpponentDao().getAllColumns());
             builder.append(" FROM CHAMPIONSHIP T");
             builder.append(" LEFT JOIN ATHLETE T0 ON T.\"ATHLETE_ID\"=T0.\"_id\"");
+            builder.append(" LEFT JOIN GAME_USER T1 ON T.\"GAME_USER_ID\"=T1.\"_id\"");
+            builder.append(" LEFT JOIN GAME_OPPONENT T2 ON T.\"GAME_OPPONENT_ID\"=T2.\"_id\"");
             builder.append(' ');
             selectDeep = builder.toString();
         }
@@ -170,6 +186,18 @@ public class ChampionshipDao extends AbstractDao<Championship, Long> {
         Athlete athlete = loadCurrentOther(daoSession.getAthleteDao(), cursor, offset);
          if(athlete != null) {
             entity.setAthlete(athlete);
+        }
+        offset += daoSession.getAthleteDao().getAllColumns().length;
+
+        GameUser gameUser = loadCurrentOther(daoSession.getGameUserDao(), cursor, offset);
+         if(gameUser != null) {
+            entity.setGameUser(gameUser);
+        }
+        offset += daoSession.getGameUserDao().getAllColumns().length;
+
+        GameOpponent gameOpponent = loadCurrentOther(daoSession.getGameOpponentDao(), cursor, offset);
+         if(gameOpponent != null) {
+            entity.setGameOpponent(gameOpponent);
         }
 
         return entity;    

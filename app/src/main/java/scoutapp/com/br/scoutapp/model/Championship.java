@@ -17,6 +17,8 @@ public class Championship implements java.io.Serializable {
     private String state;
     private String city;
     private long athleteId;
+    private long gameUserId;
+    private long gameOpponentId;
 
     /** Used to resolve relations */
     private transient DaoSession daoSession;
@@ -26,6 +28,12 @@ public class Championship implements java.io.Serializable {
 
     private Athlete athlete;
     private Long athlete__resolvedKey;
+
+    private GameUser gameUser;
+    private Long gameUser__resolvedKey;
+
+    private GameOpponent gameOpponent;
+    private Long gameOpponent__resolvedKey;
 
 
     // KEEP FIELDS - put your custom fields here
@@ -38,12 +46,14 @@ public class Championship implements java.io.Serializable {
         this.id = id;
     }
 
-    public Championship(Long id, String champName, String state, String city, long athleteId) {
+    public Championship(Long id, String champName, String state, String city, long athleteId, long gameUserId, long gameOpponentId) {
         this.id = id;
         this.champName = champName;
         this.state = state;
         this.city = city;
         this.athleteId = athleteId;
+        this.gameUserId = gameUserId;
+        this.gameOpponentId = gameOpponentId;
     }
 
     /** called by internal mechanisms, do not call yourself. */
@@ -92,6 +102,22 @@ public class Championship implements java.io.Serializable {
         this.athleteId = athleteId;
     }
 
+    public long getGameUserId() {
+        return gameUserId;
+    }
+
+    public void setGameUserId(long gameUserId) {
+        this.gameUserId = gameUserId;
+    }
+
+    public long getGameOpponentId() {
+        return gameOpponentId;
+    }
+
+    public void setGameOpponentId(long gameOpponentId) {
+        this.gameOpponentId = gameOpponentId;
+    }
+
     /** To-one relationship, resolved on first access. */
     public Athlete getAthlete() {
         long __key = this.athleteId;
@@ -117,6 +143,62 @@ public class Championship implements java.io.Serializable {
             this.athlete = athlete;
             athleteId = athlete.getId();
             athlete__resolvedKey = athleteId;
+        }
+    }
+
+    /** To-one relationship, resolved on first access. */
+    public GameUser getGameUser() {
+        long __key = this.gameUserId;
+        if (gameUser__resolvedKey == null || !gameUser__resolvedKey.equals(__key)) {
+            if (daoSession == null) {
+                throw new DaoException("Entity is detached from DAO context");
+            }
+            GameUserDao targetDao = daoSession.getGameUserDao();
+            GameUser gameUserNew = targetDao.load(__key);
+            synchronized (this) {
+                gameUser = gameUserNew;
+            	gameUser__resolvedKey = __key;
+            }
+        }
+        return gameUser;
+    }
+
+    public void setGameUser(GameUser gameUser) {
+        if (gameUser == null) {
+            throw new DaoException("To-one property 'gameUserId' has not-null constraint; cannot set to-one to null");
+        }
+        synchronized (this) {
+            this.gameUser = gameUser;
+            gameUserId = gameUser.getId();
+            gameUser__resolvedKey = gameUserId;
+        }
+    }
+
+    /** To-one relationship, resolved on first access. */
+    public GameOpponent getGameOpponent() {
+        long __key = this.gameOpponentId;
+        if (gameOpponent__resolvedKey == null || !gameOpponent__resolvedKey.equals(__key)) {
+            if (daoSession == null) {
+                throw new DaoException("Entity is detached from DAO context");
+            }
+            GameOpponentDao targetDao = daoSession.getGameOpponentDao();
+            GameOpponent gameOpponentNew = targetDao.load(__key);
+            synchronized (this) {
+                gameOpponent = gameOpponentNew;
+            	gameOpponent__resolvedKey = __key;
+            }
+        }
+        return gameOpponent;
+    }
+
+    public void setGameOpponent(GameOpponent gameOpponent) {
+        if (gameOpponent == null) {
+            throw new DaoException("To-one property 'gameOpponentId' has not-null constraint; cannot set to-one to null");
+        }
+        synchronized (this) {
+            this.gameOpponent = gameOpponent;
+            gameOpponentId = gameOpponent.getId();
+            gameOpponent__resolvedKey = gameOpponentId;
         }
     }
 

@@ -11,6 +11,7 @@ import java.util.List;
 
 import scoutapp.com.br.scoutapp.R;
 import scoutapp.com.br.scoutapp.model.Athlete;
+import scoutapp.com.br.scoutapp.model.Championship;
 
 /**
  * Created by HenriqueKoga on 31/05/16.
@@ -18,11 +19,14 @@ import scoutapp.com.br.scoutapp.model.Athlete;
 public class HomeListAdapter extends BaseAdapter {
 
     private final List<Athlete> athletes;
+    private final List<Championship> championships;
     private final Context context;
 
-    public HomeListAdapter(Context context, List<Athlete> athletes) {
+    public HomeListAdapter(Context context, List<Athlete> athletes, List<Championship>championships) {
         this.context = context;
         this.athletes = athletes;
+        this.championships = championships;
+
     }
 
     @Override
@@ -43,6 +47,7 @@ public class HomeListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Athlete athlete = athletes.get(position);
+        Championship championship = championships.get(position);
 
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -58,7 +63,7 @@ public class HomeListAdapter extends BaseAdapter {
         fieldClub.setText(athlete.getClub());
 
         TextView fieldChamp = (TextView) view.findViewById(R.id.item_champ);
-        fieldChamp.setText("Nome do Campeonato");
+        fieldChamp.setText(championship.getChampName()+ " Championship");
 
         TextView fieldDate = (TextView) view.findViewById(R.id.item_date);
         fieldDate.setText("10/12/2016");

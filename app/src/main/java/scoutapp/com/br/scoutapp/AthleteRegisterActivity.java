@@ -2,7 +2,6 @@ package scoutapp.com.br.scoutapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -11,8 +10,10 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 
 import scoutapp.com.br.scoutapp.controller.AthleteController;
+import scoutapp.com.br.scoutapp.controller.ChampionshipController;
+import scoutapp.com.br.scoutapp.controller.UserController;
 import scoutapp.com.br.scoutapp.helper.AthleteRegisterHelper;
-import scoutapp.com.br.scoutapp.model.Athlete;
+import scoutapp.com.br.scoutapp.model.User;
 
 public class AthleteRegisterActivity extends AppCompatActivity {
     private AthleteRegisterHelper helper;
@@ -25,12 +26,30 @@ public class AthleteRegisterActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
+//        AthleteController athleteController = new AthleteController(this);
+//        athleteController.cleanDB();
+//
+//        ChampionshipController championshipController = new ChampionshipController(this);
+//        championshipController.cleanDB();
+//
+//        UserController userController = new UserController(this);
+//        userController.cleanDB();
+
+        Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
+
+        if (isFirstRun) {
+            //show start activity
+            startActivity(new Intent(AthleteRegisterActivity.this, AthleteRegisterActivity.class));
+        }
+
+        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).commit();
+
         helper = new AthleteRegisterHelper(this);
 
         Intent intent = getIntent();
-        Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
-        if(athleteUser != null){
-            helper.fillRegister(athleteUser);
+        User user = (User) intent.getSerializableExtra("user");
+        if(user != null){
+            helper.fillRegister(user);
         }
     }
 
@@ -43,14 +62,14 @@ public class AthleteRegisterActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Athlete athleteUser = helper.getAthlete();
-        AthleteController athleteController = new AthleteController(this);
+        User user = helper.getAthlete();
+        UserController userController = new UserController(this);
 
         switch (item.getItemId()) {
             case R.id.menu_save_user:
-                athleteController.insertOrReplaceAthlete(athleteUser);
+                userController.insertOrReplaceAthlete(user);
                 Intent intentScout = new Intent(AthleteRegisterActivity.this, HomeActivity.class);
-                intentScout.putExtra("user", athleteUser);
+                intentScout.putExtra("user", user);
                 startActivity(intentScout);
                 finish();
                 break;
