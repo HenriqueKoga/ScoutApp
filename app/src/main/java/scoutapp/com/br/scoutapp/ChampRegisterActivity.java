@@ -5,17 +5,21 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import scoutapp.com.br.scoutapp.controller.AthleteController;
 import scoutapp.com.br.scoutapp.controller.ChampionshipController;
 import scoutapp.com.br.scoutapp.helper.ChampRegisterHelper;
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Championship;
+import scoutapp.com.br.scoutapp.model.User;
 
 public class ChampRegisterActivity extends AppCompatActivity {
 
@@ -29,16 +33,13 @@ public class ChampRegisterActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setupActionBar();
 
-        Intent intentChamp = getIntent();
-        Championship championship = (Championship) intentChamp.getSerializableExtra("championship");
-
         Intent intentAthlete = getIntent();
         Athlete athleteOpponent = (Athlete) intentAthlete.getSerializableExtra("athlete_opponent");
+        Championship championship = (Championship) intentAthlete.getSerializableExtra("championship");
 
         helper = new ChampRegisterHelper(this, athleteOpponent);
 
         if (championship != null) {
-            championship.setAthleteId(athleteOpponent.getId());
             helper.fillChampionshipRegister(championship);
         }
     }
@@ -61,27 +62,27 @@ public class ChampRegisterActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Championship championship = helper.getChampionship();
         Intent intent = getIntent();
-        Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
+        User athleteUser = (User) intent.getSerializableExtra("user");
         Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
         ChampionshipController championshipController = new ChampionshipController(this);
 
         switch (item.getItemId()) {
             case R.id.menu_save_champ:
                 championship.setAthleteId(athleteOpponent.getId());
-//                championshipController.insertOrReplaceChamp(championship);
+                championshipController.insertOrReplaceChamp(championship);
 
                 Intent intentScout = new Intent(ChampRegisterActivity.this, ScoutActivity.class);
                 intentScout.putExtra("championship", championship);
                 intentScout.putExtra("user", athleteUser);
                 intentScout.putExtra("athlete_opponent", athleteOpponent);
-                Toast.makeText(ChampRegisterActivity.this, "Championship " + championship.getChampName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ChampRegisterActivity.this,championship.getChampName() + " Championship", Toast.LENGTH_SHORT).show();
                 startActivity(intentScout);
                 finish();
                 break;
 
             case android.R.id.home:
                 championship.setAthleteId(athleteOpponent.getId());
-//                championshipController.insertOrReplaceChamp(championship);
+                championshipController.insertOrReplaceChamp(championship);
 
                 Intent intentRegister = new Intent(ChampRegisterActivity.this, RegisterActivity.class);
                 intentRegister.putExtra("championship", championship);

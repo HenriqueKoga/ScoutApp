@@ -35,6 +35,7 @@ import java.util.ArrayList;
 
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Game;
+import scoutapp.com.br.scoutapp.model.User;
 
 public class MissChartActivity extends ChartBase implements SeekBar.OnSeekBarChangeListener,
         OnChartValueSelectedListener {
@@ -115,7 +116,7 @@ public class MissChartActivity extends ChartBase implements SeekBar.OnSeekBarCha
         Game gameUser = (Game) intent.getSerializableExtra("game_user");
         Game gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
         Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
-        Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
+        User athleteUser = (User) intent.getSerializableExtra("user");
         switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intentChart = new Intent(MissChartActivity.this, ChartActivity.class);

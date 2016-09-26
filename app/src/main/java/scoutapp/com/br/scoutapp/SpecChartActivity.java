@@ -30,7 +30,9 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 
 import scoutapp.com.br.scoutapp.model.Athlete;
+import scoutapp.com.br.scoutapp.model.Championship;
 import scoutapp.com.br.scoutapp.model.Game;
+import scoutapp.com.br.scoutapp.model.User;
 
 public class SpecChartActivity extends ChartBase implements SeekBar.OnSeekBarChangeListener,
         OnChartValueSelectedListener {
@@ -113,7 +115,8 @@ public class SpecChartActivity extends ChartBase implements SeekBar.OnSeekBarCha
         Game gameUser = (Game) intent.getSerializableExtra("game_user");
         Game gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
         Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
-        Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
+        User athleteUser = (User) intent.getSerializableExtra("user");
+        Championship championship = (Championship) intent.getSerializableExtra("championship");
         switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intentRegister = new Intent(SpecChartActivity.this, ChartActivity.class);
@@ -121,6 +124,7 @@ public class SpecChartActivity extends ChartBase implements SeekBar.OnSeekBarCha
                 intentRegister.putExtra("game_opponent", gameOpponent);
                 intentRegister.putExtra("athlete_opponent", athleteOpponent);
                 intentRegister.putExtra("user", athleteUser);
+                intentRegister.putExtra("championship", championship);
                 startActivity(intentRegister);
                 finish();
                 break;

@@ -7,6 +7,7 @@ import scoutapp.com.br.scoutapp.model.AthleteDao;
 import scoutapp.com.br.scoutapp.model.ChampionshipDao;
 import scoutapp.com.br.scoutapp.model.DaoMaster;
 import scoutapp.com.br.scoutapp.model.DaoSession;
+import scoutapp.com.br.scoutapp.model.UserDao;
 
 public class DatabaseHandler extends DaoMaster.DevOpenHelper {
     private static final String DATABASE_NAME = "scout-db";
@@ -31,6 +32,10 @@ public class DatabaseHandler extends DaoMaster.DevOpenHelper {
 
     public AthleteDao getAthleteDao(){
         return daoSession.getAthleteDao();
+    }
+
+    public UserDao getUserDao(){
+        return daoSession.getUserDao();
     }
 
     public ChampionshipDao getChampionshipDao(){

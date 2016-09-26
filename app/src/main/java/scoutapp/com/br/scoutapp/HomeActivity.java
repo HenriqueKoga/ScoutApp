@@ -20,14 +20,16 @@ import java.util.List;
 
 import scoutapp.com.br.scoutapp.adapter.HomeListAdapter;
 import scoutapp.com.br.scoutapp.controller.AthleteController;
+import scoutapp.com.br.scoutapp.controller.ChampionshipController;
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Championship;
+import scoutapp.com.br.scoutapp.model.User;
 
 public class HomeActivity extends AppCompatActivity {
 
     private ListView athletesList;
     private DrawerLayout mDrawerLayout;
-    private Athlete athleteUser;
+    private User athleteUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +50,13 @@ public class HomeActivity extends AppCompatActivity {
                 menuItem.setChecked(true);
                 mDrawerLayout.closeDrawers();
                 int id = menuItem.getItemId();
+                Intent intent = getIntent();
+                athleteUser = (User) intent.getSerializableExtra("user");
                 switch (id) {
                     case R.id.nav_perfil:
+                        Intent intentRegisterAthlete = new Intent(HomeActivity.this, AthleteRegisterActivity.class);
+                        intentRegisterAthlete.putExtra("user", athleteUser);
+                        startActivity(intentRegisterAthlete);
                         return true;
                     case R.id.nav_logout:
                         Toast.makeText(HomeActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
@@ -63,8 +70,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        athleteUser = (Athlete) intent.getSerializableExtra("user");
-        Championship championship = (Championship) intent.getSerializableExtra("championship");
+        athleteUser = (User) intent.getSerializableExtra("user");
 
         athletesList = (ListView)findViewById(R.id.scout_list);
 
@@ -72,7 +78,10 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Athlete athleteOpponent = (Athlete) athletesList.getItemAtPosition(position);
+                ChampionshipController championshipController = new ChampionshipController(HomeActivity.this);
+                Championship championship = championshipController.getChampionshipByPosition(position);
                 Intent intentRegister = new Intent(HomeActivity.this, RegisterActivity.class);
+                intentRegister.putExtra("championship", championship);
                 intentRegister.putExtra("athlete_opponent", athleteOpponent);
                 intentRegister.putExtra("user", athleteUser);
                 startActivity(intentRegister);
@@ -93,9 +102,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private void showList(){
         AthleteController athleteController = new AthleteController(this);
-        List<Athlete> athletes = athleteController.getAllAthletes(athleteUser);
+        ChampionshipController championshipController = new ChampionshipController(this);
+        List<Athlete> athletes = athleteController.getAllAthletes();
+        List<Championship>championships = championshipController.getAllChamps();
 
-        HomeListAdapter adapter = new HomeListAdapter(this, athletes);
+        HomeListAdapter adapter = new HomeListAdapter(this, athletes, championships);
         athletesList.setAdapter(adapter);
     }
 

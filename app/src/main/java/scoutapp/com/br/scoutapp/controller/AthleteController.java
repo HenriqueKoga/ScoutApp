@@ -23,12 +23,16 @@ public class AthleteController {
         mDAO.insertOrReplace(athlete);
     }
 
-    public List<Athlete> getAllAthletes(Athlete user) {
+    public List<Athlete> getAllAthletes() {
         QueryBuilder<Athlete> query = mDAO.queryBuilder();
-        return query.where(AthleteDao.Properties.Id.notEq(user.getId())).list();
+        return query.list();
     }
 
     public void removeAthlete(Athlete athlete) {
         mDAO.delete(athlete);
+    }
+
+    public void cleanDB(){
+        mDAO.deleteAll();
     }
 }

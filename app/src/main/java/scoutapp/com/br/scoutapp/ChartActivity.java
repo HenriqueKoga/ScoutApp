@@ -33,7 +33,9 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 
 import scoutapp.com.br.scoutapp.model.Athlete;
+import scoutapp.com.br.scoutapp.model.Championship;
 import scoutapp.com.br.scoutapp.model.Game;
+import scoutapp.com.br.scoutapp.model.User;
 
 
 public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
@@ -112,10 +114,11 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
     public boolean onOptionsItemSelected(MenuItem item) {
         String action;
         Intent intent = getIntent();
+        Championship championship= (Championship) intent.getSerializableExtra("championship");
         Game gameUser = (Game) intent.getSerializableExtra("game_user");
         Game gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
         Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
-        Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
+        User athleteUser = (User) intent.getSerializableExtra("user");
         Intent intentSpecChart = new Intent(ChartActivity.this, SpecChartActivity.class);
         Intent intentMissesChart = new Intent(ChartActivity.this, MissChartActivity.class);
         intentSpecChart.putExtra("game_user", gameUser);
@@ -126,6 +129,7 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
         switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intentRegister = new Intent(ChartActivity.this, ScoutActivity.class);
+                intentRegister.putExtra("championship", championship);
                 intentRegister.putExtra("game_user", gameUser);
                 intentRegister.putExtra("game_opponent", gameOpponent);
                 intentRegister.putExtra("athlete_opponent", athleteOpponent);
@@ -137,6 +141,7 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
             case R.id.menu_service_chart:
                 action = "service";
                 intentSpecChart.putExtra("action", action);
+                intentSpecChart.putExtra("championship", championship);
                 intentSpecChart.putExtra("game_user", gameUser);
                 intentSpecChart.putExtra("game_opponent", gameOpponent);
                 intentSpecChart.putExtra("athlete_opponent", athleteOpponent);
@@ -148,6 +153,7 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
             case R.id.menu_reception_chart:
                 action = "reception";
                 intentSpecChart.putExtra("action", action);
+                intentSpecChart.putExtra("championship", championship);
                 intentSpecChart.putExtra("game_user", gameUser);
                 intentSpecChart.putExtra("game_opponent", gameOpponent);
                 intentSpecChart.putExtra("athlete_opponent", athleteOpponent);
@@ -160,7 +166,7 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
             case R.id.menu_forehand_chart:
                 action = "forehand";
                 intentSpecChart.putExtra("action", action);
-                intentSpecChart.putExtra("action", action);
+                intentSpecChart.putExtra("championship", championship);
                 intentSpecChart.putExtra("game_user", gameUser);
                 intentSpecChart.putExtra("game_opponent", gameOpponent);
                 intentSpecChart.putExtra("athlete_opponent", athleteOpponent);
@@ -172,7 +178,7 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
             case R.id.menu_backhand_chart:
                 action = "backhand";
                 intentSpecChart.putExtra("action", action);
-                intentSpecChart.putExtra("action", action);
+                intentSpecChart.putExtra("championship", championship);
                 intentSpecChart.putExtra("game_user", gameUser);
                 intentSpecChart.putExtra("game_opponent", gameOpponent);
                 intentSpecChart.putExtra("athlete_opponent", athleteOpponent);
@@ -184,7 +190,7 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
             case R.id.menu_smash_chart:
                 action = "smash";
                 intentSpecChart.putExtra("action", action);
-                intentSpecChart.putExtra("action", action);
+                intentSpecChart.putExtra("championship", championship);
                 intentSpecChart.putExtra("game_user", gameUser);
                 intentSpecChart.putExtra("game_opponent", gameOpponent);
                 intentSpecChart.putExtra("athlete_opponent", athleteOpponent);
@@ -196,7 +202,7 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
             case R.id.menu_slice_chart:
                 action = "slice";
                 intentSpecChart.putExtra("action", action);
-                intentSpecChart.putExtra("action", action);
+                intentSpecChart.putExtra("championship", championship);
                 intentSpecChart.putExtra("game_user", gameUser);
                 intentSpecChart.putExtra("game_opponent", gameOpponent);
                 intentSpecChart.putExtra("athlete_opponent", athleteOpponent);
@@ -208,7 +214,7 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
             case R.id.menu_block_chart:
                 action = "block";
                 intentSpecChart.putExtra("action", action);
-                intentSpecChart.putExtra("action", action);
+                intentSpecChart.putExtra("championship", championship);
                 intentSpecChart.putExtra("game_user", gameUser);
                 intentSpecChart.putExtra("game_opponent", gameOpponent);
                 intentSpecChart.putExtra("athlete_opponent", athleteOpponent);
@@ -220,6 +226,7 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
             case R.id.menu_flick_chart:
                 action = "flick";
                 intentSpecChart.putExtra("action", action);
+                intentSpecChart.putExtra("championship", championship);
                 intentSpecChart.putExtra("game_user", gameUser);
                 intentSpecChart.putExtra("game_opponent", gameOpponent);
                 intentSpecChart.putExtra("athlete_opponent", athleteOpponent);
@@ -231,7 +238,7 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
             case R.id.menu_lob_chart:
                 action = "lob";
                 intentSpecChart.putExtra("action", action);
-                intentSpecChart.putExtra("action", action);
+                intentSpecChart.putExtra("championship", championship);
                 intentSpecChart.putExtra("game_user", gameUser);
                 intentSpecChart.putExtra("game_opponent", gameOpponent);
                 intentSpecChart.putExtra("athlete_opponent", athleteOpponent);
@@ -241,6 +248,7 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
                 break;
 
             case R.id.menu_misses_chart:
+                intentSpecChart.putExtra("championship", championship);
                 intentMissesChart.putExtra("game_user", gameUser);
                 intentMissesChart.putExtra("game_opponent", gameOpponent);
                 intentMissesChart.putExtra("athlete_opponent", athleteOpponent);

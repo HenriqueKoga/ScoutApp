@@ -33,6 +33,7 @@ import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Championship;
 import scoutapp.com.br.scoutapp.model.Game;
 import scoutapp.com.br.scoutapp.model.Item;
+import scoutapp.com.br.scoutapp.model.User;
 
 public class ScoutActivity extends AppCompatActivity implements ItemAdapter.ItemListener{
 
@@ -60,7 +61,7 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
     private String action;
 
     private Athlete athleteOpponent;
-    private Athlete athleteUser;
+    private User athleteUser;
     private Game gameUser;
     private Game gameOpponent;
     private ArrayList<String> points;
@@ -92,7 +93,7 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
         detailsPoint = new HashMap();
 
         Intent intent = getIntent();
-        athleteUser = (Athlete) intent.getSerializableExtra("user");
+        athleteUser = (User) intent.getSerializableExtra("user");
         athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
         gameUser = (Game) intent.getSerializableExtra("game_user");
         gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
@@ -177,7 +178,7 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = getIntent();
         Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
-        Athlete athleteUser = (Athlete) intent.getSerializableExtra("user");
+        User athleteUser = (User) intent.getSerializableExtra("user");
         Championship championship = (Championship) intent.getSerializableExtra("championship");
         switch (item.getItemId()) {
             case android.R.id.home:
