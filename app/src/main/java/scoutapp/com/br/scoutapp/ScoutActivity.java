@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,21 +18,23 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Stack;
 
 import scoutapp.com.br.scoutapp.adapter.ItemAdapter;
+import scoutapp.com.br.scoutapp.controller.ChampionshipController;
+import scoutapp.com.br.scoutapp.controller.GameOpponentController;
+import scoutapp.com.br.scoutapp.controller.GameUserController;
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Championship;
-import scoutapp.com.br.scoutapp.model.Game;
+import scoutapp.com.br.scoutapp.model.GameOpponent;
+import scoutapp.com.br.scoutapp.model.GameUser;
 import scoutapp.com.br.scoutapp.model.Item;
 import scoutapp.com.br.scoutapp.model.User;
 
@@ -62,8 +65,9 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
 
     private Athlete athleteOpponent;
     private User athleteUser;
-    private Game gameUser;
-    private Game gameOpponent;
+    private Championship championship;
+    private GameUser gameUser;
+    private GameOpponent gameOpponent;
     private ArrayList<String> points;
     private Map<Integer, ArrayList> detailsPoint;
     private ArrayList<String> detailsList;
@@ -92,19 +96,20 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
         points = new ArrayList<>();
         detailsPoint = new HashMap();
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         athleteUser = (User) intent.getSerializableExtra("user");
         athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
-        gameUser = (Game) intent.getSerializableExtra("game_user");
-        gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
+        gameUser = (GameUser) intent.getSerializableExtra("game_user");
+        gameOpponent = (GameOpponent) intent.getSerializableExtra("game_opponent");
+        championship = (Championship) intent.getSerializableExtra("championship");
 
 //        fieldName.setText(athleteUser.getName().toUpperCase() + " X " + athleteOpponent.getName().toUpperCase());
 
         if(gameUser != null){
             fillTable();
         } else{
-            gameUser = new Game();
-            gameOpponent = new Game();
+            gameUser = new GameUser();
+            gameOpponent = new GameOpponent();
             fillTable();
         }
         tgbutton = (ToggleButton) findViewById(R.id.toggleButton);
@@ -138,6 +143,23 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
 
         mAdapter = new ItemAdapter(techniquesList(), this);
         recyclerView.setAdapter(mAdapter);
+
+
+        FloatingActionButton saveScout = (FloatingActionButton) findViewById(R.id.save_scout);
+        saveScout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentHome = new Intent(ScoutActivity.this, HomeActivity.class);
+                intentHome.putExtra("user", athleteUser);
+
+                GameOpponentController gameOpponentController = new GameOpponentController(ScoutActivity.this);
+                GameUserController gameUserController = new GameUserController(ScoutActivity.this);
+
+                gameOpponentController.insertOrReplaceGameOpponent(gameOpponent);
+                gameUserController.insertOrReplaceGameUser(gameUser);
+                startActivity(intentHome);
+            }
+        });
     }
 
     private void setupActionBar() {
@@ -395,16 +417,26 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
     }
 
     private void fillTable() {
-        fieldScore.setText(gameUser.getTotal() + " X " + gameOpponent.getTotal());
         fieldTitleTable.setText("HITS");
-        fieldService.setText("Service: " + gameUser.getService());
-        fieldReception.setText("Reception: " + gameUser.getReception());
-        fieldForehand.setText("Forehand: " + gameUser.getForehand());
-        fieldBackhand.setText("Backhand: " + gameUser.getBackhand());
-        fieldSmash.setText("Smash: " + gameUser.getSmash());
-        fieldSlice.setText("Slice: " + gameUser.getSlice());
-        fieldBlock.setText("Block: " + gameUser.getBlock());
-        fieldFlick.setText("Flick: " + gameUser.getFlick());
-        fieldLob.setText("Lob: " + gameUser.getLob());
+        if (fieldScore.getText() != null)
+            fieldScore.setText(gameUser.getTotal() + " X " + gameOpponent.getTotal());
+        if (fieldService.getText() != null)
+            fieldService.setText("Service: " + gameUser.getService());
+        if (fieldReception.getText() != null)
+            fieldReception.setText("Reception: " + gameUser.getReception());
+        if (fieldForehand.getText() != null)
+            fieldForehand.setText("Forehand: " + gameUser.getForehand());
+        if (fieldBackhand.getText() != null)
+            fieldBackhand.setText("Backhand: " + gameUser.getBackhand());
+        if (fieldSmash.getText() != null)
+            fieldSmash.setText("Smash: " + gameUser.getSmash());
+        if (fieldSlice.getText() != null)
+            fieldSlice.setText("Slice: " + gameUser.getSlice());
+        if (fieldBlock.getText() != null)
+            fieldBlock.setText("Block: " + gameUser.getBlock());
+        if (fieldFlick.getText() != null)
+            fieldFlick.setText("Flick: " + gameUser.getFlick());
+        if (fieldLob.getText() != null)
+            fieldLob.setText("Lob: " + gameUser.getLob());
     }
 }

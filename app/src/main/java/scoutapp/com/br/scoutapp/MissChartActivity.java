@@ -4,10 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -16,7 +13,6 @@ import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.SeekBar;
 
@@ -34,7 +30,8 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 
 import scoutapp.com.br.scoutapp.model.Athlete;
-import scoutapp.com.br.scoutapp.model.Game;
+import scoutapp.com.br.scoutapp.model.GameOpponent;
+import scoutapp.com.br.scoutapp.model.GameUser;
 import scoutapp.com.br.scoutapp.model.User;
 
 public class MissChartActivity extends ChartBase implements SeekBar.OnSeekBarChangeListener,
@@ -113,8 +110,8 @@ public class MissChartActivity extends ChartBase implements SeekBar.OnSeekBarCha
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = getIntent();
-        Game gameUser = (Game) intent.getSerializableExtra("game_user");
-        Game gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
+        GameUser gameUser = (GameUser) intent.getSerializableExtra("game_user");
+        GameOpponent gameOpponent = (GameOpponent) intent.getSerializableExtra("game_opponent");
         Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
         User athleteUser = (User) intent.getSerializableExtra("user");
         switch (item.getItemId()) {
@@ -145,7 +142,7 @@ public class MissChartActivity extends ChartBase implements SeekBar.OnSeekBarCha
         ArrayList<PieEntry> entries = new ArrayList<>();
 
         Intent intent = getIntent();
-        Game gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
+        GameOpponent gameOpponent = (GameOpponent) intent.getSerializableExtra("game_opponent");
 
         ArrayList<Integer>listTechniques = new ArrayList<>();
         listTechniques.add(gameOpponent.getService());

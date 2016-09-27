@@ -17,9 +17,13 @@ import java.util.List;
 
 import scoutapp.com.br.scoutapp.controller.AthleteController;
 import scoutapp.com.br.scoutapp.controller.ChampionshipController;
+import scoutapp.com.br.scoutapp.controller.GameOpponentController;
+import scoutapp.com.br.scoutapp.controller.GameUserController;
 import scoutapp.com.br.scoutapp.helper.ChampRegisterHelper;
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Championship;
+import scoutapp.com.br.scoutapp.model.GameOpponent;
+import scoutapp.com.br.scoutapp.model.GameUser;
 import scoutapp.com.br.scoutapp.model.User;
 
 public class ChampRegisterActivity extends AppCompatActivity {
@@ -74,15 +78,21 @@ public class ChampRegisterActivity extends AppCompatActivity {
         Intent intent = getIntent();
         User athleteUser = (User) intent.getSerializableExtra("user");
         Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
+        GameOpponent gameOpponent = (GameOpponent) intent.getSerializableExtra("game_opponent");
+        GameUser gameUser = (GameUser) intent.getSerializableExtra("game_user");
         ChampionshipController championshipController = new ChampionshipController(this);
 
         switch (item.getItemId()) {
             case R.id.menu_save_champ:
+                championship.setGameOpponentId(athleteOpponent.getId());
+                championship.setGameUserId(athleteOpponent.getId());
                 championship.setAthleteId(athleteOpponent.getId());
                 championshipController.insertOrReplaceChamp(championship);
 
                 Intent intentScout = new Intent(ChampRegisterActivity.this, ScoutActivity.class);
                 intentScout.putExtra("championship", championship);
+                intentScout.putExtra("game_opponent", gameOpponent);
+                intentScout.putExtra("game_user", gameUser);
                 intentScout.putExtra("user", athleteUser);
                 intentScout.putExtra("athlete_opponent", athleteOpponent);
                 Toast.makeText(ChampRegisterActivity.this,championship.getChampName() + " Championship", Toast.LENGTH_SHORT).show();
@@ -96,6 +106,8 @@ public class ChampRegisterActivity extends AppCompatActivity {
 
                 Intent intentRegister = new Intent(ChampRegisterActivity.this, RegisterActivity.class);
                 intentRegister.putExtra("championship", championship);
+                intentRegister.putExtra("game_opponent", gameOpponent);
+                intentRegister.putExtra("game_user", gameUser);
                 intentRegister.putExtra("athlete_opponent", athleteOpponent);
                 intentRegister.putExtra("user", athleteUser);
                 startActivity(intentRegister);

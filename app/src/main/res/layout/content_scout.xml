@@ -151,63 +151,63 @@
 
         <Button
             android:id="@+id/left_long"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="60dp"
+            android:layout_height="45dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
-            android:layout_marginTop="289dp"
-            android:layout_marginLeft="60dp"
+            android:layout_marginTop="305dp"
+            android:layout_marginLeft="38dp"
             android:background="#0F42F0"/>
         <!--#4FC3F7-->
 
         <Button
             android:id="@+id/left_short"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="60dp"
+            android:layout_height="45dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
-            android:layout_marginTop="250dp"
-            android:layout_marginLeft="64dp"
+            android:layout_marginTop="260dp"
+            android:layout_marginLeft="53dp"
             android:background="#0F42F0"/>
 
         <Button
             android:id="@+id/middle_long"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="60dp"
+            android:layout_height="45dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
-            android:layout_marginTop="289dp"
-            android:layout_marginLeft="146dp"
+            android:layout_marginTop="305dp"
+            android:layout_marginLeft="135dp"
             android:background="#0F42F0"/>
 
         <Button
             android:id="@+id/middle_short"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="60dp"
+            android:layout_height="45dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
-            android:layout_marginTop="250dp"
-            android:layout_marginLeft="146dp"
+            android:layout_marginTop="260dp"
+            android:layout_marginLeft="135dp"
             android:background="#0F42F0"/>
 
         <Button
             android:id="@+id/right_long"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="60dp"
+            android:layout_height="45dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
-            android:layout_marginTop="289dp"
-            android:layout_marginLeft="231dp"
+            android:layout_marginTop="305dp"
+            android:layout_marginLeft="230dp"
             android:background="#0F42F0"/>
 
         <Button
             android:id="@+id/right_short"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="60dp"
+            android:layout_height="45dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
-            android:layout_marginTop="250dp"
-            android:layout_marginLeft="227dp"
+            android:layout_marginTop="260dp"
+            android:layout_marginLeft="215dp"
             android:background="#0F42F0"/>
 
         <ToggleButton

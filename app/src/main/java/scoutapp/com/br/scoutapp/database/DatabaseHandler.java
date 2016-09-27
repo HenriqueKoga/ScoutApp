@@ -7,6 +7,9 @@ import scoutapp.com.br.scoutapp.model.AthleteDao;
 import scoutapp.com.br.scoutapp.model.ChampionshipDao;
 import scoutapp.com.br.scoutapp.model.DaoMaster;
 import scoutapp.com.br.scoutapp.model.DaoSession;
+import scoutapp.com.br.scoutapp.model.GameOpponent;
+import scoutapp.com.br.scoutapp.model.GameOpponentDao;
+import scoutapp.com.br.scoutapp.model.GameUserDao;
 import scoutapp.com.br.scoutapp.model.UserDao;
 
 public class DatabaseHandler extends DaoMaster.DevOpenHelper {
@@ -40,6 +43,14 @@ public class DatabaseHandler extends DaoMaster.DevOpenHelper {
 
     public ChampionshipDao getChampionshipDao(){
         return daoSession.getChampionshipDao();
+    }
+
+    public GameUserDao getGameUserDao(){
+        return daoSession.getGameUserDao();
+    }
+
+    public GameOpponentDao getGameOpponentDao(){
+        return daoSession.getGameOpponentDao();
     }
 
     @Override

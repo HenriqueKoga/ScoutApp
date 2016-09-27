@@ -22,8 +22,12 @@ import java.util.List;
 import scoutapp.com.br.scoutapp.adapter.HomeListAdapter;
 import scoutapp.com.br.scoutapp.controller.AthleteController;
 import scoutapp.com.br.scoutapp.controller.ChampionshipController;
+import scoutapp.com.br.scoutapp.controller.GameOpponentController;
+import scoutapp.com.br.scoutapp.controller.GameUserController;
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Championship;
+import scoutapp.com.br.scoutapp.model.GameOpponent;
+import scoutapp.com.br.scoutapp.model.GameUser;
 import scoutapp.com.br.scoutapp.model.User;
 
 public class HomeActivity extends AppCompatActivity {
@@ -80,11 +84,17 @@ public class HomeActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Athlete athleteOpponent = (Athlete) athletesList.getItemAtPosition(position);
                 ChampionshipController championshipController = new ChampionshipController(HomeActivity.this);
+                GameOpponentController gameOpponentController = new GameOpponentController(HomeActivity.this);
+                GameUserController gameUserController = new GameUserController(HomeActivity.this);
                 Championship championship = championshipController.getChampionshipByPosition(position);
+                GameOpponent gameOpponent = gameOpponentController.getGameOpponentByPosition(position);
+                GameUser gameUser = gameUserController.getGameUserByPosition(position);
                 Intent intentRegister = new Intent(HomeActivity.this, RegisterActivity.class);
                 intentRegister.putExtra("championship", championship);
                 intentRegister.putExtra("athlete_opponent", athleteOpponent);
                 intentRegister.putExtra("user", athleteUser);
+                intentRegister.putExtra("game_opponent", gameOpponent);
+                intentRegister.putExtra("game_user", gameUser);
                 startActivity(intentRegister);
             }
         });
@@ -133,6 +143,15 @@ public class HomeActivity extends AppCompatActivity {
                 ChampionshipController championshipController = new ChampionshipController(HomeActivity.this);
                 Championship championship = championshipController.getChampionshipByPosition(info.position);
                 championshipController.removeChamp(championship);
+
+                GameOpponentController gameOpponentController = new GameOpponentController(HomeActivity.this);
+                GameOpponent gameOpponent = gameOpponentController.getGameOpponentByPosition(info.position);
+                gameOpponentController.removeGameOpponent(gameOpponent);
+
+                GameUserController gameUserController = new GameUserController(HomeActivity.this);
+                GameUser gameUser = gameUserController.getGameUserByPosition(info.position);
+                gameUserController.removeGameUser(gameUser);
+
                 showList();
 
                 Toast.makeText(HomeActivity.this, "Deleted " + athleteOpponent.getName(), Toast.LENGTH_SHORT).show();

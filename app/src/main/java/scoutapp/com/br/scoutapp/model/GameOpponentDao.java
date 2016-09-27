@@ -24,124 +24,124 @@ public class GameOpponentDao extends AbstractDao<GameOpponent, Long> {
     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Service = new Property(1, Integer.class, "service", false, "SERVICE");
-        public final static Property Reception = new Property(2, Integer.class, "reception", false, "RECEPTION");
-        public final static Property Forehand = new Property(3, Integer.class, "forehand", false, "FOREHAND");
-        public final static Property Backhand = new Property(4, Integer.class, "backhand", false, "BACKHAND");
-        public final static Property Smash = new Property(5, Integer.class, "smash", false, "SMASH");
-        public final static Property Slice = new Property(6, Integer.class, "slice", false, "SLICE");
-        public final static Property Block = new Property(7, Integer.class, "block", false, "BLOCK");
-        public final static Property Flick = new Property(8, Integer.class, "flick", false, "FLICK");
-        public final static Property Lob = new Property(9, Integer.class, "lob", false, "LOB");
-        public final static Property Total = new Property(10, Integer.class, "total", false, "TOTAL");
-        public final static Property ServiceLeftLongCrossed = new Property(11, Integer.class, "serviceLeftLongCrossed", false, "SERVICE_LEFT_LONG_CROSSED");
-        public final static Property ServiceLeftLongParallel = new Property(12, Integer.class, "serviceLeftLongParallel", false, "SERVICE_LEFT_LONG_PARALLEL");
-        public final static Property ServiceLeftShortCrossed = new Property(13, Integer.class, "serviceLeftShortCrossed", false, "SERVICE_LEFT_SHORT_CROSSED");
-        public final static Property ServiceLeftShortParallel = new Property(14, Integer.class, "serviceLeftShortParallel", false, "SERVICE_LEFT_SHORT_PARALLEL");
-        public final static Property ServiceMiddleLongCrossed = new Property(15, Integer.class, "serviceMiddleLongCrossed", false, "SERVICE_MIDDLE_LONG_CROSSED");
-        public final static Property ServiceMiddleLongParallel = new Property(16, Integer.class, "serviceMiddleLongParallel", false, "SERVICE_MIDDLE_LONG_PARALLEL");
-        public final static Property ServiceMiddleShortCrossed = new Property(17, Integer.class, "serviceMiddleShortCrossed", false, "SERVICE_MIDDLE_SHORT_CROSSED");
-        public final static Property ServiceMiddleShortParallel = new Property(18, Integer.class, "serviceMiddleShortParallel", false, "SERVICE_MIDDLE_SHORT_PARALLEL");
-        public final static Property ServiceRightLongCrossed = new Property(19, Integer.class, "serviceRightLongCrossed", false, "SERVICE_RIGHT_LONG_CROSSED");
-        public final static Property ServiceRightLongParallel = new Property(20, Integer.class, "serviceRightLongParallel", false, "SERVICE_RIGHT_LONG_PARALLEL");
-        public final static Property ServiceRightShortCrossed = new Property(21, Integer.class, "serviceRightShortCrossed", false, "SERVICE_RIGHT_SHORT_CROSSED");
-        public final static Property ServiceRightShortParallel = new Property(22, Integer.class, "serviceRightShortParallel", false, "SERVICE_RIGHT_SHORT_PARALLEL");
-        public final static Property ReceptionLeftLongCrossed = new Property(23, Integer.class, "receptionLeftLongCrossed", false, "RECEPTION_LEFT_LONG_CROSSED");
-        public final static Property ReceptionLeftLongParallel = new Property(24, Integer.class, "receptionLeftLongParallel", false, "RECEPTION_LEFT_LONG_PARALLEL");
-        public final static Property ReceptionLeftShortCrossed = new Property(25, Integer.class, "receptionLeftShortCrossed", false, "RECEPTION_LEFT_SHORT_CROSSED");
-        public final static Property ReceptionLeftShortParallel = new Property(26, Integer.class, "receptionLeftShortParallel", false, "RECEPTION_LEFT_SHORT_PARALLEL");
-        public final static Property ReceptionMiddleLongCrossed = new Property(27, Integer.class, "receptionMiddleLongCrossed", false, "RECEPTION_MIDDLE_LONG_CROSSED");
-        public final static Property ReceptionMiddleLongParallel = new Property(28, Integer.class, "receptionMiddleLongParallel", false, "RECEPTION_MIDDLE_LONG_PARALLEL");
-        public final static Property ReceptionMiddleShortCrossed = new Property(29, Integer.class, "receptionMiddleShortCrossed", false, "RECEPTION_MIDDLE_SHORT_CROSSED");
-        public final static Property ReceptionMiddleShortParallel = new Property(30, Integer.class, "receptionMiddleShortParallel", false, "RECEPTION_MIDDLE_SHORT_PARALLEL");
-        public final static Property ReceptionRightLongCrossed = new Property(31, Integer.class, "receptionRightLongCrossed", false, "RECEPTION_RIGHT_LONG_CROSSED");
-        public final static Property ReceptionRightLongParallel = new Property(32, Integer.class, "receptionRightLongParallel", false, "RECEPTION_RIGHT_LONG_PARALLEL");
-        public final static Property ReceptionRightShortCrossed = new Property(33, Integer.class, "receptionRightShortCrossed", false, "RECEPTION_RIGHT_SHORT_CROSSED");
-        public final static Property ReceptionRightShortParallel = new Property(34, Integer.class, "receptionRightShortParallel", false, "RECEPTION_RIGHT_SHORT_PARALLEL");
-        public final static Property ForehandLeftLongCrossed = new Property(35, Integer.class, "forehandLeftLongCrossed", false, "FOREHAND_LEFT_LONG_CROSSED");
-        public final static Property ForehandLeftLongParallel = new Property(36, Integer.class, "forehandLeftLongParallel", false, "FOREHAND_LEFT_LONG_PARALLEL");
-        public final static Property ForehandLeftShortCrossed = new Property(37, Integer.class, "forehandLeftShortCrossed", false, "FOREHAND_LEFT_SHORT_CROSSED");
-        public final static Property ForehandLeftShortParallel = new Property(38, Integer.class, "forehandLeftShortParallel", false, "FOREHAND_LEFT_SHORT_PARALLEL");
-        public final static Property ForehandMiddleLongCrossed = new Property(39, Integer.class, "forehandMiddleLongCrossed", false, "FOREHAND_MIDDLE_LONG_CROSSED");
-        public final static Property ForehandMiddleLongParallel = new Property(40, Integer.class, "forehandMiddleLongParallel", false, "FOREHAND_MIDDLE_LONG_PARALLEL");
-        public final static Property ForehandMiddleShortCrossed = new Property(41, Integer.class, "forehandMiddleShortCrossed", false, "FOREHAND_MIDDLE_SHORT_CROSSED");
-        public final static Property ForehandMiddleShortParallel = new Property(42, Integer.class, "forehandMiddleShortParallel", false, "FOREHAND_MIDDLE_SHORT_PARALLEL");
-        public final static Property ForehandRightLongCrossed = new Property(43, Integer.class, "forehandRightLongCrossed", false, "FOREHAND_RIGHT_LONG_CROSSED");
-        public final static Property ForehandRightLongParallel = new Property(44, Integer.class, "forehandRightLongParallel", false, "FOREHAND_RIGHT_LONG_PARALLEL");
-        public final static Property ForehandRightShortCrossed = new Property(45, Integer.class, "forehandRightShortCrossed", false, "FOREHAND_RIGHT_SHORT_CROSSED");
-        public final static Property ForehandRightShortParallel = new Property(46, Integer.class, "forehandRightShortParallel", false, "FOREHAND_RIGHT_SHORT_PARALLEL");
-        public final static Property BackhandLeftLongCrossed = new Property(47, Integer.class, "backhandLeftLongCrossed", false, "BACKHAND_LEFT_LONG_CROSSED");
-        public final static Property BackhandLeftLongParallel = new Property(48, Integer.class, "backhandLeftLongParallel", false, "BACKHAND_LEFT_LONG_PARALLEL");
-        public final static Property BackhandLeftShortCrossed = new Property(49, Integer.class, "backhandLeftShortCrossed", false, "BACKHAND_LEFT_SHORT_CROSSED");
-        public final static Property BackhandLeftShortParallel = new Property(50, Integer.class, "backhandLeftShortParallel", false, "BACKHAND_LEFT_SHORT_PARALLEL");
-        public final static Property BackhandMiddleLongCrossed = new Property(51, Integer.class, "backhandMiddleLongCrossed", false, "BACKHAND_MIDDLE_LONG_CROSSED");
-        public final static Property BackhandMiddleLongParallel = new Property(52, Integer.class, "backhandMiddleLongParallel", false, "BACKHAND_MIDDLE_LONG_PARALLEL");
-        public final static Property BackhandMiddleShortCrossed = new Property(53, Integer.class, "backhandMiddleShortCrossed", false, "BACKHAND_MIDDLE_SHORT_CROSSED");
-        public final static Property BackhandMiddleShortParallel = new Property(54, Integer.class, "backhandMiddleShortParallel", false, "BACKHAND_MIDDLE_SHORT_PARALLEL");
-        public final static Property BackhandRightLongCrossed = new Property(55, Integer.class, "backhandRightLongCrossed", false, "BACKHAND_RIGHT_LONG_CROSSED");
-        public final static Property BackhandRightLongParallel = new Property(56, Integer.class, "backhandRightLongParallel", false, "BACKHAND_RIGHT_LONG_PARALLEL");
-        public final static Property BackhandRightShortCrossed = new Property(57, Integer.class, "backhandRightShortCrossed", false, "BACKHAND_RIGHT_SHORT_CROSSED");
-        public final static Property BackhandRightShortParallel = new Property(58, Integer.class, "backhandRightShortParallel", false, "BACKHAND_RIGHT_SHORT_PARALLEL");
-        public final static Property SmashLeftLongCrossed = new Property(59, Integer.class, "smashLeftLongCrossed", false, "SMASH_LEFT_LONG_CROSSED");
-        public final static Property SmashLeftLongParallel = new Property(60, Integer.class, "smashLeftLongParallel", false, "SMASH_LEFT_LONG_PARALLEL");
-        public final static Property SmashLeftShortCrossed = new Property(61, Integer.class, "smashLeftShortCrossed", false, "SMASH_LEFT_SHORT_CROSSED");
-        public final static Property SmashLeftShortParallel = new Property(62, Integer.class, "smashLeftShortParallel", false, "SMASH_LEFT_SHORT_PARALLEL");
-        public final static Property SmashMiddleLongCrossed = new Property(63, Integer.class, "smashMiddleLongCrossed", false, "SMASH_MIDDLE_LONG_CROSSED");
-        public final static Property SmashMiddleLongParallel = new Property(64, Integer.class, "smashMiddleLongParallel", false, "SMASH_MIDDLE_LONG_PARALLEL");
-        public final static Property SmashMiddleShortCrossed = new Property(65, Integer.class, "smashMiddleShortCrossed", false, "SMASH_MIDDLE_SHORT_CROSSED");
-        public final static Property SmashMiddleShortParallel = new Property(66, Integer.class, "smashMiddleShortParallel", false, "SMASH_MIDDLE_SHORT_PARALLEL");
-        public final static Property SmashRightLongCrossed = new Property(67, Integer.class, "smashRightLongCrossed", false, "SMASH_RIGHT_LONG_CROSSED");
-        public final static Property SmashRightLongParallel = new Property(68, Integer.class, "smashRightLongParallel", false, "SMASH_RIGHT_LONG_PARALLEL");
-        public final static Property SmashRightShortCrossed = new Property(69, Integer.class, "smashRightShortCrossed", false, "SMASH_RIGHT_SHORT_CROSSED");
-        public final static Property SmashRightShortParallel = new Property(70, Integer.class, "smashRightShortParallel", false, "SMASH_RIGHT_SHORT_PARALLEL");
-        public final static Property SliceLeftLongCrossed = new Property(71, Integer.class, "sliceLeftLongCrossed", false, "SLICE_LEFT_LONG_CROSSED");
-        public final static Property SliceLeftLongParallel = new Property(72, Integer.class, "sliceLeftLongParallel", false, "SLICE_LEFT_LONG_PARALLEL");
-        public final static Property SliceLeftShortCrossed = new Property(73, Integer.class, "sliceLeftShortCrossed", false, "SLICE_LEFT_SHORT_CROSSED");
-        public final static Property SliceLeftShortParallel = new Property(74, Integer.class, "sliceLeftShortParallel", false, "SLICE_LEFT_SHORT_PARALLEL");
-        public final static Property SliceMiddleLongCrossed = new Property(75, Integer.class, "sliceMiddleLongCrossed", false, "SLICE_MIDDLE_LONG_CROSSED");
-        public final static Property SliceMiddleLongParallel = new Property(76, Integer.class, "sliceMiddleLongParallel", false, "SLICE_MIDDLE_LONG_PARALLEL");
-        public final static Property SliceMiddleShortCrossed = new Property(77, Integer.class, "sliceMiddleShortCrossed", false, "SLICE_MIDDLE_SHORT_CROSSED");
-        public final static Property SliceMiddleShortParallel = new Property(78, Integer.class, "sliceMiddleShortParallel", false, "SLICE_MIDDLE_SHORT_PARALLEL");
-        public final static Property SliceRightLongCrossed = new Property(79, Integer.class, "sliceRightLongCrossed", false, "SLICE_RIGHT_LONG_CROSSED");
-        public final static Property SliceRightLongParallel = new Property(80, Integer.class, "sliceRightLongParallel", false, "SLICE_RIGHT_LONG_PARALLEL");
-        public final static Property SliceRightShortCrossed = new Property(81, Integer.class, "sliceRightShortCrossed", false, "SLICE_RIGHT_SHORT_CROSSED");
-        public final static Property SliceRightShortParallel = new Property(82, Integer.class, "sliceRightShortParallel", false, "SLICE_RIGHT_SHORT_PARALLEL");
-        public final static Property BlockLeftLongCrossed = new Property(83, Integer.class, "blockLeftLongCrossed", false, "BLOCK_LEFT_LONG_CROSSED");
-        public final static Property BlockLeftLongParallel = new Property(84, Integer.class, "blockLeftLongParallel", false, "BLOCK_LEFT_LONG_PARALLEL");
-        public final static Property BlockLeftShortCrossed = new Property(85, Integer.class, "blockLeftShortCrossed", false, "BLOCK_LEFT_SHORT_CROSSED");
-        public final static Property BlockLeftShortParallel = new Property(86, Integer.class, "blockLeftShortParallel", false, "BLOCK_LEFT_SHORT_PARALLEL");
-        public final static Property BlockMiddleLongCrossed = new Property(87, Integer.class, "blockMiddleLongCrossed", false, "BLOCK_MIDDLE_LONG_CROSSED");
-        public final static Property BlockMiddleLongParallel = new Property(88, Integer.class, "blockMiddleLongParallel", false, "BLOCK_MIDDLE_LONG_PARALLEL");
-        public final static Property BlockMiddleShortCrossed = new Property(89, Integer.class, "blockMiddleShortCrossed", false, "BLOCK_MIDDLE_SHORT_CROSSED");
-        public final static Property BlockMiddleShortParallel = new Property(90, Integer.class, "blockMiddleShortParallel", false, "BLOCK_MIDDLE_SHORT_PARALLEL");
-        public final static Property BlockRightLongCrossed = new Property(91, Integer.class, "blockRightLongCrossed", false, "BLOCK_RIGHT_LONG_CROSSED");
-        public final static Property BlockRightLongParallel = new Property(92, Integer.class, "blockRightLongParallel", false, "BLOCK_RIGHT_LONG_PARALLEL");
-        public final static Property BlockRightShortCrossed = new Property(93, Integer.class, "blockRightShortCrossed", false, "BLOCK_RIGHT_SHORT_CROSSED");
-        public final static Property BlockRightShortParallel = new Property(94, Integer.class, "blockRightShortParallel", false, "BLOCK_RIGHT_SHORT_PARALLEL");
-        public final static Property FlickLeftLongCrossed = new Property(95, Integer.class, "flickLeftLongCrossed", false, "FLICK_LEFT_LONG_CROSSED");
-        public final static Property FlickLeftLongParallel = new Property(96, Integer.class, "flickLeftLongParallel", false, "FLICK_LEFT_LONG_PARALLEL");
-        public final static Property FlickLeftShortCrossed = new Property(97, Integer.class, "flickLeftShortCrossed", false, "FLICK_LEFT_SHORT_CROSSED");
-        public final static Property FlickLeftShortParallel = new Property(98, Integer.class, "flickLeftShortParallel", false, "FLICK_LEFT_SHORT_PARALLEL");
-        public final static Property FlickMiddleLongCrossed = new Property(99, Integer.class, "flickMiddleLongCrossed", false, "FLICK_MIDDLE_LONG_CROSSED");
-        public final static Property FlickMiddleLongParallel = new Property(100, Integer.class, "flickMiddleLongParallel", false, "FLICK_MIDDLE_LONG_PARALLEL");
-        public final static Property FlickMiddleShortCrossed = new Property(101, Integer.class, "flickMiddleShortCrossed", false, "FLICK_MIDDLE_SHORT_CROSSED");
-        public final static Property FlickMiddleShortParallel = new Property(102, Integer.class, "flickMiddleShortParallel", false, "FLICK_MIDDLE_SHORT_PARALLEL");
-        public final static Property FlickRightLongCrossed = new Property(103, Integer.class, "flickRightLongCrossed", false, "FLICK_RIGHT_LONG_CROSSED");
-        public final static Property FlickRightLongParallel = new Property(104, Integer.class, "flickRightLongParallel", false, "FLICK_RIGHT_LONG_PARALLEL");
-        public final static Property FlickRightShortCrossed = new Property(105, Integer.class, "flickRightShortCrossed", false, "FLICK_RIGHT_SHORT_CROSSED");
-        public final static Property FlickRightShortParallel = new Property(106, Integer.class, "flickRightShortParallel", false, "FLICK_RIGHT_SHORT_PARALLEL");
-        public final static Property LobLeftLongCrossed = new Property(107, Integer.class, "lobLeftLongCrossed", false, "LOB_LEFT_LONG_CROSSED");
-        public final static Property LobLeftLongParallel = new Property(108, Integer.class, "lobLeftLongParallel", false, "LOB_LEFT_LONG_PARALLEL");
-        public final static Property LobLeftShortCrossed = new Property(109, Integer.class, "lobLeftShortCrossed", false, "LOB_LEFT_SHORT_CROSSED");
-        public final static Property LobLeftShortParallel = new Property(110, Integer.class, "lobLeftShortParallel", false, "LOB_LEFT_SHORT_PARALLEL");
-        public final static Property LobMiddleLongCrossed = new Property(111, Integer.class, "lobMiddleLongCrossed", false, "LOB_MIDDLE_LONG_CROSSED");
-        public final static Property LobMiddleLongParallel = new Property(112, Integer.class, "lobMiddleLongParallel", false, "LOB_MIDDLE_LONG_PARALLEL");
-        public final static Property LobMiddleShortCrossed = new Property(113, Integer.class, "lobMiddleShortCrossed", false, "LOB_MIDDLE_SHORT_CROSSED");
-        public final static Property LobMiddleShortParallel = new Property(114, Integer.class, "lobMiddleShortParallel", false, "LOB_MIDDLE_SHORT_PARALLEL");
-        public final static Property LobRightLongCrossed = new Property(115, Integer.class, "lobRightLongCrossed", false, "LOB_RIGHT_LONG_CROSSED");
-        public final static Property LobRightLongParallel = new Property(116, Integer.class, "lobRightLongParallel", false, "LOB_RIGHT_LONG_PARALLEL");
-        public final static Property LobRightShortCrossed = new Property(117, Integer.class, "lobRightShortCrossed", false, "LOB_RIGHT_SHORT_CROSSED");
-        public final static Property LobRightShortParallel = new Property(118, Integer.class, "lobRightShortParallel", false, "LOB_RIGHT_SHORT_PARALLEL");
+        public final static Property Service = new Property(1, int.class, "service", false, "SERVICE");
+        public final static Property Reception = new Property(2, int.class, "reception", false, "RECEPTION");
+        public final static Property Forehand = new Property(3, int.class, "forehand", false, "FOREHAND");
+        public final static Property Backhand = new Property(4, int.class, "backhand", false, "BACKHAND");
+        public final static Property Smash = new Property(5, int.class, "smash", false, "SMASH");
+        public final static Property Slice = new Property(6, int.class, "slice", false, "SLICE");
+        public final static Property Block = new Property(7, int.class, "block", false, "BLOCK");
+        public final static Property Flick = new Property(8, int.class, "flick", false, "FLICK");
+        public final static Property Lob = new Property(9, int.class, "lob", false, "LOB");
+        public final static Property Total = new Property(10, int.class, "total", false, "TOTAL");
+        public final static Property ServiceLeftLongCrossed = new Property(11, int.class, "serviceLeftLongCrossed", false, "SERVICE_LEFT_LONG_CROSSED");
+        public final static Property ServiceLeftLongParallel = new Property(12, int.class, "serviceLeftLongParallel", false, "SERVICE_LEFT_LONG_PARALLEL");
+        public final static Property ServiceLeftShortCrossed = new Property(13, int.class, "serviceLeftShortCrossed", false, "SERVICE_LEFT_SHORT_CROSSED");
+        public final static Property ServiceLeftShortParallel = new Property(14, int.class, "serviceLeftShortParallel", false, "SERVICE_LEFT_SHORT_PARALLEL");
+        public final static Property ServiceMiddleLongCrossed = new Property(15, int.class, "serviceMiddleLongCrossed", false, "SERVICE_MIDDLE_LONG_CROSSED");
+        public final static Property ServiceMiddleLongParallel = new Property(16, int.class, "serviceMiddleLongParallel", false, "SERVICE_MIDDLE_LONG_PARALLEL");
+        public final static Property ServiceMiddleShortCrossed = new Property(17, int.class, "serviceMiddleShortCrossed", false, "SERVICE_MIDDLE_SHORT_CROSSED");
+        public final static Property ServiceMiddleShortParallel = new Property(18, int.class, "serviceMiddleShortParallel", false, "SERVICE_MIDDLE_SHORT_PARALLEL");
+        public final static Property ServiceRightLongCrossed = new Property(19, int.class, "serviceRightLongCrossed", false, "SERVICE_RIGHT_LONG_CROSSED");
+        public final static Property ServiceRightLongParallel = new Property(20, int.class, "serviceRightLongParallel", false, "SERVICE_RIGHT_LONG_PARALLEL");
+        public final static Property ServiceRightShortCrossed = new Property(21, int.class, "serviceRightShortCrossed", false, "SERVICE_RIGHT_SHORT_CROSSED");
+        public final static Property ServiceRightShortParallel = new Property(22, int.class, "serviceRightShortParallel", false, "SERVICE_RIGHT_SHORT_PARALLEL");
+        public final static Property ReceptionLeftLongCrossed = new Property(23, int.class, "receptionLeftLongCrossed", false, "RECEPTION_LEFT_LONG_CROSSED");
+        public final static Property ReceptionLeftLongParallel = new Property(24, int.class, "receptionLeftLongParallel", false, "RECEPTION_LEFT_LONG_PARALLEL");
+        public final static Property ReceptionLeftShortCrossed = new Property(25, int.class, "receptionLeftShortCrossed", false, "RECEPTION_LEFT_SHORT_CROSSED");
+        public final static Property ReceptionLeftShortParallel = new Property(26, int.class, "receptionLeftShortParallel", false, "RECEPTION_LEFT_SHORT_PARALLEL");
+        public final static Property ReceptionMiddleLongCrossed = new Property(27, int.class, "receptionMiddleLongCrossed", false, "RECEPTION_MIDDLE_LONG_CROSSED");
+        public final static Property ReceptionMiddleLongParallel = new Property(28, int.class, "receptionMiddleLongParallel", false, "RECEPTION_MIDDLE_LONG_PARALLEL");
+        public final static Property ReceptionMiddleShortCrossed = new Property(29, int.class, "receptionMiddleShortCrossed", false, "RECEPTION_MIDDLE_SHORT_CROSSED");
+        public final static Property ReceptionMiddleShortParallel = new Property(30, int.class, "receptionMiddleShortParallel", false, "RECEPTION_MIDDLE_SHORT_PARALLEL");
+        public final static Property ReceptionRightLongCrossed = new Property(31, int.class, "receptionRightLongCrossed", false, "RECEPTION_RIGHT_LONG_CROSSED");
+        public final static Property ReceptionRightLongParallel = new Property(32, int.class, "receptionRightLongParallel", false, "RECEPTION_RIGHT_LONG_PARALLEL");
+        public final static Property ReceptionRightShortCrossed = new Property(33, int.class, "receptionRightShortCrossed", false, "RECEPTION_RIGHT_SHORT_CROSSED");
+        public final static Property ReceptionRightShortParallel = new Property(34, int.class, "receptionRightShortParallel", false, "RECEPTION_RIGHT_SHORT_PARALLEL");
+        public final static Property ForehandLeftLongCrossed = new Property(35, int.class, "forehandLeftLongCrossed", false, "FOREHAND_LEFT_LONG_CROSSED");
+        public final static Property ForehandLeftLongParallel = new Property(36, int.class, "forehandLeftLongParallel", false, "FOREHAND_LEFT_LONG_PARALLEL");
+        public final static Property ForehandLeftShortCrossed = new Property(37, int.class, "forehandLeftShortCrossed", false, "FOREHAND_LEFT_SHORT_CROSSED");
+        public final static Property ForehandLeftShortParallel = new Property(38, int.class, "forehandLeftShortParallel", false, "FOREHAND_LEFT_SHORT_PARALLEL");
+        public final static Property ForehandMiddleLongCrossed = new Property(39, int.class, "forehandMiddleLongCrossed", false, "FOREHAND_MIDDLE_LONG_CROSSED");
+        public final static Property ForehandMiddleLongParallel = new Property(40, int.class, "forehandMiddleLongParallel", false, "FOREHAND_MIDDLE_LONG_PARALLEL");
+        public final static Property ForehandMiddleShortCrossed = new Property(41, int.class, "forehandMiddleShortCrossed", false, "FOREHAND_MIDDLE_SHORT_CROSSED");
+        public final static Property ForehandMiddleShortParallel = new Property(42, int.class, "forehandMiddleShortParallel", false, "FOREHAND_MIDDLE_SHORT_PARALLEL");
+        public final static Property ForehandRightLongCrossed = new Property(43, int.class, "forehandRightLongCrossed", false, "FOREHAND_RIGHT_LONG_CROSSED");
+        public final static Property ForehandRightLongParallel = new Property(44, int.class, "forehandRightLongParallel", false, "FOREHAND_RIGHT_LONG_PARALLEL");
+        public final static Property ForehandRightShortCrossed = new Property(45, int.class, "forehandRightShortCrossed", false, "FOREHAND_RIGHT_SHORT_CROSSED");
+        public final static Property ForehandRightShortParallel = new Property(46, int.class, "forehandRightShortParallel", false, "FOREHAND_RIGHT_SHORT_PARALLEL");
+        public final static Property BackhandLeftLongCrossed = new Property(47, int.class, "backhandLeftLongCrossed", false, "BACKHAND_LEFT_LONG_CROSSED");
+        public final static Property BackhandLeftLongParallel = new Property(48, int.class, "backhandLeftLongParallel", false, "BACKHAND_LEFT_LONG_PARALLEL");
+        public final static Property BackhandLeftShortCrossed = new Property(49, int.class, "backhandLeftShortCrossed", false, "BACKHAND_LEFT_SHORT_CROSSED");
+        public final static Property BackhandLeftShortParallel = new Property(50, int.class, "backhandLeftShortParallel", false, "BACKHAND_LEFT_SHORT_PARALLEL");
+        public final static Property BackhandMiddleLongCrossed = new Property(51, int.class, "backhandMiddleLongCrossed", false, "BACKHAND_MIDDLE_LONG_CROSSED");
+        public final static Property BackhandMiddleLongParallel = new Property(52, int.class, "backhandMiddleLongParallel", false, "BACKHAND_MIDDLE_LONG_PARALLEL");
+        public final static Property BackhandMiddleShortCrossed = new Property(53, int.class, "backhandMiddleShortCrossed", false, "BACKHAND_MIDDLE_SHORT_CROSSED");
+        public final static Property BackhandMiddleShortParallel = new Property(54, int.class, "backhandMiddleShortParallel", false, "BACKHAND_MIDDLE_SHORT_PARALLEL");
+        public final static Property BackhandRightLongCrossed = new Property(55, int.class, "backhandRightLongCrossed", false, "BACKHAND_RIGHT_LONG_CROSSED");
+        public final static Property BackhandRightLongParallel = new Property(56, int.class, "backhandRightLongParallel", false, "BACKHAND_RIGHT_LONG_PARALLEL");
+        public final static Property BackhandRightShortCrossed = new Property(57, int.class, "backhandRightShortCrossed", false, "BACKHAND_RIGHT_SHORT_CROSSED");
+        public final static Property BackhandRightShortParallel = new Property(58, int.class, "backhandRightShortParallel", false, "BACKHAND_RIGHT_SHORT_PARALLEL");
+        public final static Property SmashLeftLongCrossed = new Property(59, int.class, "smashLeftLongCrossed", false, "SMASH_LEFT_LONG_CROSSED");
+        public final static Property SmashLeftLongParallel = new Property(60, int.class, "smashLeftLongParallel", false, "SMASH_LEFT_LONG_PARALLEL");
+        public final static Property SmashLeftShortCrossed = new Property(61, int.class, "smashLeftShortCrossed", false, "SMASH_LEFT_SHORT_CROSSED");
+        public final static Property SmashLeftShortParallel = new Property(62, int.class, "smashLeftShortParallel", false, "SMASH_LEFT_SHORT_PARALLEL");
+        public final static Property SmashMiddleLongCrossed = new Property(63, int.class, "smashMiddleLongCrossed", false, "SMASH_MIDDLE_LONG_CROSSED");
+        public final static Property SmashMiddleLongParallel = new Property(64, int.class, "smashMiddleLongParallel", false, "SMASH_MIDDLE_LONG_PARALLEL");
+        public final static Property SmashMiddleShortCrossed = new Property(65, int.class, "smashMiddleShortCrossed", false, "SMASH_MIDDLE_SHORT_CROSSED");
+        public final static Property SmashMiddleShortParallel = new Property(66, int.class, "smashMiddleShortParallel", false, "SMASH_MIDDLE_SHORT_PARALLEL");
+        public final static Property SmashRightLongCrossed = new Property(67, int.class, "smashRightLongCrossed", false, "SMASH_RIGHT_LONG_CROSSED");
+        public final static Property SmashRightLongParallel = new Property(68, int.class, "smashRightLongParallel", false, "SMASH_RIGHT_LONG_PARALLEL");
+        public final static Property SmashRightShortCrossed = new Property(69, int.class, "smashRightShortCrossed", false, "SMASH_RIGHT_SHORT_CROSSED");
+        public final static Property SmashRightShortParallel = new Property(70, int.class, "smashRightShortParallel", false, "SMASH_RIGHT_SHORT_PARALLEL");
+        public final static Property SliceLeftLongCrossed = new Property(71, int.class, "sliceLeftLongCrossed", false, "SLICE_LEFT_LONG_CROSSED");
+        public final static Property SliceLeftLongParallel = new Property(72, int.class, "sliceLeftLongParallel", false, "SLICE_LEFT_LONG_PARALLEL");
+        public final static Property SliceLeftShortCrossed = new Property(73, int.class, "sliceLeftShortCrossed", false, "SLICE_LEFT_SHORT_CROSSED");
+        public final static Property SliceLeftShortParallel = new Property(74, int.class, "sliceLeftShortParallel", false, "SLICE_LEFT_SHORT_PARALLEL");
+        public final static Property SliceMiddleLongCrossed = new Property(75, int.class, "sliceMiddleLongCrossed", false, "SLICE_MIDDLE_LONG_CROSSED");
+        public final static Property SliceMiddleLongParallel = new Property(76, int.class, "sliceMiddleLongParallel", false, "SLICE_MIDDLE_LONG_PARALLEL");
+        public final static Property SliceMiddleShortCrossed = new Property(77, int.class, "sliceMiddleShortCrossed", false, "SLICE_MIDDLE_SHORT_CROSSED");
+        public final static Property SliceMiddleShortParallel = new Property(78, int.class, "sliceMiddleShortParallel", false, "SLICE_MIDDLE_SHORT_PARALLEL");
+        public final static Property SliceRightLongCrossed = new Property(79, int.class, "sliceRightLongCrossed", false, "SLICE_RIGHT_LONG_CROSSED");
+        public final static Property SliceRightLongParallel = new Property(80, int.class, "sliceRightLongParallel", false, "SLICE_RIGHT_LONG_PARALLEL");
+        public final static Property SliceRightShortCrossed = new Property(81, int.class, "sliceRightShortCrossed", false, "SLICE_RIGHT_SHORT_CROSSED");
+        public final static Property SliceRightShortParallel = new Property(82, int.class, "sliceRightShortParallel", false, "SLICE_RIGHT_SHORT_PARALLEL");
+        public final static Property BlockLeftLongCrossed = new Property(83, int.class, "blockLeftLongCrossed", false, "BLOCK_LEFT_LONG_CROSSED");
+        public final static Property BlockLeftLongParallel = new Property(84, int.class, "blockLeftLongParallel", false, "BLOCK_LEFT_LONG_PARALLEL");
+        public final static Property BlockLeftShortCrossed = new Property(85, int.class, "blockLeftShortCrossed", false, "BLOCK_LEFT_SHORT_CROSSED");
+        public final static Property BlockLeftShortParallel = new Property(86, int.class, "blockLeftShortParallel", false, "BLOCK_LEFT_SHORT_PARALLEL");
+        public final static Property BlockMiddleLongCrossed = new Property(87, int.class, "blockMiddleLongCrossed", false, "BLOCK_MIDDLE_LONG_CROSSED");
+        public final static Property BlockMiddleLongParallel = new Property(88, int.class, "blockMiddleLongParallel", false, "BLOCK_MIDDLE_LONG_PARALLEL");
+        public final static Property BlockMiddleShortCrossed = new Property(89, int.class, "blockMiddleShortCrossed", false, "BLOCK_MIDDLE_SHORT_CROSSED");
+        public final static Property BlockMiddleShortParallel = new Property(90, int.class, "blockMiddleShortParallel", false, "BLOCK_MIDDLE_SHORT_PARALLEL");
+        public final static Property BlockRightLongCrossed = new Property(91, int.class, "blockRightLongCrossed", false, "BLOCK_RIGHT_LONG_CROSSED");
+        public final static Property BlockRightLongParallel = new Property(92, int.class, "blockRightLongParallel", false, "BLOCK_RIGHT_LONG_PARALLEL");
+        public final static Property BlockRightShortCrossed = new Property(93, int.class, "blockRightShortCrossed", false, "BLOCK_RIGHT_SHORT_CROSSED");
+        public final static Property BlockRightShortParallel = new Property(94, int.class, "blockRightShortParallel", false, "BLOCK_RIGHT_SHORT_PARALLEL");
+        public final static Property FlickLeftLongCrossed = new Property(95, int.class, "flickLeftLongCrossed", false, "FLICK_LEFT_LONG_CROSSED");
+        public final static Property FlickLeftLongParallel = new Property(96, int.class, "flickLeftLongParallel", false, "FLICK_LEFT_LONG_PARALLEL");
+        public final static Property FlickLeftShortCrossed = new Property(97, int.class, "flickLeftShortCrossed", false, "FLICK_LEFT_SHORT_CROSSED");
+        public final static Property FlickLeftShortParallel = new Property(98, int.class, "flickLeftShortParallel", false, "FLICK_LEFT_SHORT_PARALLEL");
+        public final static Property FlickMiddleLongCrossed = new Property(99, int.class, "flickMiddleLongCrossed", false, "FLICK_MIDDLE_LONG_CROSSED");
+        public final static Property FlickMiddleLongParallel = new Property(100, int.class, "flickMiddleLongParallel", false, "FLICK_MIDDLE_LONG_PARALLEL");
+        public final static Property FlickMiddleShortCrossed = new Property(101, int.class, "flickMiddleShortCrossed", false, "FLICK_MIDDLE_SHORT_CROSSED");
+        public final static Property FlickMiddleShortParallel = new Property(102, int.class, "flickMiddleShortParallel", false, "FLICK_MIDDLE_SHORT_PARALLEL");
+        public final static Property FlickRightLongCrossed = new Property(103, int.class, "flickRightLongCrossed", false, "FLICK_RIGHT_LONG_CROSSED");
+        public final static Property FlickRightLongParallel = new Property(104, int.class, "flickRightLongParallel", false, "FLICK_RIGHT_LONG_PARALLEL");
+        public final static Property FlickRightShortCrossed = new Property(105, int.class, "flickRightShortCrossed", false, "FLICK_RIGHT_SHORT_CROSSED");
+        public final static Property FlickRightShortParallel = new Property(106, int.class, "flickRightShortParallel", false, "FLICK_RIGHT_SHORT_PARALLEL");
+        public final static Property LobLeftLongCrossed = new Property(107, int.class, "lobLeftLongCrossed", false, "LOB_LEFT_LONG_CROSSED");
+        public final static Property LobLeftLongParallel = new Property(108, int.class, "lobLeftLongParallel", false, "LOB_LEFT_LONG_PARALLEL");
+        public final static Property LobLeftShortCrossed = new Property(109, int.class, "lobLeftShortCrossed", false, "LOB_LEFT_SHORT_CROSSED");
+        public final static Property LobLeftShortParallel = new Property(110, int.class, "lobLeftShortParallel", false, "LOB_LEFT_SHORT_PARALLEL");
+        public final static Property LobMiddleLongCrossed = new Property(111, int.class, "lobMiddleLongCrossed", false, "LOB_MIDDLE_LONG_CROSSED");
+        public final static Property LobMiddleLongParallel = new Property(112, int.class, "lobMiddleLongParallel", false, "LOB_MIDDLE_LONG_PARALLEL");
+        public final static Property LobMiddleShortCrossed = new Property(113, int.class, "lobMiddleShortCrossed", false, "LOB_MIDDLE_SHORT_CROSSED");
+        public final static Property LobMiddleShortParallel = new Property(114, int.class, "lobMiddleShortParallel", false, "LOB_MIDDLE_SHORT_PARALLEL");
+        public final static Property LobRightLongCrossed = new Property(115, int.class, "lobRightLongCrossed", false, "LOB_RIGHT_LONG_CROSSED");
+        public final static Property LobRightLongParallel = new Property(116, int.class, "lobRightLongParallel", false, "LOB_RIGHT_LONG_PARALLEL");
+        public final static Property LobRightShortCrossed = new Property(117, int.class, "lobRightShortCrossed", false, "LOB_RIGHT_SHORT_CROSSED");
+        public final static Property LobRightShortParallel = new Property(118, int.class, "lobRightShortParallel", false, "LOB_RIGHT_SHORT_PARALLEL");
     };
 
 
@@ -158,124 +158,124 @@ public class GameOpponentDao extends AbstractDao<GameOpponent, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"GAME_OPPONENT\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "\"SERVICE\" INTEGER," + // 1: service
-                "\"RECEPTION\" INTEGER," + // 2: reception
-                "\"FOREHAND\" INTEGER," + // 3: forehand
-                "\"BACKHAND\" INTEGER," + // 4: backhand
-                "\"SMASH\" INTEGER," + // 5: smash
-                "\"SLICE\" INTEGER," + // 6: slice
-                "\"BLOCK\" INTEGER," + // 7: block
-                "\"FLICK\" INTEGER," + // 8: flick
-                "\"LOB\" INTEGER," + // 9: lob
-                "\"TOTAL\" INTEGER," + // 10: total
-                "\"SERVICE_LEFT_LONG_CROSSED\" INTEGER," + // 11: serviceLeftLongCrossed
-                "\"SERVICE_LEFT_LONG_PARALLEL\" INTEGER," + // 12: serviceLeftLongParallel
-                "\"SERVICE_LEFT_SHORT_CROSSED\" INTEGER," + // 13: serviceLeftShortCrossed
-                "\"SERVICE_LEFT_SHORT_PARALLEL\" INTEGER," + // 14: serviceLeftShortParallel
-                "\"SERVICE_MIDDLE_LONG_CROSSED\" INTEGER," + // 15: serviceMiddleLongCrossed
-                "\"SERVICE_MIDDLE_LONG_PARALLEL\" INTEGER," + // 16: serviceMiddleLongParallel
-                "\"SERVICE_MIDDLE_SHORT_CROSSED\" INTEGER," + // 17: serviceMiddleShortCrossed
-                "\"SERVICE_MIDDLE_SHORT_PARALLEL\" INTEGER," + // 18: serviceMiddleShortParallel
-                "\"SERVICE_RIGHT_LONG_CROSSED\" INTEGER," + // 19: serviceRightLongCrossed
-                "\"SERVICE_RIGHT_LONG_PARALLEL\" INTEGER," + // 20: serviceRightLongParallel
-                "\"SERVICE_RIGHT_SHORT_CROSSED\" INTEGER," + // 21: serviceRightShortCrossed
-                "\"SERVICE_RIGHT_SHORT_PARALLEL\" INTEGER," + // 22: serviceRightShortParallel
-                "\"RECEPTION_LEFT_LONG_CROSSED\" INTEGER," + // 23: receptionLeftLongCrossed
-                "\"RECEPTION_LEFT_LONG_PARALLEL\" INTEGER," + // 24: receptionLeftLongParallel
-                "\"RECEPTION_LEFT_SHORT_CROSSED\" INTEGER," + // 25: receptionLeftShortCrossed
-                "\"RECEPTION_LEFT_SHORT_PARALLEL\" INTEGER," + // 26: receptionLeftShortParallel
-                "\"RECEPTION_MIDDLE_LONG_CROSSED\" INTEGER," + // 27: receptionMiddleLongCrossed
-                "\"RECEPTION_MIDDLE_LONG_PARALLEL\" INTEGER," + // 28: receptionMiddleLongParallel
-                "\"RECEPTION_MIDDLE_SHORT_CROSSED\" INTEGER," + // 29: receptionMiddleShortCrossed
-                "\"RECEPTION_MIDDLE_SHORT_PARALLEL\" INTEGER," + // 30: receptionMiddleShortParallel
-                "\"RECEPTION_RIGHT_LONG_CROSSED\" INTEGER," + // 31: receptionRightLongCrossed
-                "\"RECEPTION_RIGHT_LONG_PARALLEL\" INTEGER," + // 32: receptionRightLongParallel
-                "\"RECEPTION_RIGHT_SHORT_CROSSED\" INTEGER," + // 33: receptionRightShortCrossed
-                "\"RECEPTION_RIGHT_SHORT_PARALLEL\" INTEGER," + // 34: receptionRightShortParallel
-                "\"FOREHAND_LEFT_LONG_CROSSED\" INTEGER," + // 35: forehandLeftLongCrossed
-                "\"FOREHAND_LEFT_LONG_PARALLEL\" INTEGER," + // 36: forehandLeftLongParallel
-                "\"FOREHAND_LEFT_SHORT_CROSSED\" INTEGER," + // 37: forehandLeftShortCrossed
-                "\"FOREHAND_LEFT_SHORT_PARALLEL\" INTEGER," + // 38: forehandLeftShortParallel
-                "\"FOREHAND_MIDDLE_LONG_CROSSED\" INTEGER," + // 39: forehandMiddleLongCrossed
-                "\"FOREHAND_MIDDLE_LONG_PARALLEL\" INTEGER," + // 40: forehandMiddleLongParallel
-                "\"FOREHAND_MIDDLE_SHORT_CROSSED\" INTEGER," + // 41: forehandMiddleShortCrossed
-                "\"FOREHAND_MIDDLE_SHORT_PARALLEL\" INTEGER," + // 42: forehandMiddleShortParallel
-                "\"FOREHAND_RIGHT_LONG_CROSSED\" INTEGER," + // 43: forehandRightLongCrossed
-                "\"FOREHAND_RIGHT_LONG_PARALLEL\" INTEGER," + // 44: forehandRightLongParallel
-                "\"FOREHAND_RIGHT_SHORT_CROSSED\" INTEGER," + // 45: forehandRightShortCrossed
-                "\"FOREHAND_RIGHT_SHORT_PARALLEL\" INTEGER," + // 46: forehandRightShortParallel
-                "\"BACKHAND_LEFT_LONG_CROSSED\" INTEGER," + // 47: backhandLeftLongCrossed
-                "\"BACKHAND_LEFT_LONG_PARALLEL\" INTEGER," + // 48: backhandLeftLongParallel
-                "\"BACKHAND_LEFT_SHORT_CROSSED\" INTEGER," + // 49: backhandLeftShortCrossed
-                "\"BACKHAND_LEFT_SHORT_PARALLEL\" INTEGER," + // 50: backhandLeftShortParallel
-                "\"BACKHAND_MIDDLE_LONG_CROSSED\" INTEGER," + // 51: backhandMiddleLongCrossed
-                "\"BACKHAND_MIDDLE_LONG_PARALLEL\" INTEGER," + // 52: backhandMiddleLongParallel
-                "\"BACKHAND_MIDDLE_SHORT_CROSSED\" INTEGER," + // 53: backhandMiddleShortCrossed
-                "\"BACKHAND_MIDDLE_SHORT_PARALLEL\" INTEGER," + // 54: backhandMiddleShortParallel
-                "\"BACKHAND_RIGHT_LONG_CROSSED\" INTEGER," + // 55: backhandRightLongCrossed
-                "\"BACKHAND_RIGHT_LONG_PARALLEL\" INTEGER," + // 56: backhandRightLongParallel
-                "\"BACKHAND_RIGHT_SHORT_CROSSED\" INTEGER," + // 57: backhandRightShortCrossed
-                "\"BACKHAND_RIGHT_SHORT_PARALLEL\" INTEGER," + // 58: backhandRightShortParallel
-                "\"SMASH_LEFT_LONG_CROSSED\" INTEGER," + // 59: smashLeftLongCrossed
-                "\"SMASH_LEFT_LONG_PARALLEL\" INTEGER," + // 60: smashLeftLongParallel
-                "\"SMASH_LEFT_SHORT_CROSSED\" INTEGER," + // 61: smashLeftShortCrossed
-                "\"SMASH_LEFT_SHORT_PARALLEL\" INTEGER," + // 62: smashLeftShortParallel
-                "\"SMASH_MIDDLE_LONG_CROSSED\" INTEGER," + // 63: smashMiddleLongCrossed
-                "\"SMASH_MIDDLE_LONG_PARALLEL\" INTEGER," + // 64: smashMiddleLongParallel
-                "\"SMASH_MIDDLE_SHORT_CROSSED\" INTEGER," + // 65: smashMiddleShortCrossed
-                "\"SMASH_MIDDLE_SHORT_PARALLEL\" INTEGER," + // 66: smashMiddleShortParallel
-                "\"SMASH_RIGHT_LONG_CROSSED\" INTEGER," + // 67: smashRightLongCrossed
-                "\"SMASH_RIGHT_LONG_PARALLEL\" INTEGER," + // 68: smashRightLongParallel
-                "\"SMASH_RIGHT_SHORT_CROSSED\" INTEGER," + // 69: smashRightShortCrossed
-                "\"SMASH_RIGHT_SHORT_PARALLEL\" INTEGER," + // 70: smashRightShortParallel
-                "\"SLICE_LEFT_LONG_CROSSED\" INTEGER," + // 71: sliceLeftLongCrossed
-                "\"SLICE_LEFT_LONG_PARALLEL\" INTEGER," + // 72: sliceLeftLongParallel
-                "\"SLICE_LEFT_SHORT_CROSSED\" INTEGER," + // 73: sliceLeftShortCrossed
-                "\"SLICE_LEFT_SHORT_PARALLEL\" INTEGER," + // 74: sliceLeftShortParallel
-                "\"SLICE_MIDDLE_LONG_CROSSED\" INTEGER," + // 75: sliceMiddleLongCrossed
-                "\"SLICE_MIDDLE_LONG_PARALLEL\" INTEGER," + // 76: sliceMiddleLongParallel
-                "\"SLICE_MIDDLE_SHORT_CROSSED\" INTEGER," + // 77: sliceMiddleShortCrossed
-                "\"SLICE_MIDDLE_SHORT_PARALLEL\" INTEGER," + // 78: sliceMiddleShortParallel
-                "\"SLICE_RIGHT_LONG_CROSSED\" INTEGER," + // 79: sliceRightLongCrossed
-                "\"SLICE_RIGHT_LONG_PARALLEL\" INTEGER," + // 80: sliceRightLongParallel
-                "\"SLICE_RIGHT_SHORT_CROSSED\" INTEGER," + // 81: sliceRightShortCrossed
-                "\"SLICE_RIGHT_SHORT_PARALLEL\" INTEGER," + // 82: sliceRightShortParallel
-                "\"BLOCK_LEFT_LONG_CROSSED\" INTEGER," + // 83: blockLeftLongCrossed
-                "\"BLOCK_LEFT_LONG_PARALLEL\" INTEGER," + // 84: blockLeftLongParallel
-                "\"BLOCK_LEFT_SHORT_CROSSED\" INTEGER," + // 85: blockLeftShortCrossed
-                "\"BLOCK_LEFT_SHORT_PARALLEL\" INTEGER," + // 86: blockLeftShortParallel
-                "\"BLOCK_MIDDLE_LONG_CROSSED\" INTEGER," + // 87: blockMiddleLongCrossed
-                "\"BLOCK_MIDDLE_LONG_PARALLEL\" INTEGER," + // 88: blockMiddleLongParallel
-                "\"BLOCK_MIDDLE_SHORT_CROSSED\" INTEGER," + // 89: blockMiddleShortCrossed
-                "\"BLOCK_MIDDLE_SHORT_PARALLEL\" INTEGER," + // 90: blockMiddleShortParallel
-                "\"BLOCK_RIGHT_LONG_CROSSED\" INTEGER," + // 91: blockRightLongCrossed
-                "\"BLOCK_RIGHT_LONG_PARALLEL\" INTEGER," + // 92: blockRightLongParallel
-                "\"BLOCK_RIGHT_SHORT_CROSSED\" INTEGER," + // 93: blockRightShortCrossed
-                "\"BLOCK_RIGHT_SHORT_PARALLEL\" INTEGER," + // 94: blockRightShortParallel
-                "\"FLICK_LEFT_LONG_CROSSED\" INTEGER," + // 95: flickLeftLongCrossed
-                "\"FLICK_LEFT_LONG_PARALLEL\" INTEGER," + // 96: flickLeftLongParallel
-                "\"FLICK_LEFT_SHORT_CROSSED\" INTEGER," + // 97: flickLeftShortCrossed
-                "\"FLICK_LEFT_SHORT_PARALLEL\" INTEGER," + // 98: flickLeftShortParallel
-                "\"FLICK_MIDDLE_LONG_CROSSED\" INTEGER," + // 99: flickMiddleLongCrossed
-                "\"FLICK_MIDDLE_LONG_PARALLEL\" INTEGER," + // 100: flickMiddleLongParallel
-                "\"FLICK_MIDDLE_SHORT_CROSSED\" INTEGER," + // 101: flickMiddleShortCrossed
-                "\"FLICK_MIDDLE_SHORT_PARALLEL\" INTEGER," + // 102: flickMiddleShortParallel
-                "\"FLICK_RIGHT_LONG_CROSSED\" INTEGER," + // 103: flickRightLongCrossed
-                "\"FLICK_RIGHT_LONG_PARALLEL\" INTEGER," + // 104: flickRightLongParallel
-                "\"FLICK_RIGHT_SHORT_CROSSED\" INTEGER," + // 105: flickRightShortCrossed
-                "\"FLICK_RIGHT_SHORT_PARALLEL\" INTEGER," + // 106: flickRightShortParallel
-                "\"LOB_LEFT_LONG_CROSSED\" INTEGER," + // 107: lobLeftLongCrossed
-                "\"LOB_LEFT_LONG_PARALLEL\" INTEGER," + // 108: lobLeftLongParallel
-                "\"LOB_LEFT_SHORT_CROSSED\" INTEGER," + // 109: lobLeftShortCrossed
-                "\"LOB_LEFT_SHORT_PARALLEL\" INTEGER," + // 110: lobLeftShortParallel
-                "\"LOB_MIDDLE_LONG_CROSSED\" INTEGER," + // 111: lobMiddleLongCrossed
-                "\"LOB_MIDDLE_LONG_PARALLEL\" INTEGER," + // 112: lobMiddleLongParallel
-                "\"LOB_MIDDLE_SHORT_CROSSED\" INTEGER," + // 113: lobMiddleShortCrossed
-                "\"LOB_MIDDLE_SHORT_PARALLEL\" INTEGER," + // 114: lobMiddleShortParallel
-                "\"LOB_RIGHT_LONG_CROSSED\" INTEGER," + // 115: lobRightLongCrossed
-                "\"LOB_RIGHT_LONG_PARALLEL\" INTEGER," + // 116: lobRightLongParallel
-                "\"LOB_RIGHT_SHORT_CROSSED\" INTEGER," + // 117: lobRightShortCrossed
-                "\"LOB_RIGHT_SHORT_PARALLEL\" INTEGER);"); // 118: lobRightShortParallel
+                "\"SERVICE\" INTEGER NOT NULL ," + // 1: service
+                "\"RECEPTION\" INTEGER NOT NULL ," + // 2: reception
+                "\"FOREHAND\" INTEGER NOT NULL ," + // 3: forehand
+                "\"BACKHAND\" INTEGER NOT NULL ," + // 4: backhand
+                "\"SMASH\" INTEGER NOT NULL ," + // 5: smash
+                "\"SLICE\" INTEGER NOT NULL ," + // 6: slice
+                "\"BLOCK\" INTEGER NOT NULL ," + // 7: block
+                "\"FLICK\" INTEGER NOT NULL ," + // 8: flick
+                "\"LOB\" INTEGER NOT NULL ," + // 9: lob
+                "\"TOTAL\" INTEGER NOT NULL ," + // 10: total
+                "\"SERVICE_LEFT_LONG_CROSSED\" INTEGER NOT NULL ," + // 11: serviceLeftLongCrossed
+                "\"SERVICE_LEFT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 12: serviceLeftLongParallel
+                "\"SERVICE_LEFT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 13: serviceLeftShortCrossed
+                "\"SERVICE_LEFT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 14: serviceLeftShortParallel
+                "\"SERVICE_MIDDLE_LONG_CROSSED\" INTEGER NOT NULL ," + // 15: serviceMiddleLongCrossed
+                "\"SERVICE_MIDDLE_LONG_PARALLEL\" INTEGER NOT NULL ," + // 16: serviceMiddleLongParallel
+                "\"SERVICE_MIDDLE_SHORT_CROSSED\" INTEGER NOT NULL ," + // 17: serviceMiddleShortCrossed
+                "\"SERVICE_MIDDLE_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 18: serviceMiddleShortParallel
+                "\"SERVICE_RIGHT_LONG_CROSSED\" INTEGER NOT NULL ," + // 19: serviceRightLongCrossed
+                "\"SERVICE_RIGHT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 20: serviceRightLongParallel
+                "\"SERVICE_RIGHT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 21: serviceRightShortCrossed
+                "\"SERVICE_RIGHT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 22: serviceRightShortParallel
+                "\"RECEPTION_LEFT_LONG_CROSSED\" INTEGER NOT NULL ," + // 23: receptionLeftLongCrossed
+                "\"RECEPTION_LEFT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 24: receptionLeftLongParallel
+                "\"RECEPTION_LEFT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 25: receptionLeftShortCrossed
+                "\"RECEPTION_LEFT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 26: receptionLeftShortParallel
+                "\"RECEPTION_MIDDLE_LONG_CROSSED\" INTEGER NOT NULL ," + // 27: receptionMiddleLongCrossed
+                "\"RECEPTION_MIDDLE_LONG_PARALLEL\" INTEGER NOT NULL ," + // 28: receptionMiddleLongParallel
+                "\"RECEPTION_MIDDLE_SHORT_CROSSED\" INTEGER NOT NULL ," + // 29: receptionMiddleShortCrossed
+                "\"RECEPTION_MIDDLE_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 30: receptionMiddleShortParallel
+                "\"RECEPTION_RIGHT_LONG_CROSSED\" INTEGER NOT NULL ," + // 31: receptionRightLongCrossed
+                "\"RECEPTION_RIGHT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 32: receptionRightLongParallel
+                "\"RECEPTION_RIGHT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 33: receptionRightShortCrossed
+                "\"RECEPTION_RIGHT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 34: receptionRightShortParallel
+                "\"FOREHAND_LEFT_LONG_CROSSED\" INTEGER NOT NULL ," + // 35: forehandLeftLongCrossed
+                "\"FOREHAND_LEFT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 36: forehandLeftLongParallel
+                "\"FOREHAND_LEFT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 37: forehandLeftShortCrossed
+                "\"FOREHAND_LEFT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 38: forehandLeftShortParallel
+                "\"FOREHAND_MIDDLE_LONG_CROSSED\" INTEGER NOT NULL ," + // 39: forehandMiddleLongCrossed
+                "\"FOREHAND_MIDDLE_LONG_PARALLEL\" INTEGER NOT NULL ," + // 40: forehandMiddleLongParallel
+                "\"FOREHAND_MIDDLE_SHORT_CROSSED\" INTEGER NOT NULL ," + // 41: forehandMiddleShortCrossed
+                "\"FOREHAND_MIDDLE_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 42: forehandMiddleShortParallel
+                "\"FOREHAND_RIGHT_LONG_CROSSED\" INTEGER NOT NULL ," + // 43: forehandRightLongCrossed
+                "\"FOREHAND_RIGHT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 44: forehandRightLongParallel
+                "\"FOREHAND_RIGHT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 45: forehandRightShortCrossed
+                "\"FOREHAND_RIGHT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 46: forehandRightShortParallel
+                "\"BACKHAND_LEFT_LONG_CROSSED\" INTEGER NOT NULL ," + // 47: backhandLeftLongCrossed
+                "\"BACKHAND_LEFT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 48: backhandLeftLongParallel
+                "\"BACKHAND_LEFT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 49: backhandLeftShortCrossed
+                "\"BACKHAND_LEFT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 50: backhandLeftShortParallel
+                "\"BACKHAND_MIDDLE_LONG_CROSSED\" INTEGER NOT NULL ," + // 51: backhandMiddleLongCrossed
+                "\"BACKHAND_MIDDLE_LONG_PARALLEL\" INTEGER NOT NULL ," + // 52: backhandMiddleLongParallel
+                "\"BACKHAND_MIDDLE_SHORT_CROSSED\" INTEGER NOT NULL ," + // 53: backhandMiddleShortCrossed
+                "\"BACKHAND_MIDDLE_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 54: backhandMiddleShortParallel
+                "\"BACKHAND_RIGHT_LONG_CROSSED\" INTEGER NOT NULL ," + // 55: backhandRightLongCrossed
+                "\"BACKHAND_RIGHT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 56: backhandRightLongParallel
+                "\"BACKHAND_RIGHT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 57: backhandRightShortCrossed
+                "\"BACKHAND_RIGHT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 58: backhandRightShortParallel
+                "\"SMASH_LEFT_LONG_CROSSED\" INTEGER NOT NULL ," + // 59: smashLeftLongCrossed
+                "\"SMASH_LEFT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 60: smashLeftLongParallel
+                "\"SMASH_LEFT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 61: smashLeftShortCrossed
+                "\"SMASH_LEFT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 62: smashLeftShortParallel
+                "\"SMASH_MIDDLE_LONG_CROSSED\" INTEGER NOT NULL ," + // 63: smashMiddleLongCrossed
+                "\"SMASH_MIDDLE_LONG_PARALLEL\" INTEGER NOT NULL ," + // 64: smashMiddleLongParallel
+                "\"SMASH_MIDDLE_SHORT_CROSSED\" INTEGER NOT NULL ," + // 65: smashMiddleShortCrossed
+                "\"SMASH_MIDDLE_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 66: smashMiddleShortParallel
+                "\"SMASH_RIGHT_LONG_CROSSED\" INTEGER NOT NULL ," + // 67: smashRightLongCrossed
+                "\"SMASH_RIGHT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 68: smashRightLongParallel
+                "\"SMASH_RIGHT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 69: smashRightShortCrossed
+                "\"SMASH_RIGHT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 70: smashRightShortParallel
+                "\"SLICE_LEFT_LONG_CROSSED\" INTEGER NOT NULL ," + // 71: sliceLeftLongCrossed
+                "\"SLICE_LEFT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 72: sliceLeftLongParallel
+                "\"SLICE_LEFT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 73: sliceLeftShortCrossed
+                "\"SLICE_LEFT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 74: sliceLeftShortParallel
+                "\"SLICE_MIDDLE_LONG_CROSSED\" INTEGER NOT NULL ," + // 75: sliceMiddleLongCrossed
+                "\"SLICE_MIDDLE_LONG_PARALLEL\" INTEGER NOT NULL ," + // 76: sliceMiddleLongParallel
+                "\"SLICE_MIDDLE_SHORT_CROSSED\" INTEGER NOT NULL ," + // 77: sliceMiddleShortCrossed
+                "\"SLICE_MIDDLE_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 78: sliceMiddleShortParallel
+                "\"SLICE_RIGHT_LONG_CROSSED\" INTEGER NOT NULL ," + // 79: sliceRightLongCrossed
+                "\"SLICE_RIGHT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 80: sliceRightLongParallel
+                "\"SLICE_RIGHT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 81: sliceRightShortCrossed
+                "\"SLICE_RIGHT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 82: sliceRightShortParallel
+                "\"BLOCK_LEFT_LONG_CROSSED\" INTEGER NOT NULL ," + // 83: blockLeftLongCrossed
+                "\"BLOCK_LEFT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 84: blockLeftLongParallel
+                "\"BLOCK_LEFT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 85: blockLeftShortCrossed
+                "\"BLOCK_LEFT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 86: blockLeftShortParallel
+                "\"BLOCK_MIDDLE_LONG_CROSSED\" INTEGER NOT NULL ," + // 87: blockMiddleLongCrossed
+                "\"BLOCK_MIDDLE_LONG_PARALLEL\" INTEGER NOT NULL ," + // 88: blockMiddleLongParallel
+                "\"BLOCK_MIDDLE_SHORT_CROSSED\" INTEGER NOT NULL ," + // 89: blockMiddleShortCrossed
+                "\"BLOCK_MIDDLE_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 90: blockMiddleShortParallel
+                "\"BLOCK_RIGHT_LONG_CROSSED\" INTEGER NOT NULL ," + // 91: blockRightLongCrossed
+                "\"BLOCK_RIGHT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 92: blockRightLongParallel
+                "\"BLOCK_RIGHT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 93: blockRightShortCrossed
+                "\"BLOCK_RIGHT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 94: blockRightShortParallel
+                "\"FLICK_LEFT_LONG_CROSSED\" INTEGER NOT NULL ," + // 95: flickLeftLongCrossed
+                "\"FLICK_LEFT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 96: flickLeftLongParallel
+                "\"FLICK_LEFT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 97: flickLeftShortCrossed
+                "\"FLICK_LEFT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 98: flickLeftShortParallel
+                "\"FLICK_MIDDLE_LONG_CROSSED\" INTEGER NOT NULL ," + // 99: flickMiddleLongCrossed
+                "\"FLICK_MIDDLE_LONG_PARALLEL\" INTEGER NOT NULL ," + // 100: flickMiddleLongParallel
+                "\"FLICK_MIDDLE_SHORT_CROSSED\" INTEGER NOT NULL ," + // 101: flickMiddleShortCrossed
+                "\"FLICK_MIDDLE_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 102: flickMiddleShortParallel
+                "\"FLICK_RIGHT_LONG_CROSSED\" INTEGER NOT NULL ," + // 103: flickRightLongCrossed
+                "\"FLICK_RIGHT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 104: flickRightLongParallel
+                "\"FLICK_RIGHT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 105: flickRightShortCrossed
+                "\"FLICK_RIGHT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 106: flickRightShortParallel
+                "\"LOB_LEFT_LONG_CROSSED\" INTEGER NOT NULL ," + // 107: lobLeftLongCrossed
+                "\"LOB_LEFT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 108: lobLeftLongParallel
+                "\"LOB_LEFT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 109: lobLeftShortCrossed
+                "\"LOB_LEFT_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 110: lobLeftShortParallel
+                "\"LOB_MIDDLE_LONG_CROSSED\" INTEGER NOT NULL ," + // 111: lobMiddleLongCrossed
+                "\"LOB_MIDDLE_LONG_PARALLEL\" INTEGER NOT NULL ," + // 112: lobMiddleLongParallel
+                "\"LOB_MIDDLE_SHORT_CROSSED\" INTEGER NOT NULL ," + // 113: lobMiddleShortCrossed
+                "\"LOB_MIDDLE_SHORT_PARALLEL\" INTEGER NOT NULL ," + // 114: lobMiddleShortParallel
+                "\"LOB_RIGHT_LONG_CROSSED\" INTEGER NOT NULL ," + // 115: lobRightLongCrossed
+                "\"LOB_RIGHT_LONG_PARALLEL\" INTEGER NOT NULL ," + // 116: lobRightLongParallel
+                "\"LOB_RIGHT_SHORT_CROSSED\" INTEGER NOT NULL ," + // 117: lobRightShortCrossed
+                "\"LOB_RIGHT_SHORT_PARALLEL\" INTEGER NOT NULL );"); // 118: lobRightShortParallel
     }
 
     /** Drops the underlying database table. */
@@ -293,596 +293,124 @@ public class GameOpponentDao extends AbstractDao<GameOpponent, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
- 
-        Integer service = entity.getService();
-        if (service != null) {
-            stmt.bindLong(2, service);
-        }
- 
-        Integer reception = entity.getReception();
-        if (reception != null) {
-            stmt.bindLong(3, reception);
-        }
- 
-        Integer forehand = entity.getForehand();
-        if (forehand != null) {
-            stmt.bindLong(4, forehand);
-        }
- 
-        Integer backhand = entity.getBackhand();
-        if (backhand != null) {
-            stmt.bindLong(5, backhand);
-        }
- 
-        Integer smash = entity.getSmash();
-        if (smash != null) {
-            stmt.bindLong(6, smash);
-        }
- 
-        Integer slice = entity.getSlice();
-        if (slice != null) {
-            stmt.bindLong(7, slice);
-        }
- 
-        Integer block = entity.getBlock();
-        if (block != null) {
-            stmt.bindLong(8, block);
-        }
- 
-        Integer flick = entity.getFlick();
-        if (flick != null) {
-            stmt.bindLong(9, flick);
-        }
- 
-        Integer lob = entity.getLob();
-        if (lob != null) {
-            stmt.bindLong(10, lob);
-        }
- 
-        Integer total = entity.getTotal();
-        if (total != null) {
-            stmt.bindLong(11, total);
-        }
- 
-        Integer serviceLeftLongCrossed = entity.getServiceLeftLongCrossed();
-        if (serviceLeftLongCrossed != null) {
-            stmt.bindLong(12, serviceLeftLongCrossed);
-        }
- 
-        Integer serviceLeftLongParallel = entity.getServiceLeftLongParallel();
-        if (serviceLeftLongParallel != null) {
-            stmt.bindLong(13, serviceLeftLongParallel);
-        }
- 
-        Integer serviceLeftShortCrossed = entity.getServiceLeftShortCrossed();
-        if (serviceLeftShortCrossed != null) {
-            stmt.bindLong(14, serviceLeftShortCrossed);
-        }
- 
-        Integer serviceLeftShortParallel = entity.getServiceLeftShortParallel();
-        if (serviceLeftShortParallel != null) {
-            stmt.bindLong(15, serviceLeftShortParallel);
-        }
- 
-        Integer serviceMiddleLongCrossed = entity.getServiceMiddleLongCrossed();
-        if (serviceMiddleLongCrossed != null) {
-            stmt.bindLong(16, serviceMiddleLongCrossed);
-        }
- 
-        Integer serviceMiddleLongParallel = entity.getServiceMiddleLongParallel();
-        if (serviceMiddleLongParallel != null) {
-            stmt.bindLong(17, serviceMiddleLongParallel);
-        }
- 
-        Integer serviceMiddleShortCrossed = entity.getServiceMiddleShortCrossed();
-        if (serviceMiddleShortCrossed != null) {
-            stmt.bindLong(18, serviceMiddleShortCrossed);
-        }
- 
-        Integer serviceMiddleShortParallel = entity.getServiceMiddleShortParallel();
-        if (serviceMiddleShortParallel != null) {
-            stmt.bindLong(19, serviceMiddleShortParallel);
-        }
- 
-        Integer serviceRightLongCrossed = entity.getServiceRightLongCrossed();
-        if (serviceRightLongCrossed != null) {
-            stmt.bindLong(20, serviceRightLongCrossed);
-        }
- 
-        Integer serviceRightLongParallel = entity.getServiceRightLongParallel();
-        if (serviceRightLongParallel != null) {
-            stmt.bindLong(21, serviceRightLongParallel);
-        }
- 
-        Integer serviceRightShortCrossed = entity.getServiceRightShortCrossed();
-        if (serviceRightShortCrossed != null) {
-            stmt.bindLong(22, serviceRightShortCrossed);
-        }
- 
-        Integer serviceRightShortParallel = entity.getServiceRightShortParallel();
-        if (serviceRightShortParallel != null) {
-            stmt.bindLong(23, serviceRightShortParallel);
-        }
- 
-        Integer receptionLeftLongCrossed = entity.getReceptionLeftLongCrossed();
-        if (receptionLeftLongCrossed != null) {
-            stmt.bindLong(24, receptionLeftLongCrossed);
-        }
- 
-        Integer receptionLeftLongParallel = entity.getReceptionLeftLongParallel();
-        if (receptionLeftLongParallel != null) {
-            stmt.bindLong(25, receptionLeftLongParallel);
-        }
- 
-        Integer receptionLeftShortCrossed = entity.getReceptionLeftShortCrossed();
-        if (receptionLeftShortCrossed != null) {
-            stmt.bindLong(26, receptionLeftShortCrossed);
-        }
- 
-        Integer receptionLeftShortParallel = entity.getReceptionLeftShortParallel();
-        if (receptionLeftShortParallel != null) {
-            stmt.bindLong(27, receptionLeftShortParallel);
-        }
- 
-        Integer receptionMiddleLongCrossed = entity.getReceptionMiddleLongCrossed();
-        if (receptionMiddleLongCrossed != null) {
-            stmt.bindLong(28, receptionMiddleLongCrossed);
-        }
- 
-        Integer receptionMiddleLongParallel = entity.getReceptionMiddleLongParallel();
-        if (receptionMiddleLongParallel != null) {
-            stmt.bindLong(29, receptionMiddleLongParallel);
-        }
- 
-        Integer receptionMiddleShortCrossed = entity.getReceptionMiddleShortCrossed();
-        if (receptionMiddleShortCrossed != null) {
-            stmt.bindLong(30, receptionMiddleShortCrossed);
-        }
- 
-        Integer receptionMiddleShortParallel = entity.getReceptionMiddleShortParallel();
-        if (receptionMiddleShortParallel != null) {
-            stmt.bindLong(31, receptionMiddleShortParallel);
-        }
- 
-        Integer receptionRightLongCrossed = entity.getReceptionRightLongCrossed();
-        if (receptionRightLongCrossed != null) {
-            stmt.bindLong(32, receptionRightLongCrossed);
-        }
- 
-        Integer receptionRightLongParallel = entity.getReceptionRightLongParallel();
-        if (receptionRightLongParallel != null) {
-            stmt.bindLong(33, receptionRightLongParallel);
-        }
- 
-        Integer receptionRightShortCrossed = entity.getReceptionRightShortCrossed();
-        if (receptionRightShortCrossed != null) {
-            stmt.bindLong(34, receptionRightShortCrossed);
-        }
- 
-        Integer receptionRightShortParallel = entity.getReceptionRightShortParallel();
-        if (receptionRightShortParallel != null) {
-            stmt.bindLong(35, receptionRightShortParallel);
-        }
- 
-        Integer forehandLeftLongCrossed = entity.getForehandLeftLongCrossed();
-        if (forehandLeftLongCrossed != null) {
-            stmt.bindLong(36, forehandLeftLongCrossed);
-        }
- 
-        Integer forehandLeftLongParallel = entity.getForehandLeftLongParallel();
-        if (forehandLeftLongParallel != null) {
-            stmt.bindLong(37, forehandLeftLongParallel);
-        }
- 
-        Integer forehandLeftShortCrossed = entity.getForehandLeftShortCrossed();
-        if (forehandLeftShortCrossed != null) {
-            stmt.bindLong(38, forehandLeftShortCrossed);
-        }
- 
-        Integer forehandLeftShortParallel = entity.getForehandLeftShortParallel();
-        if (forehandLeftShortParallel != null) {
-            stmt.bindLong(39, forehandLeftShortParallel);
-        }
- 
-        Integer forehandMiddleLongCrossed = entity.getForehandMiddleLongCrossed();
-        if (forehandMiddleLongCrossed != null) {
-            stmt.bindLong(40, forehandMiddleLongCrossed);
-        }
- 
-        Integer forehandMiddleLongParallel = entity.getForehandMiddleLongParallel();
-        if (forehandMiddleLongParallel != null) {
-            stmt.bindLong(41, forehandMiddleLongParallel);
-        }
- 
-        Integer forehandMiddleShortCrossed = entity.getForehandMiddleShortCrossed();
-        if (forehandMiddleShortCrossed != null) {
-            stmt.bindLong(42, forehandMiddleShortCrossed);
-        }
- 
-        Integer forehandMiddleShortParallel = entity.getForehandMiddleShortParallel();
-        if (forehandMiddleShortParallel != null) {
-            stmt.bindLong(43, forehandMiddleShortParallel);
-        }
- 
-        Integer forehandRightLongCrossed = entity.getForehandRightLongCrossed();
-        if (forehandRightLongCrossed != null) {
-            stmt.bindLong(44, forehandRightLongCrossed);
-        }
- 
-        Integer forehandRightLongParallel = entity.getForehandRightLongParallel();
-        if (forehandRightLongParallel != null) {
-            stmt.bindLong(45, forehandRightLongParallel);
-        }
- 
-        Integer forehandRightShortCrossed = entity.getForehandRightShortCrossed();
-        if (forehandRightShortCrossed != null) {
-            stmt.bindLong(46, forehandRightShortCrossed);
-        }
- 
-        Integer forehandRightShortParallel = entity.getForehandRightShortParallel();
-        if (forehandRightShortParallel != null) {
-            stmt.bindLong(47, forehandRightShortParallel);
-        }
- 
-        Integer backhandLeftLongCrossed = entity.getBackhandLeftLongCrossed();
-        if (backhandLeftLongCrossed != null) {
-            stmt.bindLong(48, backhandLeftLongCrossed);
-        }
- 
-        Integer backhandLeftLongParallel = entity.getBackhandLeftLongParallel();
-        if (backhandLeftLongParallel != null) {
-            stmt.bindLong(49, backhandLeftLongParallel);
-        }
- 
-        Integer backhandLeftShortCrossed = entity.getBackhandLeftShortCrossed();
-        if (backhandLeftShortCrossed != null) {
-            stmt.bindLong(50, backhandLeftShortCrossed);
-        }
- 
-        Integer backhandLeftShortParallel = entity.getBackhandLeftShortParallel();
-        if (backhandLeftShortParallel != null) {
-            stmt.bindLong(51, backhandLeftShortParallel);
-        }
- 
-        Integer backhandMiddleLongCrossed = entity.getBackhandMiddleLongCrossed();
-        if (backhandMiddleLongCrossed != null) {
-            stmt.bindLong(52, backhandMiddleLongCrossed);
-        }
- 
-        Integer backhandMiddleLongParallel = entity.getBackhandMiddleLongParallel();
-        if (backhandMiddleLongParallel != null) {
-            stmt.bindLong(53, backhandMiddleLongParallel);
-        }
- 
-        Integer backhandMiddleShortCrossed = entity.getBackhandMiddleShortCrossed();
-        if (backhandMiddleShortCrossed != null) {
-            stmt.bindLong(54, backhandMiddleShortCrossed);
-        }
- 
-        Integer backhandMiddleShortParallel = entity.getBackhandMiddleShortParallel();
-        if (backhandMiddleShortParallel != null) {
-            stmt.bindLong(55, backhandMiddleShortParallel);
-        }
- 
-        Integer backhandRightLongCrossed = entity.getBackhandRightLongCrossed();
-        if (backhandRightLongCrossed != null) {
-            stmt.bindLong(56, backhandRightLongCrossed);
-        }
- 
-        Integer backhandRightLongParallel = entity.getBackhandRightLongParallel();
-        if (backhandRightLongParallel != null) {
-            stmt.bindLong(57, backhandRightLongParallel);
-        }
- 
-        Integer backhandRightShortCrossed = entity.getBackhandRightShortCrossed();
-        if (backhandRightShortCrossed != null) {
-            stmt.bindLong(58, backhandRightShortCrossed);
-        }
- 
-        Integer backhandRightShortParallel = entity.getBackhandRightShortParallel();
-        if (backhandRightShortParallel != null) {
-            stmt.bindLong(59, backhandRightShortParallel);
-        }
- 
-        Integer smashLeftLongCrossed = entity.getSmashLeftLongCrossed();
-        if (smashLeftLongCrossed != null) {
-            stmt.bindLong(60, smashLeftLongCrossed);
-        }
- 
-        Integer smashLeftLongParallel = entity.getSmashLeftLongParallel();
-        if (smashLeftLongParallel != null) {
-            stmt.bindLong(61, smashLeftLongParallel);
-        }
- 
-        Integer smashLeftShortCrossed = entity.getSmashLeftShortCrossed();
-        if (smashLeftShortCrossed != null) {
-            stmt.bindLong(62, smashLeftShortCrossed);
-        }
- 
-        Integer smashLeftShortParallel = entity.getSmashLeftShortParallel();
-        if (smashLeftShortParallel != null) {
-            stmt.bindLong(63, smashLeftShortParallel);
-        }
- 
-        Integer smashMiddleLongCrossed = entity.getSmashMiddleLongCrossed();
-        if (smashMiddleLongCrossed != null) {
-            stmt.bindLong(64, smashMiddleLongCrossed);
-        }
- 
-        Integer smashMiddleLongParallel = entity.getSmashMiddleLongParallel();
-        if (smashMiddleLongParallel != null) {
-            stmt.bindLong(65, smashMiddleLongParallel);
-        }
- 
-        Integer smashMiddleShortCrossed = entity.getSmashMiddleShortCrossed();
-        if (smashMiddleShortCrossed != null) {
-            stmt.bindLong(66, smashMiddleShortCrossed);
-        }
- 
-        Integer smashMiddleShortParallel = entity.getSmashMiddleShortParallel();
-        if (smashMiddleShortParallel != null) {
-            stmt.bindLong(67, smashMiddleShortParallel);
-        }
- 
-        Integer smashRightLongCrossed = entity.getSmashRightLongCrossed();
-        if (smashRightLongCrossed != null) {
-            stmt.bindLong(68, smashRightLongCrossed);
-        }
- 
-        Integer smashRightLongParallel = entity.getSmashRightLongParallel();
-        if (smashRightLongParallel != null) {
-            stmt.bindLong(69, smashRightLongParallel);
-        }
- 
-        Integer smashRightShortCrossed = entity.getSmashRightShortCrossed();
-        if (smashRightShortCrossed != null) {
-            stmt.bindLong(70, smashRightShortCrossed);
-        }
- 
-        Integer smashRightShortParallel = entity.getSmashRightShortParallel();
-        if (smashRightShortParallel != null) {
-            stmt.bindLong(71, smashRightShortParallel);
-        }
- 
-        Integer sliceLeftLongCrossed = entity.getSliceLeftLongCrossed();
-        if (sliceLeftLongCrossed != null) {
-            stmt.bindLong(72, sliceLeftLongCrossed);
-        }
- 
-        Integer sliceLeftLongParallel = entity.getSliceLeftLongParallel();
-        if (sliceLeftLongParallel != null) {
-            stmt.bindLong(73, sliceLeftLongParallel);
-        }
- 
-        Integer sliceLeftShortCrossed = entity.getSliceLeftShortCrossed();
-        if (sliceLeftShortCrossed != null) {
-            stmt.bindLong(74, sliceLeftShortCrossed);
-        }
- 
-        Integer sliceLeftShortParallel = entity.getSliceLeftShortParallel();
-        if (sliceLeftShortParallel != null) {
-            stmt.bindLong(75, sliceLeftShortParallel);
-        }
- 
-        Integer sliceMiddleLongCrossed = entity.getSliceMiddleLongCrossed();
-        if (sliceMiddleLongCrossed != null) {
-            stmt.bindLong(76, sliceMiddleLongCrossed);
-        }
- 
-        Integer sliceMiddleLongParallel = entity.getSliceMiddleLongParallel();
-        if (sliceMiddleLongParallel != null) {
-            stmt.bindLong(77, sliceMiddleLongParallel);
-        }
- 
-        Integer sliceMiddleShortCrossed = entity.getSliceMiddleShortCrossed();
-        if (sliceMiddleShortCrossed != null) {
-            stmt.bindLong(78, sliceMiddleShortCrossed);
-        }
- 
-        Integer sliceMiddleShortParallel = entity.getSliceMiddleShortParallel();
-        if (sliceMiddleShortParallel != null) {
-            stmt.bindLong(79, sliceMiddleShortParallel);
-        }
- 
-        Integer sliceRightLongCrossed = entity.getSliceRightLongCrossed();
-        if (sliceRightLongCrossed != null) {
-            stmt.bindLong(80, sliceRightLongCrossed);
-        }
- 
-        Integer sliceRightLongParallel = entity.getSliceRightLongParallel();
-        if (sliceRightLongParallel != null) {
-            stmt.bindLong(81, sliceRightLongParallel);
-        }
- 
-        Integer sliceRightShortCrossed = entity.getSliceRightShortCrossed();
-        if (sliceRightShortCrossed != null) {
-            stmt.bindLong(82, sliceRightShortCrossed);
-        }
- 
-        Integer sliceRightShortParallel = entity.getSliceRightShortParallel();
-        if (sliceRightShortParallel != null) {
-            stmt.bindLong(83, sliceRightShortParallel);
-        }
- 
-        Integer blockLeftLongCrossed = entity.getBlockLeftLongCrossed();
-        if (blockLeftLongCrossed != null) {
-            stmt.bindLong(84, blockLeftLongCrossed);
-        }
- 
-        Integer blockLeftLongParallel = entity.getBlockLeftLongParallel();
-        if (blockLeftLongParallel != null) {
-            stmt.bindLong(85, blockLeftLongParallel);
-        }
- 
-        Integer blockLeftShortCrossed = entity.getBlockLeftShortCrossed();
-        if (blockLeftShortCrossed != null) {
-            stmt.bindLong(86, blockLeftShortCrossed);
-        }
- 
-        Integer blockLeftShortParallel = entity.getBlockLeftShortParallel();
-        if (blockLeftShortParallel != null) {
-            stmt.bindLong(87, blockLeftShortParallel);
-        }
- 
-        Integer blockMiddleLongCrossed = entity.getBlockMiddleLongCrossed();
-        if (blockMiddleLongCrossed != null) {
-            stmt.bindLong(88, blockMiddleLongCrossed);
-        }
- 
-        Integer blockMiddleLongParallel = entity.getBlockMiddleLongParallel();
-        if (blockMiddleLongParallel != null) {
-            stmt.bindLong(89, blockMiddleLongParallel);
-        }
- 
-        Integer blockMiddleShortCrossed = entity.getBlockMiddleShortCrossed();
-        if (blockMiddleShortCrossed != null) {
-            stmt.bindLong(90, blockMiddleShortCrossed);
-        }
- 
-        Integer blockMiddleShortParallel = entity.getBlockMiddleShortParallel();
-        if (blockMiddleShortParallel != null) {
-            stmt.bindLong(91, blockMiddleShortParallel);
-        }
- 
-        Integer blockRightLongCrossed = entity.getBlockRightLongCrossed();
-        if (blockRightLongCrossed != null) {
-            stmt.bindLong(92, blockRightLongCrossed);
-        }
- 
-        Integer blockRightLongParallel = entity.getBlockRightLongParallel();
-        if (blockRightLongParallel != null) {
-            stmt.bindLong(93, blockRightLongParallel);
-        }
- 
-        Integer blockRightShortCrossed = entity.getBlockRightShortCrossed();
-        if (blockRightShortCrossed != null) {
-            stmt.bindLong(94, blockRightShortCrossed);
-        }
- 
-        Integer blockRightShortParallel = entity.getBlockRightShortParallel();
-        if (blockRightShortParallel != null) {
-            stmt.bindLong(95, blockRightShortParallel);
-        }
- 
-        Integer flickLeftLongCrossed = entity.getFlickLeftLongCrossed();
-        if (flickLeftLongCrossed != null) {
-            stmt.bindLong(96, flickLeftLongCrossed);
-        }
- 
-        Integer flickLeftLongParallel = entity.getFlickLeftLongParallel();
-        if (flickLeftLongParallel != null) {
-            stmt.bindLong(97, flickLeftLongParallel);
-        }
- 
-        Integer flickLeftShortCrossed = entity.getFlickLeftShortCrossed();
-        if (flickLeftShortCrossed != null) {
-            stmt.bindLong(98, flickLeftShortCrossed);
-        }
- 
-        Integer flickLeftShortParallel = entity.getFlickLeftShortParallel();
-        if (flickLeftShortParallel != null) {
-            stmt.bindLong(99, flickLeftShortParallel);
-        }
- 
-        Integer flickMiddleLongCrossed = entity.getFlickMiddleLongCrossed();
-        if (flickMiddleLongCrossed != null) {
-            stmt.bindLong(100, flickMiddleLongCrossed);
-        }
- 
-        Integer flickMiddleLongParallel = entity.getFlickMiddleLongParallel();
-        if (flickMiddleLongParallel != null) {
-            stmt.bindLong(101, flickMiddleLongParallel);
-        }
- 
-        Integer flickMiddleShortCrossed = entity.getFlickMiddleShortCrossed();
-        if (flickMiddleShortCrossed != null) {
-            stmt.bindLong(102, flickMiddleShortCrossed);
-        }
- 
-        Integer flickMiddleShortParallel = entity.getFlickMiddleShortParallel();
-        if (flickMiddleShortParallel != null) {
-            stmt.bindLong(103, flickMiddleShortParallel);
-        }
- 
-        Integer flickRightLongCrossed = entity.getFlickRightLongCrossed();
-        if (flickRightLongCrossed != null) {
-            stmt.bindLong(104, flickRightLongCrossed);
-        }
- 
-        Integer flickRightLongParallel = entity.getFlickRightLongParallel();
-        if (flickRightLongParallel != null) {
-            stmt.bindLong(105, flickRightLongParallel);
-        }
- 
-        Integer flickRightShortCrossed = entity.getFlickRightShortCrossed();
-        if (flickRightShortCrossed != null) {
-            stmt.bindLong(106, flickRightShortCrossed);
-        }
- 
-        Integer flickRightShortParallel = entity.getFlickRightShortParallel();
-        if (flickRightShortParallel != null) {
-            stmt.bindLong(107, flickRightShortParallel);
-        }
- 
-        Integer lobLeftLongCrossed = entity.getLobLeftLongCrossed();
-        if (lobLeftLongCrossed != null) {
-            stmt.bindLong(108, lobLeftLongCrossed);
-        }
- 
-        Integer lobLeftLongParallel = entity.getLobLeftLongParallel();
-        if (lobLeftLongParallel != null) {
-            stmt.bindLong(109, lobLeftLongParallel);
-        }
- 
-        Integer lobLeftShortCrossed = entity.getLobLeftShortCrossed();
-        if (lobLeftShortCrossed != null) {
-            stmt.bindLong(110, lobLeftShortCrossed);
-        }
- 
-        Integer lobLeftShortParallel = entity.getLobLeftShortParallel();
-        if (lobLeftShortParallel != null) {
-            stmt.bindLong(111, lobLeftShortParallel);
-        }
- 
-        Integer lobMiddleLongCrossed = entity.getLobMiddleLongCrossed();
-        if (lobMiddleLongCrossed != null) {
-            stmt.bindLong(112, lobMiddleLongCrossed);
-        }
- 
-        Integer lobMiddleLongParallel = entity.getLobMiddleLongParallel();
-        if (lobMiddleLongParallel != null) {
-            stmt.bindLong(113, lobMiddleLongParallel);
-        }
- 
-        Integer lobMiddleShortCrossed = entity.getLobMiddleShortCrossed();
-        if (lobMiddleShortCrossed != null) {
-            stmt.bindLong(114, lobMiddleShortCrossed);
-        }
- 
-        Integer lobMiddleShortParallel = entity.getLobMiddleShortParallel();
-        if (lobMiddleShortParallel != null) {
-            stmt.bindLong(115, lobMiddleShortParallel);
-        }
- 
-        Integer lobRightLongCrossed = entity.getLobRightLongCrossed();
-        if (lobRightLongCrossed != null) {
-            stmt.bindLong(116, lobRightLongCrossed);
-        }
- 
-        Integer lobRightLongParallel = entity.getLobRightLongParallel();
-        if (lobRightLongParallel != null) {
-            stmt.bindLong(117, lobRightLongParallel);
-        }
- 
-        Integer lobRightShortCrossed = entity.getLobRightShortCrossed();
-        if (lobRightShortCrossed != null) {
-            stmt.bindLong(118, lobRightShortCrossed);
-        }
- 
-        Integer lobRightShortParallel = entity.getLobRightShortParallel();
-        if (lobRightShortParallel != null) {
-            stmt.bindLong(119, lobRightShortParallel);
-        }
+        stmt.bindLong(2, entity.getService());
+        stmt.bindLong(3, entity.getReception());
+        stmt.bindLong(4, entity.getForehand());
+        stmt.bindLong(5, entity.getBackhand());
+        stmt.bindLong(6, entity.getSmash());
+        stmt.bindLong(7, entity.getSlice());
+        stmt.bindLong(8, entity.getBlock());
+        stmt.bindLong(9, entity.getFlick());
+        stmt.bindLong(10, entity.getLob());
+        stmt.bindLong(11, entity.getTotal());
+        stmt.bindLong(12, entity.getServiceLeftLongCrossed());
+        stmt.bindLong(13, entity.getServiceLeftLongParallel());
+        stmt.bindLong(14, entity.getServiceLeftShortCrossed());
+        stmt.bindLong(15, entity.getServiceLeftShortParallel());
+        stmt.bindLong(16, entity.getServiceMiddleLongCrossed());
+        stmt.bindLong(17, entity.getServiceMiddleLongParallel());
+        stmt.bindLong(18, entity.getServiceMiddleShortCrossed());
+        stmt.bindLong(19, entity.getServiceMiddleShortParallel());
+        stmt.bindLong(20, entity.getServiceRightLongCrossed());
+        stmt.bindLong(21, entity.getServiceRightLongParallel());
+        stmt.bindLong(22, entity.getServiceRightShortCrossed());
+        stmt.bindLong(23, entity.getServiceRightShortParallel());
+        stmt.bindLong(24, entity.getReceptionLeftLongCrossed());
+        stmt.bindLong(25, entity.getReceptionLeftLongParallel());
+        stmt.bindLong(26, entity.getReceptionLeftShortCrossed());
+        stmt.bindLong(27, entity.getReceptionLeftShortParallel());
+        stmt.bindLong(28, entity.getReceptionMiddleLongCrossed());
+        stmt.bindLong(29, entity.getReceptionMiddleLongParallel());
+        stmt.bindLong(30, entity.getReceptionMiddleShortCrossed());
+        stmt.bindLong(31, entity.getReceptionMiddleShortParallel());
+        stmt.bindLong(32, entity.getReceptionRightLongCrossed());
+        stmt.bindLong(33, entity.getReceptionRightLongParallel());
+        stmt.bindLong(34, entity.getReceptionRightShortCrossed());
+        stmt.bindLong(35, entity.getReceptionRightShortParallel());
+        stmt.bindLong(36, entity.getForehandLeftLongCrossed());
+        stmt.bindLong(37, entity.getForehandLeftLongParallel());
+        stmt.bindLong(38, entity.getForehandLeftShortCrossed());
+        stmt.bindLong(39, entity.getForehandLeftShortParallel());
+        stmt.bindLong(40, entity.getForehandMiddleLongCrossed());
+        stmt.bindLong(41, entity.getForehandMiddleLongParallel());
+        stmt.bindLong(42, entity.getForehandMiddleShortCrossed());
+        stmt.bindLong(43, entity.getForehandMiddleShortParallel());
+        stmt.bindLong(44, entity.getForehandRightLongCrossed());
+        stmt.bindLong(45, entity.getForehandRightLongParallel());
+        stmt.bindLong(46, entity.getForehandRightShortCrossed());
+        stmt.bindLong(47, entity.getForehandRightShortParallel());
+        stmt.bindLong(48, entity.getBackhandLeftLongCrossed());
+        stmt.bindLong(49, entity.getBackhandLeftLongParallel());
+        stmt.bindLong(50, entity.getBackhandLeftShortCrossed());
+        stmt.bindLong(51, entity.getBackhandLeftShortParallel());
+        stmt.bindLong(52, entity.getBackhandMiddleLongCrossed());
+        stmt.bindLong(53, entity.getBackhandMiddleLongParallel());
+        stmt.bindLong(54, entity.getBackhandMiddleShortCrossed());
+        stmt.bindLong(55, entity.getBackhandMiddleShortParallel());
+        stmt.bindLong(56, entity.getBackhandRightLongCrossed());
+        stmt.bindLong(57, entity.getBackhandRightLongParallel());
+        stmt.bindLong(58, entity.getBackhandRightShortCrossed());
+        stmt.bindLong(59, entity.getBackhandRightShortParallel());
+        stmt.bindLong(60, entity.getSmashLeftLongCrossed());
+        stmt.bindLong(61, entity.getSmashLeftLongParallel());
+        stmt.bindLong(62, entity.getSmashLeftShortCrossed());
+        stmt.bindLong(63, entity.getSmashLeftShortParallel());
+        stmt.bindLong(64, entity.getSmashMiddleLongCrossed());
+        stmt.bindLong(65, entity.getSmashMiddleLongParallel());
+        stmt.bindLong(66, entity.getSmashMiddleShortCrossed());
+        stmt.bindLong(67, entity.getSmashMiddleShortParallel());
+        stmt.bindLong(68, entity.getSmashRightLongCrossed());
+        stmt.bindLong(69, entity.getSmashRightLongParallel());
+        stmt.bindLong(70, entity.getSmashRightShortCrossed());
+        stmt.bindLong(71, entity.getSmashRightShortParallel());
+        stmt.bindLong(72, entity.getSliceLeftLongCrossed());
+        stmt.bindLong(73, entity.getSliceLeftLongParallel());
+        stmt.bindLong(74, entity.getSliceLeftShortCrossed());
+        stmt.bindLong(75, entity.getSliceLeftShortParallel());
+        stmt.bindLong(76, entity.getSliceMiddleLongCrossed());
+        stmt.bindLong(77, entity.getSliceMiddleLongParallel());
+        stmt.bindLong(78, entity.getSliceMiddleShortCrossed());
+        stmt.bindLong(79, entity.getSliceMiddleShortParallel());
+        stmt.bindLong(80, entity.getSliceRightLongCrossed());
+        stmt.bindLong(81, entity.getSliceRightLongParallel());
+        stmt.bindLong(82, entity.getSliceRightShortCrossed());
+        stmt.bindLong(83, entity.getSliceRightShortParallel());
+        stmt.bindLong(84, entity.getBlockLeftLongCrossed());
+        stmt.bindLong(85, entity.getBlockLeftLongParallel());
+        stmt.bindLong(86, entity.getBlockLeftShortCrossed());
+        stmt.bindLong(87, entity.getBlockLeftShortParallel());
+        stmt.bindLong(88, entity.getBlockMiddleLongCrossed());
+        stmt.bindLong(89, entity.getBlockMiddleLongParallel());
+        stmt.bindLong(90, entity.getBlockMiddleShortCrossed());
+        stmt.bindLong(91, entity.getBlockMiddleShortParallel());
+        stmt.bindLong(92, entity.getBlockRightLongCrossed());
+        stmt.bindLong(93, entity.getBlockRightLongParallel());
+        stmt.bindLong(94, entity.getBlockRightShortCrossed());
+        stmt.bindLong(95, entity.getBlockRightShortParallel());
+        stmt.bindLong(96, entity.getFlickLeftLongCrossed());
+        stmt.bindLong(97, entity.getFlickLeftLongParallel());
+        stmt.bindLong(98, entity.getFlickLeftShortCrossed());
+        stmt.bindLong(99, entity.getFlickLeftShortParallel());
+        stmt.bindLong(100, entity.getFlickMiddleLongCrossed());
+        stmt.bindLong(101, entity.getFlickMiddleLongParallel());
+        stmt.bindLong(102, entity.getFlickMiddleShortCrossed());
+        stmt.bindLong(103, entity.getFlickMiddleShortParallel());
+        stmt.bindLong(104, entity.getFlickRightLongCrossed());
+        stmt.bindLong(105, entity.getFlickRightLongParallel());
+        stmt.bindLong(106, entity.getFlickRightShortCrossed());
+        stmt.bindLong(107, entity.getFlickRightShortParallel());
+        stmt.bindLong(108, entity.getLobLeftLongCrossed());
+        stmt.bindLong(109, entity.getLobLeftLongParallel());
+        stmt.bindLong(110, entity.getLobLeftShortCrossed());
+        stmt.bindLong(111, entity.getLobLeftShortParallel());
+        stmt.bindLong(112, entity.getLobMiddleLongCrossed());
+        stmt.bindLong(113, entity.getLobMiddleLongParallel());
+        stmt.bindLong(114, entity.getLobMiddleShortCrossed());
+        stmt.bindLong(115, entity.getLobMiddleShortParallel());
+        stmt.bindLong(116, entity.getLobRightLongCrossed());
+        stmt.bindLong(117, entity.getLobRightLongParallel());
+        stmt.bindLong(118, entity.getLobRightShortCrossed());
+        stmt.bindLong(119, entity.getLobRightShortParallel());
     }
 
     /** @inheritdoc */
@@ -896,124 +424,124 @@ public class GameOpponentDao extends AbstractDao<GameOpponent, Long> {
     public GameOpponent readEntity(Cursor cursor, int offset) {
         GameOpponent entity = new GameOpponent( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1), // service
-            cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2), // reception
-            cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3), // forehand
-            cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4), // backhand
-            cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5), // smash
-            cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6), // slice
-            cursor.isNull(offset + 7) ? null : cursor.getInt(offset + 7), // block
-            cursor.isNull(offset + 8) ? null : cursor.getInt(offset + 8), // flick
-            cursor.isNull(offset + 9) ? null : cursor.getInt(offset + 9), // lob
-            cursor.isNull(offset + 10) ? null : cursor.getInt(offset + 10), // total
-            cursor.isNull(offset + 11) ? null : cursor.getInt(offset + 11), // serviceLeftLongCrossed
-            cursor.isNull(offset + 12) ? null : cursor.getInt(offset + 12), // serviceLeftLongParallel
-            cursor.isNull(offset + 13) ? null : cursor.getInt(offset + 13), // serviceLeftShortCrossed
-            cursor.isNull(offset + 14) ? null : cursor.getInt(offset + 14), // serviceLeftShortParallel
-            cursor.isNull(offset + 15) ? null : cursor.getInt(offset + 15), // serviceMiddleLongCrossed
-            cursor.isNull(offset + 16) ? null : cursor.getInt(offset + 16), // serviceMiddleLongParallel
-            cursor.isNull(offset + 17) ? null : cursor.getInt(offset + 17), // serviceMiddleShortCrossed
-            cursor.isNull(offset + 18) ? null : cursor.getInt(offset + 18), // serviceMiddleShortParallel
-            cursor.isNull(offset + 19) ? null : cursor.getInt(offset + 19), // serviceRightLongCrossed
-            cursor.isNull(offset + 20) ? null : cursor.getInt(offset + 20), // serviceRightLongParallel
-            cursor.isNull(offset + 21) ? null : cursor.getInt(offset + 21), // serviceRightShortCrossed
-            cursor.isNull(offset + 22) ? null : cursor.getInt(offset + 22), // serviceRightShortParallel
-            cursor.isNull(offset + 23) ? null : cursor.getInt(offset + 23), // receptionLeftLongCrossed
-            cursor.isNull(offset + 24) ? null : cursor.getInt(offset + 24), // receptionLeftLongParallel
-            cursor.isNull(offset + 25) ? null : cursor.getInt(offset + 25), // receptionLeftShortCrossed
-            cursor.isNull(offset + 26) ? null : cursor.getInt(offset + 26), // receptionLeftShortParallel
-            cursor.isNull(offset + 27) ? null : cursor.getInt(offset + 27), // receptionMiddleLongCrossed
-            cursor.isNull(offset + 28) ? null : cursor.getInt(offset + 28), // receptionMiddleLongParallel
-            cursor.isNull(offset + 29) ? null : cursor.getInt(offset + 29), // receptionMiddleShortCrossed
-            cursor.isNull(offset + 30) ? null : cursor.getInt(offset + 30), // receptionMiddleShortParallel
-            cursor.isNull(offset + 31) ? null : cursor.getInt(offset + 31), // receptionRightLongCrossed
-            cursor.isNull(offset + 32) ? null : cursor.getInt(offset + 32), // receptionRightLongParallel
-            cursor.isNull(offset + 33) ? null : cursor.getInt(offset + 33), // receptionRightShortCrossed
-            cursor.isNull(offset + 34) ? null : cursor.getInt(offset + 34), // receptionRightShortParallel
-            cursor.isNull(offset + 35) ? null : cursor.getInt(offset + 35), // forehandLeftLongCrossed
-            cursor.isNull(offset + 36) ? null : cursor.getInt(offset + 36), // forehandLeftLongParallel
-            cursor.isNull(offset + 37) ? null : cursor.getInt(offset + 37), // forehandLeftShortCrossed
-            cursor.isNull(offset + 38) ? null : cursor.getInt(offset + 38), // forehandLeftShortParallel
-            cursor.isNull(offset + 39) ? null : cursor.getInt(offset + 39), // forehandMiddleLongCrossed
-            cursor.isNull(offset + 40) ? null : cursor.getInt(offset + 40), // forehandMiddleLongParallel
-            cursor.isNull(offset + 41) ? null : cursor.getInt(offset + 41), // forehandMiddleShortCrossed
-            cursor.isNull(offset + 42) ? null : cursor.getInt(offset + 42), // forehandMiddleShortParallel
-            cursor.isNull(offset + 43) ? null : cursor.getInt(offset + 43), // forehandRightLongCrossed
-            cursor.isNull(offset + 44) ? null : cursor.getInt(offset + 44), // forehandRightLongParallel
-            cursor.isNull(offset + 45) ? null : cursor.getInt(offset + 45), // forehandRightShortCrossed
-            cursor.isNull(offset + 46) ? null : cursor.getInt(offset + 46), // forehandRightShortParallel
-            cursor.isNull(offset + 47) ? null : cursor.getInt(offset + 47), // backhandLeftLongCrossed
-            cursor.isNull(offset + 48) ? null : cursor.getInt(offset + 48), // backhandLeftLongParallel
-            cursor.isNull(offset + 49) ? null : cursor.getInt(offset + 49), // backhandLeftShortCrossed
-            cursor.isNull(offset + 50) ? null : cursor.getInt(offset + 50), // backhandLeftShortParallel
-            cursor.isNull(offset + 51) ? null : cursor.getInt(offset + 51), // backhandMiddleLongCrossed
-            cursor.isNull(offset + 52) ? null : cursor.getInt(offset + 52), // backhandMiddleLongParallel
-            cursor.isNull(offset + 53) ? null : cursor.getInt(offset + 53), // backhandMiddleShortCrossed
-            cursor.isNull(offset + 54) ? null : cursor.getInt(offset + 54), // backhandMiddleShortParallel
-            cursor.isNull(offset + 55) ? null : cursor.getInt(offset + 55), // backhandRightLongCrossed
-            cursor.isNull(offset + 56) ? null : cursor.getInt(offset + 56), // backhandRightLongParallel
-            cursor.isNull(offset + 57) ? null : cursor.getInt(offset + 57), // backhandRightShortCrossed
-            cursor.isNull(offset + 58) ? null : cursor.getInt(offset + 58), // backhandRightShortParallel
-            cursor.isNull(offset + 59) ? null : cursor.getInt(offset + 59), // smashLeftLongCrossed
-            cursor.isNull(offset + 60) ? null : cursor.getInt(offset + 60), // smashLeftLongParallel
-            cursor.isNull(offset + 61) ? null : cursor.getInt(offset + 61), // smashLeftShortCrossed
-            cursor.isNull(offset + 62) ? null : cursor.getInt(offset + 62), // smashLeftShortParallel
-            cursor.isNull(offset + 63) ? null : cursor.getInt(offset + 63), // smashMiddleLongCrossed
-            cursor.isNull(offset + 64) ? null : cursor.getInt(offset + 64), // smashMiddleLongParallel
-            cursor.isNull(offset + 65) ? null : cursor.getInt(offset + 65), // smashMiddleShortCrossed
-            cursor.isNull(offset + 66) ? null : cursor.getInt(offset + 66), // smashMiddleShortParallel
-            cursor.isNull(offset + 67) ? null : cursor.getInt(offset + 67), // smashRightLongCrossed
-            cursor.isNull(offset + 68) ? null : cursor.getInt(offset + 68), // smashRightLongParallel
-            cursor.isNull(offset + 69) ? null : cursor.getInt(offset + 69), // smashRightShortCrossed
-            cursor.isNull(offset + 70) ? null : cursor.getInt(offset + 70), // smashRightShortParallel
-            cursor.isNull(offset + 71) ? null : cursor.getInt(offset + 71), // sliceLeftLongCrossed
-            cursor.isNull(offset + 72) ? null : cursor.getInt(offset + 72), // sliceLeftLongParallel
-            cursor.isNull(offset + 73) ? null : cursor.getInt(offset + 73), // sliceLeftShortCrossed
-            cursor.isNull(offset + 74) ? null : cursor.getInt(offset + 74), // sliceLeftShortParallel
-            cursor.isNull(offset + 75) ? null : cursor.getInt(offset + 75), // sliceMiddleLongCrossed
-            cursor.isNull(offset + 76) ? null : cursor.getInt(offset + 76), // sliceMiddleLongParallel
-            cursor.isNull(offset + 77) ? null : cursor.getInt(offset + 77), // sliceMiddleShortCrossed
-            cursor.isNull(offset + 78) ? null : cursor.getInt(offset + 78), // sliceMiddleShortParallel
-            cursor.isNull(offset + 79) ? null : cursor.getInt(offset + 79), // sliceRightLongCrossed
-            cursor.isNull(offset + 80) ? null : cursor.getInt(offset + 80), // sliceRightLongParallel
-            cursor.isNull(offset + 81) ? null : cursor.getInt(offset + 81), // sliceRightShortCrossed
-            cursor.isNull(offset + 82) ? null : cursor.getInt(offset + 82), // sliceRightShortParallel
-            cursor.isNull(offset + 83) ? null : cursor.getInt(offset + 83), // blockLeftLongCrossed
-            cursor.isNull(offset + 84) ? null : cursor.getInt(offset + 84), // blockLeftLongParallel
-            cursor.isNull(offset + 85) ? null : cursor.getInt(offset + 85), // blockLeftShortCrossed
-            cursor.isNull(offset + 86) ? null : cursor.getInt(offset + 86), // blockLeftShortParallel
-            cursor.isNull(offset + 87) ? null : cursor.getInt(offset + 87), // blockMiddleLongCrossed
-            cursor.isNull(offset + 88) ? null : cursor.getInt(offset + 88), // blockMiddleLongParallel
-            cursor.isNull(offset + 89) ? null : cursor.getInt(offset + 89), // blockMiddleShortCrossed
-            cursor.isNull(offset + 90) ? null : cursor.getInt(offset + 90), // blockMiddleShortParallel
-            cursor.isNull(offset + 91) ? null : cursor.getInt(offset + 91), // blockRightLongCrossed
-            cursor.isNull(offset + 92) ? null : cursor.getInt(offset + 92), // blockRightLongParallel
-            cursor.isNull(offset + 93) ? null : cursor.getInt(offset + 93), // blockRightShortCrossed
-            cursor.isNull(offset + 94) ? null : cursor.getInt(offset + 94), // blockRightShortParallel
-            cursor.isNull(offset + 95) ? null : cursor.getInt(offset + 95), // flickLeftLongCrossed
-            cursor.isNull(offset + 96) ? null : cursor.getInt(offset + 96), // flickLeftLongParallel
-            cursor.isNull(offset + 97) ? null : cursor.getInt(offset + 97), // flickLeftShortCrossed
-            cursor.isNull(offset + 98) ? null : cursor.getInt(offset + 98), // flickLeftShortParallel
-            cursor.isNull(offset + 99) ? null : cursor.getInt(offset + 99), // flickMiddleLongCrossed
-            cursor.isNull(offset + 100) ? null : cursor.getInt(offset + 100), // flickMiddleLongParallel
-            cursor.isNull(offset + 101) ? null : cursor.getInt(offset + 101), // flickMiddleShortCrossed
-            cursor.isNull(offset + 102) ? null : cursor.getInt(offset + 102), // flickMiddleShortParallel
-            cursor.isNull(offset + 103) ? null : cursor.getInt(offset + 103), // flickRightLongCrossed
-            cursor.isNull(offset + 104) ? null : cursor.getInt(offset + 104), // flickRightLongParallel
-            cursor.isNull(offset + 105) ? null : cursor.getInt(offset + 105), // flickRightShortCrossed
-            cursor.isNull(offset + 106) ? null : cursor.getInt(offset + 106), // flickRightShortParallel
-            cursor.isNull(offset + 107) ? null : cursor.getInt(offset + 107), // lobLeftLongCrossed
-            cursor.isNull(offset + 108) ? null : cursor.getInt(offset + 108), // lobLeftLongParallel
-            cursor.isNull(offset + 109) ? null : cursor.getInt(offset + 109), // lobLeftShortCrossed
-            cursor.isNull(offset + 110) ? null : cursor.getInt(offset + 110), // lobLeftShortParallel
-            cursor.isNull(offset + 111) ? null : cursor.getInt(offset + 111), // lobMiddleLongCrossed
-            cursor.isNull(offset + 112) ? null : cursor.getInt(offset + 112), // lobMiddleLongParallel
-            cursor.isNull(offset + 113) ? null : cursor.getInt(offset + 113), // lobMiddleShortCrossed
-            cursor.isNull(offset + 114) ? null : cursor.getInt(offset + 114), // lobMiddleShortParallel
-            cursor.isNull(offset + 115) ? null : cursor.getInt(offset + 115), // lobRightLongCrossed
-            cursor.isNull(offset + 116) ? null : cursor.getInt(offset + 116), // lobRightLongParallel
-            cursor.isNull(offset + 117) ? null : cursor.getInt(offset + 117), // lobRightShortCrossed
-            cursor.isNull(offset + 118) ? null : cursor.getInt(offset + 118) // lobRightShortParallel
+            cursor.getInt(offset + 1), // service
+            cursor.getInt(offset + 2), // reception
+            cursor.getInt(offset + 3), // forehand
+            cursor.getInt(offset + 4), // backhand
+            cursor.getInt(offset + 5), // smash
+            cursor.getInt(offset + 6), // slice
+            cursor.getInt(offset + 7), // block
+            cursor.getInt(offset + 8), // flick
+            cursor.getInt(offset + 9), // lob
+            cursor.getInt(offset + 10), // total
+            cursor.getInt(offset + 11), // serviceLeftLongCrossed
+            cursor.getInt(offset + 12), // serviceLeftLongParallel
+            cursor.getInt(offset + 13), // serviceLeftShortCrossed
+            cursor.getInt(offset + 14), // serviceLeftShortParallel
+            cursor.getInt(offset + 15), // serviceMiddleLongCrossed
+            cursor.getInt(offset + 16), // serviceMiddleLongParallel
+            cursor.getInt(offset + 17), // serviceMiddleShortCrossed
+            cursor.getInt(offset + 18), // serviceMiddleShortParallel
+            cursor.getInt(offset + 19), // serviceRightLongCrossed
+            cursor.getInt(offset + 20), // serviceRightLongParallel
+            cursor.getInt(offset + 21), // serviceRightShortCrossed
+            cursor.getInt(offset + 22), // serviceRightShortParallel
+            cursor.getInt(offset + 23), // receptionLeftLongCrossed
+            cursor.getInt(offset + 24), // receptionLeftLongParallel
+            cursor.getInt(offset + 25), // receptionLeftShortCrossed
+            cursor.getInt(offset + 26), // receptionLeftShortParallel
+            cursor.getInt(offset + 27), // receptionMiddleLongCrossed
+            cursor.getInt(offset + 28), // receptionMiddleLongParallel
+            cursor.getInt(offset + 29), // receptionMiddleShortCrossed
+            cursor.getInt(offset + 30), // receptionMiddleShortParallel
+            cursor.getInt(offset + 31), // receptionRightLongCrossed
+            cursor.getInt(offset + 32), // receptionRightLongParallel
+            cursor.getInt(offset + 33), // receptionRightShortCrossed
+            cursor.getInt(offset + 34), // receptionRightShortParallel
+            cursor.getInt(offset + 35), // forehandLeftLongCrossed
+            cursor.getInt(offset + 36), // forehandLeftLongParallel
+            cursor.getInt(offset + 37), // forehandLeftShortCrossed
+            cursor.getInt(offset + 38), // forehandLeftShortParallel
+            cursor.getInt(offset + 39), // forehandMiddleLongCrossed
+            cursor.getInt(offset + 40), // forehandMiddleLongParallel
+            cursor.getInt(offset + 41), // forehandMiddleShortCrossed
+            cursor.getInt(offset + 42), // forehandMiddleShortParallel
+            cursor.getInt(offset + 43), // forehandRightLongCrossed
+            cursor.getInt(offset + 44), // forehandRightLongParallel
+            cursor.getInt(offset + 45), // forehandRightShortCrossed
+            cursor.getInt(offset + 46), // forehandRightShortParallel
+            cursor.getInt(offset + 47), // backhandLeftLongCrossed
+            cursor.getInt(offset + 48), // backhandLeftLongParallel
+            cursor.getInt(offset + 49), // backhandLeftShortCrossed
+            cursor.getInt(offset + 50), // backhandLeftShortParallel
+            cursor.getInt(offset + 51), // backhandMiddleLongCrossed
+            cursor.getInt(offset + 52), // backhandMiddleLongParallel
+            cursor.getInt(offset + 53), // backhandMiddleShortCrossed
+            cursor.getInt(offset + 54), // backhandMiddleShortParallel
+            cursor.getInt(offset + 55), // backhandRightLongCrossed
+            cursor.getInt(offset + 56), // backhandRightLongParallel
+            cursor.getInt(offset + 57), // backhandRightShortCrossed
+            cursor.getInt(offset + 58), // backhandRightShortParallel
+            cursor.getInt(offset + 59), // smashLeftLongCrossed
+            cursor.getInt(offset + 60), // smashLeftLongParallel
+            cursor.getInt(offset + 61), // smashLeftShortCrossed
+            cursor.getInt(offset + 62), // smashLeftShortParallel
+            cursor.getInt(offset + 63), // smashMiddleLongCrossed
+            cursor.getInt(offset + 64), // smashMiddleLongParallel
+            cursor.getInt(offset + 65), // smashMiddleShortCrossed
+            cursor.getInt(offset + 66), // smashMiddleShortParallel
+            cursor.getInt(offset + 67), // smashRightLongCrossed
+            cursor.getInt(offset + 68), // smashRightLongParallel
+            cursor.getInt(offset + 69), // smashRightShortCrossed
+            cursor.getInt(offset + 70), // smashRightShortParallel
+            cursor.getInt(offset + 71), // sliceLeftLongCrossed
+            cursor.getInt(offset + 72), // sliceLeftLongParallel
+            cursor.getInt(offset + 73), // sliceLeftShortCrossed
+            cursor.getInt(offset + 74), // sliceLeftShortParallel
+            cursor.getInt(offset + 75), // sliceMiddleLongCrossed
+            cursor.getInt(offset + 76), // sliceMiddleLongParallel
+            cursor.getInt(offset + 77), // sliceMiddleShortCrossed
+            cursor.getInt(offset + 78), // sliceMiddleShortParallel
+            cursor.getInt(offset + 79), // sliceRightLongCrossed
+            cursor.getInt(offset + 80), // sliceRightLongParallel
+            cursor.getInt(offset + 81), // sliceRightShortCrossed
+            cursor.getInt(offset + 82), // sliceRightShortParallel
+            cursor.getInt(offset + 83), // blockLeftLongCrossed
+            cursor.getInt(offset + 84), // blockLeftLongParallel
+            cursor.getInt(offset + 85), // blockLeftShortCrossed
+            cursor.getInt(offset + 86), // blockLeftShortParallel
+            cursor.getInt(offset + 87), // blockMiddleLongCrossed
+            cursor.getInt(offset + 88), // blockMiddleLongParallel
+            cursor.getInt(offset + 89), // blockMiddleShortCrossed
+            cursor.getInt(offset + 90), // blockMiddleShortParallel
+            cursor.getInt(offset + 91), // blockRightLongCrossed
+            cursor.getInt(offset + 92), // blockRightLongParallel
+            cursor.getInt(offset + 93), // blockRightShortCrossed
+            cursor.getInt(offset + 94), // blockRightShortParallel
+            cursor.getInt(offset + 95), // flickLeftLongCrossed
+            cursor.getInt(offset + 96), // flickLeftLongParallel
+            cursor.getInt(offset + 97), // flickLeftShortCrossed
+            cursor.getInt(offset + 98), // flickLeftShortParallel
+            cursor.getInt(offset + 99), // flickMiddleLongCrossed
+            cursor.getInt(offset + 100), // flickMiddleLongParallel
+            cursor.getInt(offset + 101), // flickMiddleShortCrossed
+            cursor.getInt(offset + 102), // flickMiddleShortParallel
+            cursor.getInt(offset + 103), // flickRightLongCrossed
+            cursor.getInt(offset + 104), // flickRightLongParallel
+            cursor.getInt(offset + 105), // flickRightShortCrossed
+            cursor.getInt(offset + 106), // flickRightShortParallel
+            cursor.getInt(offset + 107), // lobLeftLongCrossed
+            cursor.getInt(offset + 108), // lobLeftLongParallel
+            cursor.getInt(offset + 109), // lobLeftShortCrossed
+            cursor.getInt(offset + 110), // lobLeftShortParallel
+            cursor.getInt(offset + 111), // lobMiddleLongCrossed
+            cursor.getInt(offset + 112), // lobMiddleLongParallel
+            cursor.getInt(offset + 113), // lobMiddleShortCrossed
+            cursor.getInt(offset + 114), // lobMiddleShortParallel
+            cursor.getInt(offset + 115), // lobRightLongCrossed
+            cursor.getInt(offset + 116), // lobRightLongParallel
+            cursor.getInt(offset + 117), // lobRightShortCrossed
+            cursor.getInt(offset + 118) // lobRightShortParallel
         );
         return entity;
     }
@@ -1022,124 +550,124 @@ public class GameOpponentDao extends AbstractDao<GameOpponent, Long> {
     @Override
     public void readEntity(Cursor cursor, GameOpponent entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setService(cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1));
-        entity.setReception(cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2));
-        entity.setForehand(cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3));
-        entity.setBackhand(cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4));
-        entity.setSmash(cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5));
-        entity.setSlice(cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6));
-        entity.setBlock(cursor.isNull(offset + 7) ? null : cursor.getInt(offset + 7));
-        entity.setFlick(cursor.isNull(offset + 8) ? null : cursor.getInt(offset + 8));
-        entity.setLob(cursor.isNull(offset + 9) ? null : cursor.getInt(offset + 9));
-        entity.setTotal(cursor.isNull(offset + 10) ? null : cursor.getInt(offset + 10));
-        entity.setServiceLeftLongCrossed(cursor.isNull(offset + 11) ? null : cursor.getInt(offset + 11));
-        entity.setServiceLeftLongParallel(cursor.isNull(offset + 12) ? null : cursor.getInt(offset + 12));
-        entity.setServiceLeftShortCrossed(cursor.isNull(offset + 13) ? null : cursor.getInt(offset + 13));
-        entity.setServiceLeftShortParallel(cursor.isNull(offset + 14) ? null : cursor.getInt(offset + 14));
-        entity.setServiceMiddleLongCrossed(cursor.isNull(offset + 15) ? null : cursor.getInt(offset + 15));
-        entity.setServiceMiddleLongParallel(cursor.isNull(offset + 16) ? null : cursor.getInt(offset + 16));
-        entity.setServiceMiddleShortCrossed(cursor.isNull(offset + 17) ? null : cursor.getInt(offset + 17));
-        entity.setServiceMiddleShortParallel(cursor.isNull(offset + 18) ? null : cursor.getInt(offset + 18));
-        entity.setServiceRightLongCrossed(cursor.isNull(offset + 19) ? null : cursor.getInt(offset + 19));
-        entity.setServiceRightLongParallel(cursor.isNull(offset + 20) ? null : cursor.getInt(offset + 20));
-        entity.setServiceRightShortCrossed(cursor.isNull(offset + 21) ? null : cursor.getInt(offset + 21));
-        entity.setServiceRightShortParallel(cursor.isNull(offset + 22) ? null : cursor.getInt(offset + 22));
-        entity.setReceptionLeftLongCrossed(cursor.isNull(offset + 23) ? null : cursor.getInt(offset + 23));
-        entity.setReceptionLeftLongParallel(cursor.isNull(offset + 24) ? null : cursor.getInt(offset + 24));
-        entity.setReceptionLeftShortCrossed(cursor.isNull(offset + 25) ? null : cursor.getInt(offset + 25));
-        entity.setReceptionLeftShortParallel(cursor.isNull(offset + 26) ? null : cursor.getInt(offset + 26));
-        entity.setReceptionMiddleLongCrossed(cursor.isNull(offset + 27) ? null : cursor.getInt(offset + 27));
-        entity.setReceptionMiddleLongParallel(cursor.isNull(offset + 28) ? null : cursor.getInt(offset + 28));
-        entity.setReceptionMiddleShortCrossed(cursor.isNull(offset + 29) ? null : cursor.getInt(offset + 29));
-        entity.setReceptionMiddleShortParallel(cursor.isNull(offset + 30) ? null : cursor.getInt(offset + 30));
-        entity.setReceptionRightLongCrossed(cursor.isNull(offset + 31) ? null : cursor.getInt(offset + 31));
-        entity.setReceptionRightLongParallel(cursor.isNull(offset + 32) ? null : cursor.getInt(offset + 32));
-        entity.setReceptionRightShortCrossed(cursor.isNull(offset + 33) ? null : cursor.getInt(offset + 33));
-        entity.setReceptionRightShortParallel(cursor.isNull(offset + 34) ? null : cursor.getInt(offset + 34));
-        entity.setForehandLeftLongCrossed(cursor.isNull(offset + 35) ? null : cursor.getInt(offset + 35));
-        entity.setForehandLeftLongParallel(cursor.isNull(offset + 36) ? null : cursor.getInt(offset + 36));
-        entity.setForehandLeftShortCrossed(cursor.isNull(offset + 37) ? null : cursor.getInt(offset + 37));
-        entity.setForehandLeftShortParallel(cursor.isNull(offset + 38) ? null : cursor.getInt(offset + 38));
-        entity.setForehandMiddleLongCrossed(cursor.isNull(offset + 39) ? null : cursor.getInt(offset + 39));
-        entity.setForehandMiddleLongParallel(cursor.isNull(offset + 40) ? null : cursor.getInt(offset + 40));
-        entity.setForehandMiddleShortCrossed(cursor.isNull(offset + 41) ? null : cursor.getInt(offset + 41));
-        entity.setForehandMiddleShortParallel(cursor.isNull(offset + 42) ? null : cursor.getInt(offset + 42));
-        entity.setForehandRightLongCrossed(cursor.isNull(offset + 43) ? null : cursor.getInt(offset + 43));
-        entity.setForehandRightLongParallel(cursor.isNull(offset + 44) ? null : cursor.getInt(offset + 44));
-        entity.setForehandRightShortCrossed(cursor.isNull(offset + 45) ? null : cursor.getInt(offset + 45));
-        entity.setForehandRightShortParallel(cursor.isNull(offset + 46) ? null : cursor.getInt(offset + 46));
-        entity.setBackhandLeftLongCrossed(cursor.isNull(offset + 47) ? null : cursor.getInt(offset + 47));
-        entity.setBackhandLeftLongParallel(cursor.isNull(offset + 48) ? null : cursor.getInt(offset + 48));
-        entity.setBackhandLeftShortCrossed(cursor.isNull(offset + 49) ? null : cursor.getInt(offset + 49));
-        entity.setBackhandLeftShortParallel(cursor.isNull(offset + 50) ? null : cursor.getInt(offset + 50));
-        entity.setBackhandMiddleLongCrossed(cursor.isNull(offset + 51) ? null : cursor.getInt(offset + 51));
-        entity.setBackhandMiddleLongParallel(cursor.isNull(offset + 52) ? null : cursor.getInt(offset + 52));
-        entity.setBackhandMiddleShortCrossed(cursor.isNull(offset + 53) ? null : cursor.getInt(offset + 53));
-        entity.setBackhandMiddleShortParallel(cursor.isNull(offset + 54) ? null : cursor.getInt(offset + 54));
-        entity.setBackhandRightLongCrossed(cursor.isNull(offset + 55) ? null : cursor.getInt(offset + 55));
-        entity.setBackhandRightLongParallel(cursor.isNull(offset + 56) ? null : cursor.getInt(offset + 56));
-        entity.setBackhandRightShortCrossed(cursor.isNull(offset + 57) ? null : cursor.getInt(offset + 57));
-        entity.setBackhandRightShortParallel(cursor.isNull(offset + 58) ? null : cursor.getInt(offset + 58));
-        entity.setSmashLeftLongCrossed(cursor.isNull(offset + 59) ? null : cursor.getInt(offset + 59));
-        entity.setSmashLeftLongParallel(cursor.isNull(offset + 60) ? null : cursor.getInt(offset + 60));
-        entity.setSmashLeftShortCrossed(cursor.isNull(offset + 61) ? null : cursor.getInt(offset + 61));
-        entity.setSmashLeftShortParallel(cursor.isNull(offset + 62) ? null : cursor.getInt(offset + 62));
-        entity.setSmashMiddleLongCrossed(cursor.isNull(offset + 63) ? null : cursor.getInt(offset + 63));
-        entity.setSmashMiddleLongParallel(cursor.isNull(offset + 64) ? null : cursor.getInt(offset + 64));
-        entity.setSmashMiddleShortCrossed(cursor.isNull(offset + 65) ? null : cursor.getInt(offset + 65));
-        entity.setSmashMiddleShortParallel(cursor.isNull(offset + 66) ? null : cursor.getInt(offset + 66));
-        entity.setSmashRightLongCrossed(cursor.isNull(offset + 67) ? null : cursor.getInt(offset + 67));
-        entity.setSmashRightLongParallel(cursor.isNull(offset + 68) ? null : cursor.getInt(offset + 68));
-        entity.setSmashRightShortCrossed(cursor.isNull(offset + 69) ? null : cursor.getInt(offset + 69));
-        entity.setSmashRightShortParallel(cursor.isNull(offset + 70) ? null : cursor.getInt(offset + 70));
-        entity.setSliceLeftLongCrossed(cursor.isNull(offset + 71) ? null : cursor.getInt(offset + 71));
-        entity.setSliceLeftLongParallel(cursor.isNull(offset + 72) ? null : cursor.getInt(offset + 72));
-        entity.setSliceLeftShortCrossed(cursor.isNull(offset + 73) ? null : cursor.getInt(offset + 73));
-        entity.setSliceLeftShortParallel(cursor.isNull(offset + 74) ? null : cursor.getInt(offset + 74));
-        entity.setSliceMiddleLongCrossed(cursor.isNull(offset + 75) ? null : cursor.getInt(offset + 75));
-        entity.setSliceMiddleLongParallel(cursor.isNull(offset + 76) ? null : cursor.getInt(offset + 76));
-        entity.setSliceMiddleShortCrossed(cursor.isNull(offset + 77) ? null : cursor.getInt(offset + 77));
-        entity.setSliceMiddleShortParallel(cursor.isNull(offset + 78) ? null : cursor.getInt(offset + 78));
-        entity.setSliceRightLongCrossed(cursor.isNull(offset + 79) ? null : cursor.getInt(offset + 79));
-        entity.setSliceRightLongParallel(cursor.isNull(offset + 80) ? null : cursor.getInt(offset + 80));
-        entity.setSliceRightShortCrossed(cursor.isNull(offset + 81) ? null : cursor.getInt(offset + 81));
-        entity.setSliceRightShortParallel(cursor.isNull(offset + 82) ? null : cursor.getInt(offset + 82));
-        entity.setBlockLeftLongCrossed(cursor.isNull(offset + 83) ? null : cursor.getInt(offset + 83));
-        entity.setBlockLeftLongParallel(cursor.isNull(offset + 84) ? null : cursor.getInt(offset + 84));
-        entity.setBlockLeftShortCrossed(cursor.isNull(offset + 85) ? null : cursor.getInt(offset + 85));
-        entity.setBlockLeftShortParallel(cursor.isNull(offset + 86) ? null : cursor.getInt(offset + 86));
-        entity.setBlockMiddleLongCrossed(cursor.isNull(offset + 87) ? null : cursor.getInt(offset + 87));
-        entity.setBlockMiddleLongParallel(cursor.isNull(offset + 88) ? null : cursor.getInt(offset + 88));
-        entity.setBlockMiddleShortCrossed(cursor.isNull(offset + 89) ? null : cursor.getInt(offset + 89));
-        entity.setBlockMiddleShortParallel(cursor.isNull(offset + 90) ? null : cursor.getInt(offset + 90));
-        entity.setBlockRightLongCrossed(cursor.isNull(offset + 91) ? null : cursor.getInt(offset + 91));
-        entity.setBlockRightLongParallel(cursor.isNull(offset + 92) ? null : cursor.getInt(offset + 92));
-        entity.setBlockRightShortCrossed(cursor.isNull(offset + 93) ? null : cursor.getInt(offset + 93));
-        entity.setBlockRightShortParallel(cursor.isNull(offset + 94) ? null : cursor.getInt(offset + 94));
-        entity.setFlickLeftLongCrossed(cursor.isNull(offset + 95) ? null : cursor.getInt(offset + 95));
-        entity.setFlickLeftLongParallel(cursor.isNull(offset + 96) ? null : cursor.getInt(offset + 96));
-        entity.setFlickLeftShortCrossed(cursor.isNull(offset + 97) ? null : cursor.getInt(offset + 97));
-        entity.setFlickLeftShortParallel(cursor.isNull(offset + 98) ? null : cursor.getInt(offset + 98));
-        entity.setFlickMiddleLongCrossed(cursor.isNull(offset + 99) ? null : cursor.getInt(offset + 99));
-        entity.setFlickMiddleLongParallel(cursor.isNull(offset + 100) ? null : cursor.getInt(offset + 100));
-        entity.setFlickMiddleShortCrossed(cursor.isNull(offset + 101) ? null : cursor.getInt(offset + 101));
-        entity.setFlickMiddleShortParallel(cursor.isNull(offset + 102) ? null : cursor.getInt(offset + 102));
-        entity.setFlickRightLongCrossed(cursor.isNull(offset + 103) ? null : cursor.getInt(offset + 103));
-        entity.setFlickRightLongParallel(cursor.isNull(offset + 104) ? null : cursor.getInt(offset + 104));
-        entity.setFlickRightShortCrossed(cursor.isNull(offset + 105) ? null : cursor.getInt(offset + 105));
-        entity.setFlickRightShortParallel(cursor.isNull(offset + 106) ? null : cursor.getInt(offset + 106));
-        entity.setLobLeftLongCrossed(cursor.isNull(offset + 107) ? null : cursor.getInt(offset + 107));
-        entity.setLobLeftLongParallel(cursor.isNull(offset + 108) ? null : cursor.getInt(offset + 108));
-        entity.setLobLeftShortCrossed(cursor.isNull(offset + 109) ? null : cursor.getInt(offset + 109));
-        entity.setLobLeftShortParallel(cursor.isNull(offset + 110) ? null : cursor.getInt(offset + 110));
-        entity.setLobMiddleLongCrossed(cursor.isNull(offset + 111) ? null : cursor.getInt(offset + 111));
-        entity.setLobMiddleLongParallel(cursor.isNull(offset + 112) ? null : cursor.getInt(offset + 112));
-        entity.setLobMiddleShortCrossed(cursor.isNull(offset + 113) ? null : cursor.getInt(offset + 113));
-        entity.setLobMiddleShortParallel(cursor.isNull(offset + 114) ? null : cursor.getInt(offset + 114));
-        entity.setLobRightLongCrossed(cursor.isNull(offset + 115) ? null : cursor.getInt(offset + 115));
-        entity.setLobRightLongParallel(cursor.isNull(offset + 116) ? null : cursor.getInt(offset + 116));
-        entity.setLobRightShortCrossed(cursor.isNull(offset + 117) ? null : cursor.getInt(offset + 117));
-        entity.setLobRightShortParallel(cursor.isNull(offset + 118) ? null : cursor.getInt(offset + 118));
+        entity.setService(cursor.getInt(offset + 1));
+        entity.setReception(cursor.getInt(offset + 2));
+        entity.setForehand(cursor.getInt(offset + 3));
+        entity.setBackhand(cursor.getInt(offset + 4));
+        entity.setSmash(cursor.getInt(offset + 5));
+        entity.setSlice(cursor.getInt(offset + 6));
+        entity.setBlock(cursor.getInt(offset + 7));
+        entity.setFlick(cursor.getInt(offset + 8));
+        entity.setLob(cursor.getInt(offset + 9));
+        entity.setTotal(cursor.getInt(offset + 10));
+        entity.setServiceLeftLongCrossed(cursor.getInt(offset + 11));
+        entity.setServiceLeftLongParallel(cursor.getInt(offset + 12));
+        entity.setServiceLeftShortCrossed(cursor.getInt(offset + 13));
+        entity.setServiceLeftShortParallel(cursor.getInt(offset + 14));
+        entity.setServiceMiddleLongCrossed(cursor.getInt(offset + 15));
+        entity.setServiceMiddleLongParallel(cursor.getInt(offset + 16));
+        entity.setServiceMiddleShortCrossed(cursor.getInt(offset + 17));
+        entity.setServiceMiddleShortParallel(cursor.getInt(offset + 18));
+        entity.setServiceRightLongCrossed(cursor.getInt(offset + 19));
+        entity.setServiceRightLongParallel(cursor.getInt(offset + 20));
+        entity.setServiceRightShortCrossed(cursor.getInt(offset + 21));
+        entity.setServiceRightShortParallel(cursor.getInt(offset + 22));
+        entity.setReceptionLeftLongCrossed(cursor.getInt(offset + 23));
+        entity.setReceptionLeftLongParallel(cursor.getInt(offset + 24));
+        entity.setReceptionLeftShortCrossed(cursor.getInt(offset + 25));
+        entity.setReceptionLeftShortParallel(cursor.getInt(offset + 26));
+        entity.setReceptionMiddleLongCrossed(cursor.getInt(offset + 27));
+        entity.setReceptionMiddleLongParallel(cursor.getInt(offset + 28));
+        entity.setReceptionMiddleShortCrossed(cursor.getInt(offset + 29));
+        entity.setReceptionMiddleShortParallel(cursor.getInt(offset + 30));
+        entity.setReceptionRightLongCrossed(cursor.getInt(offset + 31));
+        entity.setReceptionRightLongParallel(cursor.getInt(offset + 32));
+        entity.setReceptionRightShortCrossed(cursor.getInt(offset + 33));
+        entity.setReceptionRightShortParallel(cursor.getInt(offset + 34));
+        entity.setForehandLeftLongCrossed(cursor.getInt(offset + 35));
+        entity.setForehandLeftLongParallel(cursor.getInt(offset + 36));
+        entity.setForehandLeftShortCrossed(cursor.getInt(offset + 37));
+        entity.setForehandLeftShortParallel(cursor.getInt(offset + 38));
+        entity.setForehandMiddleLongCrossed(cursor.getInt(offset + 39));
+        entity.setForehandMiddleLongParallel(cursor.getInt(offset + 40));
+        entity.setForehandMiddleShortCrossed(cursor.getInt(offset + 41));
+        entity.setForehandMiddleShortParallel(cursor.getInt(offset + 42));
+        entity.setForehandRightLongCrossed(cursor.getInt(offset + 43));
+        entity.setForehandRightLongParallel(cursor.getInt(offset + 44));
+        entity.setForehandRightShortCrossed(cursor.getInt(offset + 45));
+        entity.setForehandRightShortParallel(cursor.getInt(offset + 46));
+        entity.setBackhandLeftLongCrossed(cursor.getInt(offset + 47));
+        entity.setBackhandLeftLongParallel(cursor.getInt(offset + 48));
+        entity.setBackhandLeftShortCrossed(cursor.getInt(offset + 49));
+        entity.setBackhandLeftShortParallel(cursor.getInt(offset + 50));
+        entity.setBackhandMiddleLongCrossed(cursor.getInt(offset + 51));
+        entity.setBackhandMiddleLongParallel(cursor.getInt(offset + 52));
+        entity.setBackhandMiddleShortCrossed(cursor.getInt(offset + 53));
+        entity.setBackhandMiddleShortParallel(cursor.getInt(offset + 54));
+        entity.setBackhandRightLongCrossed(cursor.getInt(offset + 55));
+        entity.setBackhandRightLongParallel(cursor.getInt(offset + 56));
+        entity.setBackhandRightShortCrossed(cursor.getInt(offset + 57));
+        entity.setBackhandRightShortParallel(cursor.getInt(offset + 58));
+        entity.setSmashLeftLongCrossed(cursor.getInt(offset + 59));
+        entity.setSmashLeftLongParallel(cursor.getInt(offset + 60));
+        entity.setSmashLeftShortCrossed(cursor.getInt(offset + 61));
+        entity.setSmashLeftShortParallel(cursor.getInt(offset + 62));
+        entity.setSmashMiddleLongCrossed(cursor.getInt(offset + 63));
+        entity.setSmashMiddleLongParallel(cursor.getInt(offset + 64));
+        entity.setSmashMiddleShortCrossed(cursor.getInt(offset + 65));
+        entity.setSmashMiddleShortParallel(cursor.getInt(offset + 66));
+        entity.setSmashRightLongCrossed(cursor.getInt(offset + 67));
+        entity.setSmashRightLongParallel(cursor.getInt(offset + 68));
+        entity.setSmashRightShortCrossed(cursor.getInt(offset + 69));
+        entity.setSmashRightShortParallel(cursor.getInt(offset + 70));
+        entity.setSliceLeftLongCrossed(cursor.getInt(offset + 71));
+        entity.setSliceLeftLongParallel(cursor.getInt(offset + 72));
+        entity.setSliceLeftShortCrossed(cursor.getInt(offset + 73));
+        entity.setSliceLeftShortParallel(cursor.getInt(offset + 74));
+        entity.setSliceMiddleLongCrossed(cursor.getInt(offset + 75));
+        entity.setSliceMiddleLongParallel(cursor.getInt(offset + 76));
+        entity.setSliceMiddleShortCrossed(cursor.getInt(offset + 77));
+        entity.setSliceMiddleShortParallel(cursor.getInt(offset + 78));
+        entity.setSliceRightLongCrossed(cursor.getInt(offset + 79));
+        entity.setSliceRightLongParallel(cursor.getInt(offset + 80));
+        entity.setSliceRightShortCrossed(cursor.getInt(offset + 81));
+        entity.setSliceRightShortParallel(cursor.getInt(offset + 82));
+        entity.setBlockLeftLongCrossed(cursor.getInt(offset + 83));
+        entity.setBlockLeftLongParallel(cursor.getInt(offset + 84));
+        entity.setBlockLeftShortCrossed(cursor.getInt(offset + 85));
+        entity.setBlockLeftShortParallel(cursor.getInt(offset + 86));
+        entity.setBlockMiddleLongCrossed(cursor.getInt(offset + 87));
+        entity.setBlockMiddleLongParallel(cursor.getInt(offset + 88));
+        entity.setBlockMiddleShortCrossed(cursor.getInt(offset + 89));
+        entity.setBlockMiddleShortParallel(cursor.getInt(offset + 90));
+        entity.setBlockRightLongCrossed(cursor.getInt(offset + 91));
+        entity.setBlockRightLongParallel(cursor.getInt(offset + 92));
+        entity.setBlockRightShortCrossed(cursor.getInt(offset + 93));
+        entity.setBlockRightShortParallel(cursor.getInt(offset + 94));
+        entity.setFlickLeftLongCrossed(cursor.getInt(offset + 95));
+        entity.setFlickLeftLongParallel(cursor.getInt(offset + 96));
+        entity.setFlickLeftShortCrossed(cursor.getInt(offset + 97));
+        entity.setFlickLeftShortParallel(cursor.getInt(offset + 98));
+        entity.setFlickMiddleLongCrossed(cursor.getInt(offset + 99));
+        entity.setFlickMiddleLongParallel(cursor.getInt(offset + 100));
+        entity.setFlickMiddleShortCrossed(cursor.getInt(offset + 101));
+        entity.setFlickMiddleShortParallel(cursor.getInt(offset + 102));
+        entity.setFlickRightLongCrossed(cursor.getInt(offset + 103));
+        entity.setFlickRightLongParallel(cursor.getInt(offset + 104));
+        entity.setFlickRightShortCrossed(cursor.getInt(offset + 105));
+        entity.setFlickRightShortParallel(cursor.getInt(offset + 106));
+        entity.setLobLeftLongCrossed(cursor.getInt(offset + 107));
+        entity.setLobLeftLongParallel(cursor.getInt(offset + 108));
+        entity.setLobLeftShortCrossed(cursor.getInt(offset + 109));
+        entity.setLobLeftShortParallel(cursor.getInt(offset + 110));
+        entity.setLobMiddleLongCrossed(cursor.getInt(offset + 111));
+        entity.setLobMiddleLongParallel(cursor.getInt(offset + 112));
+        entity.setLobMiddleShortCrossed(cursor.getInt(offset + 113));
+        entity.setLobMiddleShortParallel(cursor.getInt(offset + 114));
+        entity.setLobRightLongCrossed(cursor.getInt(offset + 115));
+        entity.setLobRightLongParallel(cursor.getInt(offset + 116));
+        entity.setLobRightShortCrossed(cursor.getInt(offset + 117));
+        entity.setLobRightShortParallel(cursor.getInt(offset + 118));
      }
     
     /** @inheritdoc */

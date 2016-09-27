@@ -20,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -33,6 +34,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import scoutapp.com.br.scoutapp.controller.UserController;
+import scoutapp.com.br.scoutapp.model.User;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -215,7 +219,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private boolean isPasswordValid(String password) {
-        if (password.equals("admin"))
+        if (password.equals("123"))
             return true;
         else{
             return false;

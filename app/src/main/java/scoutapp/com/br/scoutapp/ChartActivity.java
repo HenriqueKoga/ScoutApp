@@ -34,7 +34,8 @@ import java.util.ArrayList;
 
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Championship;
-import scoutapp.com.br.scoutapp.model.Game;
+import scoutapp.com.br.scoutapp.model.GameOpponent;
+import scoutapp.com.br.scoutapp.model.GameUser;
 import scoutapp.com.br.scoutapp.model.User;
 
 
@@ -115,8 +116,8 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
         String action;
         Intent intent = getIntent();
         Championship championship= (Championship) intent.getSerializableExtra("championship");
-        Game gameUser = (Game) intent.getSerializableExtra("game_user");
-        Game gameOpponent = (Game) intent.getSerializableExtra("game_opponent");
+        GameUser gameUser = (GameUser) intent.getSerializableExtra("game_user");
+        GameOpponent gameOpponent = (GameOpponent) intent.getSerializableExtra("game_opponent");
         Athlete athleteOpponent = (Athlete) intent.getSerializableExtra("athlete_opponent");
         User athleteUser = (User) intent.getSerializableExtra("user");
         Intent intentSpecChart = new Intent(ChartActivity.this, SpecChartActivity.class);
@@ -270,7 +271,7 @@ public class ChartActivity extends ChartBase implements OnSeekBarChangeListener,
         ArrayList<PieEntry> entries = new ArrayList<>();
 
         Intent intent = getIntent();
-        Game gameUser = (Game) intent.getSerializableExtra("game_user");
+        GameUser gameUser = (GameUser) intent.getSerializableExtra("game_user");
 
         ArrayList<Integer>listTechniques = new ArrayList<>();
         listTechniques.add(gameUser.getService());
