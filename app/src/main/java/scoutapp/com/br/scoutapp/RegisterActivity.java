@@ -15,6 +15,8 @@ import scoutapp.com.br.scoutapp.controller.AthleteController;
 import scoutapp.com.br.scoutapp.helper.RegisterHelper;
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Championship;
+import scoutapp.com.br.scoutapp.model.GameOpponent;
+import scoutapp.com.br.scoutapp.model.GameUser;
 import scoutapp.com.br.scoutapp.model.User;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -66,6 +68,8 @@ public class RegisterActivity extends AppCompatActivity {
         Intent intent = getIntent();
         User athleteUser = (User) intent.getSerializableExtra("user");
         Championship championship = (Championship) intent.getSerializableExtra("championship");
+        GameOpponent gameOpponent = (GameOpponent) intent.getSerializableExtra("game_opponent");
+        GameUser gameUser = (GameUser) intent.getSerializableExtra("game_user");
 
         AthleteController athleteController = new AthleteController(this);
 
@@ -76,6 +80,8 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intentScout = new Intent(RegisterActivity.this, ChampRegisterActivity.class);
                 intentScout.putExtra("athlete_opponent", athlete);
                 intentScout.putExtra("championship", championship);
+                intentScout.putExtra("game_opponent", gameOpponent);
+                intentScout.putExtra("game_user", gameUser);
                 intentScout.putExtra("user", athleteUser);
                 startActivity(intentScout);
                 finish();
@@ -87,6 +93,8 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intentHome = new Intent(RegisterActivity.this, HomeActivity.class);
                 intentHome.putExtra("athlete_opponent", athlete);
                 intentHome.putExtra("championship", championship);
+                intentHome.putExtra("game_opponent", gameOpponent);
+                intentHome.putExtra("game_user", gameUser);
                 intentHome.putExtra("user", athleteUser);
                 if(championship != null) {
                     startActivity(intentHome);

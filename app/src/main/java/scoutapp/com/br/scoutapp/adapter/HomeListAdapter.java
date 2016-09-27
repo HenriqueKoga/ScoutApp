@@ -60,7 +60,7 @@ public class HomeListAdapter extends BaseAdapter {
 
         TextView fieldClub = (TextView) view.findViewById(R.id.item_club);
         fieldClub.setText(athlete.getClub());
-        if (championships != null){
+        if (championships.get(championships.size()-1).getDate() != null){
             championship = championships.get(position);
             TextView fieldChamp = (TextView) view.findViewById(R.id.item_champ);
             fieldChamp.setText(championship.getChampName() + " Championship");
@@ -68,7 +68,6 @@ public class HomeListAdapter extends BaseAdapter {
             android.text.format.DateFormat df = new android.text.format.DateFormat();
             fieldDate.setText(df.format("dd/MM/yyyy", championship.getDate()));
         }
-
         return view;
     }
 }

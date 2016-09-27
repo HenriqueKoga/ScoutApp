@@ -9,11 +9,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import scoutapp.com.br.scoutapp.controller.AthleteController;
 import scoutapp.com.br.scoutapp.controller.ChampionshipController;
+import scoutapp.com.br.scoutapp.controller.GameOpponentController;
+import scoutapp.com.br.scoutapp.controller.GameUserController;
 import scoutapp.com.br.scoutapp.controller.UserController;
 import scoutapp.com.br.scoutapp.helper.AthleteRegisterHelper;
 import scoutapp.com.br.scoutapp.model.User;
@@ -29,17 +28,21 @@ public class AthleteRegisterActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        AthleteController athleteController = new AthleteController(this);
-        athleteController.cleanDB();
-
-        ChampionshipController championshipController = new ChampionshipController(this);
-        championshipController.cleanDB();
-
-        UserController userController = new UserController(this);
-        userController.cleanDB();
-
+//        limpar tabelas
+//        AthleteController athleteController = new AthleteController(this);
+//        athleteController.cleanDB();
+//
+//        ChampionshipController championshipController = new ChampionshipController(this);
+//        championshipController.cleanDB();
+//
 //        UserController userController = new UserController(this);
-//        List<User> users =  userController.getAllUser();
+//        userController.cleanDB();
+//
+//        GameUserController gameUserController = new GameUserController(this);
+//        gameUserController.cleanDB();
+//
+//        GameOpponentController gameOpponentController = new GameOpponentController(this);
+//        gameOpponentController.cleanDB();
 
         helper = new AthleteRegisterHelper(this);
 
