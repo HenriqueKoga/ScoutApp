@@ -1,5 +1,6 @@
 package scoutapp.com.br.scoutapp.helper;
 
+import android.text.InputFilter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -22,7 +23,10 @@ public class RegisterHelper {
 
 
     public RegisterHelper(RegisterActivity activity) {
+        InputFilter[] filterArray = new InputFilter[1];
+        filterArray[0] = new InputFilter.LengthFilter(15);
         fieldName = (EditText) activity.findViewById(R.id.name);
+        fieldName.setFilters(filterArray);
         fieldAge = (EditText) activity.findViewById(R.id.age);
         fieldCategory = (EditText) activity.findViewById(R.id.category);
         fieldClub = (EditText) activity.findViewById(R.id.club);

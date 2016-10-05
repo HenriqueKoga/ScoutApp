@@ -2,6 +2,7 @@ package scoutapp.com.br.scoutapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -101,7 +102,9 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, athlete.getName() + " saved!", Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
-                    Toast.makeText(RegisterActivity.this, "Register the championship in the next page", Toast.LENGTH_LONG).show();
+                    Snackbar snackbar;
+                    snackbar = Snackbar.make(getCurrentFocus(), "Register the championship in the next page", Snackbar.LENGTH_INDEFINITE);
+                    snackbar.show();
                 }
                 break;
 

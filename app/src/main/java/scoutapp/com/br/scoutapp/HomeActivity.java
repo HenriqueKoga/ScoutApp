@@ -1,16 +1,22 @@
 package scoutapp.com.br.scoutapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,6 +30,7 @@ import scoutapp.com.br.scoutapp.controller.AthleteController;
 import scoutapp.com.br.scoutapp.controller.ChampionshipController;
 import scoutapp.com.br.scoutapp.controller.GameOpponentController;
 import scoutapp.com.br.scoutapp.controller.GameUserController;
+import scoutapp.com.br.scoutapp.controller.UserController;
 import scoutapp.com.br.scoutapp.model.Athlete;
 import scoutapp.com.br.scoutapp.model.Championship;
 import scoutapp.com.br.scoutapp.model.GameOpponent;
@@ -47,7 +54,6 @@ public class HomeActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         actionBar.setDisplayHomeAsUpEnabled(true);
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -67,6 +73,23 @@ public class HomeActivity extends AppCompatActivity {
                         Toast.makeText(HomeActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
                         Intent intentLogin = new Intent(HomeActivity.this, LoginActivity.class);
                         startActivity(intentLogin);
+                        return true;
+                    case R.id.nav_about:
+                        //        limpar tabelas
+//        AthleteController athleteController = new AthleteController(this);
+//        athleteController.cleanDB();
+//
+//        ChampionshipController championshipController = new ChampionshipController(this);
+//        championshipController.cleanDB();
+//
+//        UserController userController = new UserController(this);
+//        userController.cleanDB();
+//
+//        GameUserController gameUserController = new GameUserController(this);
+//        gameUserController.cleanDB();
+//
+//        GameOpponentController gameOpponentController = new GameOpponentController(this);
+//        gameOpponentController.cleanDB();
                         return true;
                     default:
                         return true;
@@ -128,33 +151,61 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_home, menu);
+
+        SearchView mSearchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        mSearchView.setQueryHint("Search opponent");
+
+        return true;
+    }
+
+    @Override
     public void onCreateContextMenu(ContextMenu menu, View v, final ContextMenu.ContextMenuInfo menuInfo) {
         MenuItem delete = menu.add("Delete");
-
         delete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-                Athlete athleteOpponent = (Athlete) athletesList.getItemAtPosition(info.position);
+                AlertDialog.Builder alert;
+                alert = new AlertDialog.Builder(HomeActivity.this);
+                alert.setTitle("Delete");
+                alert.setMessage("Are you sure you want to delete?");
+                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+                        Athlete athleteOpponent = (Athlete) athletesList.getItemAtPosition(info.position);
 
-                AthleteController athleteController = new AthleteController(HomeActivity.this);
-                athleteController.removeAthlete(athleteOpponent);
+                        AthleteController athleteController = new AthleteController(HomeActivity.this);
+                        athleteController.removeAthlete(athleteOpponent);
 
-                ChampionshipController championshipController = new ChampionshipController(HomeActivity.this);
-                Championship championship = championshipController.getChampionshipByPosition(info.position);
-                championshipController.removeChamp(championship);
+                        ChampionshipController championshipController = new ChampionshipController(HomeActivity.this);
+                        Championship championship = championshipController.getChampionshipByPosition(info.position);
+                        championshipController.removeChamp(championship);
 
-                GameOpponentController gameOpponentController = new GameOpponentController(HomeActivity.this);
-                GameOpponent gameOpponent = gameOpponentController.getGameOpponentByPosition(info.position);
-                gameOpponentController.removeGameOpponent(gameOpponent);
+                        GameOpponentController gameOpponentController = new GameOpponentController(HomeActivity.this);
+                        GameOpponent gameOpponent = gameOpponentController.getGameOpponentByPosition(info.position);
+                        gameOpponentController.removeGameOpponent(gameOpponent);
 
-                GameUserController gameUserController = new GameUserController(HomeActivity.this);
-                GameUser gameUser = gameUserController.getGameUserByPosition(info.position);
-                gameUserController.removeGameUser(gameUser);
+                        GameUserController gameUserController = new GameUserController(HomeActivity.this);
+                        GameUser gameUser = gameUserController.getGameUserByPosition(info.position);
+                        gameUserController.removeGameUser(gameUser);
 
-                showList();
+                        showList();
 
-                Toast.makeText(HomeActivity.this, "Deleted " + athleteOpponent.getName(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HomeActivity.this, "Deleted " + athleteOpponent.getName(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog alertDialog = alert.create();
+                alertDialog.show();
+
                 return false;
             }
         });

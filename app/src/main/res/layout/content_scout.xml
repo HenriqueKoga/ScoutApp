@@ -136,80 +136,84 @@
             </TableRow>
         </TableLayout>
 
-        <ImageView
-            android:id="@+id/table"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/table"
-            android:clickable="true"
-            android:layout_marginTop="200dp"
-            android:foregroundGravity="center_horizontal"
-            android:layout_marginLeft="20dp"
-            android:scaleType="fitXY"
-            android:scaleY="1.3"
-            android:scaleX="1.3"/>
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/frameLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <ImageView
+                android:id="@+id/table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/table1"
+                android:clickable="true"
+                android:layout_marginTop="200dp"
+                android:foregroundGravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:scaleType="fitXY"
+                android:scaleY="1.3"
+                android:scaleX="1.3"/>
 
-        <Button
-            android:id="@+id/left_long"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:onClick="onClick"
-            android:stateListAnimator="@null"
-            android:layout_marginTop="305dp"
-            android:layout_marginLeft="38dp"
-            android:background="#0F42F0"/>
-        <!--#4FC3F7-->
+            <Button
+                android:id="@+id/left_long"
+                android:layout_width="60dp"
+                android:layout_height="45dp"
+                android:onClick="onClick"
+                android:stateListAnimator="@null"
+                android:layout_marginTop="305dp"
+                android:layout_marginLeft="38dp"
+                android:background="#0F42F0"/>
+            <!--#4FC3F7-->
 
-        <Button
-            android:id="@+id/left_short"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:onClick="onClick"
-            android:stateListAnimator="@null"
-            android:layout_marginTop="260dp"
-            android:layout_marginLeft="53dp"
-            android:background="#0F42F0"/>
+            <Button
+                android:id="@+id/left_short"
+                android:layout_width="60dp"
+                android:layout_height="45dp"
+                android:onClick="onClick"
+                android:stateListAnimator="@null"
+                android:layout_marginTop="260dp"
+                android:layout_marginLeft="53dp"
+                android:background="#0F42F0"/>
 
-        <Button
-            android:id="@+id/middle_long"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:onClick="onClick"
-            android:stateListAnimator="@null"
-            android:layout_marginTop="305dp"
-            android:layout_marginLeft="135dp"
-            android:background="#0F42F0"/>
+            <Button
+                android:id="@+id/middle_long"
+                android:layout_width="60dp"
+                android:layout_height="45dp"
+                android:onClick="onClick"
+                android:stateListAnimator="@null"
+                android:layout_marginTop="305dp"
+                android:layout_marginLeft="135dp"
+                android:background="#0F42F0"/>
 
-        <Button
-            android:id="@+id/middle_short"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:onClick="onClick"
-            android:stateListAnimator="@null"
-            android:layout_marginTop="260dp"
-            android:layout_marginLeft="135dp"
-            android:background="#0F42F0"/>
+            <Button
+                android:id="@+id/middle_short"
+                android:layout_width="60dp"
+                android:layout_height="45dp"
+                android:onClick="onClick"
+                android:stateListAnimator="@null"
+                android:layout_marginTop="260dp"
+                android:layout_marginLeft="135dp"
+                android:background="#0F42F0"/>
 
-        <Button
-            android:id="@+id/right_long"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:onClick="onClick"
-            android:stateListAnimator="@null"
-            android:layout_marginTop="305dp"
-            android:layout_marginLeft="230dp"
-            android:background="#0F42F0"/>
+            <Button
+                android:id="@+id/right_long"
+                android:layout_width="60dp"
+                android:layout_height="45dp"
+                android:onClick="onClick"
+                android:stateListAnimator="@null"
+                android:layout_marginTop="305dp"
+                android:layout_marginLeft="230dp"
+                android:background="#0F42F0"/>
 
-        <Button
-            android:id="@+id/right_short"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:onClick="onClick"
-            android:stateListAnimator="@null"
-            android:layout_marginTop="260dp"
-            android:layout_marginLeft="215dp"
-            android:background="#0F42F0"/>
-
+            <Button
+                android:id="@+id/right_short"
+                android:layout_width="60dp"
+                android:layout_height="45dp"
+                android:onClick="onClick"
+                android:stateListAnimator="@null"
+                android:layout_marginTop="260dp"
+                android:layout_marginLeft="215dp"
+                android:background="#0F42F0"/>
+        </FrameLayout>
         <ToggleButton
             android:id="@+id/toggleButton"
             android:layout_width="wrap_content"
