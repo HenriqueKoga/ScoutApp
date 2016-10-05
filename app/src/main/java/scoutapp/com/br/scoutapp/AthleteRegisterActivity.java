@@ -28,22 +28,6 @@ public class AthleteRegisterActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-//        limpar tabelas
-//        AthleteController athleteController = new AthleteController(this);
-//        athleteController.cleanDB();
-//
-//        ChampionshipController championshipController = new ChampionshipController(this);
-//        championshipController.cleanDB();
-//
-//        UserController userController = new UserController(this);
-//        userController.cleanDB();
-//
-//        GameUserController gameUserController = new GameUserController(this);
-//        gameUserController.cleanDB();
-//
-//        GameOpponentController gameOpponentController = new GameOpponentController(this);
-//        gameOpponentController.cleanDB();
-
         helper = new AthleteRegisterHelper(this);
 
         Intent intent = getIntent();

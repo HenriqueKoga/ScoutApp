@@ -63,7 +63,7 @@ public class HomeListAdapter extends BaseAdapter {
         if (championships.get(championships.size()-1).getDate() != null){
             championship = championships.get(position);
             TextView fieldChamp = (TextView) view.findViewById(R.id.item_champ);
-            fieldChamp.setText(championship.getChampName() + " Championship");
+            fieldChamp.setText(championship.getChampName());
             TextView fieldDate = (TextView) view.findViewById(R.id.item_date);
             android.text.format.DateFormat df = new android.text.format.DateFormat();
             fieldDate.setText(df.format("dd/MM/yyyy", championship.getDate()));

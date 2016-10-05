@@ -103,14 +103,16 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
         gameOpponent = (GameOpponent) intent.getSerializableExtra("game_opponent");
         championship = (Championship) intent.getSerializableExtra("championship");
 
-//        fieldName.setText(athleteUser.getName().toUpperCase() + " X " + athleteOpponent.getName().toUpperCase());
+        fieldName.setText("Opponent: " + athleteOpponent.getName().toUpperCase());
 
         if(gameUser != null){
             fillTable();
+//            fillScore();
         } else{
             gameUser = new GameUser();
             gameOpponent = new GameOpponent();
             fillTable();
+//            fillScore();
         }
         tgbutton = (ToggleButton) findViewById(R.id.toggleButton);
         tgbutton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -367,6 +369,7 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
                 detailsPoint.put(points.size()-1, detailsList);
 
                 fillTable();
+//                fillScore();
                 fieldScore.setText(gameUser.getTotal() + " X " + gameOpponent.getTotal());
                 mBottomSheetDirection = null;
             }
@@ -388,6 +391,7 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
             detailsPoint.remove(detailsPoint.get(points.size() - 1));
             points.remove(points.size() - 1);
             fillTable();
+//            fillScore();
         } else {
             Toast.makeText(ScoutActivity.this, "It is not possible to undo the point", Toast.LENGTH_LONG).show();
         }
@@ -418,8 +422,6 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
 
     private void fillTable() {
         fieldTitleTable.setText("HITS");
-        if (fieldScore.getText() != null)
-            fieldScore.setText(gameUser.getTotal() + " X " + gameOpponent.getTotal());
         if (fieldService.getText() != null)
             fieldService.setText("Service: " + gameUser.getService());
         if (fieldReception.getText() != null)
@@ -439,4 +441,69 @@ public class ScoutActivity extends AppCompatActivity implements ItemAdapter.Item
         if (fieldLob.getText() != null)
             fieldLob.setText("Lob: " + gameUser.getLob());
     }
+
+//    private void fillScore(){
+//        if (fieldScore.getText() != null) {
+//            int firstUser = gameUser.getTotal();
+//            int secondUser = gameUser.getTotal() - firstUser;
+//            int thirdUser = gameUser.getTotal() - secondUser;
+//            int fourthUser = gameUser.getTotal() - thirdUser;
+//            int fifthUser = gameUser.getTotal() - fourthUser;
+//            int sixthUser = gameUser.getTotal() - fifthUser;
+//            int seventhUser = gameUser.getTotal() - sixthUser;
+//
+//            int firstOpponent = gameOpponent.getTotal();
+//            int secondOpponent = gameOpponent.getTotal() - firstOpponent;
+//            int thirdOpponent = gameOpponent.getTotal() - secondOpponent;
+//            int fourthOpponent = gameOpponent.getTotal() - thirdOpponent;
+//            int fifthOpponent = gameOpponent.getTotal() - fourthOpponent;
+//            int sixthOpponent = gameOpponent.getTotal() - fifthOpponent;
+//            int seventhOpponent = gameOpponent.getTotal() - sixthOpponent;
+//
+//            if ((firstOpponent >= 0)&&(firstUser >=0)) {
+//                if ((firstOpponent < 11 && firstUser <= firstOpponent - 2)
+//                        || (firstUser < 11 && firstOpponent <= firstUser - 2)) {
+//                    fieldScore.setText("1st set " + firstUser + " X " + firstOpponent);
+//                }
+//            }
+//            if ((secondOpponent >= 0)&&(secondUser >=0)) {
+//                if ((secondOpponent < 11 && secondUser <= secondOpponent - 2)
+//                        || (secondUser < 11 && secondOpponent <= secondUser - 2)) {
+//                    fieldScore.setText("2nd set " + secondUser + " X " + secondOpponent);
+//                }
+//            }
+//            if ((thirdOpponent >= 0)&&(thirdUser >=0)) {
+//                if ((thirdOpponent < 11 && thirdUser <= thirdOpponent - 2)
+//                        || (thirdUser < 11 && thirdOpponent <= thirdUser - 2)) {
+//                    fieldScore.setText("3rd set " + thirdUser + " X " + thirdOpponent);
+//                }
+//            }
+//            if ((fourthOpponent >= 0)&&(fourthUser >=0)) {
+//                if ((fourthOpponent < 11 && fourthUser <= fourthOpponent - 2)
+//                        || (fourthUser < 11 && fourthUser <= fourthOpponent - 2)) {
+//                    fieldScore.setText("4th set " + fourthUser + " X " + fourthOpponent);
+//                }
+//            }
+//            if ((fifthOpponent >= 0)&&(fifthUser >=0)) {
+//                if ((fifthOpponent < 11 && fifthUser <= fifthOpponent - 2)
+//                        || (fifthUser < 11 && fifthOpponent <= fifthUser - 2)) {
+//                    fieldScore.setText("5th set " + fifthUser + " X " + fifthOpponent);
+//                }
+//            }
+//            if ((sixthOpponent >= 0)&&(sixthUser >=0)) {
+//                if ((sixthOpponent < 11 && sixthUser <= sixthOpponent - 2)
+//                        || (sixthUser < 11 && sixthOpponent <= sixthUser - 2)) {
+//                    fieldScore.setText("6th set " + sixthUser + " X " + sixthOpponent);
+//                }
+//            }
+//            if ((seventhOpponent >= 0)&&(seventhUser >=0)) {
+//                if ((seventhOpponent < 11 && seventhUser <= seventhOpponent - 2)
+//                        || (seventhUser < 11 && seventhOpponent <= seventhUser - 2)) {
+//                    fieldScore.setText("7th set " + seventhUser + " X " + seventhOpponent);
+//                }
+//            }
+//        }
+//
+//    }
+
 }
